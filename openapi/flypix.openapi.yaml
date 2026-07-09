@@ -1,0 +1,2776 @@
+openapi: "3.1.0"
+info:
+  title: "Public API"
+  version: "0.1.0"
+  description: "\nPublic OpenAPI Schema\n\nThis API lets you interact directly with the application with HTTP requests.\n\nYou will need to set a valid authorization header for every request:\n\n`Authorization: Bearer <token>`\n\nExample use case: Find an existing file and its vector features:\n\n```\nPOST /auth/login/password -> Fetch token and use it in subsequent requests\nGET /users/tenant/for-user/ -> Get your tenant id for subsequent requests\nGET /projects/for-tenant/{tenant_id} -> Find your project\nGET /files/for-project/{project_id} -> Find your file\nGET /files/{file_id}/visible -> Get a download link for the visible raster\nGET /vectors/for-file/{file_id} -> Get the vector ids for the file\nGET /vectors/{vector_id}/features -> Get the annotations\n```\n\n\n"
+paths:
+  /auth/login/password:
+    post:
+      tags:
+        - "Auth"
+      summary: "Login With Password"
+      description: "Retrieve a short lived auth token using your username and password.\nOnly accounts created directly in the app are supported, third party accounts (Google, Linkedin) are not supported"
+      operationId: "auth_login_with_password"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+      x-speakeasy-name-override: login_with_password
+  /auth/refresh:
+    post:
+      tags:
+        - "Auth"
+      summary: "Refresh Token"
+      description: "Get a new short lived authentication token using the refresh token"
+      operationId: "auth_refresh_token"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+      x-speakeasy-name-override: refresh_token
+  /payments/balance/{tenant_id}:
+    get:
+      tags:
+        - "Payments"
+      summary: "Get Tenant Balance"
+      description: "Get current balance and list of transactions for the specified tenant."
+      operationId: "payments_get_balance"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BalanceResponse"
+      x-speakeasy-name-override: get_balance
+  /users/tenants/for-user/:
+    get:
+      tags:
+        - "Users"
+      summary: "Get Tenants For User"
+      description: "List the tenants available for the user"
+      operationId: "users_list_tenants"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TenantResponse"
+                type: "array"
+                title: "Response Get Tenants For User Users Tenants For User  Get"
+      x-speakeasy-name-override: list_tenants
+  /projects/for-tenant/{tenant_id}:
+    get:
+      tags:
+        - "Projects"
+      summary: "Get Projects For Tenant"
+      description: "Get projects in a tenant"
+      operationId: "projects_list_for_tenant"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ProjectResponse"
+                title: "Response Get Projects For Tenant Projects For Tenant  Tenant Id  Get"
+      x-speakeasy-name-override: list_for_tenant
+  /projects/{project_id}:
+    delete:
+      tags:
+        - "Projects"
+      summary: "Delete Project"
+      description: "Delete the specified project. This will recursively delete any files\nas well as folders contained in the specified project.\nThis operation cannot be undone"
+      operationId: "projects_delete"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntityDeletionResponse"
+      x-speakeasy-name-override: delete
+  /projects/:
+    post:
+      tags:
+        - "Projects"
+      summary: "Create Project"
+      description: "Create a new empty project"
+      operationId: "projects_create"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectCreationRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectResponse"
+      x-speakeasy-name-override: create
+  /folders/for-folder/{folder_id}:
+    get:
+      tags:
+        - "Folders"
+      summary: "Get Folders For Folder"
+      description: "Get the folders in the specified folder. To get the folders in the project root,\nuse the /for-project/ endpoint. This will ONLY get the folders in the specified\nfolder (it is not recursive)"
+      operationId: "folders_list_for_folder"
+      parameters:
+        - name: "folder_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Folder Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FolderResponse"
+                title: "Response Get Folders For Folder Folders For Folder  Folder Id  Get"
+      x-speakeasy-name-override: list_for_folder
+  /folders/for-project/{project_id}:
+    get:
+      tags:
+        - "Folders"
+      summary: "Get Folders In Project Root"
+      description: "Get folders in the project root. This will ONLY get the folders in the specified\nproject root (it is not recursive)"
+      operationId: "folders_list_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FolderResponse"
+                title: "Response Get Folders In Project Root Folders For Project  Project Id  Get"
+      x-speakeasy-name-override: list_for_project
+  /folders/{folder_id}:
+    delete:
+      tags:
+        - "Folders"
+      summary: "Delete Folder"
+      description: "Delete the specified folder. This will recursively delete any files\nas well as folders contained in the specified folder.\nThis operation cannot be undone"
+      operationId: "folders_delete"
+      parameters:
+        - name: "folder_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Folder Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntityDeletionResponse"
+      x-speakeasy-name-override: delete
+  /folders/:
+    post:
+      tags:
+        - "Folders"
+      summary: "Create Folder"
+      description: "Create a folder. Use parent_id to create it inside another folder\nin the project, or skip it to create it in the project root."
+      operationId: "folders_create"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FolderCreationRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FolderResponse"
+      x-speakeasy-name-override: create
+  /files/for-project/{project_id}:
+    get:
+      tags:
+        - "Files"
+      summary: "Get Files For Project Root"
+      description: "Get files in the project root. This will ONLY get the files in the specified\nproject root (it is not recursive)"
+      operationId: "files_list_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FileResponse"
+                title: "Response Get Files For Project Root Files For Project  Project Id  Get"
+      x-speakeasy-name-override: list_for_project
+  /files/for-folder/{folder_id}:
+    get:
+      tags:
+        - "Files"
+      summary: "Get For Folder"
+      description: "Get the files in the specified folder. To get the files in the project root,\nuse the /for-project/ endpoint. This will ONLY get the files in the specified\nfolder (it is not recursive)"
+      operationId: "files_list_for_folder"
+      parameters:
+        - name: "folder_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Folder Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FileResponse"
+                title: "Response Get For Folder Files For Folder  Folder Id  Get"
+      x-speakeasy-name-override: list_for_folder
+  /files/{file_id}:
+    get:
+      tags:
+        - "Files"
+      summary: "Get File"
+      description: "Get file details. To download the file, use the download endpoint"
+      operationId: "files_get"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileResponse"
+      x-speakeasy-name-override: get
+    delete:
+      tags:
+        - "Files"
+      summary: "Delete File"
+      description: "Delete a file. This operation cannot be undone"
+      operationId: "files_delete"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntityDeletionResponse"
+      x-speakeasy-name-override: delete
+  /files/{file_id}/visible:
+    get:
+      tags:
+        - "Files"
+      summary: "Get Visible Raster Of File"
+      description: "Gets the visible raster for the specified file.\nUpload files are processed into a visible raster that is shown in the application.\nThis endpoints retrieves the same file that the application would display.\nNote that a file may not have a visible raster because it hasn't been processed yet"
+      operationId: "files_get_visible_raster"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileLinkResponse"
+      x-speakeasy-name-override: get_visible_raster
+  /files/{file_id}/download:
+    get:
+      tags:
+        - "Files"
+      summary: "Get File Download Link"
+      description: "Get file download link. The link will be valid for a limited amount of time."
+      operationId: "files_get_download_link"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileLinkResponse"
+      x-speakeasy-name-override: get_download_link
+  /files/by-ids:
+    post:
+      tags:
+        - "Files"
+      summary: "Get Files By Ids"
+      description: "Get file details for many files"
+      operationId: "files_get_by_ids"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: "string"
+                format: "uuid"
+                description: "A string in UUID format"
+                example: "123e4567-e89b-12d3-a456-426614174000"
+              type: "array"
+              title: "Req"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/FileResponse"
+                type: "array"
+                title: "Response Get Files By Ids Files By Ids Post"
+      x-speakeasy-name-override: get_by_ids
+  /files/usage/{tenant_id}:
+    get:
+      tags:
+        - "Files"
+      summary: "Get Storage Usage"
+      description: "Get files in the project root. This will ONLY get the files in the specified\nproject root (it is not recursive)"
+      operationId: "files_get_storage_usage"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsageResponse"
+      x-speakeasy-name-override: get_storage_usage
+  /rasters/for-tenant/{tenant_id}:
+    get:
+      tags:
+        - "Rasters"
+      summary: "Get Rasters For Tenant"
+      description: "List the rasters in the tenant"
+      operationId: "rasters_list_for_tenant"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RasterResponse"
+                title: "Response Get Rasters For Tenant Rasters For Tenant  Tenant Id  Get"
+      x-speakeasy-name-override: list_for_tenant
+  /rasters/for-project/{project_id}:
+    get:
+      tags:
+        - "Rasters"
+      summary: "Get Rasters For Project"
+      description: "List the rasters in the project"
+      operationId: "rasters_list_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RasterResponse"
+                title: "Response Get Rasters For Project Rasters For Project  Project Id  Get"
+      x-speakeasy-name-override: list_for_project
+  /rasters/for-file/{file_id}:
+    get:
+      tags:
+        - "Rasters"
+      summary: "Get Rasters For File"
+      description: "List the rasters for the file"
+      operationId: "rasters_list_for_file"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RasterResponse"
+      x-speakeasy-name-override: list_for_file
+  /inferences/for-tenant/{tenant_id}:
+    get:
+      tags:
+        - "Inferences"
+      summary: "Get Inferences For Tenant"
+      description: "List the inferences in the tenant"
+      operationId: "inferences_list_for_tenant"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/InferenceResponse"
+                title: "Response Get Inferences For Tenant Inferences For Tenant  Tenant Id  Get"
+      x-speakeasy-name-override: list_for_tenant
+  /inferences/for-project/{project_id}:
+    get:
+      tags:
+        - "Inferences"
+      summary: "Get Inferences For Project"
+      description: "List the inferences in the project"
+      operationId: "inferences_list_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/InferenceResponse"
+                title: "Response Get Inferences For Project Inferences For Project  Project Id  Get"
+      x-speakeasy-name-override: list_for_project
+  /inferences/for-file/{file_id}:
+    get:
+      tags:
+        - "Inferences"
+      summary: "Get Inferences For File"
+      description: "List the inferences for the file"
+      operationId: "inferences_list_for_file"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/InferenceResponse"
+                title: "Response Get Inferences For File Inferences For File  File Id  Get"
+      x-speakeasy-name-override: list_for_file
+  /files/upload:
+    post:
+      tags:
+        - "Files"
+      summary: "Upload File"
+      description: "Upload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
+      operationId: "files_upload"
+      parameters:
+        - name: "tenant_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Tenant Id"
+        - name: "project_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Project Id"
+        - name: "folder_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+                format: "uuid"
+              - type: "null"
+            title: "Folder Id"
+        - name: "filename"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Filename"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+      x-speakeasy-name-override: upload
+  /models/for-tenant/{tenant_id}:
+    get:
+      tags:
+        - "Models"
+      summary: "Get Models For Tenant"
+      description: "List the models available in the tenant"
+      operationId: "models_list_for_tenant"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PrivateModelResponse"
+                title: "Response Get Models For Tenant Models For Tenant  Tenant Id  Get"
+      x-speakeasy-name-override: list_for_tenant
+  /models/for-project/{project_id}:
+    get:
+      tags:
+        - "Models"
+      summary: "Get Models For Project"
+      description: "List the models available to be applied in any file in the project"
+      operationId: "models_list_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PrivateModelResponse"
+                title: "Response Get Models For Project Models For Project  Project Id  Get"
+      x-speakeasy-name-override: list_for_project
+  /models/official:
+    get:
+      tags:
+        - "Models"
+      summary: "Get Official Models"
+      description: "List official models, available to be applied on any file in any project"
+      operationId: "models_list_official"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/OfficialModelResponse"
+                type: "array"
+                title: "Response Get Official Models Models Official Get"
+      x-speakeasy-name-override: list_official
+  /models/{model_id}/apply:
+    post:
+      tags:
+        - "Models"
+      summary: "Apply Model On File"
+      description: "Trigger the inference of a model on a file.\nNote that inference is applied asynchronously so this won't return the\nvector features"
+      operationId: "models_apply"
+      parameters:
+        - name: "model_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Model Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplyModelRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplyModelResponse"
+      x-speakeasy-name-override: apply
+  /models/{model_id}/apply/estimate:
+    post:
+      tags:
+        - "Models"
+      summary: "Estimate Model Application On File"
+      description: "Calculate the cost in credits to apply a model."
+      operationId: "models_estimate_application"
+      parameters:
+        - name: "model_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Model Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplyModelRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EstimateModelResponse"
+      x-speakeasy-name-override: estimate_application
+  /models/inference/{inference_id}:
+    get:
+      tags:
+        - "Models"
+      summary: "Get Inference Status"
+      description: "Get the current status of an inference from applying a model"
+      operationId: "models_get_inference_status"
+      parameters:
+        - name: "inference_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Inference Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplyModelResponse"
+      x-speakeasy-name-override: get_inference_status
+  /models/{model_id}:
+    delete:
+      tags:
+        - "Models"
+      summary: "Delete Model"
+      description: "Delete an already trained model. This operation cannot be undone"
+      operationId: "models_delete"
+      parameters:
+        - name: "model_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Model Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntityDeletionResponse"
+      x-speakeasy-name-override: delete
+  /vectors/for-file/{file_id}:
+    get:
+      tags:
+        - "Vectors"
+      summary: "Get Vectors For File"
+      description: "Get the vector layers for a file.\nThis won't return the vector features but rather just the names and identifier of the vector layers"
+      operationId: "vectors_list_for_file"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/VectorResponse"
+                title: "Response Get Vectors For File Vectors For File  File Id  Get"
+      x-speakeasy-name-override: list_for_file
+  /vectors/classes/for-project/{project_id}:
+    get:
+      tags:
+        - "Vectors"
+      summary: "Get Project Classes"
+      description: "Get the classes for the specified project"
+      operationId: "vectors_list_classes_for_project"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ClassResponse"
+                title: "Response Get Project Classes Vectors Classes For Project  Project Id  Get"
+      x-speakeasy-name-override: list_classes_for_project
+  /vectors/{project_id}/class:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Create Class In Project"
+      description: "Create Class in a project. Classes are shared among all vectors in a project"
+      operationId: "vectors_create_class"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClassRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClassResponse"
+      x-speakeasy-name-override: create_class
+  /vectors/{vector_id}/features:
+    get:
+      tags:
+        - "Vectors"
+      summary: "Get Vector Features"
+      description: "Get the vector features (annotations) of a vector"
+      operationId: "vectors_get_features"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VectorFeatures"
+      x-speakeasy-name-override: get_features
+  /vectors/:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Create Empty Vector"
+      description: "Create a new empty vector layer in a file ready to receive annotations"
+      operationId: "vectors_create"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateVectorForVisibleFile"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VectorResponse"
+      x-speakeasy-name-override: create
+  /vectors/{vector_id}/:
+    delete:
+      tags:
+        - "Vectors"
+      summary: "Delete Vector"
+      description: "Delete a vector and its annotations"
+      operationId: "vectors_delete"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+      x-speakeasy-name-override: delete
+  /vectors/{vector_id}/annotations:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Create Annotations In Vector"
+      description: "Create annotations in a vector"
+      operationId: "vectors_create_annotations"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAnnotationsRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AnnotationId"
+                title: "Response Create Annotations In Vector Vectors  Vector Id  Annotations Post"
+      x-speakeasy-name-override: create_annotations
+  /vectors/{vector_id}/upload-geojson/:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Upload Geojson"
+      description: "Create annotations by uploading a GeoJSON file. The file must have a valid `.geojson` extension.\nThe only geometries supported are POLYGON. The only EPSG supported is EPSG3857.\nThe geojson MUST have either `class_id` or `class_name` property for every geometry."
+      operationId: "vectors_upload_geojson"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Body_upload_geojson_vectors__vector_id__upload_geojson__post"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadAnnotationsResponse"
+      x-speakeasy-name-override: upload_geojson
+  /vectors/{vector_id}/upload-gpkg/:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Upload Gpkg"
+      description: "Create annotations by uploading a GeoPackage file. The file must have a valid `.gpkg` extension.\nThe only geometries supported are POLYGON. The only EPSG supported is EPSG3857\nThe GPKG MUST have either `class_id` or `class_name` column for every geometry.\nThe GPKG MUST have a `geometry` column"
+      operationId: "vectors_upload_gpkg"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Body_upload_geopkg"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadAnnotationsResponse"
+      x-speakeasy-name-override: upload_gpkg
+  /vectors/{vector_id}/upload-shp/:
+    post:
+      tags:
+        - "Vectors"
+      summary: "Upload Shp"
+      description: "Create annotations by uploading a ZIPPED Shapefile (shp). The file must have a valid `.shp.zip` extension.\nThe zipped file must NOT contain any folders inside and only the shapefile\nThe only geometries supported are POLYGON. The only EPSG supported is EPSG3857\nThe SHP MUST have either `class_id` or `class_name` property for every geometry."
+      operationId: "vectors_upload_shapefile"
+      parameters:
+        - name: "vector_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Vector Id"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Body_upload_shapefile"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadAnnotationsResponse"
+      x-speakeasy-name-override: upload_shapefile
+  /regions/for-file/{file_id}:
+    get:
+      tags:
+        - "Regions"
+      summary: "Get Regions For File"
+      description: "Get the regions for a file"
+      operationId: "regions_list_for_file"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RegionResponse"
+                title: "Response Get Regions For File Regions For File  File Id  Get"
+      x-speakeasy-name-override: list_for_file
+  /regions/{file_id}:
+    post:
+      tags:
+        - "Regions"
+      summary: "Create Regions In File"
+      description: "Create regions in the file. The region payload format is similar to the one obtained\nfor vector features. Example:\n```json\n{\n    \"region_payloads\": [\n        {\n            \"inference_behavior\": \"IGNORE\",\n            \"metadata\": {\n                \"color\": \"2196f3\",\n                \"description\": null,\n                \"name\": null\n            },\n            \"polygon\": \"AQMAAAABAAAABQAAAJdcNM9GL5lAuuo2W2H6kMBS+DDvW9KbQLrqNlth+pDAUvgw71vSm0A/IBELcieVwJdcNM9GL5lAPyARC3InlcCXXDTPRi+ZQLrqNlth+pDA\",\n            \"training_behavior\": \"TRAINING\"\n        }\n    ]\n}\n```"
+      operationId: "regions_create"
+      parameters:
+        - name: "file_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "File Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateManyRegionsRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RegionResponse"
+                title: "Response Create Regions In File Regions  File Id  Post"
+      x-speakeasy-name-override: create
+  /regions/:
+    delete:
+      tags:
+        - "Regions"
+      summary: "Delete Regions"
+      description: "Delete regions"
+      operationId: "regions_delete"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: "string"
+                format: "uuid"
+                description: "A string in UUID format"
+                example: "123e4567-e89b-12d3-a456-426614174000"
+              type: "array"
+              title: "Region Ids"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+      x-speakeasy-name-override: delete
+  /geosense/session/{project_id}/:
+    post:
+      tags:
+        - "Geosense"
+      summary: "Create Session In Project"
+      description: "Create a new empty session in a project ready to receive messages"
+      operationId: "geosense_create_session"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Project Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                format: "uuid"
+                description: "A string in UUID format"
+                example: "123e4567-e89b-12d3-a456-426614174000"
+                title: "Response Create Session In Project Geosense Session  Project Id   Post"
+      x-speakeasy-name-override: create_session
+  /geosense/session/{session_id}/artifact/:
+    post:
+      tags:
+        - "Geosense"
+      summary: "Create Session Artifact"
+      description: "Create a data artifact to attach to a message.\nNote: Not fully supported right now."
+      operationId: "geosense_create_artifact"
+      parameters:
+        - name: "session_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Session Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateArtifactRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtifactResponse"
+      x-speakeasy-name-override: create_artifact
+  /geosense/{session_id}/artifact/{artifact_id}:
+    get:
+      tags:
+        - "Geosense"
+      summary: "Get Session Artifact"
+      description: "Get a session artifact"
+      operationId: "geosense_get_artifact"
+      parameters:
+        - name: "session_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Session Id"
+        - name: "artifact_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Artifact Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtifactResponse"
+      x-speakeasy-name-override: get_artifact
+  /geosense/{session_id}/message/:
+    post:
+      tags:
+        - "Geosense"
+      summary: "Send Message"
+      description: "Send a message to the LLM.\nCheck the official docs to understand the GeoSense message specification"
+      operationId: "geosense_send_message"
+      parameters:
+        - name: "session_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Session Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendMessageRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatMessageResponse"
+      x-speakeasy-name-override: send_message
+  /v2/files/upload:
+    post:
+      tags:
+        - Files
+      summary: "Upload File"
+      description: "NOTE: This endpoint cannot be triggered directly from this UI\nUpload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/v2/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
+      operationId: "files_upload_v2"
+      parameters:
+        - name: "tenant_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Tenant Id"
+        - name: "project_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Project Id"
+        - name: "folder_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+                format: "uuid"
+              - type: "null"
+            title: "Folder Id"
+        - name: "filename"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Filename"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadFileResponseStatus"
+      x-speakeasy-name-override: upload_v2
+  /v2/files/upload-from-url:
+    post:
+      tags:
+        - Files
+      summary: "Upload File From Url"
+      description: "NOTE: This endpoint cannot be triggered directly from this UI\nUpload the raster file in the specified url to the specified folder.\nIf folder_id is not included, the file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/v2/files/upload-from-url  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/json' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=myfile.tiff \\\n    --url-query file_url=https://(...)/at3_1m4_01.tif \\\n```"
+      operationId: "files_upload_from_url"
+      parameters:
+        - name: "file_url"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "File Url"
+        - name: "tenant_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Tenant Id"
+        - name: "project_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Project Id"
+        - name: "folder_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+                format: "uuid"
+              - type: "null"
+            title: "Folder Id"
+        - name: "filename"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Filename"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadFileResponseStatus"
+      x-speakeasy-name-override: upload_from_url
+components:
+  schemas:
+    AnnotationGeometryPayload:
+      properties:
+        polygon:
+          $ref: "#/components/schemas/PolygonB64"
+        confidence:
+          type: "number"
+          maximum: 1.0
+          minimum: 0.0
+          title: "Confidence"
+      type: "object"
+      required:
+        - "polygon"
+        - "confidence"
+      title: "AnnotationGeometryPayload"
+    AnnotationId:
+      type: "integer"
+    AnyMessageContext:
+      oneOf:
+        - $ref: "#/components/schemas/DataContext"
+      discriminator:
+        propertyName: "type"
+        mapping:
+          data: "#/components/schemas/DataContext"
+    ApplyModelRequest:
+      properties:
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      type: "object"
+      required:
+        - "file_id"
+      title: "ApplyModelRequest"
+    ApplyModelResponse:
+      properties:
+        status:
+          $ref: "#/components/schemas/InferenceStatus"
+        data:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Data"
+        inference_id:
+          type: "string"
+          format: "uuid"
+          title: "Inference Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      type: "object"
+      required:
+        - "status"
+        - "inference_id"
+      title: "ApplyModelResponse"
+    ArtifactData:
+      additionalProperties: true
+      type: "object"
+    ArtifactResponse:
+      properties:
+        artifact_id:
+          type: "string"
+          format: "uuid"
+          title: "Artifact Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        session_id:
+          type: "string"
+          format: "uuid"
+          title: "Session Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        type:
+          $ref: "#/components/schemas/ArtifactType"
+        artifact_data:
+          $ref: "#/components/schemas/ArtifactData"
+      type: "object"
+      required:
+        - "artifact_id"
+        - "session_id"
+        - "tenant_id"
+        - "project_id"
+        - "created_at"
+        - "type"
+        - "artifact_data"
+      title: "ArtifactResponse"
+    ArtifactType:
+      type: "string"
+      enum:
+        - "data"
+      title: "ArtifactType"
+    BalanceResponse:
+      properties:
+        credits:
+          type: "integer"
+          title: "Credits"
+        transactions:
+          items:
+            $ref: "#/components/schemas/Transaction"
+          type: "array"
+          title: "Transactions"
+      type: "object"
+      required:
+        - "credits"
+        - "transactions"
+      title: "BalanceResponse"
+    Body_upload_geojson_vectors__vector_id__upload_geojson__post:
+      properties:
+        file:
+          type: "string"
+          contentMediaType: "application/octet-stream"
+          title: "File"
+      type: "object"
+      required:
+        - "file"
+      title: "Body_upload_geojson_vectors__vector_id__upload_geojson__post"
+    Body_upload_geopkg:
+      properties:
+        file:
+          type: "string"
+          contentMediaType: "application/octet-stream"
+          title: "File"
+      type: "object"
+      required:
+        - "file"
+      title: "Body_upload_geopkg"
+    Body_upload_shapefile:
+      properties:
+        file:
+          type: "string"
+          contentMediaType: "application/octet-stream"
+          title: "File"
+      type: "object"
+      required:
+        - "file"
+      title: "Body_upload_shapefile"
+    COGSource:
+      properties:
+        type:
+          type: "string"
+          const: "EXTERNAL_COG"
+          title: "Type"
+          default: "EXTERNAL_COG"
+        url:
+          type: "string"
+          title: "Url"
+      type: "object"
+      required:
+        - "url"
+      title: "COGSource"
+    ChatMessageResponse:
+      properties:
+        session_id:
+          type: "string"
+          format: "uuid"
+          title: "Session Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        response:
+          type: "string"
+          title: "Response"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        context:
+          anyOf:
+            - items:
+                $ref: "#/components/schemas/AnyMessageContext"
+              type: "array"
+            - type: "null"
+          title: "Context"
+      type: "object"
+      required:
+        - "session_id"
+        - "response"
+        - "created_at"
+      title: "ChatMessageResponse"
+    ClassResponse:
+      properties:
+        class_id:
+          type: "string"
+          title: "Class Id"
+        name:
+          type: "string"
+          title: "Name"
+        color:
+          type: "string"
+          title: "Color"
+          description: "Hex color code (e.g., 'FF0000')"
+      type: "object"
+      required:
+        - "class_id"
+        - "name"
+        - "color"
+      title: "ClassResponse"
+    ContextType:
+      type: "string"
+      const: "data"
+    CreateAnnotationsRequest:
+      properties:
+        class_id:
+          type: "string"
+          format: "text"
+          title: "Class Id"
+          description: "Class Id"
+          examples:
+            - "car-124b"
+        payload:
+          items:
+            $ref: "#/components/schemas/AnnotationGeometryPayload"
+          type: "array"
+          title: "Payload"
+      type: "object"
+      required:
+        - "class_id"
+        - "payload"
+      title: "CreateAnnotationsRequest"
+    CreateArtifactRequest:
+      properties:
+        artifact_data:
+          $ref: "#/components/schemas/ArtifactData"
+        type:
+          $ref: "#/components/schemas/ArtifactType"
+      type: "object"
+      required:
+        - "artifact_data"
+        - "type"
+      title: "CreateArtifactRequest"
+    CreateClassRequest:
+      properties:
+        name:
+          type: "string"
+          maxLength: 64
+          minLength: 1
+          format: "text"
+          title: "Name"
+          description: "A string based value object"
+          example: "New String"
+        color:
+          type: "string"
+          minLength: 0
+          pattern: "^[a-fA-F0-9]{6}$"
+          format: "text"
+          title: "Color"
+          description: "A string based value object"
+          default: "FF0000"
+          example: "FF0000"
+      type: "object"
+      required:
+        - "name"
+      title: "CreateClassRequest"
+    CreateManyRegionsRequest:
+      properties:
+        region_payloads:
+          items:
+            $ref: "#/components/schemas/CreateRegionPayload"
+          type: "array"
+          title: "Region Payloads"
+      type: "object"
+      required:
+        - "region_payloads"
+      title: "CreateManyRegionsRequest"
+    CreateRegionPayload:
+      properties:
+        polygon:
+          $ref: "#/components/schemas/PolygonB64"
+        metadata:
+          $ref: "#/components/schemas/RegionMetadata"
+        training_behavior:
+          $ref: "#/components/schemas/RegionTrainingBehavior"
+        inference_behavior:
+          $ref: "#/components/schemas/RegionInferenceBehavior"
+      type: "object"
+      required:
+        - "polygon"
+        - "metadata"
+        - "training_behavior"
+        - "inference_behavior"
+      title: "CreateRegionPayload"
+    CreateVectorForVisibleFile:
+      properties:
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 1
+          format: "text"
+          title: "Name"
+          description: "A string based value object"
+          default: "New API Vector Layer"
+          example: "New String"
+      type: "object"
+      required:
+        - "file_id"
+      title: "CreateVectorForVisibleFile"
+    DataContext:
+      properties:
+        artifact_id:
+          type: "string"
+          format: "uuid"
+          title: "Artifact Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        type:
+          $ref: "#/components/schemas/ContextType"
+      type: "object"
+      required:
+        - "artifact_id"
+        - "type"
+      title: "DataContext"
+    EntityDeletionResponse:
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+          title: "Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        status:
+          $ref: "#/components/schemas/ResponseStatus"
+      type: "object"
+      required:
+        - "id"
+        - "status"
+      title: "EntityDeletionResponse"
+    ErrorMessage:
+      type: "string"
+    ErroredUploadedAnnotations:
+      items:
+        prefixItems:
+          - type: "integer"
+          - $ref: "#/components/schemas/ErrorMessage"
+        type: "array"
+        maxItems: 2
+        minItems: 2
+      type: "array"
+    EstimateModelResponse:
+      properties:
+        total_cost:
+          type: "integer"
+          title: "Total Cost"
+        total_pixels:
+          type: "integer"
+          title: "Total Pixels"
+      type: "object"
+      required:
+        - "total_cost"
+        - "total_pixels"
+      title: "EstimateModelResponse"
+    FileLinkResponse:
+      properties:
+        url:
+          type: "string"
+          maxLength: 2083
+          minLength: 1
+          format: "uri"
+          title: "Url"
+      type: "object"
+      required:
+        - "url"
+      title: "FileLinkResponse"
+    FileResponse:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        folder_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Folder Id"
+        extension:
+          type: "string"
+          maxLength: 12
+          title: "Extension"
+        type:
+          anyOf:
+            - $ref: "#/components/schemas/FileType"
+            - type: "null"
+        size:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Size"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        status:
+          $ref: "#/components/schemas/FileStatus"
+        channels:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Channels"
+        name:
+          type: "string"
+          maxLength: 200
+          minLength: 3
+          title: "Name"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "project_id"
+        - "file_id"
+        - "folder_id"
+        - "extension"
+        - "type"
+        - "size"
+        - "created_at"
+        - "status"
+        - "name"
+      title: "FileResponse"
+    FileStatus:
+      type: "string"
+      enum:
+        - "INITIATED"
+        - "UPLOADED"
+        - "REGISTERED"
+        - "READY"
+      title: "FileStatus"
+    FileType:
+      type: "string"
+      enum:
+        - "IMAGE"
+        - "RASTER"
+        - "GEOTIFF"
+        - "UNSUPPORTED"
+        - "UNKNOWN"
+      title: "FileType"
+    FolderCreationRequest:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        parent_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Parent Id"
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "project_id"
+        - "parent_id"
+        - "name"
+      title: "FolderCreationRequest"
+    FolderResponse:
+      properties:
+        folder_id:
+          type: "string"
+          format: "uuid"
+          title: "Folder Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        name:
+          type: "string"
+          maxLength: 200
+          minLength: 3
+          title: "Name"
+        parent_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Parent Id"
+      type: "object"
+      required:
+        - "folder_id"
+        - "name"
+        - "parent_id"
+      title: "FolderResponse"
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: "array"
+          title: "Detail"
+      type: "object"
+      title: "HTTPValidationError"
+    InferenceResponse:
+      properties:
+        inference_id:
+          type: "string"
+          format: "uuid"
+          title: "Inference Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        model_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Model Id"
+        status:
+          $ref: "#/components/schemas/InferenceStatus"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      required:
+        - "inference_id"
+        - "tenant_id"
+        - "project_id"
+        - "model_id"
+        - "status"
+        - "created_at"
+      title: "InferenceResponse"
+    InferenceStatus:
+      type: "string"
+      enum:
+        - "CREATED"
+        - "STARTED"
+        - "FAILED"
+        - "PROCESSED"
+        - "FINISHED"
+      title: "InferenceStatus"
+    LoginRequest:
+      properties:
+        username:
+          type: "string"
+          title: "Username"
+        password:
+          type: "string"
+          title: "Password"
+      type: "object"
+      required:
+        - "username"
+        - "password"
+      title: "LoginRequest"
+    LoginResponse:
+      properties:
+        access_token:
+          type: "string"
+          title: "Access Token"
+        token_type:
+          type: "string"
+          title: "Token Type"
+        expires_in:
+          type: "integer"
+          title: "Expires In"
+        refresh_token:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Refresh Token"
+      type: "object"
+      required:
+        - "access_token"
+        - "token_type"
+        - "expires_in"
+      title: "LoginResponse"
+    ModelStatus:
+      type: "string"
+      enum:
+        - "CREATED"
+        - "TRAINING"
+        - "TRAINED"
+      title: "ModelStatus"
+    OfficialModelResponse:
+      properties:
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+        status:
+          $ref: "#/components/schemas/ModelStatus"
+        model_id:
+          type: "string"
+          format: "uuid"
+          title: "Model Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        metadata:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Metadata"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      required:
+        - "name"
+        - "status"
+        - "model_id"
+        - "metadata"
+        - "created_at"
+      title: "OfficialModelResponse"
+    PolygonB64:
+      type: "string"
+      description: "WKB Polygon encoded to Base64"
+    PrivateModelResponse:
+      properties:
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+        status:
+          $ref: "#/components/schemas/ModelStatus"
+        model_id:
+          type: "string"
+          format: "uuid"
+          title: "Model Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        metadata:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Metadata"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        training_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Training Id"
+      type: "object"
+      required:
+        - "name"
+        - "status"
+        - "model_id"
+        - "metadata"
+        - "created_at"
+        - "tenant_id"
+        - "project_id"
+        - "training_id"
+      title: "PrivateModelResponse"
+    ProjectCreationRequest:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "name"
+      title: "ProjectCreationRequest"
+    ProjectResponse:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "project_id"
+        - "name"
+        - "created_at"
+      title: "ProjectResponse"
+    RasterResponse:
+      properties:
+        raster_id:
+          type: "string"
+          format: "uuid"
+          title: "Raster Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Project Id"
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        status:
+          $ref: "#/components/schemas/RasterStatus"
+        source:
+          $ref: "#/components/schemas/RasterSource"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        cog_file_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Cog File Id"
+      type: "object"
+      required:
+        - "raster_id"
+        - "tenant_id"
+        - "project_id"
+        - "file_id"
+        - "status"
+        - "source"
+        - "created_at"
+      title: "RasterResponse"
+    RasterSource:
+      anyOf:
+        - $ref: "#/components/schemas/UploadSource"
+        - $ref: "#/components/schemas/WMTSSource"
+        - $ref: "#/components/schemas/COGSource"
+    RasterStatus:
+      type: "string"
+      enum:
+        - "CREATED"
+        - "PROCESSING"
+        - "FAILED"
+        - "PROCESSED"
+      title: "RasterStatus"
+    Reason:
+      type: "string"
+      enum:
+        - "EMPTY_PLAN_ACTIVATION"
+        - "FREE_PLAN_ACTIVATION"
+        - "CREDIT_PURCHASE"
+        - "SUBSCRIPTION_ACTIVATION"
+        - "BONUS_CREDITS"
+        - "MODEL_TRAINING"
+        - "INFERENCE"
+        - "SPECIAL_OFFER"
+        - "REFUND"
+      title: "Reason"
+    RefreshRequest:
+      properties:
+        refresh_token:
+          type: "string"
+          title: "Refresh Token"
+      type: "object"
+      required:
+        - "refresh_token"
+      title: "RefreshRequest"
+    RegionInferenceBehavior:
+      type: "string"
+      enum:
+        - "USE"
+        - "IGNORE"
+      title: "RegionInferenceBehavior"
+    RegionMetadata:
+      properties:
+        color:
+          type: "string"
+          minLength: 0
+          pattern: "^[a-fA-F0-9]{6}$"
+          format: "text"
+          title: "Color"
+          description: "A string based value object"
+          example: "FF0000"
+        name:
+          anyOf:
+            - type: "string"
+              maxLength: 50
+              minLength: 0
+              format: "text"
+              description: "A string based value object"
+              example: "New String"
+            - type: "null"
+          title: "Name"
+        description:
+          anyOf:
+            - type: "string"
+              maxLength: 150
+              minLength: 0
+              format: "text"
+              description: "A string based value object"
+              example: "New String"
+            - type: "null"
+          title: "Description"
+      type: "object"
+      required:
+        - "color"
+      title: "RegionMetadata"
+    RegionResponse:
+      properties:
+        region_id:
+          type: "string"
+          format: "uuid"
+          title: "Region Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        polygon:
+          $ref: "#/components/schemas/PolygonB64"
+        metadata:
+          $ref: "#/components/schemas/RegionMetadata"
+        training_behavior:
+          $ref: "#/components/schemas/RegionTrainingBehavior"
+        inference_behavior:
+          $ref: "#/components/schemas/RegionInferenceBehavior"
+      type: "object"
+      required:
+        - "region_id"
+        - "tenant_id"
+        - "project_id"
+        - "file_id"
+        - "polygon"
+        - "metadata"
+        - "training_behavior"
+        - "inference_behavior"
+      title: "RegionResponse"
+    RegionTrainingBehavior:
+      type: "string"
+      enum:
+        - "TRAINING"
+        - "VALIDATION"
+        - "TEST"
+        - "IGNORE"
+      title: "RegionTrainingBehavior"
+    ResponseStatus:
+      type: "string"
+      enum:
+        - "SUCCESS"
+        - "FAILED"
+        - "DELETED"
+        - "APPLIED"
+      title: "ResponseStatus"
+    SendMessageRequest:
+      properties:
+        user_message:
+          type: "string"
+          maxLength: 10000
+          minLength: 1
+          format: "text"
+          title: "User Message"
+          description: "A string based value object"
+          example: "New String"
+        vector_ids:
+          items:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+          type: "array"
+          title: "Vector Ids"
+        context:
+          anyOf:
+            - items:
+                $ref: "#/components/schemas/AnyMessageContext"
+              type: "array"
+            - type: "null"
+          title: "Context"
+      type: "object"
+      required:
+        - "user_message"
+        - "vector_ids"
+      title: "SendMessageRequest"
+    TenantResponse:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        name:
+          type: "string"
+          maxLength: 50
+          minLength: 3
+          title: "Name"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "name"
+      title: "TenantResponse"
+    Transaction:
+      properties:
+        transaction_id:
+          type: "string"
+          format: "uuid"
+          title: "Transaction Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Project Id"
+        reference_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Reference Id"
+        credits:
+          type: "integer"
+          title: "Credits"
+        reason:
+          $ref: "#/components/schemas/Reason"
+        type:
+          $ref: "#/components/schemas/TransactionType"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      required:
+        - "transaction_id"
+        - "tenant_id"
+        - "project_id"
+        - "reference_id"
+        - "credits"
+        - "reason"
+        - "type"
+        - "created_at"
+      title: "Transaction"
+    TransactionType:
+      type: "string"
+      enum:
+        - "ADD"
+        - "SUBTRACT"
+        - "WITHHOLD"
+      title: "TransactionType"
+    UploadAnnotationsResponse:
+      properties:
+        annotation_ids:
+          items:
+            $ref: "#/components/schemas/AnnotationId"
+          type: "array"
+          title: "Annotation Ids"
+        errored:
+          $ref: "#/components/schemas/ErroredUploadedAnnotations"
+      type: "object"
+      required:
+        - "annotation_ids"
+        - "errored"
+      title: "UploadAnnotationsResponse"
+    UploadFileResponseStatus:
+      properties:
+        file_id:
+          type: "string"
+          format: "uuid"
+          title: "File Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        status:
+          $ref: "#/components/schemas/FileStatus"
+      type: "object"
+      required:
+        - "file_id"
+        - "status"
+      title: "UploadFileResponseStatus"
+    UploadSource:
+      properties:
+        type:
+          type: "string"
+          const: "UPLOAD"
+          title: "Type"
+          default: "UPLOAD"
+        processed_file_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Processed File Id"
+        reprojected_file_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+              description: "A string in UUID format"
+              example: "123e4567-e89b-12d3-a456-426614174000"
+            - type: "null"
+          title: "Reprojected File Id"
+      type: "object"
+      required:
+        - "processed_file_id"
+        - "reprojected_file_id"
+      title: "UploadSource"
+    UsageResponse:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        bytes:
+          type: "integer"
+          title: "Bytes"
+        storage_quota:
+          type: "integer"
+          title: "Storage Quota"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "bytes"
+        - "storage_quota"
+      title: "UsageResponse"
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: "string"
+              - type: "integer"
+          type: "array"
+          title: "Location"
+        msg:
+          type: "string"
+          title: "Message"
+        type:
+          type: "string"
+          title: "Error Type"
+        input:
+          title: "Input"
+        ctx:
+          type: "object"
+          title: "Context"
+      type: "object"
+      required:
+        - "loc"
+        - "msg"
+        - "type"
+      title: "ValidationError"
+    VectorClassesMap:
+      additionalProperties:
+        type: "string"
+      type: "object"
+    VectorCreationSource:
+      type: "string"
+      enum:
+        - "DIRECT"
+        - "INFERENCE"
+      title: "VectorCreationSource"
+    VectorFeatures:
+      properties:
+        data:
+          $ref: "#/components/schemas/VectorFeaturesDict"
+        classes:
+          $ref: "#/components/schemas/VectorClassesMap"
+      type: "object"
+      required:
+        - "data"
+        - "classes"
+      title: "VectorFeatures"
+      description: "This data structure contains the annotations.\nThe elements in each array map by index. i.e. the first annotation would correspond\nwith `(ids[0], areas[0], polygons[0], confidences[0], class_ids[0])`.\n\nThe polygon is indicated as a WKB string (Base64).\nThe class id is indicated as an integer that\nmaps to the `classes` property"
+    VectorFeaturesDict:
+      properties:
+        ids:
+          items:
+            type: "integer"
+          type: "array"
+          title: "Ids"
+        areas:
+          items:
+            type: "number"
+          type: "array"
+          title: "Areas"
+        polygons:
+          items:
+            type: "string"
+          type: "array"
+          title: "Polygons"
+        confidences:
+          items:
+            type: "number"
+          type: "array"
+          title: "Confidences"
+        class_ids:
+          items:
+            type: "integer"
+          type: "array"
+          title: "Class Ids"
+      type: "object"
+      required:
+        - "ids"
+        - "areas"
+        - "polygons"
+        - "confidences"
+        - "class_ids"
+      title: "VectorFeaturesDict"
+    VectorMetadata:
+      properties:
+        source:
+          $ref: "#/components/schemas/VectorCreationSource"
+      type: "object"
+      required:
+        - "source"
+      title: "VectorMetadata"
+    VectorResponse:
+      properties:
+        tenant_id:
+          type: "string"
+          format: "uuid"
+          title: "Tenant Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        project_id:
+          type: "string"
+          format: "uuid"
+          title: "Project Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        vector_id:
+          type: "string"
+          format: "uuid"
+          title: "Vector Id"
+          description: "A string in UUID format"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        metadata:
+          $ref: "#/components/schemas/VectorMetadata"
+        name:
+          type: "string"
+          maxLength: 200
+          minLength: 3
+          title: "Name"
+      type: "object"
+      required:
+        - "tenant_id"
+        - "project_id"
+        - "vector_id"
+        - "metadata"
+        - "name"
+      title: "VectorResponse"
+    WMTSLayer:
+      type: "string"
+    WMTSSource:
+      properties:
+        type:
+          type: "string"
+          const: "WMTS"
+          title: "Type"
+          default: "WMTS"
+        layer:
+          $ref: "#/components/schemas/WMTSLayer"
+        url:
+          type: "string"
+          title: "Url"
+      type: "object"
+      required:
+        - "layer"
+        - "url"
+      title: "WMTSSource"
+  securitySchemes:
+    BearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
+      description: "Paste your Bearer token here to use it with every request."
+security:
+  - BearerAuth: []
+servers:
+  - url: https://api.flypix.ai
+    description: FlyPix production API
