@@ -1,0 +1,337 @@
+overlay: 1.0.0
+info:
+  title: FlyPix SDK overlay
+  version: 0.1.0
+actions:
+  - target: $
+    update:
+      servers:
+        - url: https://api.flypix.ai
+          description: FlyPix production API
+  # Declare the tags globally. The upstream (FastAPI) spec omits a top-level
+  # `tags` list, so every operation's tag is "undefined" per the linter. Declaring
+  # them here clears those warnings and gives each SDK namespace a description.
+  - target: $
+    update:
+      tags:
+        - name: Auth
+          description: Obtain and refresh API access tokens.
+        - name: Files
+          description: Upload, download, list, and delete files.
+        - name: Folders
+          description: Organize files into folders within a project.
+        - name: Geosense
+          description: GeoSense sessions, artifacts, and messages.
+        - name: Inferences
+          description: Inference results across tenants, projects, and files.
+        - name: Models
+          description: List, apply, and manage detection models.
+        - name: Payments
+          description: Billing and tenant balance.
+        - name: Projects
+          description: Manage projects within a tenant.
+        - name: Rasters
+          description: Raster imagery associated with files and projects.
+        - name: Regions
+          description: Regions of interest within a file.
+        - name: Users
+          description: User account details and tenant membership.
+        - name: Vectors
+          description: Vector data — classes, features, and annotations.
+  - target: $.paths["/auth/login/password"].post
+    description: login_with_password_auth_login_password_post -> auth.login_with_password
+    update:
+      operationId: auth_login_with_password
+      x-speakeasy-name-override: login_with_password
+      # Login is public: it exchanges credentials for a token, so it must not
+      # require a bearer token. The upstream (FastAPI) spec applies the global
+      # BearerAuth to every operation; override it to no security here so the
+      # generated method doesn't send an Authorization header.
+      security: []
+  - target: $.paths["/auth/refresh"].post
+    description: refresh_token_auth_refresh_post -> auth.refresh_token
+    update:
+      operationId: auth_refresh_token
+      x-speakeasy-name-override: refresh_token
+  - target: $.paths["/files/for-project/{project_id}"].get
+    description: get_files_for_project_root_files_for_project__project_id__get -> files.list_for_project
+    update:
+      operationId: files_list_for_project
+      x-speakeasy-name-override: list_for_project
+  - target: $.paths["/files/for-folder/{folder_id}"].get
+    description: get_for_folder_files_for_folder__folder_id__get -> files.list_for_folder
+    update:
+      operationId: files_list_for_folder
+      x-speakeasy-name-override: list_for_folder
+  - target: $.paths["/files/{file_id}"].get
+    description: get_file_files__file_id__get -> files.get
+    update:
+      operationId: files_get
+      x-speakeasy-name-override: get
+  - target: $.paths["/files/{file_id}"].delete
+    description: delete_file_files__file_id__delete -> files.delete
+    update:
+      operationId: files_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/files/{file_id}/visible"].get
+    description: get_visible_raster_of_file_files__file_id__visible_get -> files.get_visible_raster
+    update:
+      operationId: files_get_visible_raster
+      x-speakeasy-name-override: get_visible_raster
+  - target: $.paths["/files/{file_id}/download"].get
+    description: get_file_download_link_files__file_id__download_get -> files.get_download_link
+    update:
+      operationId: files_get_download_link
+      x-speakeasy-name-override: get_download_link
+  - target: $.paths["/files/by-ids"].post
+    description: get_files_by_ids_files_by_ids_post -> files.get_by_ids
+    update:
+      operationId: files_get_by_ids
+      x-speakeasy-name-override: get_by_ids
+  - target: $.paths["/files/usage/{tenant_id}"].get
+    description: get_storage_usage_files_usage__tenant_id__get -> files.get_storage_usage
+    update:
+      operationId: files_get_storage_usage
+      x-speakeasy-name-override: get_storage_usage
+  - target: $.paths["/files/upload"].post
+    description: upload_file_files_upload_post -> files.upload
+    update:
+      operationId: files_upload
+      x-speakeasy-name-override: upload
+      # FastAPI reads the raw request stream via the Request object, so it never
+      # documents a body. Without this, the generated method sends the query
+      # params but no file bytes. Declare the octet-stream body so the SDK
+      # generates a `body` parameter that streams the file.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+  - target: $.paths["/folders/for-folder/{folder_id}"].get
+    description: get_folders_for_folder_folders_for_folder__folder_id__get -> folders.list_for_folder
+    update:
+      operationId: folders_list_for_folder
+      x-speakeasy-name-override: list_for_folder
+  - target: $.paths["/folders/for-project/{project_id}"].get
+    description: get_folders_in_project_root_folders_for_project__project_id__get -> folders.list_for_project
+    update:
+      operationId: folders_list_for_project
+      x-speakeasy-name-override: list_for_project
+  - target: $.paths["/folders/{folder_id}"].delete
+    description: delete_folder_folders__folder_id__delete -> folders.delete
+    update:
+      operationId: folders_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/folders/"].post
+    description: create_folder_folders__post -> folders.create
+    update:
+      operationId: folders_create
+      x-speakeasy-name-override: create
+  - target: $.paths["/geosense/session/{project_id}/"].post
+    description: create_session_in_project_geosense_session__project_id___post -> geosense.create_session
+    update:
+      operationId: geosense_create_session
+      x-speakeasy-name-override: create_session
+  - target: $.paths["/geosense/session/{session_id}/artifact/"].post
+    description: create_session_artifact_geosense_session__session_id__artifact__post -> geosense.create_artifact
+    update:
+      operationId: geosense_create_artifact
+      x-speakeasy-name-override: create_artifact
+  - target: $.paths["/geosense/{session_id}/artifact/{artifact_id}"].get
+    description: get_session_artifact_geosense__session_id__artifact__artifact_id__get -> geosense.get_artifact
+    update:
+      operationId: geosense_get_artifact
+      x-speakeasy-name-override: get_artifact
+  - target: $.paths["/geosense/{session_id}/message/"].post
+    description: send_message_geosense__session_id__message__post -> geosense.send_message
+    update:
+      operationId: geosense_send_message
+      x-speakeasy-name-override: send_message
+  - target: $.paths["/inferences/for-tenant/{tenant_id}"].get
+    description: get_inferences_for_tenant_inferences_for_tenant__tenant_id__get -> inferences.list_for_tenant
+    update:
+      operationId: inferences_list_for_tenant
+      x-speakeasy-name-override: list_for_tenant
+  - target: $.paths["/inferences/for-project/{project_id}"].get
+    description: get_inferences_for_project_inferences_for_project__project_id__get -> inferences.list_for_project
+    update:
+      operationId: inferences_list_for_project
+      x-speakeasy-name-override: list_for_project
+  - target: $.paths["/inferences/for-file/{file_id}"].get
+    description: get_inferences_for_file_inferences_for_file__file_id__get -> inferences.list_for_file
+    update:
+      operationId: inferences_list_for_file
+      x-speakeasy-name-override: list_for_file
+  - target: $.paths["/models/for-tenant/{tenant_id}"].get
+    description: get_models_for_tenant_models_for_tenant__tenant_id__get -> models.list_for_tenant
+    update:
+      operationId: models_list_for_tenant
+      x-speakeasy-name-override: list_for_tenant
+  - target: $.paths["/models/for-project/{project_id}"].get
+    description: get_models_for_project_models_for_project__project_id__get -> models.list_for_project
+    update:
+      operationId: models_list_for_project
+      x-speakeasy-name-override: list_for_project
+  - target: $.paths["/models/official"].get
+    description: get_official_models_models_official_get -> models.list_official
+    update:
+      operationId: models_list_official
+      x-speakeasy-name-override: list_official
+  - target: $.paths["/models/{model_id}/apply"].post
+    description: apply_model_on_file_models__model_id__apply_post -> models.apply
+    update:
+      operationId: models_apply
+      x-speakeasy-name-override: apply
+  - target: $.paths["/models/{model_id}/apply/estimate"].post
+    description: estimate_model_application_on_file_models__model_id__apply_estimate_post -> models.estimate_application
+    update:
+      operationId: models_estimate_application
+      x-speakeasy-name-override: estimate_application
+  - target: $.paths["/models/inference/{inference_id}"].get
+    description: get_inference_status_models_inference__inference_id__get -> models.get_inference_status
+    update:
+      operationId: models_get_inference_status
+      x-speakeasy-name-override: get_inference_status
+  - target: $.paths["/models/{model_id}"].delete
+    description: delete_model_models__model_id__delete -> models.delete
+    update:
+      operationId: models_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/payments/balance/{tenant_id}"].get
+    description: get_tenant_balance_payments_balance__tenant_id__get -> payments.get_balance
+    update:
+      operationId: payments_get_balance
+      x-speakeasy-name-override: get_balance
+  - target: $.paths["/projects/for-tenant/{tenant_id}"].get
+    description: get_projects_for_tenant_projects_for_tenant__tenant_id__get -> projects.list_for_tenant
+    update:
+      operationId: projects_list_for_tenant
+      x-speakeasy-name-override: list_for_tenant
+  - target: $.paths["/projects/{project_id}"].delete
+    description: delete_project_projects__project_id__delete -> projects.delete
+    update:
+      operationId: projects_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/projects/"].post
+    description: create_project_projects__post -> projects.create
+    update:
+      operationId: projects_create
+      x-speakeasy-name-override: create
+  - target: $.paths["/rasters/for-tenant/{tenant_id}"].get
+    description: get_rasters_for_tenant_rasters_for_tenant__tenant_id__get -> rasters.list_for_tenant
+    update:
+      operationId: rasters_list_for_tenant
+      x-speakeasy-name-override: list_for_tenant
+  - target: $.paths["/rasters/for-project/{project_id}"].get
+    description: get_rasters_for_project_rasters_for_project__project_id__get -> rasters.list_for_project
+    update:
+      operationId: rasters_list_for_project
+      x-speakeasy-name-override: list_for_project
+  - target: $.paths["/rasters/for-file/{file_id}"].get
+    description: get_rasters_for_file_rasters_for_file__file_id__get -> rasters.list_for_file
+    update:
+      operationId: rasters_list_for_file
+      x-speakeasy-name-override: list_for_file
+  - target: $.paths["/regions/for-file/{file_id}"].get
+    description: get_regions_for_file_regions_for_file__file_id__get -> regions.list_for_file
+    update:
+      operationId: regions_list_for_file
+      x-speakeasy-name-override: list_for_file
+  - target: $.paths["/regions/{file_id}"].post
+    description: create_regions_in_file_regions__file_id__post -> regions.create
+    update:
+      operationId: regions_create
+      x-speakeasy-name-override: create
+  - target: $.paths["/regions/"].delete
+    description: delete_regions_regions__delete -> regions.delete
+    update:
+      operationId: regions_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/users/tenants/for-user/"].get
+    description: get_tenants_for_user_users_tenants_for_user__get -> users.list_tenants
+    update:
+      operationId: users_list_tenants
+      x-speakeasy-name-override: list_tenants
+  - target: $.paths["/v2/files/upload"].post
+    description: upload_file_v2_files_upload_post -> files.upload_v2
+    update:
+      operationId: files_upload_v2
+      x-speakeasy-name-override: upload_v2
+      tags:
+        - Files
+      # See note on /files/upload above: the raw octet-stream body is undocumented
+      # upstream, so declare it here to make the file bytes actually get sent.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+  - target: $.paths["/v2/files/upload-from-url"].post
+    description: upload_file_from_url_v2_files_upload_from_url_post -> files.upload_from_url
+    update:
+      operationId: files_upload_from_url
+      x-speakeasy-name-override: upload_from_url
+      tags:
+        - Files
+  - target: $.paths["/vectors/for-file/{file_id}"].get
+    description: get_vectors_for_file_vectors_for_file__file_id__get -> vectors.list_for_file
+    update:
+      operationId: vectors_list_for_file
+      x-speakeasy-name-override: list_for_file
+  - target: $.paths["/vectors/classes/for-project/{project_id}"].get
+    description: get_project_classes_vectors_classes_for_project__project_id__get -> vectors.list_classes_for_project
+    update:
+      operationId: vectors_list_classes_for_project
+      x-speakeasy-name-override: list_classes_for_project
+  - target: $.paths["/vectors/{project_id}/class"].post
+    description: create_class_in_project_vectors__project_id__class_post -> vectors.create_class
+    update:
+      operationId: vectors_create_class
+      x-speakeasy-name-override: create_class
+  - target: $.paths["/vectors/{vector_id}/features"].get
+    description: get_vector_features_vectors__vector_id__features_get -> vectors.get_features
+    update:
+      operationId: vectors_get_features
+      x-speakeasy-name-override: get_features
+  - target: $.paths["/vectors/"].post
+    description: create_empty_vector_vectors__post -> vectors.create
+    update:
+      operationId: vectors_create
+      x-speakeasy-name-override: create
+  - target: $.paths["/vectors/{vector_id}/"].delete
+    description: delete_vector_vectors__vector_id___delete -> vectors.delete
+    update:
+      operationId: vectors_delete
+      x-speakeasy-name-override: delete
+  - target: $.paths["/vectors/{vector_id}/annotations"].post
+    description: create_annotations_in_vector_vectors__vector_id__annotations_post -> vectors.create_annotations
+    update:
+      operationId: vectors_create_annotations
+      x-speakeasy-name-override: create_annotations
+  - target: $.paths["/vectors/{vector_id}/upload-geojson/"].post
+    description: upload_geojson_vectors__vector_id__upload_geojson__post -> vectors.upload_geojson
+    update:
+      operationId: vectors_upload_geojson
+      x-speakeasy-name-override: upload_geojson
+  - target: $.paths["/vectors/{vector_id}/upload-gpkg/"].post
+    description: upload_geopkg -> vectors.upload_gpkg
+    update:
+      operationId: vectors_upload_gpkg
+      x-speakeasy-name-override: upload_gpkg
+  - target: $.paths["/vectors/{vector_id}/upload-shp/"].post
+    description: upload_shapefile -> vectors.upload_shapefile
+    update:
+      operationId: vectors_upload_shapefile
+      x-speakeasy-name-override: upload_shapefile
+  # 3) The two /v2/files/* ops were folded into the Files namespace above, but
+  #    overlay `update` APPENDS to the tags array rather than replacing it, so
+  #    they retain their original "V2Docs" tag. Remove it so they generate only
+  #    under client.files (no leftover client.v2docs namespace).
+  - target: $.paths["/v2/files/upload"].post.tags[?(@ == "V2Docs")]
+    remove: true
+  - target: $.paths["/v2/files/upload-from-url"].post.tags[?(@ == "V2Docs")]
+    remove: true

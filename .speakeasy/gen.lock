@@ -1,0 +1,1657 @@
+lockVersion: 2.0.0
+id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
+management:
+  docChecksum: c99320c64b6c4fe00eb41701c4db7b9a
+  docVersion: 0.1.0
+  speakeasyVersion: 1.789.2
+  generationVersion: 2.916.4
+  releaseVersion: 1.1.1
+  configChecksum: c9fdb2e9e26a1fe729cd2cda810517ba
+  repoURL: https://github.com/flypix-ai/flypix-sdk.git
+  installationURL: https://github.com/flypix-ai/flypix-sdk.git
+persistentEdits:
+  generation_id: 09d582bb-36df-4e77-9506-88a80c1a44cb
+  pristine_commit_hash: 983f22721f268556a17cf764c49db8d8068fee03
+  pristine_tree_hash: fcee81498ff314d27acaf1bf708298d74d6b9e9c
+features:
+  python:
+    additionalDependencies: 1.1.0
+    constsAndDefaults: 1.0.7
+    core: 6.0.34
+    defaultEnabledRetries: 0.2.0
+    deprecations: 3.0.2
+    enumUnions: 0.1.1
+    envVarSecurityUsage: 0.3.3
+    flatRequests: 1.0.1
+    flattening: 3.1.1
+    globalSecurity: 3.0.7
+    globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.2.1
+    methodArguments: 1.1.1
+    nameOverrides: 3.0.3
+    nullables: 1.0.2
+    responseFormat: 1.1.0
+    retries: 3.0.7
+    sdkHooks: 1.3.0
+    unions: 3.1.7
+    uploadStreams: 1.0.3
+trackedFiles:
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:53134de3ada576f37c22276901e1b5b6d85cd2da
+    pristine_git_object: 4d75d59008e4d8609876d263419a9dc56c8d6f3a
+  .vscode/settings.json:
+    id: 89aa447020cd
+    last_write_checksum: sha1:f84632c81029fcdda8c3b0c768d02b836fc80526
+    pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:0aa30f40ca1a300126f6ae22a86a6877077e70ee
+    pristine_git_object: 7c8df3e2c47559639ba80d1f3c50f4c0e618bf98
+  docs/models/annotationgeometrypayload.md:
+    id: 49014a5c4003
+    last_write_checksum: sha1:e22560affc11ea5db90bf0eaafa0111ccb26b23b
+    pristine_git_object: a375326232efb54d4443e99783d9858841e84965
+  docs/models/anymessagecontext.md:
+    id: 9ff800a4bafd
+    last_write_checksum: sha1:32ceadf7dc3bc10d5f92a74cbea40fb4b2b3f592
+    pristine_git_object: 4e8a517fdb5b469120a169dedb1edfa5f52eff8d
+  docs/models/applymodelrequest.md:
+    id: 0f3089ddaf8f
+    last_write_checksum: sha1:5bc3c52b7b7633ff33241d34f3eb5ec6161f02de
+    pristine_git_object: f7c1a75c180b933847fe3b5f182faf300f9a270d
+  docs/models/applymodelresponse.md:
+    id: 6eb348cd60f4
+    last_write_checksum: sha1:612aa0eeeea96d18120087e077720e130fcbe200
+    pristine_git_object: c4ff1efbb8df2f717442be1ebdc666baa9b73103
+  docs/models/artifactresponse.md:
+    id: cd1f0276d7f6
+    last_write_checksum: sha1:bf3c110d457d608adc14c5504a21c6853baabd28
+    pristine_git_object: 0dc74adc0f38a8fae6efa683cb12f2968dd3c7e1
+  docs/models/artifacttype.md:
+    id: 87a23e4dd4a6
+    last_write_checksum: sha1:0da9da950632ab8ed56dd12a15ebbd8ebccc898e
+    pristine_git_object: 304c635cf57aa1d71048659e5ffd040f67190b25
+  docs/models/balanceresponse.md:
+    id: 9c3cebf0beb4
+    last_write_checksum: sha1:a7405a730a639e1840960d91a488c956587ae468
+    pristine_git_object: 05d2919781ce347f535a4f10a81d704dd7dfb460
+  docs/models/bodyuploadgeojsonvectorsvectoriduploadgeojsonpost.md:
+    id: 3caeed5cb5fe
+    last_write_checksum: sha1:6fc486092bf0cb57ecdf2cccb25474f4b223e39a
+    pristine_git_object: ae23cc13701bf06f81ecceb85de62f1df06a2e04
+  docs/models/bodyuploadgeopkg.md:
+    id: 23ecfede5230
+    last_write_checksum: sha1:d0f6e68aba0a2c78c1269c5d0639f36dc18c1d72
+    pristine_git_object: 4deae57ab6472ecbbbd7d91df9869a4a614efdd7
+  docs/models/bodyuploadshapefile.md:
+    id: 295f92a19d6a
+    last_write_checksum: sha1:75ae0f07ec9ce2bbf471d4233ede9b1a51aa35df
+    pristine_git_object: ecd15b55b2537dd4bb10053bcfac9d78499e206e
+  docs/models/chatmessageresponse.md:
+    id: 9a34e2a5b8df
+    last_write_checksum: sha1:faf720b870d818d1d65c981f9208a2579e1dcf8f
+    pristine_git_object: 383b4fc2f9108065e316264eeb5deefffa97964c
+  docs/models/classresponse.md:
+    id: d481d0b62e39
+    last_write_checksum: sha1:6f3cdcdecae070e3ad25aa85dbe76810b4f9332a
+    pristine_git_object: c046da84204f3c0a95415aff0c5df03cc3b98224
+  docs/models/cogsource.md:
+    id: b496e5f276dd
+    last_write_checksum: sha1:c013fbfb843aea51b07d784128882fb25228398e
+    pristine_git_object: 7b377230f41182296aec62d677fd3ef76facd81a
+  docs/models/createannotationsrequest.md:
+    id: b5af25074e5f
+    last_write_checksum: sha1:956222c2fa2e9c95db97d5f52eba8faa0f931676
+    pristine_git_object: c9af88c49873d3c12e7320d3e3f81375af884b10
+  docs/models/createartifactrequest.md:
+    id: e0291f71aa83
+    last_write_checksum: sha1:4a5a66296289b4e9b145d49a1466d1c859d323c8
+    pristine_git_object: c904913ec61655042fce8ed763bebaba968e0dbd
+  docs/models/createclassrequest.md:
+    id: 669dd65212b0
+    last_write_checksum: sha1:cb1def9f8376d779e2318112d2abd8f10a459456
+    pristine_git_object: 63da670c51ec072e3e1cf45b73988b4ed8212c06
+  docs/models/createmanyregionsrequest.md:
+    id: fffdf83a9749
+    last_write_checksum: sha1:040ec21e3f715bd702604694bd8eb8f1ffa6fe4a
+    pristine_git_object: e5d7bacc3fb7de50f2415e2b6bb9b6f68f4b9aed
+  docs/models/createregionpayload.md:
+    id: ea340a59b9bf
+    last_write_checksum: sha1:3c6ec73634dddb8c51901a29d3d6d91f20fe8968
+    pristine_git_object: 9196983c794622a82530033c0c1d047c71532493
+  docs/models/createvectorforvisiblefile.md:
+    id: 34278fd00fd9
+    last_write_checksum: sha1:ebb211ce1bb1d7c3acc1ea2329a32c4251ffe824
+    pristine_git_object: 754b99c8d04b0331eabfd2bf9d1dc01d746bf4ca
+  docs/models/datacontext.md:
+    id: 2e428de6bfc1
+    last_write_checksum: sha1:463a4b47eb2de4024621603db4228006e2866842
+    pristine_git_object: a02a2e49d2b035b64036fdcf24eea5bd86c4628d
+  docs/models/entitydeletionresponse.md:
+    id: d3b4e69a948a
+    last_write_checksum: sha1:12afde22ca72db077fd2b9e69c18fcaf631b4359
+    pristine_git_object: 65f60f1ecf49173053d98d0a40425175347e4d47
+  docs/models/errored.md:
+    id: b82dca0a2bd3
+    last_write_checksum: sha1:604e2f0077519bf182567e3dd0b8fb7d5abcd450
+    pristine_git_object: 0012276eadea2c104c5bb9c67bcd8c0dd5f2a1b9
+  docs/models/estimatemodelresponse.md:
+    id: 69a903bed829
+    last_write_checksum: sha1:ac1248613d5947f360234fd8cf4f429f79958791
+    pristine_git_object: d79b1cd1bf36b7f88390f2536667e1b4a01b40a6
+  docs/models/filelinkresponse.md:
+    id: 08bac7a9aa57
+    last_write_checksum: sha1:8b2f5ad9e13827c52645058767fac8142e403f91
+    pristine_git_object: b79e8a3147a6f799012d734fb1e3eab0eccc564d
+  docs/models/fileresponse.md:
+    id: cdae49041631
+    last_write_checksum: sha1:203867c4b1923f12ae4b03d0c36cd5e40d388412
+    pristine_git_object: 9e4d67588760c3f8baec2298fb4082e7dacb137a
+  docs/models/filesdeleterequest.md:
+    id: 5f889c5456ae
+    last_write_checksum: sha1:830e9db51518a41809aaf09882170358b4338d78
+    pristine_git_object: 199a4d115a3d9615fcccebb5b1f2aba215979997
+  docs/models/filesgetdownloadlinkrequest.md:
+    id: 8ee08ce2ad73
+    last_write_checksum: sha1:f062af937dcc6878f74c394725d8efe6dc45daa6
+    pristine_git_object: 50a190e680ebe41b482d172b16e0d498b0538d73
+  docs/models/filesgetrequest.md:
+    id: 29be53ef813a
+    last_write_checksum: sha1:3c972fec02d3cb3cf95faa45d50ad3ab65d01617
+    pristine_git_object: 339f0a0d68af3004a4232aa262f319679d2683fd
+  docs/models/filesgetstorageusagerequest.md:
+    id: 706f4ee67cff
+    last_write_checksum: sha1:c185ba4753e392bcd583c4b7c9a320196834f6b3
+    pristine_git_object: 0cce39b260100ceff006172e8ce2e23d16d2cbf5
+  docs/models/filesgetvisiblerasterrequest.md:
+    id: 05188a05f117
+    last_write_checksum: sha1:1ae3618ab4383b6dd51a483cb3ec92da47a65dd2
+    pristine_git_object: 849b6a57560670f077ea2e188cdc51f8df726892
+  docs/models/fileslistforfolderrequest.md:
+    id: 51f5545a8523
+    last_write_checksum: sha1:99af4ee7a8784182e4cfc23a2fe0b16c32a9aee9
+    pristine_git_object: c9089a87ce4c6ab9d76169447ad540bd12c968a0
+  docs/models/fileslistforprojectrequest.md:
+    id: dc9f21fdf0cb
+    last_write_checksum: sha1:22cc78dd29c9d5b19e13a4f6717ac96a4cab2eb6
+    pristine_git_object: 1d52cdd5699678c90e956cd2c303b6086f850b33
+  docs/models/filestatus.md:
+    id: e00c38a20d86
+    last_write_checksum: sha1:a6ff0df83ce25a8015e1e330bddeec0e0794662d
+    pristine_git_object: 9cbe9496bd8401549180f6aea31013e06816360e
+  docs/models/filesuploadfromurlrequest.md:
+    id: 7dbe8e344b4f
+    last_write_checksum: sha1:2f8d3da70f7ec1c889d56c9eeb39a94a564bc24f
+    pristine_git_object: db50a7a8058d02d620e7e7502c64ba1175545a83
+  docs/models/filesuploadrequest.md:
+    id: cb8b8f186792
+    last_write_checksum: sha1:eac02a3f95a97662c7f7459f22c240fe0e6e3cf1
+    pristine_git_object: 1dd8a135b4c590d947956cf565c498751e9475db
+  docs/models/filesuploadv2request.md:
+    id: 40a05dc03e76
+    last_write_checksum: sha1:6565eb3a1ee476371e66b1e86c7e6cc8ebb4c8b1
+    pristine_git_object: 7b08cfb8d5fd326a74aecca23404106a764db226
+  docs/models/filetype.md:
+    id: 6474ff839025
+    last_write_checksum: sha1:3a744c09cdf7c94088a3b57ee291747d4694a46c
+    pristine_git_object: a320ce169a51259787faae8e8532f7e79ce14fb0
+  docs/models/foldercreationrequest.md:
+    id: 08691f4bb2ee
+    last_write_checksum: sha1:57e186dabf9e794b3695666bc7ea66e94c0f3eb0
+    pristine_git_object: 73223c9efb8cf1a144dfde5bfc945ef3cc5a225e
+  docs/models/folderresponse.md:
+    id: aefa703ce5f9
+    last_write_checksum: sha1:1ad96ef9d3aae67c3c88e9baf2b4c9f48e70382b
+    pristine_git_object: 72c8fdffb8caeda5d79591adefdd2e2b57289159
+  docs/models/foldersdeleterequest.md:
+    id: aba578450c99
+    last_write_checksum: sha1:16697c3b1e195edfa8119a87c4c2d59473c6fc3a
+    pristine_git_object: 411f0110f0ffe15c672834c475dbc79c5953d08d
+  docs/models/folderslistforfolderrequest.md:
+    id: "554729715521"
+    last_write_checksum: sha1:03e831251b3637c78184232ffb3fbbf5375df379
+    pristine_git_object: 821bd1ff80e8a049d81d5dd8589c7755235ff72e
+  docs/models/folderslistforprojectrequest.md:
+    id: 720bd040af47
+    last_write_checksum: sha1:d6c590f80ea932864065a8d725fc4bd5cc0d6596
+    pristine_git_object: b7898dc1cb026117dd2a411c2afc857cb7aaaf9b
+  docs/models/geosensecreateartifactrequest.md:
+    id: c086443577c8
+    last_write_checksum: sha1:a0e37ed85202ef9ee6125aa5f9e90776232f8e4c
+    pristine_git_object: 81f6fc9f2810344c6ba3bcf30177b57d26dfad3f
+  docs/models/geosensecreatesessionrequest.md:
+    id: edbf71f6237c
+    last_write_checksum: sha1:e6b4794f87e44a6ca3341fbf8a8cb3969f15136f
+    pristine_git_object: 9acb4b7423586b4a2221467a178aad50668be337
+  docs/models/geosensegetartifactrequest.md:
+    id: 7e496fd91911
+    last_write_checksum: sha1:a2b7df9075bd48d27a8e96040d2f663bd0bc118b
+    pristine_git_object: 594aacf4ac6ef7fa55e3b071dc1184b09966be7c
+  docs/models/geosensesendmessagerequest.md:
+    id: d2f6b84159f2
+    last_write_checksum: sha1:a875d518a8f7a58258c6243f98f387838b4acc9c
+    pristine_git_object: b95decf255b69961bc4af5901fd8123f6458e504
+  docs/models/inferenceresponse.md:
+    id: 3af23ddd9bb5
+    last_write_checksum: sha1:bee9ca492c469e246f69b14c206b7f357397e1c3
+    pristine_git_object: 9b96c3d03c87de68e76de9a378992118904884f6
+  docs/models/inferenceslistforfilerequest.md:
+    id: a5c86c5e37d8
+    last_write_checksum: sha1:140cb0eda8fd53b73088e0ec4b24296b357c357e
+    pristine_git_object: d344abbec721151aa9af2f11e26dca7a7f49be1c
+  docs/models/inferenceslistforprojectrequest.md:
+    id: a430189dd834
+    last_write_checksum: sha1:8948aa1fb9b3f53167d837d40a214c4b21429333
+    pristine_git_object: d451b84f2c8e05eed40da1f1d99c6a60fc5ca4cf
+  docs/models/inferenceslistfortenantrequest.md:
+    id: b9b46eba60dc
+    last_write_checksum: sha1:74e2c6bb4dded83c42e654f10defcc914646e8b5
+    pristine_git_object: 4a9350a0ad9f0c575abd6125a7d806012530463e
+  docs/models/inferencestatus.md:
+    id: f0e32dbbe9b6
+    last_write_checksum: sha1:5e3b7d1c5e70f0533b5965c695525ba139afa58c
+    pristine_git_object: eb40919f5044ae15117f49cafe2b88aae28ea4d7
+  docs/models/loginrequest.md:
+    id: 69fe77ed3e1c
+    last_write_checksum: sha1:769a91a9989f3cda8349e388ae4b42ed931ea237
+    pristine_git_object: 6410a3c018c660d12348011343b0b545a7e79bf7
+  docs/models/loginresponse.md:
+    id: a444dbf74659
+    last_write_checksum: sha1:a63d853ad5099d0125db1a83245e7e24e3b1dd0e
+    pristine_git_object: a188ce50d170d57eebcba1c745551b9071e4d161
+  docs/models/modelsapplyrequest.md:
+    id: 03d29155447a
+    last_write_checksum: sha1:eedd2b13aad3210d22de209b07bbacb3c057c147
+    pristine_git_object: cf921644b81ad2438c93d702c4d7d0298c2b263b
+  docs/models/modelsdeleterequest.md:
+    id: 140fde8e11d4
+    last_write_checksum: sha1:e6c2c2ea4f6246d553690375982e6913fbd03da5
+    pristine_git_object: 6c34da579ed8ea8452dd864861776b0c5ed8153d
+  docs/models/modelsestimateapplicationrequest.md:
+    id: 8ef06ce15946
+    last_write_checksum: sha1:36400b572e7f80e56497aa56d0ddc4f1e4d15433
+    pristine_git_object: 38b7c89f54ddcb50b09cda8495118ede79dc4fcc
+  docs/models/modelsgetinferencestatusrequest.md:
+    id: 6a453859fd6c
+    last_write_checksum: sha1:2e24647a45962a7ad0e6eb4915913ba6cdfbd9e2
+    pristine_git_object: d2e94f1cd3deb4747201bfd0e520ba14b00f2cda
+  docs/models/modelslistforprojectrequest.md:
+    id: e97ac3d6ec81
+    last_write_checksum: sha1:618754b52e8301c49cf3c0c2ead691f4841a2004
+    pristine_git_object: c270afe8f72a96a386e53ab459984b382902f7da
+  docs/models/modelslistfortenantrequest.md:
+    id: 369275f8eaaf
+    last_write_checksum: sha1:dab1e52e68080205d394dadbf532016d03430d61
+    pristine_git_object: b0fa5c32524a1b0bade8503044e44475d58babb7
+  docs/models/modelstatus.md:
+    id: 89da8318302c
+    last_write_checksum: sha1:d68508a7e0d50e49eaa9cb91a65ff4dc016c1360
+    pristine_git_object: 269f8873593c5f567dd6f42d08a45c36044e1328
+  docs/models/officialmodelresponse.md:
+    id: 46c7a4060fab
+    last_write_checksum: sha1:fe1eac860386a0ac84a36b598ace06ff2c5a247f
+    pristine_git_object: b91e539b8ee828d454e50c1aef2544ee15a91291
+  docs/models/paymentsgetbalancerequest.md:
+    id: e263db2c17ce
+    last_write_checksum: sha1:25d2be79b9255a3ca84b0b7e666c826303e5faca
+    pristine_git_object: c001e75e3b1afb98b8341d3f50570e06ba9091f5
+  docs/models/privatemodelresponse.md:
+    id: db6b168663e2
+    last_write_checksum: sha1:6fd217a8bb16ee701dc4b3b760a23219d1703245
+    pristine_git_object: 311bd7be1479da90b7e928650fbb5530ce58fbd1
+  docs/models/projectcreationrequest.md:
+    id: 434b7dfa921a
+    last_write_checksum: sha1:484d62f73179d53939a2c263f4666a21b63c7eed
+    pristine_git_object: 08021a358d92a673e002e719a03d58372606bc99
+  docs/models/projectresponse.md:
+    id: 3dd2f2bbb429
+    last_write_checksum: sha1:7efaf590ad1e8f3371c9e5a894d499226c143fef
+    pristine_git_object: 32616563f71f47260a524c6de1f82990633c685b
+  docs/models/projectsdeleterequest.md:
+    id: d111ac77d46b
+    last_write_checksum: sha1:63f4c6e7c7a8a94461f06bc8162cca0230d08cae
+    pristine_git_object: 562e398aef91ed86bd4cec6de30a08c7d9b6fcd0
+  docs/models/projectslistfortenantrequest.md:
+    id: f03f7c9384a4
+    last_write_checksum: sha1:8b033e7109af1051429391c75769a58a10ede613
+    pristine_git_object: 9553ccad42ea3e67aa55373d176f02d5be831547
+  docs/models/rasterresponse.md:
+    id: a7af8116d092
+    last_write_checksum: sha1:1b0992c84948ab9db9d997207fa82da564f961e8
+    pristine_git_object: cd3d58f78987fb57eb3f7f092a6c2b772ae1d8da
+  docs/models/rasterslistforfilerequest.md:
+    id: c6b51d0d3c05
+    last_write_checksum: sha1:737216437eebbca7e3b1248ecbd1e5fc60575597
+    pristine_git_object: f0d89c5063f328acbdeea2b9edf9a88ae2b5e767
+  docs/models/rasterslistforprojectrequest.md:
+    id: e578cf90e66b
+    last_write_checksum: sha1:0b6fd23a5f6cfffad4ee44ecdac2a46e95d775b9
+    pristine_git_object: a9543a852923c699b1bf6c8c687c2950e9ef4c94
+  docs/models/rasterslistfortenantrequest.md:
+    id: 1abe4ef47a5b
+    last_write_checksum: sha1:c3d6338ffa472ec6d9cc4c9699b2440be0c097e7
+    pristine_git_object: 725dade9a7679ac210b2fc2eac8d8cb5ceff081b
+  docs/models/rastersource.md:
+    id: 302c664af074
+    last_write_checksum: sha1:dc5bb4eaf359ec176256649e2396254b23008cef
+    pristine_git_object: 24add94f0c1221e7ed7d831a2f49b889a43a0dcf
+  docs/models/rasterstatus.md:
+    id: 921c091cb5ad
+    last_write_checksum: sha1:bde39f0e71216e98ff356915b06b0ecdb742b5dd
+    pristine_git_object: d967d6c2d584274f591aa14b704a23aece9119bd
+  docs/models/reason.md:
+    id: 087688da6fd4
+    last_write_checksum: sha1:7b164f5272d7f529dbc40458acb3019a99d86d08
+    pristine_git_object: ad27ae904f91387e254f79be3ee58f4f83cd677a
+  docs/models/refreshrequest.md:
+    id: 68b69b2e1abd
+    last_write_checksum: sha1:bfa823b0350402be1735857eb32468164633b9c1
+    pristine_git_object: a95ae5a37e6fb4fb7da32732351debb00d8cd009
+  docs/models/regioninferencebehavior.md:
+    id: dc98b1c0925c
+    last_write_checksum: sha1:b0bcbebc639b264f585eaa744d39dd5129dba87e
+    pristine_git_object: d7eabf63010969b93511ccc114865ce205c80db5
+  docs/models/regionmetadata.md:
+    id: fedf09ec652b
+    last_write_checksum: sha1:576a7c1bb33b0b3e8bd8fd8b6027b847a447fdfe
+    pristine_git_object: e514fcc60d578a6645ef56dbf52a4af8cfe2fdd4
+  docs/models/regionresponse.md:
+    id: a2c3386745f6
+    last_write_checksum: sha1:dc4b3e2400d6623a7a94dc56dc8fe3fa96327e5a
+    pristine_git_object: f4d9fe8c6f8aefc520d7f757255d24a84f474fc5
+  docs/models/regionscreaterequest.md:
+    id: c88fd0f06819
+    last_write_checksum: sha1:0c5454a521c2d5fe4088655fb29f85e00f7e259b
+    pristine_git_object: d6184c2af8f91056ba3d8b4e47a649a37ea5f0d7
+  docs/models/regionslistforfilerequest.md:
+    id: 8b0d992daed6
+    last_write_checksum: sha1:30a5651e60be92d040c9f43abaecca551bf8a93a
+    pristine_git_object: 0517d8f480425c3d9d3b6ee77557c918901d5b4f
+  docs/models/regiontrainingbehavior.md:
+    id: 66020b9257e6
+    last_write_checksum: sha1:a1a74463a8035af3c77494329b46f5ae5dd86967
+    pristine_git_object: 7d7345b7d70601a858b0b16a0701d5b9ea11f534
+  docs/models/responsestatus.md:
+    id: 8e1106e0a4e4
+    last_write_checksum: sha1:be3e5974bf79e8e9bd54e510a4870807990ca8cc
+    pristine_git_object: 2c2e2040cc6c395d5a76ce82a220b5417d52a298
+  docs/models/security.md:
+    id: 452e4d4eb67a
+    last_write_checksum: sha1:b92237f55b89698b718cee58634a51a5cdb29edb
+    pristine_git_object: 8ca6325b43081d6b8849bf8cfab3d65678d3d386
+  docs/models/sendmessagerequest.md:
+    id: eaa5c4d22a19
+    last_write_checksum: sha1:8ed011d779d8354fa8d180a182d3165a6ab7137a
+    pristine_git_object: b22e776f6de9ddcaac5421eccb1afd833c4b85c6
+  docs/models/tenantresponse.md:
+    id: 407bb092ce02
+    last_write_checksum: sha1:cf079ba67d1204b5c42df8efbb3966b59abb3d8a
+    pristine_git_object: 430a9d961d0176c0bb947963d007acbbc913212c
+  docs/models/transaction.md:
+    id: 24ab0958a449
+    last_write_checksum: sha1:f4e9623d2926329586c34a5fcb37d543f582bdc1
+    pristine_git_object: 29dc9595c81599a82410fb8b1bf05e988a404938
+  docs/models/transactiontype.md:
+    id: 1efa7d59dbe4
+    last_write_checksum: sha1:2ecae53e5d375da4867bbc3661f63510bedde06a
+    pristine_git_object: 3ba74368aa7eaaa36801fb839a39b164c821af8f
+  docs/models/uploadannotationsresponse.md:
+    id: 74361f6452b9
+    last_write_checksum: sha1:8eff6365aaefdf2f059d024af2cb04e4a5ab422a
+    pristine_git_object: 2d1a7e7853040ef98e6d0c07cce5c0d984280eea
+  docs/models/uploadfileresponsestatus.md:
+    id: 5886ce4e5e94
+    last_write_checksum: sha1:21fee047b1e7a33324e8007d9f991be29e5c127c
+    pristine_git_object: f000374b4186e4a1dc8c0e9167a4226c943684af
+  docs/models/uploadsource.md:
+    id: d54a9554052e
+    last_write_checksum: sha1:d6ac5fbe33c6f3fc3e9f8b0cd66c468dc69453cc
+    pristine_git_object: e8136509ed90d4f5de190c4d78c3daed2b8b446b
+  docs/models/usageresponse.md:
+    id: 7361a5b740de
+    last_write_checksum: sha1:f93d393e701d35cd48462fb4d23a2e78a40c92ad
+    pristine_git_object: 43b8cd0d3401e3d5cabef3a3c94e241eb08c7f06
+  docs/models/utils/retryconfig.md:
+    id: 4343ac43161c
+    last_write_checksum: sha1:562c0f21e308ad10c27f85f75704c15592c6929d
+    pristine_git_object: 69dd549ec7f5f885101d08dd502e25748183aebf
+  docs/models/vectorcreationsource.md:
+    id: 5d36bda1aaa1
+    last_write_checksum: sha1:054cb3323887c66b446cc231945a63bb9cb0bf1c
+    pristine_git_object: a2febc93c5924bd1feccba305f4bb6d28dc01811
+  docs/models/vectorfeatures.md:
+    id: 8eaddbefb74e
+    last_write_checksum: sha1:520d402260095557ce24a47e486be74fcb23e218
+    pristine_git_object: dfe281fe62ab92a9c6209140222a43faaafb7186
+  docs/models/vectorfeaturesdict.md:
+    id: f9caa9c9fdbf
+    last_write_checksum: sha1:9c1eb624d64073dd5fc50abf471efe86cd699768
+    pristine_git_object: f2a0d43aa3950ef7c91be9a66af3b64b8e7832ca
+  docs/models/vectormetadata.md:
+    id: 87332ca0fa53
+    last_write_checksum: sha1:5b1c8c5c8d90aa916710a0b587f986d302f0bf6d
+    pristine_git_object: 51fb893ed56580a8117d0d1e76e5320bc47291cb
+  docs/models/vectorresponse.md:
+    id: 7ec9949bff44
+    last_write_checksum: sha1:f948626b72a4bdaf138593aef1b72aec4eede368
+    pristine_git_object: 483ccbfa9523afc984e2735162a4d8caa83cc6ab
+  docs/models/vectorscreateannotationsrequest.md:
+    id: 92d060d8826e
+    last_write_checksum: sha1:b36d512ccf9db9ba7e75cd907d8a58bbdb0e8c8e
+    pristine_git_object: d8e920fd3b878d513df1238e300d0c1092275d91
+  docs/models/vectorscreateclassrequest.md:
+    id: 839bfd4a3d55
+    last_write_checksum: sha1:34a467438f4bc4c91f418e0ee987334754dccf0f
+    pristine_git_object: f6cd045024c899ebc9bfabd0bed1f5222992fac4
+  docs/models/vectorsdeleterequest.md:
+    id: 74da447ec395
+    last_write_checksum: sha1:6d8dcdec0da3363476dc154af533f3a1ad0b25aa
+    pristine_git_object: d52530d7ba3975a7f3c473755635052b2f096280
+  docs/models/vectorsgetfeaturesrequest.md:
+    id: b75cec5c63f9
+    last_write_checksum: sha1:60c75bbd1c6d89221a3d774527d35fd4044c9450
+    pristine_git_object: 1fc0a7b8adab47f2b089d8f8b6decd78c96085f2
+  docs/models/vectorslistclassesforprojectrequest.md:
+    id: 488a8f82c3d2
+    last_write_checksum: sha1:273faed5a55ab4c85dd2326b683b14f134a7ab93
+    pristine_git_object: e275ad45494172090de80f62c736a1bad2b93bab
+  docs/models/vectorslistforfilerequest.md:
+    id: 23c0d6d677a0
+    last_write_checksum: sha1:2b8a773b48ed9c59e30cab1ed4141029fcb750cb
+    pristine_git_object: 529f16216fc9b3a8c69ad42c63669a3fb3b535c4
+  docs/models/vectorsuploadgeojsonrequest.md:
+    id: 2837f4fe6b65
+    last_write_checksum: sha1:77773cf8ffc4b4186eae0214b5f531274285530b
+    pristine_git_object: 3923641e9258a4d2ebdd022eeaefc3a21a0428b5
+  docs/models/vectorsuploadgpkgrequest.md:
+    id: f911516264f5
+    last_write_checksum: sha1:050adad5cbda8724d5773ae0c129c69ddf88ebbd
+    pristine_git_object: 0882987c7ab20be61705804bf3244d05f71761b5
+  docs/models/vectorsuploadshapefilerequest.md:
+    id: 0a8114d23ef5
+    last_write_checksum: sha1:8cdfd3725f27ae4a4d02dd7c92292772ac88e9df
+    pristine_git_object: 3d109bcbb0d7980fb6c07b28b96140c192e4c7e2
+  docs/models/wmtssource.md:
+    id: e24fe9495f8a
+    last_write_checksum: sha1:6db27c517a2e0e9345c8f97f2b2350bce2b63d7b
+    pristine_git_object: 5a00596b2fadb15911dd81b52564121edb3c35a3
+  docs/sdks/auth/README.md:
+    id: e9724f17945f
+    last_write_checksum: sha1:6947b1c9b8b101e8e819ae6885c638bc690e3648
+    pristine_git_object: 9a3312df29844159d7e375c0e6097a4f98e3f5cd
+  docs/sdks/files/README.md:
+    id: e576d7a117f0
+    last_write_checksum: sha1:ab5dd33c50bf5d59ca0e4d9500a1fca40589f994
+    pristine_git_object: f0bfbe32c2534c8cb424a9732c7c69f19f0784f3
+  docs/sdks/folders/README.md:
+    id: ffb38e069dec
+    last_write_checksum: sha1:1f2e4d262564c92bf5e2c6c7b9728bcc6d64a9b2
+    pristine_git_object: aa82a14f317c522c349634628103349ff0dd0389
+  docs/sdks/geosense/README.md:
+    id: a7a116550e26
+    last_write_checksum: sha1:710677fc06f0824ba748cc622c2b60a7c3f77776
+    pristine_git_object: f59fd70c8d13a056281a43a1fac3dd8122ccdc10
+  docs/sdks/inferences/README.md:
+    id: 379277ac7398
+    last_write_checksum: sha1:3736c9fc0d21c81c97607f5d9ab827fa1ba310b4
+    pristine_git_object: 6f0416d11173bc4a1b36b57839e47f71dffc9a49
+  docs/sdks/models/README.md:
+    id: b35bdf4bc7ed
+    last_write_checksum: sha1:16ece3eca56cc3535908c4080f876c49bdc38244
+    pristine_git_object: 5aebbc1425397f2e5690a92462efa4f6fb27bd9c
+  docs/sdks/payments/README.md:
+    id: 0ddb15ec8c20
+    last_write_checksum: sha1:e5f95197d0f3e4c2e76bcbc293da652ca6ee798f
+    pristine_git_object: f38e7b5f06a57c45f386f0f4ad53c3f259341bce
+  docs/sdks/projects/README.md:
+    id: 1c5f71754e17
+    last_write_checksum: sha1:09cbe1551e81e106baa878678230a421c021bd7e
+    pristine_git_object: 08697b4083d1a96b1d1f4a810c23c553a476b016
+  docs/sdks/rasters/README.md:
+    id: b881b56972f4
+    last_write_checksum: sha1:7872d0cb05bef3dc429b0b739d63008fbe58f525
+    pristine_git_object: 63aced71c4d7ce397859071c61f53bc3c9f4aede
+  docs/sdks/regions/README.md:
+    id: bad944ca9ff1
+    last_write_checksum: sha1:cff5c0ea44db3f5b3ce20ecbc59cfef207372051
+    pristine_git_object: cf69017f328e75c155005b56a4fd674e21e43a30
+  docs/sdks/users/README.md:
+    id: 5d80027045fe
+    last_write_checksum: sha1:26d287d39b3f9bc2697269b83737b9142a82318f
+    pristine_git_object: 4c98272da308dea56c5d0f6afbe4914974efcd18
+  docs/sdks/vectors/README.md:
+    id: 45f7eb916656
+    last_write_checksum: sha1:60d374fe35e4c3f31b122741f82b67118dc0c4b8
+    pristine_git_object: 2f3b8be8627e86cb13ce947a7f210499355df752
+  py.typed:
+    id: 258c3ed47ae4
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  pylintrc:
+    id: 7ce8b9f946e6
+    last_write_checksum: sha1:cb40e5fd2885dcf20f7c572a590b2656efe282a0
+    pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
+  pyproject.toml:
+    id: 5d07e7d72637
+    last_write_checksum: sha1:33a5129093a83c81a259be4c00f65c3e67e1fd76
+    pristine_git_object: 8b994d660ff42e0b2ba8a7419346f9c9040f8da7
+  scripts/prepare_readme.py:
+    id: e0c5957a6035
+    last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
+    pristine_git_object: ffb555f1cf5d56a345f6748221fef51ae95a8501
+  scripts/publish.sh:
+    id: fe273b08f514
+    last_write_checksum: sha1:b290b25b36dca3d5eb1a2e66a2e1bcf2e7326cf3
+    pristine_git_object: c35748f360329c2bc370e9b189f49b1a360b2c48
+  src/flypix/__init__.py:
+    id: 4d4a09a78373
+    last_write_checksum: sha1:da077c0bdfcef64a4a5aea91a17292f72fa2b088
+    pristine_git_object: 833c68cd526fe34aab2b7e7c45f974f7f4b9e120
+  src/flypix/_hooks/__init__.py:
+    id: 7ae41a3f32f0
+    last_write_checksum: sha1:45a380490e968d8d95994dd97554ac60eeb6ae60
+    pristine_git_object: e763be4b171bbcf9c16caeaf381f8c92ce8d8e6e
+  src/flypix/_hooks/sdkhooks.py:
+    id: 40ce1e75627a
+    last_write_checksum: sha1:854ac81a502278cab3d23c46fe9062a4974bea03
+    pristine_git_object: cf1f5088d059c010542ba60d58f72290b299ee13
+  src/flypix/_hooks/types.py:
+    id: 2d08e467a28d
+    last_write_checksum: sha1:458c6302233e89db46c9fcdb504b3f6c552e0799
+    pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
+  src/flypix/_version.py:
+    id: 24e71c221e38
+    last_write_checksum: sha1:ea649c3a993f1823e3c563a16a1116a2490d0cd4
+    pristine_git_object: c41dcbbf64c015b66099cd8a53ef0c350a833d28
+  src/flypix/auth.py:
+    id: 0bae9ac76e8a
+    last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
+    pristine_git_object: 7dd1a8eef691a0a454f7fcb88217f8db5b0df936
+  src/flypix/basesdk.py:
+    id: 3df709c8af49
+    last_write_checksum: sha1:5b890dca913d5ee6d3c080b4481a005f121b1449
+    pristine_git_object: 2586a35f4f6010d92c5755279a589ee9242b5dc3
+  src/flypix/errors/__init__.py:
+    id: b16af737fce5
+    last_write_checksum: sha1:b76f9870f91721388188f87851f3183756279227
+    pristine_git_object: 2b58664c72f7366bd15a61643afaf2dc0b164235
+  src/flypix/errors/flypixdefaulterror.py:
+    id: 6d2373e3c640
+    last_write_checksum: sha1:a5054d84629f922924ff43bfd2ca8af1bb8c6041
+    pristine_git_object: ba1b868c41dfbbffb689ab231407234f3294a7c5
+  src/flypix/errors/flypixerror.py:
+    id: 5c8be26818d8
+    last_write_checksum: sha1:2b8f5a5803c334aed79ad8d00e9943bdd03f2071
+    pristine_git_object: 1c182c091b46c42f210a9214980528f7f252fed2
+  src/flypix/errors/no_response_error.py:
+    id: db3eb74be97b
+    last_write_checksum: sha1:7f326424a7d5ae1bcd5c89a0d6b3dbda9138942f
+    pristine_git_object: 1deab64bc43e1e65bf3c412d326a4032ce342366
+  src/flypix/errors/responsevalidationerror.py:
+    id: 91ae303dc8e7
+    last_write_checksum: sha1:7bcbf11f0391b3b1f9afdad0950af354f0e3c032
+    pristine_git_object: cfbac849734998113ed4037382799949112de6f9
+  src/flypix/files.py:
+    id: be0a70ba65ea
+    last_write_checksum: sha1:6556314d7cf2886b8d6044a49e0cee90a9de52da
+    pristine_git_object: 465d7330861f2afd47f9ee7a63e4d8360785741a
+  src/flypix/folders.py:
+    id: 81cf7afafc30
+    last_write_checksum: sha1:db1dbc0df2bdbe8661bd0d05495a4c4cecc7492b
+    pristine_git_object: 6a352f09bdbd35cb8d50fb1470b18be1584f1c2b
+  src/flypix/geosense.py:
+    id: 17b54172771e
+    last_write_checksum: sha1:8f142887e2739edcefb0d24ad037fe630e821078
+    pristine_git_object: e837feb450b06de238dee47dc4bc626af2605c21
+  src/flypix/httpclient.py:
+    id: ebc8f5f4a883
+    last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
+    pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
+  src/flypix/inferences.py:
+    id: e3f8ec7721ea
+    last_write_checksum: sha1:e17114a29225335aae6bcca647a95aa1979edb5f
+    pristine_git_object: 4bb2a13d17aca40fb6df0dda962fc24c64233362
+  src/flypix/models/__init__.py:
+    id: 1dbc43aed4a3
+    last_write_checksum: sha1:a7977eabb0d3ebe2d55f37970d0bf64555ab9997
+    pristine_git_object: 9613eac09603d831abebb79d6d7866983fda3248
+  src/flypix/models/annotationgeometrypayload.py:
+    id: 254ce297261e
+    last_write_checksum: sha1:868054e846b2bbe422eb09a05b64fcdbb9c4d7b7
+    pristine_git_object: 3dcabfcf10d9b4b99c327fdc5d20dd7f01e4e679
+  src/flypix/models/anymessagecontext.py:
+    id: 75302b62cc8e
+    last_write_checksum: sha1:568ee77a683ab36ccc0aae03ff85456e10370fe0
+    pristine_git_object: 17700c65bb80f2a8a91644c3d4ffa456d80904d6
+  src/flypix/models/applymodelrequest.py:
+    id: 9ddadb453385
+    last_write_checksum: sha1:ebc28cf2614fe90c89228a78d6521f20da72b95a
+    pristine_git_object: 89c72a08baa3e111d5b9b1b1a78f85de5f6ec26e
+  src/flypix/models/applymodelresponse.py:
+    id: ab464982c905
+    last_write_checksum: sha1:037fb034b9a3fca406e3706352a76e3d74daa5ee
+    pristine_git_object: 703e076e75e5b05d2d2502ca088401f94bbf459d
+  src/flypix/models/artifactresponse.py:
+    id: a645b603173f
+    last_write_checksum: sha1:442d369fce21481de03840ba6549bd0a00fc2245
+    pristine_git_object: 19e033eef645007f146c87e57bee9887d0de172e
+  src/flypix/models/artifacttype.py:
+    id: 81e80bbdf57a
+    last_write_checksum: sha1:2cb19af896fc14fdee41c14ad515fb5da1773ef2
+    pristine_git_object: 68e61228dc64747912181f28e24e060aa17fce7d
+  src/flypix/models/balanceresponse.py:
+    id: fbf5b228c67c
+    last_write_checksum: sha1:ae8902e378a6cd3c8852afd8ca94a8cb2d05c229
+    pristine_git_object: 118e88a156f61501a4522321c9b5b45412f49bda
+  src/flypix/models/body_upload_geojson_vectors_vector_id_upload_geojson_post.py:
+    id: 61c9f47530fa
+    last_write_checksum: sha1:ab60e1d924d7f1f7b2eeb2134e6de59bb665e040
+    pristine_git_object: f34f0c6e33ed63302df174a9e498992fbd0d3b7b
+  src/flypix/models/body_upload_geopkg.py:
+    id: c8ac41430e79
+    last_write_checksum: sha1:a82c23394544bfe10126b17f06559861e19fd6c9
+    pristine_git_object: e187f8d321cb08d1196914331caa60a6f561ad35
+  src/flypix/models/body_upload_shapefile.py:
+    id: 3257b28d0aa1
+    last_write_checksum: sha1:27bc248a1a1b3d2babd6afb8003e8b37746c6d6b
+    pristine_git_object: 77b106e9b252568b163d6d1797341d30a781e09e
+  src/flypix/models/chatmessageresponse.py:
+    id: 05aaf0a4027f
+    last_write_checksum: sha1:c4da12db2294d004c6aaab35776fe123a79825cd
+    pristine_git_object: a9047ed374dfc1a8b50ccb74eb23138833e59a85
+  src/flypix/models/classresponse.py:
+    id: 576babc0a724
+    last_write_checksum: sha1:560301adf77051144cbc9c4946f9d9c84d50d613
+    pristine_git_object: 33f53db394fb384f595ed46681ac68fbcfddaebb
+  src/flypix/models/cogsource.py:
+    id: 56f0c63f9a40
+    last_write_checksum: sha1:e23ef5fbba62d6f94cc8bb5996d024105e6963a4
+    pristine_git_object: b5c21221068ae6ff43714d7f56fe2b32fdc2bfa3
+  src/flypix/models/createannotationsrequest.py:
+    id: 3d6d89282783
+    last_write_checksum: sha1:cb938f0cecb61e20272b516b23c79811d000da90
+    pristine_git_object: f36f45978e2d0a8015a70447e7ac0bce8411cdcc
+  src/flypix/models/createartifactrequest.py:
+    id: 7fd17ed28ed2
+    last_write_checksum: sha1:70b7d07bfd4155e6fa388999df2f0046fca57b15
+    pristine_git_object: af168a9ef6f8202f28e0cbdd4c50cc05431e9949
+  src/flypix/models/createclassrequest.py:
+    id: b3172c4ac90e
+    last_write_checksum: sha1:dd1c8f6e552d35abe577b14120d69a8532884f72
+    pristine_git_object: 08cc77cf243661b96612c041c1e232e7dc83de5c
+  src/flypix/models/createmanyregionsrequest.py:
+    id: 745ff4379012
+    last_write_checksum: sha1:d36674ae4de5c0ad2bf5b67f0f84ba95c6ce64c5
+    pristine_git_object: a113225ea8145436f0d470f1b64b232e0ebb0cc3
+  src/flypix/models/createregionpayload.py:
+    id: 5463b45e86e2
+    last_write_checksum: sha1:af7f490095c88dade058226ec1a2bd97cff5d028
+    pristine_git_object: 31d67031b0889ed26ff6cc7a6a9a8aced99947f5
+  src/flypix/models/createvectorforvisiblefile.py:
+    id: dbbce1e71544
+    last_write_checksum: sha1:458f396ebdc42698db96085a250fdc60880a3e86
+    pristine_git_object: 9cf302671c5497a1e6f01427c7a3b4bab7a91b12
+  src/flypix/models/datacontext.py:
+    id: 2134bfda1191
+    last_write_checksum: sha1:66568641e01dc1e6863ce630df87c3077851d206
+    pristine_git_object: 693286cc2a6041d99b237ce22ae18d25d973a123
+  src/flypix/models/entitydeletionresponse.py:
+    id: ef8842223306
+    last_write_checksum: sha1:56003a3a8a6c89283a4303b159ff4596848493d2
+    pristine_git_object: 3bd14a56fb23bda16438246fcbbb164f1d57fcdc
+  src/flypix/models/estimatemodelresponse.py:
+    id: 2ace508d8cb3
+    last_write_checksum: sha1:e193463005cab4bdbd1c048a2e3e3ef32e0da53f
+    pristine_git_object: 371120502a13d0f798c4a5f760f4c9cd4d0dbe07
+  src/flypix/models/filelinkresponse.py:
+    id: b93a0ded4c59
+    last_write_checksum: sha1:f4c9ac733aecf4dd12cd6f87a2a2d718cdd68565
+    pristine_git_object: a4b6b3823ab6d011cccbe6096b903f84ad792571
+  src/flypix/models/fileresponse.py:
+    id: 6ea3a3ecfb09
+    last_write_checksum: sha1:f7ba301b87996cee9a5d0d7c1bd7bfd7eae5d6a0
+    pristine_git_object: d12e400df2c2cc2172f5a224299e77652fa0e62a
+  src/flypix/models/files_deleteop.py:
+    id: 4f808d631423
+    last_write_checksum: sha1:c2beb44b12cfeec18c026f892eb8d7e3d9160e3d
+    pristine_git_object: 3edcf8789f5cdacad1d3a7474967054c449f4ca9
+  src/flypix/models/files_get_download_linkop.py:
+    id: 029417804f59
+    last_write_checksum: sha1:d28422762d43d2237800783024cdbcd7a1e96472
+    pristine_git_object: fe86d4b1f0c2da7cab075d788dd1fb711e1a3be6
+  src/flypix/models/files_get_storage_usageop.py:
+    id: de2ff976e018
+    last_write_checksum: sha1:e94edc640f8e38fdbdc46ec136ea2bb867ed90ad
+    pristine_git_object: 8f601413fcbe5d8bdf5a4f4de25e1c2bcc9867b0
+  src/flypix/models/files_get_visible_rasterop.py:
+    id: 6a025745b5fb
+    last_write_checksum: sha1:adf2a72acfb0773f8a7ce02df67797fca6b8ca96
+    pristine_git_object: 060f1055b979508dc4079a94e42ee44412e38b58
+  src/flypix/models/files_getop.py:
+    id: 5f8ce5ab0580
+    last_write_checksum: sha1:80762b5c3d6d1bbd805b44af32d380264bea18a0
+    pristine_git_object: 30359ae691e0646e5f6d72df7a46f8f611d1d361
+  src/flypix/models/files_list_for_folderop.py:
+    id: 96b6c71b3ecc
+    last_write_checksum: sha1:a12f51007ad766c29887b7d5613df131f17ac1b1
+    pristine_git_object: 69bc47f7612318fea03c0455dfdc94ff54d3e860
+  src/flypix/models/files_list_for_projectop.py:
+    id: 636b046042a4
+    last_write_checksum: sha1:b113f439e6f620510a79b6ad64210ce26224cb9a
+    pristine_git_object: 091e937365b70c42845691f10d6e47b03f7f506c
+  src/flypix/models/files_upload_from_urlop.py:
+    id: 84a9979b023b
+    last_write_checksum: sha1:b8f6923bae5b9af9c77fb75157558d9ef9ddd952
+    pristine_git_object: 30913c818f91e431405c879ede9ef5230a709559
+  src/flypix/models/files_upload_v2op.py:
+    id: a652488eff02
+    last_write_checksum: sha1:7503df7effbbe1413cb0443b362a702e1505cce5
+    pristine_git_object: 7472527091a38703bacdaafe2ec15e30eedc6d45
+  src/flypix/models/files_uploadop.py:
+    id: 29b99d5fb5ff
+    last_write_checksum: sha1:8bb0ea9c7069fde907d3091311d246d4870dcb45
+    pristine_git_object: 101567ff60c3cf6f6a2231292fe8bc8aa26eaa44
+  src/flypix/models/filestatus.py:
+    id: 2a0fcfad0aeb
+    last_write_checksum: sha1:302578817a4f626d47f5999fdfdae1284d383171
+    pristine_git_object: 6718b4bcfb550a28757ffa94c81c0e2ece53af38
+  src/flypix/models/filetype.py:
+    id: 3a57ed15c6ff
+    last_write_checksum: sha1:5142324623943b874661a1a55143fb20c58e75a4
+    pristine_git_object: 1796e11ed2111afbf1e93d1292ebdd9633c35857
+  src/flypix/models/foldercreationrequest.py:
+    id: 94102cd11955
+    last_write_checksum: sha1:122a48d578b0973e22bb6bb3c40e3da0ed09702d
+    pristine_git_object: 06ff37b7b91ccb4b8ce4b0fbf280c76463a29406
+  src/flypix/models/folderresponse.py:
+    id: 2426eba205f3
+    last_write_checksum: sha1:fd2e47475621756bbaab949cddfd40ac8857d34a
+    pristine_git_object: 99e27cb872d6b64597c86e15d954abe81c4b1214
+  src/flypix/models/folders_deleteop.py:
+    id: 3e4d001f1130
+    last_write_checksum: sha1:8c4ea9bf0d059357e1a615cb409919b8adb39443
+    pristine_git_object: e9d5169b77b8f06a38f8633e8895cd3c5181e578
+  src/flypix/models/folders_list_for_folderop.py:
+    id: b83258bc9195
+    last_write_checksum: sha1:04f205ec13a73c1acc66ea84b2e359b05ff2f6fa
+    pristine_git_object: 88acac1acf3453b70265cc2d95e97f02b7fa05c4
+  src/flypix/models/folders_list_for_projectop.py:
+    id: 22d28ec79883
+    last_write_checksum: sha1:f90ae708a51dc03ec301d5bd7be6e88b68f01e22
+    pristine_git_object: 2cbf8147cff65f961c8a0646cf07d108610fc0c8
+  src/flypix/models/geosense_create_artifactop.py:
+    id: 246e42cba8ae
+    last_write_checksum: sha1:7da4942cc3a15f8fad2d646ac6dd90d9305e76b0
+    pristine_git_object: 32b27bd4f28e91f3d552596704c207326f1c12a4
+  src/flypix/models/geosense_create_sessionop.py:
+    id: ee42aa1acbbf
+    last_write_checksum: sha1:38143a5129bef3df2d95ae84698b015846501e83
+    pristine_git_object: 97af8585476d57716ca9a1d47018e6c7c6ee7c8d
+  src/flypix/models/geosense_get_artifactop.py:
+    id: 79884444c4e9
+    last_write_checksum: sha1:0a6056eca4660d83216341a944a90670ba97ce67
+    pristine_git_object: c0a37bb612a03d81054db74722795f10244d8aa4
+  src/flypix/models/geosense_send_messageop.py:
+    id: b24a9cb54d66
+    last_write_checksum: sha1:98fb70b00aa870d1f8415db4c790ebfc67d8a2cb
+    pristine_git_object: 899980b7a29ee788ee43af20587de2129a80caae
+  src/flypix/models/inferenceresponse.py:
+    id: 430c09d1dca6
+    last_write_checksum: sha1:4065995c44e55eae31432ebaadc79885b7792b64
+    pristine_git_object: a197881554dfb56dc9902bff0beb97a06418c602
+  src/flypix/models/inferences_list_for_fileop.py:
+    id: e94f619c2beb
+    last_write_checksum: sha1:06b5e372fd2b17a6227911a8671b43a387fcde63
+    pristine_git_object: 579f83028b79ab4c76c8aaf21500b0af5b6488a5
+  src/flypix/models/inferences_list_for_projectop.py:
+    id: 22fcfe042bff
+    last_write_checksum: sha1:b96c0f7909d818b8c8e76c60ae576c61a744d8d9
+    pristine_git_object: 75625c7cabb6f2f3c99455c915b1ba17e084a140
+  src/flypix/models/inferences_list_for_tenantop.py:
+    id: 5d6063546ab0
+    last_write_checksum: sha1:6374942af34d226fad88c647da63a5a70f283072
+    pristine_git_object: efe1f5a1d80204ae8f7738609037f29b0186650f
+  src/flypix/models/inferencestatus.py:
+    id: 8424a5f16a6b
+    last_write_checksum: sha1:703a63b8b2e81f916c76a5fb5c6479cdf942043e
+    pristine_git_object: 1fa699ae00115770103f44817915e660b1d36c96
+  src/flypix/models/loginrequest.py:
+    id: 3030a3834c94
+    last_write_checksum: sha1:2ce00fcaff53a63fa9d76f15ef6e978ffcd49b41
+    pristine_git_object: 0b5f0302c64a86625f09de95dd5bd9e541e3460e
+  src/flypix/models/loginresponse.py:
+    id: fdfacd2083b8
+    last_write_checksum: sha1:80c19ef1ae6b560038ccd4f0393663cf0ab56dab
+    pristine_git_object: 162a13c6656ee2a82411b369132fc0a75253db15
+  src/flypix/models/models_applyop.py:
+    id: 0db888714ad4
+    last_write_checksum: sha1:79947de95f2b81f2444f4a304026231c2b6718d4
+    pristine_git_object: 03db54bbff93ade5b8d160afc4ed3703487f603c
+  src/flypix/models/models_deleteop.py:
+    id: 554dbdd9eb73
+    last_write_checksum: sha1:7822a8a01c5d58e491a13098fb35a40bf45a5cee
+    pristine_git_object: 03082acb8c49568c0bf0425a1ad90dd40a4ec2e3
+  src/flypix/models/models_estimate_applicationop.py:
+    id: 1469e241b9c3
+    last_write_checksum: sha1:1441c4ff9a72845962265cbc4cab36a793759e3f
+    pristine_git_object: 4b268f67671657fca016ea95cff0242b477dd16a
+  src/flypix/models/models_get_inference_statusop.py:
+    id: 40b72714dfef
+    last_write_checksum: sha1:d63abd559823e8a296c41ec0a69f1339b0472ca5
+    pristine_git_object: efb658c9a218bf083f3556d31f8e35e9c8f3341e
+  src/flypix/models/models_list_for_projectop.py:
+    id: 69f47805e160
+    last_write_checksum: sha1:0bdf176704e4aa2837879d159935e98ee7511c9e
+    pristine_git_object: 797f007a16075c4695cf0ff859689e3ae06c8d29
+  src/flypix/models/models_list_for_tenantop.py:
+    id: 6e76d9fc295d
+    last_write_checksum: sha1:27e4f40c24702c3aa12247f07261de7568180ee5
+    pristine_git_object: efc5c26c44d5ea3066626cdfce2005bdec948bcf
+  src/flypix/models/modelstatus.py:
+    id: 6f7e96374184
+    last_write_checksum: sha1:d66f64374379507913727975d90aadcc2cb505c4
+    pristine_git_object: 16f9c9aa8cb81253cca58866ca68c40f0ae97e8f
+  src/flypix/models/officialmodelresponse.py:
+    id: d44a73d7b704
+    last_write_checksum: sha1:f7d260f342ea144c651064f55d55f2ce83ddfb87
+    pristine_git_object: 7a18a727e1ca8a35c95fd5af610c9eee7af2c40e
+  src/flypix/models/payments_get_balanceop.py:
+    id: f41387ffaf6e
+    last_write_checksum: sha1:44f6b82ca5befdd51270cf3089afdd0d2a2bf238
+    pristine_git_object: 33fa9e94fcac2a90f0c1e12157435371af4f3a65
+  src/flypix/models/privatemodelresponse.py:
+    id: 804fb164c074
+    last_write_checksum: sha1:1a38f16b7ce816b560eb0551b181a8bd088f6a30
+    pristine_git_object: 0ccdc4621c183a13360378226c97c916f75228b8
+  src/flypix/models/projectcreationrequest.py:
+    id: 395e03f155d7
+    last_write_checksum: sha1:ff0c1127eb20a91a5f3499d2032bdc50c5d0e03a
+    pristine_git_object: 84eae83bb377344d235015c4c21a59b346d0a97b
+  src/flypix/models/projectresponse.py:
+    id: 49cdc7bafc54
+    last_write_checksum: sha1:9f1c04784dc8fe0ac4860a7335ab2954a31df432
+    pristine_git_object: 7275bacc216f383f5ae776f1e203c11579ef1cb0
+  src/flypix/models/projects_deleteop.py:
+    id: e34fe28f62ae
+    last_write_checksum: sha1:f9738fd100061113c4c1ebe74fd5c93e55fd4f19
+    pristine_git_object: 4bde3f70dd04604d844cd55e57266e9bfcc9360a
+  src/flypix/models/projects_list_for_tenantop.py:
+    id: 4aad55209503
+    last_write_checksum: sha1:08e4662f533e81950e9f133149bd9d7308943e14
+    pristine_git_object: fa45053e7a2894e4451da91d72a09aa23f10d02a
+  src/flypix/models/rasterresponse.py:
+    id: ed1ae19fca13
+    last_write_checksum: sha1:6ed533860fb927175234bc3a141d3147ca07c083
+    pristine_git_object: 25d3864e74a024baaf36c43eec5015d4265e61e7
+  src/flypix/models/rasters_list_for_fileop.py:
+    id: c7baaf0bdfef
+    last_write_checksum: sha1:87c7de9fdcabf99602bc9a3f694c2fa247e6ca08
+    pristine_git_object: 7d93a21dc2499a75bc0608987ac0ba5de9cea3d3
+  src/flypix/models/rasters_list_for_projectop.py:
+    id: e010ebb5ed18
+    last_write_checksum: sha1:351b163b849462fc12fafe7828af7954b3527bc6
+    pristine_git_object: 83318145fa28dd6388899e6b8c303d9a4e228a90
+  src/flypix/models/rasters_list_for_tenantop.py:
+    id: a701a3a3aa3c
+    last_write_checksum: sha1:55eef8abf0a60b8b41d8bd7c883459a26d102c51
+    pristine_git_object: c3940138d8706ac972c81043801acfd0c2cb644e
+  src/flypix/models/rastersource.py:
+    id: fd3ec06889b7
+    last_write_checksum: sha1:7b97db647ff738e7b4d0a4a1be437b74972337c8
+    pristine_git_object: 123a6717421c00992c480d60eafa510671f055f0
+  src/flypix/models/rasterstatus.py:
+    id: 861a130f1c50
+    last_write_checksum: sha1:8bea5fee9bafffcc0674f8bfed9eea7f4e66c7f4
+    pristine_git_object: 534207208c5f51acc9190d4a7b92aa9b5b04661c
+  src/flypix/models/reason.py:
+    id: 5e39f5416b0a
+    last_write_checksum: sha1:ebf2bdc7de67e7614b7d1d830ff8d0e1dd049281
+    pristine_git_object: 0d68a1a7f562fd53dd8f9735e0389d14b5bcfc0d
+  src/flypix/models/refreshrequest.py:
+    id: c6b3f475d7cb
+    last_write_checksum: sha1:2928c8bc38f684efcfa81c005a98756b7322c40c
+    pristine_git_object: fd29045d51cbaa6c968ce82a11c5a5daf5dc485d
+  src/flypix/models/regioninferencebehavior.py:
+    id: 68a2fb70edea
+    last_write_checksum: sha1:5e484ac0de19171c5b8a5722fbcc91fd49ab76cb
+    pristine_git_object: 8650891f51c9cb4ab39059ef382941f863ea3b3f
+  src/flypix/models/regionmetadata.py:
+    id: 963e46db2637
+    last_write_checksum: sha1:a8f197ab904cf1a2bc1bb0041961766e9ff8c0af
+    pristine_git_object: 2e73d55c55baf83b2d0f287906d06007fef70fd4
+  src/flypix/models/regionresponse.py:
+    id: 04ba98a7b9d3
+    last_write_checksum: sha1:908590eb7801eb38aceeefe0412c0d9c1f9156c1
+    pristine_git_object: 0d1ca8b413332ca29bb440a611ee39c8162c757a
+  src/flypix/models/regions_createop.py:
+    id: 0858e0b99cab
+    last_write_checksum: sha1:6235233bca1076949b5d94a8a164f75ca104ca37
+    pristine_git_object: 4b86db7523eac3dd236ccfc0ae0beb2d3bfb0273
+  src/flypix/models/regions_list_for_fileop.py:
+    id: b372ff452634
+    last_write_checksum: sha1:a9bf63aaee7fb1f0ae4b08d78673fb58999afc11
+    pristine_git_object: d543a4d656d1d14392c54a7b133bf5f7c0bc7b79
+  src/flypix/models/regiontrainingbehavior.py:
+    id: 201627c3068e
+    last_write_checksum: sha1:8a4582785d02a0f6d7aba8d69054608f8aa0fefc
+    pristine_git_object: 391d2da8eead4ed91f4a2ab567ca7c38727205c1
+  src/flypix/models/responsestatus.py:
+    id: "579976308709"
+    last_write_checksum: sha1:7f8493e134d6e20a63ca9c3e8fece63b4a6a10d7
+    pristine_git_object: abdd807b2581ea06d28f1bab013818b99c207c13
+  src/flypix/models/security.py:
+    id: d89242bfbd62
+    last_write_checksum: sha1:24c26a5080d7b46831bfcacc314e04db775c8dbc
+    pristine_git_object: 9e39c0ea15b78246b94ccedb245af40c076720f8
+  src/flypix/models/sendmessagerequest.py:
+    id: b440271ca88e
+    last_write_checksum: sha1:9cb12e771cc7e6e8942a92094a16387df286ac2a
+    pristine_git_object: dc0db34c4d77e9d3ef1439cd2cea4034175c73a9
+  src/flypix/models/tenantresponse.py:
+    id: 96f6502c3e99
+    last_write_checksum: sha1:f9d081b004c7d0e6811a14ee27456c7502ee84d3
+    pristine_git_object: cd061f77d7a2276fab2f7fb1924045676046e17b
+  src/flypix/models/transaction.py:
+    id: fc79fe925caa
+    last_write_checksum: sha1:cee61a7d802e4fe9242e5fc668b74a41bf5b4b38
+    pristine_git_object: 3a90d82db38ac1e824efabdd053cd97eb7a4aed2
+  src/flypix/models/transactiontype.py:
+    id: 4b355d7d30e6
+    last_write_checksum: sha1:e2976c28c438b1d51c8f77062c80e7a931f444f8
+    pristine_git_object: cba2d45d8f09192211453ce030b64c10d1dcab6f
+  src/flypix/models/uploadannotationsresponse.py:
+    id: face0458c277
+    last_write_checksum: sha1:6f07bbe3cbdb5b03ad348b025826f9db96b6b055
+    pristine_git_object: e4447459a209704ac71ab7a541359392dfa7e87a
+  src/flypix/models/uploadfileresponsestatus.py:
+    id: 6647bfd7270a
+    last_write_checksum: sha1:c91734843d4837fa44fa1831fb2a2b14343314a3
+    pristine_git_object: 522ff4d92d5d9f05a9bccda76f72d0de84ad53df
+  src/flypix/models/uploadsource.py:
+    id: 828e8a97b185
+    last_write_checksum: sha1:311c660855c26d3f77259d68feeee2bf851e7cc8
+    pristine_git_object: ae8477f9f5401ac11a9970a2f98648519b42ec57
+  src/flypix/models/usageresponse.py:
+    id: 48927ec60176
+    last_write_checksum: sha1:a37b9e079ea868e62d17bb39a5caf2848991f9d4
+    pristine_git_object: 7c45f3b42c21561f7d6bacec353b142185d9a336
+  src/flypix/models/vectorcreationsource.py:
+    id: aa287a98ebb4
+    last_write_checksum: sha1:6b38168151b0dbbaa61b2209f26238879ed42a54
+    pristine_git_object: 984fa48534bfd4bcfb4278b1a82b55a9c301a437
+  src/flypix/models/vectorfeatures.py:
+    id: b3cef9adba43
+    last_write_checksum: sha1:921c72fd23819a28e49511831017506558503c2b
+    pristine_git_object: fb635b515a435c5cd37f265009b7a5cf88877594
+  src/flypix/models/vectorfeaturesdict.py:
+    id: e64439fab126
+    last_write_checksum: sha1:47dc4fd1d1ecb9a5fb249d84fa6816561cd57d73
+    pristine_git_object: bd80890db1a053a6c4e1006dae8b906b8423d945
+  src/flypix/models/vectormetadata.py:
+    id: 61cb4bfb3ea8
+    last_write_checksum: sha1:2c88388122fbc6baae671444b06375ffce767a5e
+    pristine_git_object: ccabf500111f90b7ebffb0a7535d28a1e6261ec3
+  src/flypix/models/vectorresponse.py:
+    id: aeb213ead790
+    last_write_checksum: sha1:39a8f5bba403b35b200a7336934c77ec884f3d41
+    pristine_git_object: 48d1c00c12c01c9b0d71254121b2dc6992136bd6
+  src/flypix/models/vectors_create_annotationsop.py:
+    id: b6053aa91365
+    last_write_checksum: sha1:8c93855155a8e270cda88da6442b5454e16d50a6
+    pristine_git_object: 1b8ece78b2851185e3d7092aac4b9311432f6ebc
+  src/flypix/models/vectors_create_classop.py:
+    id: 917edf7d81fa
+    last_write_checksum: sha1:fd47c51abe4e5895e9e76c8e10d2118b38735b9b
+    pristine_git_object: d84635f58e12918ac8dd74fbe7d6978463517cca
+  src/flypix/models/vectors_deleteop.py:
+    id: 4626ac032fa7
+    last_write_checksum: sha1:9244844868030db89f35c882df4b72626feab35b
+    pristine_git_object: a517a241e60771982c01776ea0a53e95b35013f4
+  src/flypix/models/vectors_get_featuresop.py:
+    id: fb16b5dfdb22
+    last_write_checksum: sha1:b9497079add945d0f30dda675ec0337c030f9765
+    pristine_git_object: 26fcf195576d022dbdab4d9dfc6def2072990d79
+  src/flypix/models/vectors_list_classes_for_projectop.py:
+    id: a99d0d3280cd
+    last_write_checksum: sha1:f5fb4690cf8300c4a56b45781f2c5b64d7771e65
+    pristine_git_object: afe1f04fe9da8eff0ebe28077b635042b6a3da4c
+  src/flypix/models/vectors_list_for_fileop.py:
+    id: 907231493c0d
+    last_write_checksum: sha1:ccaa93c574e011efbaf31b06c2815713ae612f13
+    pristine_git_object: dc015835249a7d83cb2fb64f36edd55a4cb20d38
+  src/flypix/models/vectors_upload_geojsonop.py:
+    id: faaf2aa6cf6a
+    last_write_checksum: sha1:86c5f4407dfda003939aaa103e254237e75b5186
+    pristine_git_object: 2f8747d766327904b95a1ba9c2b51b962b737e13
+  src/flypix/models/vectors_upload_gpkgop.py:
+    id: eb93bf0196f2
+    last_write_checksum: sha1:876cd0858ce2237dca8f897300f56ef8bf4109b4
+    pristine_git_object: 43c6763b313e7d556cdb5d07ebd7fac9dd951b7d
+  src/flypix/models/vectors_upload_shapefileop.py:
+    id: a32aadce9aa9
+    last_write_checksum: sha1:2f9531a8ee96f02ed1054e7bfc5c798a27e214e1
+    pristine_git_object: c1d0981ee6fe33d9bd8f73ae1d3e1d72223e5ccc
+  src/flypix/models/wmtssource.py:
+    id: de7e7d2f08fc
+    last_write_checksum: sha1:801fda42acf24d060089e1722346a2cd0bc5a0ae
+    pristine_git_object: 78da0f0d1267ef64023e478156c2d6253038f46b
+  src/flypix/models_.py:
+    id: a76b54991cbc
+    last_write_checksum: sha1:bca43f0c615b23e687e263f20b42271069d7b81e
+    pristine_git_object: 8b2b9453b5fe6cbf7fc89f9e113dc3d4dafc9bb2
+  src/flypix/payments.py:
+    id: 65ab143640d5
+    last_write_checksum: sha1:62a46962d431800e6bd465dc6fe88359132beb02
+    pristine_git_object: 0bd23f77f9240512e9116400de34e4f02b721a86
+  src/flypix/projects.py:
+    id: 0b29ef60c165
+    last_write_checksum: sha1:fb9a43321630bd762874b5be61fc0bfa21c3a05b
+    pristine_git_object: f7e111fd73ceefa596e12d570d270deb6ff86c98
+  src/flypix/py.typed:
+    id: 644ee28e6d22
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  src/flypix/rasters.py:
+    id: 62b3729eb19f
+    last_write_checksum: sha1:ecac088d746ad57b7e142a835412751561e13f7d
+    pristine_git_object: 47a01218ab20854266fae6726d71fab2f6748918
+  src/flypix/regions.py:
+    id: 704a70fbe766
+    last_write_checksum: sha1:8b15e14fe2d3399837391ddad5ef069c8857e1df
+    pristine_git_object: 25b6c1ed337305f7344d28f18bdfeaca6299bb6c
+  src/flypix/sdk.py:
+    id: 38af35d27679
+    last_write_checksum: sha1:4b534410f67664504a9941eefc3cf590101b8507
+    pristine_git_object: 43103a18c9822bfbb0e3cc3ba0944a0db5788cc0
+  src/flypix/sdkconfiguration.py:
+    id: 53dd81dcbf7d
+    last_write_checksum: sha1:457048a19a26388a35507820409752a9f157f2a2
+    pristine_git_object: 9224f9e0cee615beb01ac435f7dfd376ecae1d61
+  src/flypix/types/__init__.py:
+    id: 6ccb38075124
+    last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
+    pristine_git_object: faa268137bc01c9d08cfadc4797017db48747a96
+  src/flypix/types/base64fileinput.py:
+    id: 706966be409f
+    last_write_checksum: sha1:1522687ae3398374c35710cad993a6e82b5ab99d
+    pristine_git_object: 862566fe2b1db830276b390e136e65090e5963d2
+  src/flypix/types/basemodel.py:
+    id: 8be662e9c3e7
+    last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
+    pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
+  src/flypix/users.py:
+    id: 057f7c78b16f
+    last_write_checksum: sha1:da697b72900576e5f097d2a0e06178fd235afb8f
+    pristine_git_object: 7f14beb1e8b3f0c3b28c1768280598d031f98adf
+  src/flypix/utils/__init__.py:
+    id: 1933b9f4e3bc
+    last_write_checksum: sha1:d3498c6aa68ea2139b8b4e60a376bcdef261285c
+    pristine_git_object: 61d8fe13e0b3321464d574f5f382e3d8dd730f46
+  src/flypix/utils/annotations.py:
+    id: 60a378c2176d
+    last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
+    pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
+  src/flypix/utils/datetimes.py:
+    id: 55d9cc0d9d28
+    last_write_checksum: sha1:fa47d54c549ff9b95496ce91930fadfb04a36be9
+    pristine_git_object: adad24762cf452d137abe94fda0fd26224cef593
+  src/flypix/utils/dynamic_imports.py:
+    id: 574260bb1140
+    last_write_checksum: sha1:a1940c63feb8eddfd8026de53384baf5056d5dcc
+    pristine_git_object: 673edf82a97d0fea7295625d3e092ea369a36b79
+  src/flypix/utils/enums.py:
+    id: 00cb303588b9
+    last_write_checksum: sha1:bc8c3c1285ae09ba8a094ee5c3d9c7f41fa1284d
+    pristine_git_object: 3324e1bc2668c54c4d5f5a1a845675319757a828
+  src/flypix/utils/eventstreaming.py:
+    id: 261789fcc0d9
+    last_write_checksum: sha1:7d1dc68f8b48486ab646653aa05cc38752e1f912
+    pristine_git_object: a8d4fe5cc88d3c7337339e1b36a61bbf7ca8c4eb
+  src/flypix/utils/forms.py:
+    id: 521184823fd5
+    last_write_checksum: sha1:dcf527960992b8baef3b21937c7e6c4e652630c0
+    pristine_git_object: 193f264960f3014c81d41543b9023c14c44c12e6
+  src/flypix/utils/headers.py:
+    id: 2746727ec0f8
+    last_write_checksum: sha1:7c6df233ee006332b566a8afa9ce9a245941d935
+    pristine_git_object: 37864cbbbc40d1a47112bbfdd3ba79568fc8818a
+  src/flypix/utils/logger.py:
+    id: 882183d9c374
+    last_write_checksum: sha1:f3fdb154a3f09b8cc43d74c7e9c02f899f8086e4
+    pristine_git_object: b661aff65d38b77d035149699aea09b2785d2fc6
+  src/flypix/utils/metadata.py:
+    id: a35323f6587e
+    last_write_checksum: sha1:e703e5cbb5255144aacf86898d1420529afaaff8
+    pristine_git_object: 5abddd588837ac297050ca3b543627faadb350a9
+  src/flypix/utils/queryparams.py:
+    id: b4bef84b6d70
+    last_write_checksum: sha1:b94c3f314fd3da0d1d215afc2731f48748e2aa59
+    pristine_git_object: c04e0db82b68eca041f2cb2614d748fbac80fd41
+  src/flypix/utils/requestbodies.py:
+    id: 5ffbbd476041
+    last_write_checksum: sha1:e1fef575283b7fe7fe2ad392dbbb3fb105309124
+    pristine_git_object: 591415af8e64baa410627b507d2740afb5387d13
+  src/flypix/utils/retries.py:
+    id: 9697a99cd071
+    last_write_checksum: sha1:3585b891142f30a597fbf7a2f0340700babef8e4
+    pristine_git_object: ca7b59efebbbd9545744d0207ef42725c4cc5143
+  src/flypix/utils/security.py:
+    id: 6363cd6d15a8
+    last_write_checksum: sha1:c11eef495b6aaa249178c24c796940cc540b7a00
+    pristine_git_object: 42d8d78e9981eed7507670014d99588e27ab325a
+  src/flypix/utils/serializers.py:
+    id: 2b5ddf1a662e
+    last_write_checksum: sha1:7485f1425b0661fd84836186570df90207eec6af
+    pristine_git_object: 1031ed930bad5ece220cf7416a56c29f40f0588b
+  src/flypix/utils/unions.py:
+    id: 9ae125da9995
+    last_write_checksum: sha1:cd6201e6f43c51545a32f5bd4ac9f508e1ba0c29
+    pristine_git_object: 2434640235f9607bd894361dcba872ceb5b26533
+  src/flypix/utils/unmarshal_json_response.py:
+    id: 363a83d12c72
+    last_write_checksum: sha1:88509386d7d974b64a7d38ff66d63303bbd9c02c
+    pristine_git_object: a47d8d62793af6bfe67e2df7eab5e3eb9acc6832
+  src/flypix/utils/url.py:
+    id: eaff10f5a222
+    last_write_checksum: sha1:6479961baa90432ca25626f8e40a7bbc32e73b41
+    pristine_git_object: c78ccbae426ce6d385709d97ce0b1c2813ea2418
+  src/flypix/utils/values.py:
+    id: 704b3b9b3e8b
+    last_write_checksum: sha1:acaa178a7c41ddd000f58cc691e4632d925b2553
+    pristine_git_object: dae01a44384ac3bc13ae07453a053bf6c898ebe3
+  src/flypix/vectors.py:
+    id: 5a19663776a6
+    last_write_checksum: sha1:c19a33f434041384b3057d6b6232d854e1413d62
+    pristine_git_object: 76031c35961aa15a6b2b5f4b893c8e7ab9901716
+examples:
+  auth_login_with_password:
+    speakeasy-default-auth-login-with-password:
+      requestBody:
+        application/json: {"username": "Allie.Hartmann", "password": "9ne8TpFJLsebftr"}
+      responses:
+        "200":
+          application/json: {"access_token": "<value>", "token_type": "<value>", "expires_in": 267243}
+  auth_refresh_token:
+    speakeasy-default-auth-refresh-token:
+      requestBody:
+        application/json: {"refresh_token": "<value>"}
+      responses:
+        "200":
+          application/json: {"access_token": "<value>", "token_type": "<value>", "expires_in": 176978}
+  payments_get_balance:
+    speakeasy-default-payments-get-balance:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"credits": 278757, "transactions": [{"transaction_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "reference_id": "123e4567-e89b-12d3-a456-426614174000", "credits": 906814, "reason": "INFERENCE", "type": "WITHHOLD", "created_at": "2025-03-04T15:14:26.726Z"}]}
+  users_list_tenants:
+    speakeasy-default-users-list-tenants:
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>"}]
+  projects_list_for_tenant:
+    speakeasy-default-projects-list-for-tenant:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>", "created_at": "2025-11-13T08:12:18.524Z"}]
+  projects_delete:
+    speakeasy-default-projects-delete:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "status": "APPLIED"}
+  projects_create:
+    speakeasy-default-projects-create:
+      requestBody:
+        application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>"}
+      responses:
+        "200":
+          application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>", "created_at": "2025-06-20T17:56:27.363Z"}
+  folders_list_for_folder:
+    speakeasy-default-folders-list-for-folder:
+      parameters:
+        path:
+          folder_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"folder_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>", "parent_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  folders_list_for_project:
+    speakeasy-default-folders-list-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"folder_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>", "parent_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  folders_delete:
+    speakeasy-default-folders-delete:
+      parameters:
+        path:
+          folder_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "status": "FAILED"}
+  folders_create:
+    speakeasy-default-folders-create:
+      requestBody:
+        application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "parent_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>"}
+      responses:
+        "200":
+          application/json: {"folder_id": "123e4567-e89b-12d3-a456-426614174000", "name": "<value>", "parent_id": "123e4567-e89b-12d3-a456-426614174000"}
+  files_list_for_project:
+    speakeasy-default-files-list-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "folder_id": "123e4567-e89b-12d3-a456-426614174000", "extension": "gif", "type": "UNKNOWN", "size": 159641, "created_at": "2025-09-25T06:56:25.457Z", "status": "INITIATED", "name": "<value>"}]
+  files_list_for_folder:
+    speakeasy-default-files-list-for-folder:
+      parameters:
+        path:
+          folder_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "folder_id": "123e4567-e89b-12d3-a456-426614174000", "extension": "png", "type": "IMAGE", "size": null, "created_at": "2026-05-15T10:57:29.149Z", "status": "READY", "name": "<value>"}]
+  files_get:
+    speakeasy-default-files-get:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "folder_id": "123e4567-e89b-12d3-a456-426614174000", "extension": "png", "type": "IMAGE", "size": 971356, "created_at": "2025-01-15T09:51:05.185Z", "status": "REGISTERED", "name": "<value>"}
+  files_delete:
+    speakeasy-default-files-delete:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "status": "APPLIED"}
+  files_get_visible_raster:
+    speakeasy-default-files-get-visible-raster:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"url": "https://steel-pecan.com/"}
+  files_get_download_link:
+    speakeasy-default-files-get-download-link:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"url": "https://silver-interviewer.net/"}
+  files_get_by_ids:
+    speakeasy-default-files-get-by-ids:
+      requestBody:
+        application/json: ["123e4567-e89b-12d3-a456-426614174000"]
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "folder_id": "123e4567-e89b-12d3-a456-426614174000", "extension": "wav", "type": "GEOTIFF", "size": 93824, "created_at": "2025-01-19T10:21:49.711Z", "status": "READY", "name": "<value>"}]
+  files_get_storage_usage:
+    speakeasy-default-files-get-storage-usage:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "bytes": 513453, "storage_quota": 257087}
+  files_upload:
+    speakeasy-default-files-upload:
+      parameters:
+        query:
+          tenant_id: "95d06de1-31d8-4dc6-a134-b591889f9c67"
+          project_id: "334fb3cb-5f26-4e97-a2b7-e97b6de6064d"
+          filename: "example.file"
+      requestBody:
+        application/octet-stream: "x-file: example.file"
+      responses:
+        "200":
+          application/json: "<value>"
+  files_upload_v2:
+    speakeasy-default-files-upload-v2:
+      parameters:
+        query:
+          tenant_id: "170b602d-192c-4e40-a031-f5892fa57f45"
+          project_id: "55299aef-34b1-4aaa-a1aa-cbeca6dd058b"
+          filename: "example.file"
+      requestBody:
+        application/octet-stream: "x-file: example.file"
+      responses:
+        "200":
+          application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "UPLOADED"}
+  files_upload_from_url:
+    speakeasy-default-files-upload-from-url:
+      parameters:
+        query:
+          file_url: "dad272e1-d759-4787-8080-c3c21fce440f"
+          tenant_id: "d614acda-2db6-4aed-a3d4-98b2a079ff2c"
+          project_id: "fa7c54bc-4f6d-40d6-8993-8da199e7586e"
+          filename: "example.file"
+      responses:
+        "200":
+          application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "REGISTERED"}
+  rasters_list_for_tenant:
+    speakeasy-default-rasters-list-for-tenant:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"raster_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "FAILED", "source": {"type": "WMTS", "layer": "<value>", "url": "https://rosy-schnitzel.biz/"}, "created_at": "2026-01-25T09:36:12.072Z", "cog_file_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  rasters_list_for_project:
+    speakeasy-default-rasters-list-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"raster_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "CREATED", "source": {"type": "WMTS", "layer": "<value>", "url": "https://regal-depot.net/"}, "created_at": "2025-01-26T09:02:55.215Z", "cog_file_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  rasters_list_for_file:
+    speakeasy-default-rasters-list-for-file:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"raster_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "FAILED", "source": {"type": "WMTS", "layer": "<value>", "url": "https://spiffy-sailor.info/"}, "created_at": "2026-05-10T04:03:37.460Z", "cog_file_id": "123e4567-e89b-12d3-a456-426614174000"}
+  inferences_list_for_tenant:
+    speakeasy-default-inferences-list-for-tenant:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"inference_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "model_id": "123e4567-e89b-12d3-a456-426614174000", "status": "STARTED", "created_at": "2025-09-10T19:43:19.617Z"}]
+  inferences_list_for_project:
+    speakeasy-default-inferences-list-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"inference_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "model_id": "123e4567-e89b-12d3-a456-426614174000", "status": "FINISHED", "created_at": "2025-08-05T03:42:43.368Z"}]
+  inferences_list_for_file:
+    speakeasy-default-inferences-list-for-file:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"inference_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "model_id": "123e4567-e89b-12d3-a456-426614174000", "status": "STARTED", "created_at": "2026-05-16T03:16:06.586Z"}]
+  models_list_for_tenant:
+    speakeasy-default-models-list-for-tenant:
+      parameters:
+        path:
+          tenant_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"name": "<value>", "status": "CREATED", "model_id": "123e4567-e89b-12d3-a456-426614174000", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "created_at": "2024-05-23T11:19:59.209Z", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "training_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  models_list_for_project:
+    speakeasy-default-models-list-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"name": "<value>", "status": "TRAINING", "model_id": "123e4567-e89b-12d3-a456-426614174000", "metadata": {"key": "<value>", "key1": "<value>"}, "created_at": "2025-05-27T12:04:51.922Z", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "training_id": "123e4567-e89b-12d3-a456-426614174000"}]
+  models_list_official:
+    speakeasy-default-models-list-official:
+      responses:
+        "200":
+          application/json: [{"name": "<value>", "status": "TRAINING", "model_id": "123e4567-e89b-12d3-a456-426614174000", "metadata": null, "created_at": "2025-04-06T01:28:59.081Z"}]
+  models_apply:
+    speakeasy-default-models-apply:
+      parameters:
+        path:
+          model_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000"}
+      responses:
+        "200":
+          application/json: {"status": "FAILED", "inference_id": "123e4567-e89b-12d3-a456-426614174000"}
+  models_estimate_application:
+    speakeasy-default-models-estimate-application:
+      parameters:
+        path:
+          model_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000"}
+      responses:
+        "200":
+          application/json: {"total_cost": 14612, "total_pixels": 364860}
+  models_get_inference_status:
+    speakeasy-default-models-get-inference-status:
+      parameters:
+        path:
+          inference_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"status": "PROCESSED", "inference_id": "123e4567-e89b-12d3-a456-426614174000"}
+  models_delete:
+    speakeasy-default-models-delete:
+      parameters:
+        path:
+          model_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "status": "SUCCESS"}
+  vectors_list_for_file:
+    speakeasy-default-vectors-list-for-file:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "vector_id": "123e4567-e89b-12d3-a456-426614174000", "metadata": {"source": "DIRECT"}, "name": "<value>"}]
+  vectors_list_classes_for_project:
+    speakeasy-default-vectors-list-classes-for-project:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"class_id": "<id>", "name": "<value>", "color": "sky blue"}]
+  vectors_create_class:
+    speakeasy-default-vectors-create-class:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"name": "New String", "color": "FF0000"}
+      responses:
+        "200":
+          application/json: {"class_id": "<id>", "name": "<value>", "color": "magenta"}
+  vectors_get_features:
+    speakeasy-default-vectors-get-features:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"data": {"ids": [640349], "areas": [24.03], "polygons": ["<value 1>", "<value 2>", "<value 3>"], "confidences": [2202.44, 4785.63], "class_ids": [479627, 609403, 314188]}, "classes": {}}
+  vectors_create:
+    speakeasy-default-vectors-create:
+      requestBody:
+        application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000", "name": "New String"}
+      responses:
+        "200":
+          application/json: {"tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "vector_id": "123e4567-e89b-12d3-a456-426614174000", "metadata": {"source": "INFERENCE"}, "name": "<value>"}
+  vectors_delete:
+    speakeasy-default-vectors-delete:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: "<value>"
+  vectors_create_annotations:
+    speakeasy-default-vectors-create-annotations:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"class_id": "car-124b", "payload": []}
+      responses:
+        "200":
+          application/json: [449260, 982500, 165628]
+  vectors_upload_geojson:
+    speakeasy-default-vectors-upload-geojson:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        multipart/form-data: {"file": "<value>"}
+      responses:
+        "200":
+          application/json: {"annotation_ids": [423867], "errored": [["<value>"], ["<value>"], ["<value>"]]}
+  vectors_upload_gpkg:
+    speakeasy-default-vectors-upload-gpkg:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        multipart/form-data: {"file": "<value>"}
+      responses:
+        "200":
+          application/json: {"annotation_ids": [238802, 778027, 838009], "errored": [["<value>"]]}
+  vectors_upload_shapefile:
+    speakeasy-default-vectors-upload-shapefile:
+      parameters:
+        path:
+          vector_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        multipart/form-data: {"file": "<value>"}
+      responses:
+        "200":
+          application/json: {"annotation_ids": [24007, 678094, 617950], "errored": [[591586], [605861]]}
+  regions_list_for_file:
+    speakeasy-default-regions-list-for-file:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: [{"region_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "polygon": "<value>", "metadata": {"color": "FF0000", "name": "New String", "description": "New String"}, "training_behavior": "TEST", "inference_behavior": "IGNORE"}]
+  regions_create:
+    speakeasy-default-regions-create:
+      parameters:
+        path:
+          file_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"region_payloads": [{"polygon": "<value>", "metadata": {"color": "FF0000", "name": "New String", "description": "New String"}, "training_behavior": "VALIDATION", "inference_behavior": "USE"}]}
+      responses:
+        "200":
+          application/json: [{"region_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "file_id": "123e4567-e89b-12d3-a456-426614174000", "polygon": "<value>", "metadata": {"color": "FF0000", "name": "New String", "description": "New String"}, "training_behavior": "TEST", "inference_behavior": "USE"}]
+  regions_delete:
+    speakeasy-default-regions-delete:
+      requestBody:
+        application/json: ["123e4567-e89b-12d3-a456-426614174000"]
+      responses:
+        "200":
+          application/json: "<value>"
+  geosense_create_session:
+    speakeasy-default-geosense-create-session:
+      parameters:
+        path:
+          project_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: "123e4567-e89b-12d3-a456-426614174000"
+  geosense_create_artifact:
+    speakeasy-default-geosense-create-artifact:
+      parameters:
+        path:
+          session_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"artifact_data": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "type": "data"}
+      responses:
+        "200":
+          application/json: {"artifact_id": "123e4567-e89b-12d3-a456-426614174000", "session_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "created_at": "2026-09-28T11:40:59.601Z", "type": "data", "artifact_data": {"key": "<value>"}}
+  geosense_get_artifact:
+    speakeasy-default-geosense-get-artifact:
+      parameters:
+        path:
+          session_id: "123e4567-e89b-12d3-a456-426614174000"
+          artifact_id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"artifact_id": "123e4567-e89b-12d3-a456-426614174000", "session_id": "123e4567-e89b-12d3-a456-426614174000", "tenant_id": "123e4567-e89b-12d3-a456-426614174000", "project_id": "123e4567-e89b-12d3-a456-426614174000", "created_at": "2025-02-15T17:17:59.859Z", "type": "data", "artifact_data": {}}
+  geosense_send_message:
+    speakeasy-default-geosense-send-message:
+      parameters:
+        path:
+          session_id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"user_message": "New String", "vector_ids": ["123e4567-e89b-12d3-a456-426614174000"], "context": [{"artifact_id": "123e4567-e89b-12d3-a456-426614174000", "type": "data"}]}
+      responses:
+        "200":
+          application/json: {"session_id": "123e4567-e89b-12d3-a456-426614174000", "response": "<value>", "created_at": "2026-12-29T03:49:02.999Z", "context": [{"artifact_id": "123e4567-e89b-12d3-a456-426614174000", "type": "data"}]}
+examplesVersion: 1.0.2
+generatedTests:
+  auth_login_with_password: "2026-07-10T15:04:15+02:00"
+  auth_refresh_token: "2026-07-10T15:04:15+02:00"
+  payments_get_balance: "2026-07-10T15:04:15+02:00"
+  users_list_tenants: "2026-07-10T15:04:15+02:00"
+  projects_list_for_tenant: "2026-07-10T15:04:15+02:00"
+  projects_delete: "2026-07-10T15:04:15+02:00"
+  projects_create: "2026-07-10T15:04:15+02:00"
+  folders_list_for_folder: "2026-07-10T15:04:15+02:00"
+  folders_list_for_project: "2026-07-10T15:04:15+02:00"
+  folders_delete: "2026-07-10T15:04:15+02:00"
+  folders_create: "2026-07-10T15:04:15+02:00"
+  files_list_for_project: "2026-07-10T15:04:15+02:00"
+  files_list_for_folder: "2026-07-10T15:04:15+02:00"
+  files_get: "2026-07-10T15:04:15+02:00"
+  files_delete: "2026-07-10T15:04:15+02:00"
+  files_get_visible_raster: "2026-07-10T15:04:15+02:00"
+  files_get_download_link: "2026-07-10T15:04:15+02:00"
+  files_get_by_ids: "2026-07-10T15:04:15+02:00"
+  files_get_storage_usage: "2026-07-10T15:04:15+02:00"
+  files_upload: "2026-07-10T15:04:15+02:00"
+  files_upload_v2: "2026-07-10T15:04:15+02:00"
+  files_upload_from_url: "2026-07-10T15:04:15+02:00"
+  rasters_list_for_tenant: "2026-07-10T15:04:15+02:00"
+  rasters_list_for_project: "2026-07-10T15:04:15+02:00"
+  rasters_list_for_file: "2026-07-10T15:04:15+02:00"
+  inferences_list_for_tenant: "2026-07-10T15:04:15+02:00"
+  inferences_list_for_project: "2026-07-10T15:04:15+02:00"
+  inferences_list_for_file: "2026-07-10T15:04:15+02:00"
+  models_list_for_tenant: "2026-07-10T15:04:15+02:00"
+  models_list_for_project: "2026-07-10T15:04:15+02:00"
+  models_list_official: "2026-07-10T15:04:15+02:00"
+  models_apply: "2026-07-10T15:04:15+02:00"
+  models_estimate_application: "2026-07-10T15:04:15+02:00"
+  models_get_inference_status: "2026-07-10T15:04:15+02:00"
+  models_delete: "2026-07-10T15:04:15+02:00"
+  vectors_list_for_file: "2026-07-10T15:04:15+02:00"
+  vectors_list_classes_for_project: "2026-07-10T15:04:15+02:00"
+  vectors_create_class: "2026-07-10T15:04:15+02:00"
+  vectors_get_features: "2026-07-10T15:04:15+02:00"
+  vectors_create: "2026-07-10T15:04:15+02:00"
+  vectors_delete: "2026-07-10T15:04:15+02:00"
+  vectors_create_annotations: "2026-07-10T15:04:15+02:00"
+  vectors_upload_geojson: "2026-07-10T15:04:15+02:00"
+  vectors_upload_gpkg: "2026-07-10T15:04:15+02:00"
+  vectors_upload_shapefile: "2026-07-10T15:04:15+02:00"
+  regions_list_for_file: "2026-07-10T15:04:15+02:00"
+  regions_create: "2026-07-10T15:04:15+02:00"
+  regions_delete: "2026-07-10T15:04:15+02:00"
+  geosense_create_session: "2026-07-10T15:04:15+02:00"
+  geosense_create_artifact: "2026-07-10T15:04:15+02:00"
+  geosense_get_artifact: "2026-07-10T15:04:15+02:00"
+  geosense_send_message: "2026-07-10T15:04:15+02:00"

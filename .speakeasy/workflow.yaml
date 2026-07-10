@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    flypix-api:
+        inputs:
+            - location: https://api.flypix.ai/openapi.json
+        overlays:
+            - location: ./openapi/overlay.yaml
+        output: ./openapi/flypix.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/flypix/public-api/flypix-api
+targets:
+    flypix-python:
+        target: python
+        source: flypix-api
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/flypix/public-api/flypix-api-python-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false

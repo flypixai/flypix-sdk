@@ -1,0 +1,39 @@
+speakeasyVersion: 1.789.2
+sources:
+    flypix-api:
+        sourceNamespace: flypix-api
+        sourceRevisionDigest: sha256:4d1c4517b3812151fb24c228f1722f441790e5027de0d39e059e22212ef9ef64
+        sourceBlobDigest: sha256:ab3f17d02ab663ec4f421e72abe2ec0d2f0a38d13fdbfebe1285cba1beccf212
+        tags:
+            - latest
+            - 0.1.0
+targets:
+    flypix-python:
+        source: flypix-api
+        sourceNamespace: flypix-api
+        sourceRevisionDigest: sha256:4d1c4517b3812151fb24c228f1722f441790e5027de0d39e059e22212ef9ef64
+        sourceBlobDigest: sha256:ab3f17d02ab663ec4f421e72abe2ec0d2f0a38d13fdbfebe1285cba1beccf212
+        codeSamplesNamespace: flypix-api-python-code-samples
+        codeSamplesRevisionDigest: sha256:060888d189797803eed5072ec50f1babbe15ad3740b817e262bfc2c2acd1602a
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        flypix-api:
+            inputs:
+                - location: https://api.flypix.ai/openapi.json
+            overlays:
+                - location: ./openapi/overlay.yaml
+            output: ./openapi/flypix.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/flypix/public-api/flypix-api
+    targets:
+        flypix-python:
+            target: python
+            source: flypix-api
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/flypix/public-api/flypix-api-python-code-samples
+                labelOverride:
+                    fixedValue: Python (SDK)
+                blocking: false
