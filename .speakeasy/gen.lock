@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: 43d6fff45a1d5e663f6b55e703a235fd
+  docChecksum: c99320c64b6c4fe00eb41701c4db7b9a
   docVersion: 0.1.0
-  speakeasyVersion: 1.789.0
-  generationVersion: 2.916.2
-  releaseVersion: 0.2.3
-  configChecksum: ad9a09a270ca29afd18272e0d161a9e5
+  speakeasyVersion: 1.789.2
+  generationVersion: 2.916.4
+  releaseVersion: 0.3.2
+  configChecksum: 0d33f855ca5b8da431ce11d0bc1c0ea8
 persistentEdits:
-  generation_id: e1afb93e-35d1-49e3-bddb-0a3f10395398
-  pristine_commit_hash: 4883e9cc552e3be07bee528d04552e8d4df70700
-  pristine_tree_hash: ae4f21911bb46d69e15d173655133b123e9bef60
+  generation_id: 3dbb02c4-3315-4923-a16b-e53d24e388ad
+  pristine_commit_hash: 59c8109b767c385e628b62ce9bbdabac731470ca
+  pristine_tree_hash: 410cf2e47abb6eaabea6f59ef1564051914caf97
 features:
   python:
     additionalDependencies: 1.1.0
@@ -33,6 +33,7 @@ features:
     retries: 3.0.7
     sdkHooks: 1.3.0
     unions: 3.1.7
+    uploadStreams: 1.0.3
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -44,8 +45,8 @@ trackedFiles:
     pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:399ccbe7d2e85c5340c635069dde483b8efab5b9
-    pristine_git_object: 865bd7b619bfd1fc1975386275ceac04939824db
+    last_write_checksum: sha1:0aa30f40ca1a300126f6ae22a86a6877077e70ee
+    pristine_git_object: 7c8df3e2c47559639ba80d1f3c50f4c0e618bf98
   docs/models/annotationgeometrypayload.md:
     id: 49014a5c4003
     last_write_checksum: sha1:e22560affc11ea5db90bf0eaafa0111ccb26b23b
@@ -184,12 +185,12 @@ trackedFiles:
     pristine_git_object: db50a7a8058d02d620e7e7502c64ba1175545a83
   docs/models/filesuploadrequest.md:
     id: cb8b8f186792
-    last_write_checksum: sha1:0249ebe74c322f372c798fe2da6816094749d457
-    pristine_git_object: 804e46860d9e447f3b2d0194716fa36dc67f4147
+    last_write_checksum: sha1:eac02a3f95a97662c7f7459f22c240fe0e6e3cf1
+    pristine_git_object: 1dd8a135b4c590d947956cf565c498751e9475db
   docs/models/filesuploadv2request.md:
     id: 40a05dc03e76
-    last_write_checksum: sha1:7605823e86695dadfb9c547ac67241612a7bc280
-    pristine_git_object: 91d6d781e546a103df657c7fbdf30c290e4e41e7
+    last_write_checksum: sha1:6565eb3a1ee476371e66b1e86c7e6cc8ebb4c8b1
+    pristine_git_object: 7b08cfb8d5fd326a74aecca23404106a764db226
   docs/models/filetype.md:
     id: 6474ff839025
     last_write_checksum: sha1:3a744c09cdf7c94088a3b57ee291747d4694a46c
@@ -376,8 +377,8 @@ trackedFiles:
     pristine_git_object: 2c2e2040cc6c395d5a76ce82a220b5417d52a298
   docs/models/security.md:
     id: 452e4d4eb67a
-    last_write_checksum: sha1:745572e344516e941da7093c8bdf34061fa9e292
-    pristine_git_object: f218fa1efc4f957fa52215140d475e7b2758128a
+    last_write_checksum: sha1:b92237f55b89698b718cee58634a51a5cdb29edb
+    pristine_git_object: 8ca6325b43081d6b8849bf8cfab3d65678d3d386
   docs/models/sendmessagerequest.md:
     id: eaa5c4d22a19
     last_write_checksum: sha1:8ed011d779d8354fa8d180a182d3165a6ab7137a
@@ -476,12 +477,12 @@ trackedFiles:
     pristine_git_object: 5a00596b2fadb15911dd81b52564121edb3c35a3
   docs/sdks/auth/README.md:
     id: e9724f17945f
-    last_write_checksum: sha1:462f7668846655a5da761c431f499680a7b1953b
-    pristine_git_object: c8843ad76f9a531dd86bf387b2e6516a92a6e629
+    last_write_checksum: sha1:6947b1c9b8b101e8e819ae6885c638bc690e3648
+    pristine_git_object: 9a3312df29844159d7e375c0e6097a4f98e3f5cd
   docs/sdks/files/README.md:
     id: e576d7a117f0
-    last_write_checksum: sha1:f70b5c25dc769ad4d45c454e4d255f02c8e2d396
-    pristine_git_object: 160c254023af6066480cd1ebf5e2d0e7b35c7258
+    last_write_checksum: sha1:ab5dd33c50bf5d59ca0e4d9500a1fca40589f994
+    pristine_git_object: f0bfbe32c2534c8cb424a9732c7c69f19f0784f3
   docs/sdks/folders/README.md:
     id: ffb38e069dec
     last_write_checksum: sha1:1f2e4d262564c92bf5e2c6c7b9728bcc6d64a9b2
@@ -532,8 +533,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:81f513e2fa7a8782ead67eb875f618dde5af616e
-    pristine_git_object: 9e3a2865052e9267c9df53fb4bf914638fc20d82
+    last_write_checksum: sha1:a7db496295cb13754cda7ccdfcf2033905153cfe
+    pristine_git_object: 01c8f3206365deb301c7737eec40bce018834474
   scripts/publish.sh:
     id: fe273b08f514
     last_write_checksum: sha1:adc9b741c12ad1591ab4870eabe20f0d0a86cd1a
@@ -556,12 +557,12 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:52421dffae1021bd69cbcb9948c1db91e3bf4acc
-    pristine_git_object: ea18090e4bba932032a3f64ad33a62832d9d16c0
+    last_write_checksum: sha1:9fc1dafd3eee586b2c79c6c0bbf27845bc7efad5
+    pristine_git_object: 92ae465da252598bf6f185f34b2246e1f979cd81
   src/flypix/auth.py:
     id: 0bae9ac76e8a
-    last_write_checksum: sha1:369a15951eef109e027cf82e56bb77365c9876b6
-    pristine_git_object: 12a9abb385580a9dd09dd887cbeec4eb1e9343d8
+    last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
+    pristine_git_object: 7dd1a8eef691a0a454f7fcb88217f8db5b0df936
   src/flypix/basesdk.py:
     id: 3df709c8af49
     last_write_checksum: sha1:5b890dca913d5ee6d3c080b4481a005f121b1449
@@ -588,8 +589,8 @@ trackedFiles:
     pristine_git_object: cfbac849734998113ed4037382799949112de6f9
   src/flypix/files.py:
     id: be0a70ba65ea
-    last_write_checksum: sha1:a11e997ab30ef329139ef344142c56c095361488
-    pristine_git_object: e6c651b0d057366a1f73212d941ec24e2c46b05e
+    last_write_checksum: sha1:6556314d7cf2886b8d6044a49e0cee90a9de52da
+    pristine_git_object: 465d7330861f2afd47f9ee7a63e4d8360785741a
   src/flypix/folders.py:
     id: 81cf7afafc30
     last_write_checksum: sha1:db1dbc0df2bdbe8661bd0d05495a4c4cecc7492b
@@ -740,12 +741,12 @@ trackedFiles:
     pristine_git_object: 30913c818f91e431405c879ede9ef5230a709559
   src/flypix/models/files_upload_v2op.py:
     id: a652488eff02
-    last_write_checksum: sha1:c7622d32e471f5428bce5feb485a23b93fdb74f0
-    pristine_git_object: 75753c1c64c67792a65aea10ac1db9e91d76de2d
+    last_write_checksum: sha1:7503df7effbbe1413cb0443b362a702e1505cce5
+    pristine_git_object: 7472527091a38703bacdaafe2ec15e30eedc6d45
   src/flypix/models/files_uploadop.py:
     id: 29b99d5fb5ff
-    last_write_checksum: sha1:0eb3525b6901b32e8065732682b6c741c20315cf
-    pristine_git_object: 9dce1d87e4c9fb75508beb6cdaac47ef4de0ad7e
+    last_write_checksum: sha1:8bb0ea9c7069fde907d3091311d246d4870dcb45
+    pristine_git_object: 101567ff60c3cf6f6a2231292fe8bc8aa26eaa44
   src/flypix/models/filestatus.py:
     id: 2a0fcfad0aeb
     last_write_checksum: sha1:302578817a4f626d47f5999fdfdae1284d383171
@@ -936,8 +937,8 @@ trackedFiles:
     pristine_git_object: abdd807b2581ea06d28f1bab013818b99c207c13
   src/flypix/models/security.py:
     id: d89242bfbd62
-    last_write_checksum: sha1:92524fb3008997f54daf89583106347004f91ffe
-    pristine_git_object: bbc4bf72cff1d6ffa2a6bb2ef71c0ea6399eeef9
+    last_write_checksum: sha1:24c26a5080d7b46831bfcacc314e04db775c8dbc
+    pristine_git_object: 9e39c0ea15b78246b94ccedb245af40c076720f8
   src/flypix/models/sendmessagerequest.py:
     id: b440271ca88e
     last_write_checksum: sha1:9cb12e771cc7e6e8942a92094a16387df286ac2a
@@ -1056,8 +1057,8 @@ trackedFiles:
     pristine_git_object: 25b6c1ed337305f7344d28f18bdfeaca6299bb6c
   src/flypix/sdk.py:
     id: 38af35d27679
-    last_write_checksum: sha1:5f07d94a53cd42d33e4566c323b3008d8a11fb7d
-    pristine_git_object: 4aafadd2c0a9b6dcf5236c67414269cadd3d3c1b
+    last_write_checksum: sha1:4b534410f67664504a9941eefc3cf590101b8507
+    pristine_git_object: 43103a18c9822bfbb0e3cc3ba0944a0db5788cc0
   src/flypix/sdkconfiguration.py:
     id: 53dd81dcbf7d
     last_write_checksum: sha1:457048a19a26388a35507820409752a9f157f2a2
@@ -1310,6 +1311,8 @@ examples:
           tenant_id: "95d06de1-31d8-4dc6-a134-b591889f9c67"
           project_id: "334fb3cb-5f26-4e97-a2b7-e97b6de6064d"
           filename: "example.file"
+      requestBody:
+        application/octet-stream: "x-file: example.file"
       responses:
         "200":
           application/json: "<value>"
@@ -1320,6 +1323,8 @@ examples:
           tenant_id: "170b602d-192c-4e40-a031-f5892fa57f45"
           project_id: "55299aef-34b1-4aaa-a1aa-cbeca6dd058b"
           filename: "example.file"
+      requestBody:
+        application/octet-stream: "x-file: example.file"
       responses:
         "200":
           application/json: {"file_id": "123e4567-e89b-12d3-a456-426614174000", "status": "UPLOADED"}

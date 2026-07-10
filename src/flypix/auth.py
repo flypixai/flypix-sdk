@@ -56,11 +56,10 @@ class Auth(BaseSDK):
             request=request,
             request_body_required=True,
             request_has_path_params=False,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LoginRequest
             ),
@@ -82,7 +81,7 @@ class Auth(BaseSDK):
                 base_url=base_url or "",
                 operation_id="auth_login_with_password",
                 oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
+                security_source=None,
                 tags=["Auth"],
                 extensions=None,
             ),
@@ -151,11 +150,10 @@ class Auth(BaseSDK):
             request=request,
             request_body_required=True,
             request_has_path_params=False,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LoginRequest
             ),
@@ -177,7 +175,7 @@ class Auth(BaseSDK):
                 base_url=base_url or "",
                 operation_id="auth_login_with_password",
                 oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
+                security_source=None,
                 tags=["Auth"],
                 extensions=None,
             ),

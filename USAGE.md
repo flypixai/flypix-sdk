@@ -4,9 +4,7 @@
 from flypix import FlyPix
 
 
-with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-) as fly_pix:
+with FlyPix() as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
@@ -25,9 +23,7 @@ from flypix import FlyPix
 
 async def main():
 
-    async with FlyPix(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-    ) as fly_pix:
+    async with FlyPix() as fly_pix:
 
         res = await fly_pix.auth.login_with_password_async(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 

@@ -5,7 +5,8 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Iterable, List, Mapping, Optional
+import io
+from typing import Any, IO, Iterable, List, Mapping, Optional, Union
 from typing_extensions import deprecated
 
 
@@ -1441,6 +1442,7 @@ class Files(BaseSDK):
         tenant_id: str,
         project_id: str,
         filename: str,
+        body: Union[bytes, IO[bytes], io.IOBase],
         folder_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1470,6 +1472,7 @@ class Files(BaseSDK):
         :param tenant_id: 
         :param project_id: 
         :param filename: 
+        :param body: 
         :param folder_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1491,6 +1494,7 @@ class Files(BaseSDK):
             project_id=project_id,
             folder_id=folder_id,
             filename=filename,
+            body=body,
         )
 
         req = self._build_request(
@@ -1499,13 +1503,16 @@ class Files(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+            ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
@@ -1557,6 +1564,7 @@ class Files(BaseSDK):
         tenant_id: str,
         project_id: str,
         filename: str,
+        body: Union[bytes, IO[bytes], io.IOBase],
         folder_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1586,6 +1594,7 @@ class Files(BaseSDK):
         :param tenant_id: 
         :param project_id: 
         :param filename: 
+        :param body: 
         :param folder_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1607,6 +1616,7 @@ class Files(BaseSDK):
             project_id=project_id,
             folder_id=folder_id,
             filename=filename,
+            body=body,
         )
 
         req = self._build_request_async(
@@ -1615,13 +1625,16 @@ class Files(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+            ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
@@ -1670,6 +1683,7 @@ class Files(BaseSDK):
         tenant_id: str,
         project_id: str,
         filename: str,
+        body: Union[bytes, IO[bytes], io.IOBase],
         folder_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1697,6 +1711,7 @@ class Files(BaseSDK):
         :param tenant_id: 
         :param project_id: 
         :param filename: 
+        :param body: 
         :param folder_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1718,6 +1733,7 @@ class Files(BaseSDK):
             project_id=project_id,
             folder_id=folder_id,
             filename=filename,
+            body=body,
         )
 
         req = self._build_request(
@@ -1726,13 +1742,16 @@ class Files(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+            ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
@@ -1781,6 +1800,7 @@ class Files(BaseSDK):
         tenant_id: str,
         project_id: str,
         filename: str,
+        body: Union[bytes, IO[bytes], io.IOBase],
         folder_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1808,6 +1828,7 @@ class Files(BaseSDK):
         :param tenant_id: 
         :param project_id: 
         :param filename: 
+        :param body: 
         :param folder_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1829,6 +1850,7 @@ class Files(BaseSDK):
             project_id=project_id,
             folder_id=folder_id,
             filename=filename,
+            body=body,
         )
 
         req = self._build_request_async(
@@ -1837,13 +1859,16 @@ class Files(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+            ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
         )

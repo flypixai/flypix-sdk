@@ -43,6 +43,11 @@ actions:
     update:
       operationId: auth_login_with_password
       x-speakeasy-name-override: login_with_password
+      # Login is public: it exchanges credentials for a token, so it must not
+      # require a bearer token. The upstream (FastAPI) spec applies the global
+      # BearerAuth to every operation; override it to no security here so the
+      # generated method doesn't send an Authorization header.
+      security: []
   - target: $.paths["/auth/refresh"].post
     description: refresh_token_auth_refresh_post -> auth.refresh_token
     update:
@@ -93,6 +98,17 @@ actions:
     update:
       operationId: files_upload
       x-speakeasy-name-override: upload
+      # FastAPI reads the raw request stream via the Request object, so it never
+      # documents a body. Without this, the generated method sends the query
+      # params but no file bytes. Declare the octet-stream body so the SDK
+      # generates a `body` parameter that streams the file.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
   - target: $.paths["/folders/for-folder/{folder_id}"].get
     description: get_folders_for_folder_folders_for_folder__folder_id__get -> folders.list_for_folder
     update:
@@ -245,6 +261,15 @@ actions:
       x-speakeasy-name-override: upload_v2
       tags:
         - Files
+      # See note on /files/upload above: the raw octet-stream body is undocumented
+      # upstream, so declare it here to make the file bytes actually get sent.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
   - target: $.paths["/v2/files/upload-from-url"].post
     description: upload_file_from_url_v2_files_upload_from_url_post -> files.upload_from_url
     update:

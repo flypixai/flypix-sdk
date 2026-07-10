@@ -83,7 +83,7 @@ wheels = [
 
 [[package]]
 name = "flypix"
-version = "0.2.3"
+version = "0.3.2"
 source = { editable = "." }
 dependencies = [
     { name = "httpcore" },

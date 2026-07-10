@@ -372,7 +372,7 @@ with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.files.upload(tenant_id="95d06de1-31d8-4dc6-a134-b591889f9c67", project_id="334fb3cb-5f26-4e97-a2b7-e97b6de6064d", filename="example.file")
+    res = fly_pix.files.upload(tenant_id="95d06de1-31d8-4dc6-a134-b591889f9c67", project_id="334fb3cb-5f26-4e97-a2b7-e97b6de6064d", filename="example.file", body=open("example.file", "rb"))
 
     # Handle response
     print(res)
@@ -386,6 +386,7 @@ with FlyPix(
 | `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `filename`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `body`                                                              | *Union[bytes, IO[bytes], io.IOBase]*                                | :heavy_check_mark:                                                  | N/A                                                                 |
 | `folder_id`                                                         | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
@@ -428,7 +429,7 @@ with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file")
+    res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
 
     # Handle response
     print(res)
@@ -442,6 +443,7 @@ with FlyPix(
 | `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `filename`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `body`                                                              | *Union[bytes, IO[bytes], io.IOBase]*                                | :heavy_check_mark:                                                  | N/A                                                                 |
 | `folder_id`                                                         | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 

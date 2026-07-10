@@ -54,6 +54,7 @@ GET /vectors/{vector_id}/features -> Get the annotations
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -153,9 +154,7 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from flypix import FlyPix
 
 
-with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-) as fly_pix:
+with FlyPix() as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
@@ -174,9 +173,7 @@ from flypix import FlyPix
 
 async def main():
 
-    async with FlyPix(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-    ) as fly_pix:
+    async with FlyPix() as fly_pix:
 
         res = await fly_pix.auth.login_with_password_async(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
@@ -312,6 +309,32 @@ with FlyPix(
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept file objects as part of a request body or multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> For endpoints that handle file uploads bytes arrays can also be used. However, using streams is recommended for large files.
+>
+
+```python
+from flypix import FlyPix
+
+
+with FlyPix(
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+) as fly_pix:
+
+    res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
+
+    # Handle response
+    print(res)
+
+```
+<!-- End File uploads [file-upload] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -323,9 +346,7 @@ from flypix import FlyPix
 from flypix.utils import BackoffStrategy, RetryConfig
 
 
-with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-) as fly_pix:
+with FlyPix() as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr",
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -343,7 +364,6 @@ from flypix.utils import BackoffStrategy, RetryConfig
 
 with FlyPix(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
@@ -372,9 +392,7 @@ with FlyPix(
 from flypix import FlyPix, errors
 
 
-with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-) as fly_pix:
+with FlyPix() as fly_pix:
     res = None
     try:
 
@@ -426,7 +444,6 @@ from flypix import FlyPix
 
 with FlyPix(
     server_url="https://api.flypix.ai",
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
@@ -529,18 +546,14 @@ The `FlyPix` class implements the context manager protocol and registers a final
 from flypix import FlyPix
 def main():
 
-    with FlyPix(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-    ) as fly_pix:
+    with FlyPix() as fly_pix:
         # Rest of application here...
 
 
 # Or when using async:
 async def amain():
 
-    async with FlyPix(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-    ) as fly_pix:
+    async with FlyPix() as fly_pix:
         # Rest of application here...
 ```
 <!-- End Resource Management [resource-management] -->

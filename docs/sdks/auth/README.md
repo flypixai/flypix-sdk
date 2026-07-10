@@ -21,9 +21,7 @@ Only accounts created directly in the app are supported, third party accounts (G
 from flypix import FlyPix
 
 
-with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
-) as fly_pix:
+with FlyPix() as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 

@@ -96,7 +96,7 @@ class FlyPix(BaseSDK):
 
     def __init__(
         self,
-        bearer_auth: Union[str, Callable[[], str]],
+        bearer_auth: Optional[Union[Optional[str], Callable[[], Optional[str]]]] = None,
         server_idx: Optional[int] = None,
         url_params: Optional[Dict[str, str]] = None,
         server_url: Optional[str] = None,

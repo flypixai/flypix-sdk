@@ -3,7 +3,9 @@
 from __future__ import annotations
 from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from flypix.utils import FieldMetadata, QueryParamMetadata
+import io
 from pydantic import model_serializer
+from typing import IO, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -11,6 +13,7 @@ class FilesUploadV2RequestTypedDict(TypedDict):
     tenant_id: str
     project_id: str
     filename: str
+    body: Union[bytes, IO[bytes], io.IOBase]
     folder_id: NotRequired[Nullable[str]]
 
 
@@ -26,6 +29,8 @@ class FilesUploadV2Request(BaseModel):
     filename: Annotated[
         str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
+
+    body: Annotated[Union[bytes, IO[bytes], io.IOBase], FieldMetadata(request=True)]
 
     folder_id: Annotated[
         OptionalNullable[str],

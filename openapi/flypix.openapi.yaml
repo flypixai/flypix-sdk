@@ -25,6 +25,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
       x-speakeasy-name-override: login_with_password
+      # Login is public: it exchanges credentials for a token, so it must not
+      # require a bearer token. The upstream (FastAPI) spec applies the global
+      # BearerAuth to every operation; override it to no security here so the
+      # generated method doesn't send an Authorization header.
+      security: []
   /auth/refresh:
     post:
       tags:
@@ -685,6 +690,17 @@ paths:
             application/json:
               schema: {}
       x-speakeasy-name-override: upload
+      # FastAPI reads the raw request stream via the Request object, so it never
+      # documents a body. Without this, the generated method sends the query
+      # params but no file bytes. Declare the octet-stream body so the SDK
+      # generates a `body` parameter that streams the file.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
   /models/for-tenant/{tenant_id}:
     get:
       tags:
@@ -1413,6 +1429,15 @@ paths:
               schema:
                 $ref: "#/components/schemas/UploadFileResponseStatus"
       x-speakeasy-name-override: upload_v2
+      # See note on /files/upload above: the raw octet-stream body is undocumented
+      # upstream, so declare it here to make the file bytes actually get sent.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
   /v2/files/upload-from-url:
     post:
       tags:
