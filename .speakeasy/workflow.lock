@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:4d1c4517b3812151fb24c228f1722f441790e5027de0d39e059e22212ef9ef64
         sourceBlobDigest: sha256:ab3f17d02ab663ec4f421e72abe2ec0d2f0a38d13fdbfebe1285cba1beccf212
         codeSamplesNamespace: flypix-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:937cd7265477a24eaca259a973fe40a7945df8db042b6274e68e5724c495592b
+        codeSamplesRevisionDigest: sha256:234b5c2722e19f2af43a71bf0228755462ccee36e44908bbab27140a1ab49974
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -31,6 +31,9 @@ workflow:
         flypix-python:
             target: python
             source: flypix-api
+            publish:
+                pypi:
+                    token: $pypi_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/flypix/public-api/flypix-api-python-code-samples
