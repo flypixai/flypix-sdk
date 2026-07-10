@@ -5,14 +5,14 @@ management:
   docVersion: 0.1.0
   speakeasyVersion: 1.789.2
   generationVersion: 2.916.4
-  releaseVersion: 1.1.1
-  configChecksum: c9fdb2e9e26a1fe729cd2cda810517ba
+  releaseVersion: 1.1.2
+  configChecksum: a960cae504e2994886f4a6c89ab86fda
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
 persistentEdits:
-  generation_id: 09d582bb-36df-4e77-9506-88a80c1a44cb
-  pristine_commit_hash: 983f22721f268556a17cf764c49db8d8068fee03
-  pristine_tree_hash: fcee81498ff314d27acaf1bf708298d74d6b9e9c
+  generation_id: 5c6b4e23-044f-456c-a061-1f93d6fa0379
+  pristine_commit_hash: 9c8d3c1941219b85ea37482019bf88ce9a7f16e5
+  pristine_tree_hash: 2fd9adaf9c46fca29412f726f38a1494d5ceb22c
 features:
   python:
     additionalDependencies: 1.1.0
@@ -535,8 +535,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:33a5129093a83c81a259be4c00f65c3e67e1fd76
-    pristine_git_object: 8b994d660ff42e0b2ba8a7419346f9c9040f8da7
+    last_write_checksum: sha1:39d3e5c7306986e0a80b56c22dc955529d8ede9a
+    pristine_git_object: c49a04f894223fca333f0322a5f78e4352768d0d
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -563,8 +563,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:ea649c3a993f1823e3c563a16a1116a2490d0cd4
-    pristine_git_object: c41dcbbf64c015b66099cd8a53ef0c350a833d28
+    last_write_checksum: sha1:742112b85c9c571bba344208ed3af96af50ff0d0
+    pristine_git_object: 0bf806e8865606370527135180c6a0c704288f7e
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
