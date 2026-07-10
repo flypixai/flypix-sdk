@@ -44,7 +44,7 @@ from flypix import FlyPix
 
 # Your FlyPix account credentials. Only accounts created directly in the app
 # are supported (third-party logins such as Google / LinkedIn are not).
-USERNAME = "daniel@flypix.ai"
+USERNAME = "user@email.com"
 PASSWORD = ""
 
 # Name of the project that will be created.
