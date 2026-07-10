@@ -1,35 +1,35 @@
-# Regenerates the SDK from the live spec + overlay and opens a PR when the
-# effective API surface changes. This is the "drift check": if api.flypix.ai
-# changes, this job produces a reviewable diff instead of silent staleness.
-#
-# Canonical version note: run `speakeasy configure github` to have the CLI
-# (re)generate this file pinned to your installed Speakeasy version. The refs
-# below track the action's v15 major — bump to the latest release as needed.
-name: Generate SDK
+name: Generate
 
 permissions:
   checks: write
   contents: write
   pull-requests: write
   statuses: write
+  id-token: write
 
 on:
   workflow_dispatch:
     inputs:
       force:
-        description: Force generation even if no spec changes are detected
+        description: Force generation of SDKs
         type: boolean
         default: false
+      set_version:
+        description: optionally set a specific SDK version
+        type: string
   schedule:
-    - cron: "0 6 * * 1" # Mondays 06:00 UTC
-
+    - cron: 0 0 * * *
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
 jobs:
   generate:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
       force: ${{ github.event.inputs.force }}
       mode: pr
-      speakeasy_version: latest
+      set_version: ${{ github.event.inputs.set_version }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

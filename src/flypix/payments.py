@@ -9,6 +9,8 @@ from typing import Mapping, Optional
 
 
 class Payments(BaseSDK):
+    r"""Billing and tenant balance."""
+
     def get_balance(
         self,
         *,

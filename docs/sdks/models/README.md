@@ -2,6 +2,8 @@
 
 ## Overview
 
+List, apply, and manage detection models.
+
 ### Available Operations
 
 * [list_for_tenant](#list_for_tenant) - Get Models For Tenant

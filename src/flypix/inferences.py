@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Inferences(BaseSDK):
+    r"""Inference results across tenants, projects, and files."""
+
     def list_for_tenant(
         self,
         *,

@@ -2,6 +2,8 @@
 
 ## Overview
 
+Obtain and refresh API access tokens.
+
 ### Available Operations
 
 * [login_with_password](#login_with_password) - Login With Password

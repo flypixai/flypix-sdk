@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Projects(BaseSDK):
+    r"""Manage projects within a tenant."""
+
     def list_for_tenant(
         self,
         *,

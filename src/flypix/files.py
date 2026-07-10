@@ -6,9 +6,12 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Iterable, List, Mapping, Optional
+from typing_extensions import deprecated
 
 
 class Files(BaseSDK):
+    r"""Upload, download, list, and delete files."""
+
     def list_for_project(
         self,
         *,
@@ -1429,6 +1432,9 @@ class Files(BaseSDK):
 
         raise errors.FlyPixDefaultError("Unexpected response received", http_res)
 
+    @deprecated(
+        "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+    )
     def upload(
         self,
         *,
@@ -1442,6 +1448,9 @@ class Files(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Any:
         r"""Upload File
+
+        **DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
+        [v2/files/upload](/#/operations/upload_file_v2) instead.
 
         Upload a raster file to the specified folder. If folder_id is not included,
         the file will be uploaded to the project root.
@@ -1539,6 +1548,9 @@ class Files(BaseSDK):
 
         raise errors.FlyPixDefaultError("Unexpected response received", http_res)
 
+    @deprecated(
+        "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+    )
     async def upload_async(
         self,
         *,
@@ -1552,6 +1564,9 @@ class Files(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Any:
         r"""Upload File
+
+        **DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
+        [v2/files/upload](/#/operations/upload_file_v2) instead.
 
         Upload a raster file to the specified folder. If folder_id is not included,
         the file will be uploaded to the project root.

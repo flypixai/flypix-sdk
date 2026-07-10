@@ -2,6 +2,8 @@
 
 ## Overview
 
+Upload, download, list, and delete files.
+
 ### Available Operations
 
 * [list_for_project](#list_for_project) - Get Files For Project Root
@@ -12,7 +14,7 @@
 * [get_download_link](#get_download_link) - Get File Download Link
 * [get_by_ids](#get_by_ids) - Get Files By Ids
 * [get_storage_usage](#get_storage_usage) - Get Storage Usage
-* [upload](#upload) - Upload File
+* [~~upload~~](#upload) - Upload File :warning: **Deprecated**
 * [upload_v2](#upload_v2) - Upload File
 * [upload_from_url](#upload_from_url) - Upload File From Url
 
@@ -337,7 +339,10 @@ with FlyPix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## upload
+## ~~upload~~
+
+**DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
+[v2/files/upload](/#/operations/upload_file_v2) instead.
 
 Upload a raster file to the specified folder. If folder_id is not included,
 the file will be uploaded to the project root.
@@ -353,6 +358,8 @@ curl -X 'POST' '(...)/files/upload  \
     --url-query filename=rgba.tiff \
     --data-binary @sentinel-2-data-2024-12-16.tiff 
 ```
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

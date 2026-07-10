@@ -645,8 +645,9 @@ paths:
       tags:
         - "Files"
       summary: "Upload File"
-      description: "Upload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
+      description: "**DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use\n[v2/files/upload](/#/operations/upload_file_v2) instead.\n\nUpload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
       operationId: "files_upload"
+      deprecated: true
       parameters:
         - name: "tenant_id"
           in: "query"
@@ -2774,3 +2775,28 @@ security:
 servers:
   - url: https://api.flypix.ai
     description: FlyPix production API
+tags:
+  - name: Auth
+    description: Obtain and refresh API access tokens.
+  - name: Files
+    description: Upload, download, list, and delete files.
+  - name: Folders
+    description: Organize files into folders within a project.
+  - name: Geosense
+    description: GeoSense sessions, artifacts, and messages.
+  - name: Inferences
+    description: Inference results across tenants, projects, and files.
+  - name: Models
+    description: List, apply, and manage detection models.
+  - name: Payments
+    description: Billing and tenant balance.
+  - name: Projects
+    description: Manage projects within a tenant.
+  - name: Rasters
+    description: Raster imagery associated with files and projects.
+  - name: Regions
+    description: Regions of interest within a file.
+  - name: Users
+    description: User account details and tenant membership.
+  - name: Vectors
+    description: Vector data — classes, features, and annotations.

@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Users(BaseSDK):
+    r"""User account details and tenant membership."""
+
     def list_tenants(
         self,
         *,

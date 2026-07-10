@@ -2,6 +2,8 @@
 
 ## Overview
 
+Regions of interest within a file.
+
 ### Available Operations
 
 * [list_for_file](#list_for_file) - Get Regions For File

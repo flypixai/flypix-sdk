@@ -9,6 +9,8 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Geosense(BaseSDK):
+    r"""GeoSense sessions, artifacts, and messages."""
+
     def create_session(
         self,
         *,

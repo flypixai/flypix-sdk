@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Folders(BaseSDK):
+    r"""Organize files into folders within a project."""
+
     def list_for_folder(
         self,
         *,

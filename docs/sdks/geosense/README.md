@@ -2,6 +2,8 @@
 
 ## Overview
 
+GeoSense sessions, artifacts, and messages.
+
 ### Available Operations
 
 * [create_session](#create_session) - Create Session In Project

@@ -9,6 +9,8 @@ from typing import Any, Iterable, List, Mapping, Optional, Union
 
 
 class Vectors(BaseSDK):
+    r"""Vector data — classes, features, and annotations."""
+
     def list_for_file(
         self,
         *,

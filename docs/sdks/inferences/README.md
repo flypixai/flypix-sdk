@@ -2,6 +2,8 @@
 
 ## Overview
 
+Inference results across tenants, projects, and files.
+
 ### Available Operations
 
 * [list_for_tenant](#list_for_tenant) - Get Inferences For Tenant

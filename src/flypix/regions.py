@@ -9,6 +9,8 @@ from typing import Any, Iterable, List, Mapping, Optional, Union
 
 
 class Regions(BaseSDK):
+    r"""Regions of interest within a file."""
+
     def list_for_file(
         self,
         *,

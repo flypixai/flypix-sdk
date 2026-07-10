@@ -2,6 +2,8 @@
 
 ## Overview
 
+Vector data — classes, features, and annotations.
+
 ### Available Operations
 
 * [list_for_file](#list_for_file) - Get Vectors For File

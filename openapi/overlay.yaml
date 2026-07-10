@@ -3,15 +3,41 @@ info:
   title: FlyPix SDK overlay
   version: 0.1.0
 actions:
-  # 1) Upstream spec declares no servers — add the production base URL.
   - target: $
     update:
       servers:
         - url: https://api.flypix.ai
           description: FlyPix production API
-  # 2) Give each operation a globally-unique operationId (<tag>_<name>) AND a
-  #    short, tag-scoped SDK method name via x-speakeasy-name-override, so the
-  #    generated calls read like client.files.list_for_project(...).
+  # Declare the tags globally. The upstream (FastAPI) spec omits a top-level
+  # `tags` list, so every operation's tag is "undefined" per the linter. Declaring
+  # them here clears those warnings and gives each SDK namespace a description.
+  - target: $
+    update:
+      tags:
+        - name: Auth
+          description: Obtain and refresh API access tokens.
+        - name: Files
+          description: Upload, download, list, and delete files.
+        - name: Folders
+          description: Organize files into folders within a project.
+        - name: Geosense
+          description: GeoSense sessions, artifacts, and messages.
+        - name: Inferences
+          description: Inference results across tenants, projects, and files.
+        - name: Models
+          description: List, apply, and manage detection models.
+        - name: Payments
+          description: Billing and tenant balance.
+        - name: Projects
+          description: Manage projects within a tenant.
+        - name: Rasters
+          description: Raster imagery associated with files and projects.
+        - name: Regions
+          description: Regions of interest within a file.
+        - name: Users
+          description: User account details and tenant membership.
+        - name: Vectors
+          description: Vector data — classes, features, and annotations.
   - target: $.paths["/auth/login/password"].post
     description: login_with_password_auth_login_password_post -> auth.login_with_password
     update:

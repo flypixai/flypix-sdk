@@ -9,6 +9,8 @@ from typing import Mapping, Optional
 
 
 class Auth(BaseSDK):
+    r"""Obtain and refresh API access tokens."""
+
     def login_with_password(
         self,
         *,

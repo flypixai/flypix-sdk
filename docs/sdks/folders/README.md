@@ -2,6 +2,8 @@
 
 ## Overview
 
+Organize files into folders within a project.
+
 ### Available Operations
 
 * [list_for_folder](#list_for_folder) - Get Folders For Folder

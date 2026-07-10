@@ -2,6 +2,8 @@
 
 ## Overview
 
+Manage projects within a tenant.
+
 ### Available Operations
 
 * [list_for_tenant](#list_for_tenant) - Get Projects For Tenant

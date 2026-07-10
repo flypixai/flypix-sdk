@@ -2,6 +2,8 @@
 
 ## Overview
 
+User account details and tenant membership.
+
 ### Available Operations
 
 * [list_tenants](#list_tenants) - Get Tenants For User

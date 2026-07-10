@@ -2,6 +2,8 @@
 
 ## Overview
 
+Billing and tenant balance.
+
 ### Available Operations
 
 * [get_balance](#get_balance) - Get Tenant Balance

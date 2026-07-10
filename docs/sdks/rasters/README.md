@@ -2,6 +2,8 @@
 
 ## Overview
 
+Raster imagery associated with files and projects.
+
 ### Available Operations
 
 * [list_for_tenant](#list_for_tenant) - Get Rasters For Tenant

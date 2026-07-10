@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Rasters(BaseSDK):
+    r"""Raster imagery associated with files and projects."""
+
     def list_for_tenant(
         self,
         *,

@@ -9,6 +9,8 @@ from typing import List, Mapping, Optional
 
 
 class Models(BaseSDK):
+    r"""List, apply, and manage detection models."""
+
     def list_for_tenant(
         self,
         *,

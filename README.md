@@ -5,23 +5,8 @@ access to projects, files, models, inferences, vectors, and more.
 
 > **Status:** pre-release. The SDK is generated from the FlyPix OpenAPI spec with
 > [Speakeasy](https://www.speakeasy.com). See [`SETUP.md`](./SETUP.md) for how it
-> is generated and maintained.
-
-## Installation
-
-```sh
-pip install flypix
-```
-
-## Quickstart
-
-```python
-from flypix import FlyPix
-
-with FlyPix(bearer_auth="<YOUR_TOKEN>") as client:
-    projects = client.projects.list_for_tenant(tenant_id="<TENANT_ID>")
-    print(projects)
-```
+> is generated and maintained. Installation and usage are documented in the
+> generated sections below.
 
 ## Contributing
 
@@ -62,8 +47,6 @@ GET /vectors/{vector_id}/features -> Get the annotations
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [flypix](#flypix)
-  * [Installation](#installation)
-  * [Quickstart](#quickstart)
   * [Contributing](#contributing)
   * [License](#license)
   * [SDK Installation](#sdk-installation)
@@ -253,7 +236,7 @@ with FlyPix(
 * [get_download_link](docs/sdks/files/README.md#get_download_link) - Get File Download Link
 * [get_by_ids](docs/sdks/files/README.md#get_by_ids) - Get Files By Ids
 * [get_storage_usage](docs/sdks/files/README.md#get_storage_usage) - Get Storage Usage
-* [upload](docs/sdks/files/README.md#upload) - Upload File
+* [~~upload~~](docs/sdks/files/README.md#upload) - Upload File :warning: **Deprecated**
 * [upload_v2](docs/sdks/files/README.md#upload_v2) - Upload File
 * [upload_from_url](docs/sdks/files/README.md#upload_from_url) - Upload File From Url
 
