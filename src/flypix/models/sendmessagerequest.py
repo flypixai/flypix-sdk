@@ -6,12 +6,13 @@ from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SEN
 from pydantic import model_serializer
 from typing import List
 from typing_extensions import NotRequired, TypedDict
+from uuid import UUID
 
 
 class SendMessageRequestTypedDict(TypedDict):
     user_message: str
     r"""A string based value object"""
-    vector_ids: List[str]
+    vector_ids: List[UUID]
     context: NotRequired[Nullable[List[AnyMessageContextTypedDict]]]
 
 
@@ -19,7 +20,7 @@ class SendMessageRequest(BaseModel):
     user_message: str
     r"""A string based value object"""
 
-    vector_ids: List[str]
+    vector_ids: List[UUID]
 
     context: OptionalNullable[List[AnyMessageContext]] = UNSET
 

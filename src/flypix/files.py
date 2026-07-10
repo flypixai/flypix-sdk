@@ -8,6 +8,7 @@ from flypix.utils.unmarshal_json_response import unmarshal_json_response
 import io
 from typing import Any, IO, Iterable, List, Mapping, Optional, Union
 from typing_extensions import deprecated
+from uuid import UUID
 
 
 class Files(BaseSDK):
@@ -16,7 +17,7 @@ class Files(BaseSDK):
     def list_for_project(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -105,7 +106,7 @@ class Files(BaseSDK):
     async def list_for_project_async(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -194,7 +195,7 @@ class Files(BaseSDK):
     def list_for_folder(
         self,
         *,
-        folder_id: str,
+        folder_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -284,7 +285,7 @@ class Files(BaseSDK):
     async def list_for_folder_async(
         self,
         *,
-        folder_id: str,
+        folder_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -374,7 +375,7 @@ class Files(BaseSDK):
     def get(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -462,7 +463,7 @@ class Files(BaseSDK):
     async def get_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -550,7 +551,7 @@ class Files(BaseSDK):
     def delete(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -638,7 +639,7 @@ class Files(BaseSDK):
     async def delete_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -726,7 +727,7 @@ class Files(BaseSDK):
     def get_visible_raster(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -817,7 +818,7 @@ class Files(BaseSDK):
     async def get_visible_raster_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -908,7 +909,7 @@ class Files(BaseSDK):
     def get_download_link(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -996,7 +997,7 @@ class Files(BaseSDK):
     async def get_download_link_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1084,7 +1085,7 @@ class Files(BaseSDK):
     def get_by_ids(
         self,
         *,
-        request: Iterable[str],
+        request: Iterable[UUID],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1124,7 +1125,7 @@ class Files(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", List[str]
+                request, False, False, "json", List[UUID]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1171,7 +1172,7 @@ class Files(BaseSDK):
     async def get_by_ids_async(
         self,
         *,
-        request: Iterable[str],
+        request: Iterable[UUID],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1211,7 +1212,7 @@ class Files(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", List[str]
+                request, False, False, "json", List[UUID]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1258,7 +1259,7 @@ class Files(BaseSDK):
     def get_storage_usage(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1347,7 +1348,7 @@ class Files(BaseSDK):
     async def get_storage_usage_async(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1439,11 +1440,11 @@ class Files(BaseSDK):
     def upload(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
         body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1561,11 +1562,11 @@ class Files(BaseSDK):
     async def upload_async(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
         body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1680,11 +1681,11 @@ class Files(BaseSDK):
     def upload_v2(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
         body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1797,11 +1798,11 @@ class Files(BaseSDK):
     async def upload_v2_async(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
         body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1914,11 +1915,11 @@ class Files(BaseSDK):
     def upload_from_url(
         self,
         *,
-        file_url: str,
-        tenant_id: str,
-        project_id: str,
+        file_url: UUID,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -2028,11 +2029,11 @@ class Files(BaseSDK):
     async def upload_from_url_async(
         self,
         *,
-        file_url: str,
-        tenant_id: str,
-        project_id: str,
+        file_url: UUID,
+        tenant_id: UUID,
+        project_id: UUID,
         filename: str,
-        folder_id: OptionalNullable[str] = UNSET,
+        folder_id: OptionalNullable[UUID] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,

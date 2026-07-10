@@ -5,17 +5,18 @@ from flypix.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
+from uuid import UUID
 
 
 class CreateVectorForVisibleFileTypedDict(TypedDict):
-    file_id: str
+    file_id: UUID
     r"""A string in UUID format"""
     name: NotRequired[str]
     r"""A string based value object"""
 
 
 class CreateVectorForVisibleFile(BaseModel):
-    file_id: str
+    file_id: UUID
     r"""A string in UUID format"""
 
     name: Optional[str] = "New API Vector Layer"

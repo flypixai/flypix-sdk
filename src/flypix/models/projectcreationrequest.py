@@ -3,16 +3,17 @@
 from __future__ import annotations
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class ProjectCreationRequestTypedDict(TypedDict):
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
     name: str
 
 
 class ProjectCreationRequest(BaseModel):
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
 
     name: str

@@ -5,16 +5,17 @@ from .createclassrequest import CreateClassRequest, CreateClassRequestTypedDict
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class VectorsCreateClassRequestTypedDict(TypedDict):
-    project_id: str
+    project_id: UUID
     body: CreateClassRequestTypedDict
 
 
 class VectorsCreateClassRequest(BaseModel):
     project_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

@@ -6,6 +6,7 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import List, Mapping, Optional
+from uuid import UUID
 
 
 class Models(BaseSDK):
@@ -14,7 +15,7 @@ class Models(BaseSDK):
     def list_for_tenant(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -102,7 +103,7 @@ class Models(BaseSDK):
     async def list_for_tenant_async(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -190,7 +191,7 @@ class Models(BaseSDK):
     def list_for_project(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -278,7 +279,7 @@ class Models(BaseSDK):
     async def list_for_project_async(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -528,8 +529,8 @@ class Models(BaseSDK):
     def apply(
         self,
         *,
-        model_id: str,
-        file_id: str,
+        model_id: UUID,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -626,8 +627,8 @@ class Models(BaseSDK):
     async def apply_async(
         self,
         *,
-        model_id: str,
-        file_id: str,
+        model_id: UUID,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -724,8 +725,8 @@ class Models(BaseSDK):
     def estimate_application(
         self,
         *,
-        model_id: str,
-        file_id: str,
+        model_id: UUID,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -820,8 +821,8 @@ class Models(BaseSDK):
     async def estimate_application_async(
         self,
         *,
-        model_id: str,
-        file_id: str,
+        model_id: UUID,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -916,7 +917,7 @@ class Models(BaseSDK):
     def get_inference_status(
         self,
         *,
-        inference_id: str,
+        inference_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1004,7 +1005,7 @@ class Models(BaseSDK):
     async def get_inference_status_async(
         self,
         *,
-        inference_id: str,
+        inference_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1092,7 +1093,7 @@ class Models(BaseSDK):
     def delete(
         self,
         *,
-        model_id: str,
+        model_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1180,7 +1181,7 @@ class Models(BaseSDK):
     async def delete_async(
         self,
         *,
-        model_id: str,
+        model_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,

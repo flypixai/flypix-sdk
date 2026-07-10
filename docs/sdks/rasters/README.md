@@ -19,13 +19,14 @@ List the rasters in the tenant
 <!-- UsageSnippet language="python" operationID="rasters_list_for_tenant" method="get" path="/rasters/for-tenant/{tenant_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.rasters.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.rasters.list_for_tenant(tenant_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -36,7 +37,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `tenant_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -58,13 +59,14 @@ List the rasters in the project
 <!-- UsageSnippet language="python" operationID="rasters_list_for_project" method="get" path="/rasters/for-project/{project_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.rasters.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.rasters.list_for_project(project_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -75,7 +77,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `project_id`                                                        | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -97,13 +99,14 @@ List the rasters for the file
 <!-- UsageSnippet language="python" operationID="rasters_list_for_file" method="get" path="/rasters/for-file/{file_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.rasters.list_for_file(file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.rasters.list_for_file(file_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -114,7 +117,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `file_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `file_id`                                                           | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response

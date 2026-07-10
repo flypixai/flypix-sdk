@@ -7,12 +7,13 @@ from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Any, Dict
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class OfficialModelResponseTypedDict(TypedDict):
     name: str
     status: ModelStatus
-    model_id: str
+    model_id: UUID
     r"""A string in UUID format"""
     metadata: Nullable[Dict[str, Any]]
     created_at: datetime
@@ -23,7 +24,7 @@ class OfficialModelResponse(BaseModel):
 
     status: ModelStatus
 
-    model_id: str
+    model_id: UUID
     r"""A string in UUID format"""
 
     metadata: Nullable[Dict[str, Any]]

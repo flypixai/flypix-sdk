@@ -8,16 +8,17 @@ from .body_upload_geojson_vectors_vector_id_upload_geojson_post import (
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class VectorsUploadGeojsonRequestTypedDict(TypedDict):
-    vector_id: str
+    vector_id: UUID
     body: BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostTypedDict
 
 
 class VectorsUploadGeojsonRequest(BaseModel):
     vector_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

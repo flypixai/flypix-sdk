@@ -6,6 +6,7 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Iterable, List, Mapping, Optional, Union
+from uuid import UUID
 
 
 class Vectors(BaseSDK):
@@ -14,7 +15,7 @@ class Vectors(BaseSDK):
     def list_for_file(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -103,7 +104,7 @@ class Vectors(BaseSDK):
     async def list_for_file_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -192,7 +193,7 @@ class Vectors(BaseSDK):
     def list_classes_for_project(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -280,7 +281,7 @@ class Vectors(BaseSDK):
     async def list_classes_for_project_async(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -368,7 +369,7 @@ class Vectors(BaseSDK):
     def create_class(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         name: str,
         color: Optional[str] = "FF0000",
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -467,7 +468,7 @@ class Vectors(BaseSDK):
     async def create_class_async(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         name: str,
         color: Optional[str] = "FF0000",
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -566,7 +567,7 @@ class Vectors(BaseSDK):
     def get_features(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -654,7 +655,7 @@ class Vectors(BaseSDK):
     async def get_features_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -742,7 +743,7 @@ class Vectors(BaseSDK):
     def create(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         name: Optional[str] = "New API Vector Layer",
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -836,7 +837,7 @@ class Vectors(BaseSDK):
     async def create_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         name: Optional[str] = "New API Vector Layer",
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -930,7 +931,7 @@ class Vectors(BaseSDK):
     def delete(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1018,7 +1019,7 @@ class Vectors(BaseSDK):
     async def delete_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1106,7 +1107,7 @@ class Vectors(BaseSDK):
     def create_annotations(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         class_id: str,
         payload: Union[
             Iterable[models.AnnotationGeometryPayload],
@@ -1210,7 +1211,7 @@ class Vectors(BaseSDK):
     async def create_annotations_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         class_id: str,
         payload: Union[
             Iterable[models.AnnotationGeometryPayload],
@@ -1314,7 +1315,7 @@ class Vectors(BaseSDK):
     def upload_geojson(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1416,7 +1417,7 @@ class Vectors(BaseSDK):
     async def upload_geojson_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1518,7 +1519,7 @@ class Vectors(BaseSDK):
     def upload_gpkg(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1617,7 +1618,7 @@ class Vectors(BaseSDK):
     async def upload_gpkg_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1716,7 +1717,7 @@ class Vectors(BaseSDK):
     def upload_shapefile(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1815,7 +1816,7 @@ class Vectors(BaseSDK):
     async def upload_shapefile_async(
         self,
         *,
-        vector_id: str,
+        vector_id: UUID,
         file: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,

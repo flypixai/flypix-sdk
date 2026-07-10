@@ -8,16 +8,17 @@ from .createannotationsrequest import (
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class VectorsCreateAnnotationsRequestTypedDict(TypedDict):
-    vector_id: str
+    vector_id: UUID
     body: CreateAnnotationsRequestTypedDict
 
 
 class VectorsCreateAnnotationsRequest(BaseModel):
     vector_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

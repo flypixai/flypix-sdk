@@ -23,13 +23,14 @@ List the models available in the tenant
 <!-- UsageSnippet language="python" operationID="models_list_for_tenant" method="get" path="/models/for-tenant/{tenant_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.list_for_tenant(tenant_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -40,7 +41,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `tenant_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -62,13 +63,14 @@ List the models available to be applied in any file in the project
 <!-- UsageSnippet language="python" operationID="models_list_for_project" method="get" path="/models/for-project/{project_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.list_for_project(project_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -79,7 +81,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `project_id`                                                        | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -141,13 +143,14 @@ vector features
 <!-- UsageSnippet language="python" operationID="models_apply" method="post" path="/models/{model_id}/apply" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.apply(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.apply(model_id=UUID("123e4567-e89b-12d3-a456-426614174000"), file_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -158,8 +161,8 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `model_id`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
+| `model_id`                                                          | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `file_id`                                                           | *UUID*                                                              | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -181,13 +184,14 @@ Calculate the cost in credits to apply a model.
 <!-- UsageSnippet language="python" operationID="models_estimate_application" method="post" path="/models/{model_id}/apply/estimate" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.estimate_application(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.estimate_application(model_id=UUID("123e4567-e89b-12d3-a456-426614174000"), file_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -198,8 +202,8 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `model_id`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
+| `model_id`                                                          | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `file_id`                                                           | *UUID*                                                              | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -221,13 +225,14 @@ Get the current status of an inference from applying a model
 <!-- UsageSnippet language="python" operationID="models_get_inference_status" method="get" path="/models/inference/{inference_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.get_inference_status(inference_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.get_inference_status(inference_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -238,7 +243,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `inference_id`                                                      | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `inference_id`                                                      | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -260,13 +265,14 @@ Delete an already trained model. This operation cannot be undone
 <!-- UsageSnippet language="python" operationID="models_delete" method="delete" path="/models/{model_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.models.delete(model_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.models.delete(model_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -277,7 +283,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `model_id`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `model_id`                                                          | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response

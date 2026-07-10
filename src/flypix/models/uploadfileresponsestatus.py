@@ -4,16 +4,17 @@ from __future__ import annotations
 from .filestatus import FileStatus
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class UploadFileResponseStatusTypedDict(TypedDict):
-    file_id: str
+    file_id: UUID
     r"""A string in UUID format"""
     status: FileStatus
 
 
 class UploadFileResponseStatus(BaseModel):
-    file_id: str
+    file_id: UUID
     r"""A string in UUID format"""
 
     status: FileStatus

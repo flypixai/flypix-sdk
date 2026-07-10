@@ -4,13 +4,14 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class FoldersListForFolderRequestTypedDict(TypedDict):
-    folder_id: str
+    folder_id: UUID
 
 
 class FoldersListForFolderRequest(BaseModel):
     folder_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

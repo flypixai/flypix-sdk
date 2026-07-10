@@ -33,8 +33,10 @@ The interactive API docs (Swagger UI) are always available at:
     https://api.flypix.ai/docs
 """
 
+import os
 import sys
 import time
+from uuid import UUID
 
 from flypix import FlyPix
 
@@ -44,52 +46,30 @@ from flypix import FlyPix
 
 # Your FlyPix account credentials. Only accounts created directly in the app
 # are supported (third-party logins such as Google / LinkedIn are not).
-USERNAME = "user@email.com"
-PASSWORD = ""
+USERNAME = os.getenv("USERNAME") or "your username"
+PASSWORD = os.getenv("PASSWORD") or "your password"
+TENANT_ID = UUID(os.getenv("TENANT_ID"))
+TIFF_PATH = os.getenv("TIFF_PATH") or "your tiff path"
 
 # Name of the project that will be created.
-PROJECT_NAME = "API test"
+PROJECT_NAME = "Quickstart API"
 
 # Path to the local GeoTIFF file you want to upload and run inference on.
-TIFF_PATH = "/path/to/your/file.tiff"
-
 # The model to run. This is a model id (UUID). You can list the official
 # models available to your account with `client.models.list_official()`, or
 # the models private to your tenant with
 # `client.models.list_for_tenant(tenant_id=...)`.
 # The default id is the official BUILDING detector model.
-MODEL_ID = "01736030-4011-4951-b9b7-1fecf5d00f80"
+MODEL_ID = UUID(os.getenv("MODEL_ID") or "01736030-4011-4951-b9b7-1fecf5d00f80")
 
-# If you belong to more than one tenant, set the tenant id explicitly here.
-# Leave as None to automatically use the first tenant on your account.
-TENANT_ID = None
-
+# only relevant for development, you can omit this parameter in normal SDK usage
+BASE_URL = os.getenv("BASE_URL") or "https://api.flypix.ai"
 # How long to keep polling (seconds) before giving up.
 POLL_TIMEOUT = 900
 # How long to wait between polls (seconds).
 POLL_INTERVAL = 10
 
-# ---------------------------------------------------------------------------
-# Implementation  --  you normally don't need to edit below this line
-# ---------------------------------------------------------------------------
-
-
-def resolve_tenant_id(client: FlyPix) -> str:
-    """Return the configured tenant id, or the first tenant on the account."""
-    if TENANT_ID:
-        return TENANT_ID
-
-    print("Looking up tenant...")
-    tenants = client.users.list_tenants()
-    if not tenants:
-        sys.exit("No tenants found for this account.")
-
-    tenant = tenants[0]
-    print(f"  -> using tenant '{tenant.name}' ({tenant.tenant_id})")
-    return tenant.tenant_id
-
-
-def upload_tiff(client: FlyPix, tenant_id: str, project_id: str) -> str:
+def upload_tiff(client: FlyPix, tenant_id: UUID, project_id: UUID) -> UUID:
     """Upload the local TIFF file to the project root and return the file id.
 
     The file body is streamed as a raw binary body (application/octet-stream)
@@ -111,7 +91,7 @@ def upload_tiff(client: FlyPix, tenant_id: str, project_id: str) -> str:
     return result.file_id
 
 
-def wait_until_ready(client: FlyPix, file_id: str) -> None:
+def wait_until_ready(client: FlyPix, file_id: UUID) -> None:
     """Poll until the file is READY and its raster has been PROCESSED.
 
     After an upload the file is processed into a raster asynchronously. Before
@@ -145,7 +125,7 @@ def wait_until_ready(client: FlyPix, file_id: str) -> None:
     sys.exit("Timed out waiting for the raster to be PROCESSED.")
 
 
-def wait_for_inference(client: FlyPix, inference_id: str) -> None:
+def wait_for_inference(client: FlyPix, inference_id: UUID) -> None:
     """Poll the inference until it FINISHED or FAILED."""
     print("Waiting for inference to finish...")
     deadline = time.monotonic() + POLL_TIMEOUT
@@ -160,7 +140,7 @@ def wait_for_inference(client: FlyPix, inference_id: str) -> None:
     sys.exit("Timed out waiting for the inference to finish.")
 
 
-def fetch_features(client: FlyPix, file_id: str) -> None:
+def fetch_features(client: FlyPix, file_id: UUID) -> None:
     """Fetch and summarise the detected features (vectors) for the file.
 
     Inference produces one or more vector layers on the file. Each layer holds
@@ -197,7 +177,7 @@ def fetch_features(client: FlyPix, file_id: str) -> None:
 
 
 def main() -> None:
-    with FlyPix() as client:
+    with FlyPix(server_url=BASE_URL) as client:
         print("Logging in...")
         login = client.auth.login_with_password(
             username=USERNAME, password=PASSWORD
@@ -205,14 +185,12 @@ def main() -> None:
 
         token = login.access_token
 
-    with FlyPix(bearer_auth=token) as client:
-        tenant_id = resolve_tenant_id(client)
-
+    with FlyPix(bearer_auth=token, server_url=BASE_URL) as client:
         print(f"Creating project '{PROJECT_NAME}'...")
-        project = client.projects.create(tenant_id=tenant_id, name=PROJECT_NAME)
+        project = client.projects.create(tenant_id=TENANT_ID, name=PROJECT_NAME)
         print(f"  -> created project {project.project_id}")
 
-        file_id = upload_tiff(client, tenant_id, project.project_id)
+        file_id = upload_tiff(client, TENANT_ID, project.project_id)
         wait_until_ready(client, file_id)
 
         print(f"Applying model {MODEL_ID}...")

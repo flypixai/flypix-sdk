@@ -4,22 +4,23 @@ from __future__ import annotations
 from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class FolderResponseTypedDict(TypedDict):
-    folder_id: str
+    folder_id: UUID
     r"""A string in UUID format"""
     name: str
-    parent_id: Nullable[str]
+    parent_id: Nullable[UUID]
 
 
 class FolderResponse(BaseModel):
-    folder_id: str
+    folder_id: UUID
     r"""A string in UUID format"""
 
     name: str
 
-    parent_id: Nullable[str]
+    parent_id: Nullable[UUID]
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

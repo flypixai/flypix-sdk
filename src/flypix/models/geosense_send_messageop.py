@@ -5,16 +5,17 @@ from .sendmessagerequest import SendMessageRequest, SendMessageRequestTypedDict
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class GeosenseSendMessageRequestTypedDict(TypedDict):
-    session_id: str
+    session_id: UUID
     body: SendMessageRequestTypedDict
 
 
 class GeosenseSendMessageRequest(BaseModel):
     session_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

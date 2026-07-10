@@ -30,8 +30,9 @@ generation:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
+  repoUrl: https://github.com/flypix-ai/flypix-sdk.git
 python:
-  version: 0.3.4
+  version: 1.0.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -96,4 +97,4 @@ python:
   sseFlatResponse: false
   templateVersion: v2
   useAsyncHooks: false
-  uuidFormat: false
+  uuidFormat: true

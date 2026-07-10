@@ -4,13 +4,14 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class InferencesListForFileRequestTypedDict(TypedDict):
-    file_id: str
+    file_id: UUID
 
 
 class InferencesListForFileRequest(BaseModel):
     file_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

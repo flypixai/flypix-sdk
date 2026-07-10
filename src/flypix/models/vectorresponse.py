@@ -4,27 +4,28 @@ from __future__ import annotations
 from .vectormetadata import VectorMetadata, VectorMetadataTypedDict
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class VectorResponseTypedDict(TypedDict):
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
-    project_id: str
+    project_id: UUID
     r"""A string in UUID format"""
-    vector_id: str
+    vector_id: UUID
     r"""A string in UUID format"""
     metadata: VectorMetadataTypedDict
     name: str
 
 
 class VectorResponse(BaseModel):
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
 
-    project_id: str
+    project_id: UUID
     r"""A string in UUID format"""
 
-    vector_id: str
+    vector_id: UUID
     r"""A string in UUID format"""
 
     metadata: VectorMetadata

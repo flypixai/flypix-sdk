@@ -19,13 +19,14 @@ Get projects in a tenant
 <!-- UsageSnippet language="python" operationID="projects_list_for_tenant" method="get" path="/projects/for-tenant/{tenant_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.projects.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.projects.list_for_tenant(tenant_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -36,7 +37,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `tenant_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -60,13 +61,14 @@ This operation cannot be undone
 <!-- UsageSnippet language="python" operationID="projects_delete" method="delete" path="/projects/{project_id}" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.projects.delete(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = fly_pix.projects.delete(project_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
 
     # Handle response
     print(res)
@@ -77,7 +79,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `project_id`                                                        | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -99,13 +101,14 @@ Create a new empty project
 <!-- UsageSnippet language="python" operationID="projects_create" method="post" path="/projects/" -->
 ```python
 from flypix import FlyPix
+from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.projects.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
+    res = fly_pix.projects.create(tenant_id=UUID("123e4567-e89b-12d3-a456-426614174000"), name="<value>")
 
     # Handle response
     print(res)
@@ -116,7 +119,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
+| `tenant_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
 | `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 

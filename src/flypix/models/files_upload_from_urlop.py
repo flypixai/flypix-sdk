@@ -5,27 +5,28 @@ from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SEN
 from flypix.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing_extensions import Annotated, NotRequired, TypedDict
+from uuid import UUID
 
 
 class FilesUploadFromURLRequestTypedDict(TypedDict):
-    file_url: str
-    tenant_id: str
-    project_id: str
+    file_url: UUID
+    tenant_id: UUID
+    project_id: UUID
     filename: str
-    folder_id: NotRequired[Nullable[str]]
+    folder_id: NotRequired[Nullable[UUID]]
 
 
 class FilesUploadFromURLRequest(BaseModel):
     file_url: Annotated[
-        str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
+        UUID, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
 
     tenant_id: Annotated[
-        str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
+        UUID, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
 
     project_id: Annotated[
-        str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
+        UUID, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
 
     filename: Annotated[
@@ -33,7 +34,7 @@ class FilesUploadFromURLRequest(BaseModel):
     ]
 
     folder_id: Annotated[
-        OptionalNullable[str],
+        OptionalNullable[UUID],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
 

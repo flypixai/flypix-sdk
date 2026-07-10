@@ -6,6 +6,7 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Iterable, List, Mapping, Optional, Union
+from uuid import UUID
 
 
 class Regions(BaseSDK):
@@ -14,7 +15,7 @@ class Regions(BaseSDK):
     def list_for_file(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -102,7 +103,7 @@ class Regions(BaseSDK):
     async def list_for_file_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -190,7 +191,7 @@ class Regions(BaseSDK):
     def create(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         region_payloads: Union[
             Iterable[models.CreateRegionPayload],
             Iterable[models.CreateRegionPayloadTypedDict],
@@ -308,7 +309,7 @@ class Regions(BaseSDK):
     async def create_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         region_payloads: Union[
             Iterable[models.CreateRegionPayload],
             Iterable[models.CreateRegionPayloadTypedDict],
@@ -426,7 +427,7 @@ class Regions(BaseSDK):
     def delete(
         self,
         *,
-        request: Iterable[str],
+        request: Iterable[UUID],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -466,7 +467,7 @@ class Regions(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", List[str]
+                request, False, False, "json", List[UUID]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -513,7 +514,7 @@ class Regions(BaseSDK):
     async def delete_async(
         self,
         *,
-        request: Iterable[str],
+        request: Iterable[UUID],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -553,7 +554,7 @@ class Regions(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", List[str]
+                request, False, False, "json", List[UUID]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,

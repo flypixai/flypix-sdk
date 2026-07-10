@@ -4,18 +4,19 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
+from uuid import UUID
 
 
 class GeosenseGetArtifactRequestTypedDict(TypedDict):
-    session_id: str
-    artifact_id: str
+    session_id: UUID
+    artifact_id: UUID
 
 
 class GeosenseGetArtifactRequest(BaseModel):
     session_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     artifact_id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

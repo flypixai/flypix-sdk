@@ -7,20 +7,21 @@ from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Any, Dict
 from typing_extensions import TypedDict
+from uuid import UUID
 
 
 class PrivateModelResponseTypedDict(TypedDict):
     name: str
     status: ModelStatus
-    model_id: str
+    model_id: UUID
     r"""A string in UUID format"""
     metadata: Nullable[Dict[str, Any]]
     created_at: datetime
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
-    project_id: str
+    project_id: UUID
     r"""A string in UUID format"""
-    training_id: Nullable[str]
+    training_id: Nullable[UUID]
 
 
 class PrivateModelResponse(BaseModel):
@@ -28,20 +29,20 @@ class PrivateModelResponse(BaseModel):
 
     status: ModelStatus
 
-    model_id: str
+    model_id: UUID
     r"""A string in UUID format"""
 
     metadata: Nullable[Dict[str, Any]]
 
     created_at: datetime
 
-    tenant_id: str
+    tenant_id: UUID
     r"""A string in UUID format"""
 
-    project_id: str
+    project_id: UUID
     r"""A string in UUID format"""
 
-    training_id: Nullable[str]
+    training_id: Nullable[UUID]
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

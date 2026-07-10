@@ -6,6 +6,7 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import List, Mapping, Optional
+from uuid import UUID
 
 
 class Rasters(BaseSDK):
@@ -14,7 +15,7 @@ class Rasters(BaseSDK):
     def list_for_tenant(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -102,7 +103,7 @@ class Rasters(BaseSDK):
     async def list_for_tenant_async(
         self,
         *,
-        tenant_id: str,
+        tenant_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -190,7 +191,7 @@ class Rasters(BaseSDK):
     def list_for_project(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -278,7 +279,7 @@ class Rasters(BaseSDK):
     async def list_for_project_async(
         self,
         *,
-        project_id: str,
+        project_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -366,7 +367,7 @@ class Rasters(BaseSDK):
     def list_for_file(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -454,7 +455,7 @@ class Rasters(BaseSDK):
     async def list_for_file_async(
         self,
         *,
-        file_id: str,
+        file_id: UUID,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,

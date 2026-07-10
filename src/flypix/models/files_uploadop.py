@@ -7,23 +7,24 @@ import io
 from pydantic import model_serializer
 from typing import IO, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
+from uuid import UUID
 
 
 class FilesUploadRequestTypedDict(TypedDict):
-    tenant_id: str
-    project_id: str
+    tenant_id: UUID
+    project_id: UUID
     filename: str
     body: Union[bytes, IO[bytes], io.IOBase]
-    folder_id: NotRequired[Nullable[str]]
+    folder_id: NotRequired[Nullable[UUID]]
 
 
 class FilesUploadRequest(BaseModel):
     tenant_id: Annotated[
-        str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
+        UUID, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
 
     project_id: Annotated[
-        str, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
+        UUID, FieldMetadata(query=QueryParamMetadata(style="form", explode=True))
     ]
 
     filename: Annotated[
@@ -33,7 +34,7 @@ class FilesUploadRequest(BaseModel):
     body: Annotated[Union[bytes, IO[bytes], io.IOBase], FieldMetadata(request=True)]
 
     folder_id: Annotated[
-        OptionalNullable[str],
+        OptionalNullable[UUID],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
 
