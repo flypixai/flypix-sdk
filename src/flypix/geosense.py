@@ -6,7 +6,6 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
-from uuid import UUID
 
 
 class Geosense(BaseSDK):
@@ -15,12 +14,12 @@ class Geosense(BaseSDK):
     def create_session(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> UUID:
+    ) -> str:
         r"""Create Session In Project
 
         Create a new empty session in a project ready to receive messages
@@ -86,7 +85,7 @@ class Geosense(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(UUID, http_res)
+            return unmarshal_json_response(str, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -103,12 +102,12 @@ class Geosense(BaseSDK):
     async def create_session_async(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> UUID:
+    ) -> str:
         r"""Create Session In Project
 
         Create a new empty session in a project ready to receive messages
@@ -174,7 +173,7 @@ class Geosense(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(UUID, http_res)
+            return unmarshal_json_response(str, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -191,7 +190,7 @@ class Geosense(BaseSDK):
     def create_artifact(
         self,
         *,
-        session_id: UUID,
+        session_id: str,
         artifact_data: Mapping[str, Any],
         type_: models.ArtifactType,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -291,7 +290,7 @@ class Geosense(BaseSDK):
     async def create_artifact_async(
         self,
         *,
-        session_id: UUID,
+        session_id: str,
         artifact_data: Mapping[str, Any],
         type_: models.ArtifactType,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -391,8 +390,8 @@ class Geosense(BaseSDK):
     def get_artifact(
         self,
         *,
-        session_id: UUID,
-        artifact_id: UUID,
+        session_id: str,
+        artifact_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -482,8 +481,8 @@ class Geosense(BaseSDK):
     async def get_artifact_async(
         self,
         *,
-        session_id: UUID,
-        artifact_id: UUID,
+        session_id: str,
+        artifact_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -573,9 +572,9 @@ class Geosense(BaseSDK):
     def send_message(
         self,
         *,
-        session_id: UUID,
+        session_id: str,
         user_message: str,
-        vector_ids: Iterable[UUID],
+        vector_ids: Iterable[str],
         context: OptionalNullable[
             Union[
                 Iterable[models.AnyMessageContext],
@@ -615,7 +614,7 @@ class Geosense(BaseSDK):
             session_id=session_id,
             body=models.SendMessageRequest(
                 user_message=user_message,
-                vector_ids=utils.unmarshal(vector_ids, List[UUID]),
+                vector_ids=utils.unmarshal(vector_ids, List[str]),
                 context=utils.get_pydantic_model(
                     context, OptionalNullable[List[models.AnyMessageContext]]
                 ),
@@ -683,9 +682,9 @@ class Geosense(BaseSDK):
     async def send_message_async(
         self,
         *,
-        session_id: UUID,
+        session_id: str,
         user_message: str,
-        vector_ids: Iterable[UUID],
+        vector_ids: Iterable[str],
         context: OptionalNullable[
             Union[
                 Iterable[models.AnyMessageContext],
@@ -725,7 +724,7 @@ class Geosense(BaseSDK):
             session_id=session_id,
             body=models.SendMessageRequest(
                 user_message=user_message,
-                vector_ids=utils.unmarshal(vector_ids, List[UUID]),
+                vector_ids=utils.unmarshal(vector_ids, List[str]),
                 context=utils.get_pydantic_model(
                     context, OptionalNullable[List[models.AnyMessageContext]]
                 ),

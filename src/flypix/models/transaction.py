@@ -7,16 +7,15 @@ from datetime import datetime
 from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class TransactionTypedDict(TypedDict):
-    transaction_id: UUID
+    transaction_id: str
     r"""A string in UUID format"""
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: Nullable[UUID]
-    reference_id: Nullable[UUID]
+    project_id: Nullable[str]
+    reference_id: Nullable[str]
     credits: int
     reason: Reason
     type: TransactionType
@@ -24,15 +23,15 @@ class TransactionTypedDict(TypedDict):
 
 
 class Transaction(BaseModel):
-    transaction_id: UUID
+    transaction_id: str
     r"""A string in UUID format"""
 
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: Nullable[UUID]
+    project_id: Nullable[str]
 
-    reference_id: Nullable[UUID]
+    reference_id: Nullable[str]
 
     credits: int
 

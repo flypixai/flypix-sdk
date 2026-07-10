@@ -6,32 +6,31 @@ from datetime import datetime
 from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class InferenceResponseTypedDict(TypedDict):
-    inference_id: UUID
+    inference_id: str
     r"""A string in UUID format"""
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
-    model_id: Nullable[UUID]
+    model_id: Nullable[str]
     status: InferenceStatus
     created_at: datetime
 
 
 class InferenceResponse(BaseModel):
-    inference_id: UUID
+    inference_id: str
     r"""A string in UUID format"""
 
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
-    model_id: Nullable[UUID]
+    model_id: Nullable[str]
 
     status: InferenceStatus
 

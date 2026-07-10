@@ -6,17 +6,16 @@ from datetime import datetime
 from flypix.types import BaseModel
 from typing import Any, Dict
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class ArtifactResponseTypedDict(TypedDict):
-    artifact_id: UUID
+    artifact_id: str
     r"""A string in UUID format"""
-    session_id: UUID
+    session_id: str
     r"""A string in UUID format"""
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
     created_at: datetime
     type: ArtifactType
@@ -24,16 +23,16 @@ class ArtifactResponseTypedDict(TypedDict):
 
 
 class ArtifactResponse(BaseModel):
-    artifact_id: UUID
+    artifact_id: str
     r"""A string in UUID format"""
 
-    session_id: UUID
+    session_id: str
     r"""A string in UUID format"""
 
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
     created_at: datetime

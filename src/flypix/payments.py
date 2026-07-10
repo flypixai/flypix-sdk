@@ -6,7 +6,6 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Mapping, Optional
-from uuid import UUID
 
 
 class Payments(BaseSDK):
@@ -15,7 +14,7 @@ class Payments(BaseSDK):
     def get_balance(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -103,7 +102,7 @@ class Payments(BaseSDK):
     async def get_balance_async(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,

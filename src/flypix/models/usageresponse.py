@@ -4,18 +4,17 @@ from __future__ import annotations
 from flypix.types import BaseModel
 import pydantic
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class UsageResponseTypedDict(TypedDict):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
     bytes_: int
     storage_quota: int
 
 
 class UsageResponse(BaseModel):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
     bytes_: Annotated[int, pydantic.Field(alias="bytes")]

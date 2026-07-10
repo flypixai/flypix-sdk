@@ -8,19 +8,18 @@ from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Literal, Optional
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class UploadSourceTypedDict(TypedDict):
-    processed_file_id: Nullable[UUID]
-    reprojected_file_id: Nullable[UUID]
+    processed_file_id: Nullable[str]
+    reprojected_file_id: Nullable[str]
     type: Literal["UPLOAD"]
 
 
 class UploadSource(BaseModel):
-    processed_file_id: Nullable[UUID]
+    processed_file_id: Nullable[str]
 
-    reprojected_file_id: Nullable[UUID]
+    reprojected_file_id: Nullable[str]
 
     type: Annotated[
         Annotated[

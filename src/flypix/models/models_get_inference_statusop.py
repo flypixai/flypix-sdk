@@ -4,14 +4,13 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class ModelsGetInferenceStatusRequestTypedDict(TypedDict):
-    inference_id: UUID
+    inference_id: str
 
 
 class ModelsGetInferenceStatusRequest(BaseModel):
     inference_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

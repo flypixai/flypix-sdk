@@ -8,17 +8,16 @@ from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SEN
 from pydantic import model_serializer
 from typing import Any, Dict, List
 from typing_extensions import NotRequired, TypedDict
-from uuid import UUID
 
 
 class FileResponseTypedDict(TypedDict):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
-    folder_id: Nullable[UUID]
+    folder_id: Nullable[str]
     extension: str
     type: Nullable[FileType]
     size: Nullable[int]
@@ -29,16 +28,16 @@ class FileResponseTypedDict(TypedDict):
 
 
 class FileResponse(BaseModel):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
 
-    folder_id: Nullable[UUID]
+    folder_id: Nullable[str]
 
     extension: str
 

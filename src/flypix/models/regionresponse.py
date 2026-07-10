@@ -6,17 +6,16 @@ from .regionmetadata import RegionMetadata, RegionMetadataTypedDict
 from .regiontrainingbehavior import RegionTrainingBehavior
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class RegionResponseTypedDict(TypedDict):
-    region_id: UUID
+    region_id: str
     r"""A string in UUID format"""
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
     polygon: str
     r"""WKB Polygon encoded to Base64"""
@@ -26,16 +25,16 @@ class RegionResponseTypedDict(TypedDict):
 
 
 class RegionResponse(BaseModel):
-    region_id: UUID
+    region_id: str
     r"""A string in UUID format"""
 
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
 
     polygon: str

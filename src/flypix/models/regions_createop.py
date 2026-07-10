@@ -8,17 +8,16 @@ from .createmanyregionsrequest import (
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class RegionsCreateRequestTypedDict(TypedDict):
-    file_id: UUID
+    file_id: str
     body: CreateManyRegionsRequestTypedDict
 
 
 class RegionsCreateRequest(BaseModel):
     file_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

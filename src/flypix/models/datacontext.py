@@ -7,17 +7,16 @@ import pydantic
 from pydantic.functional_validators import AfterValidator
 from typing import Literal
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class DataContextTypedDict(TypedDict):
-    artifact_id: UUID
+    artifact_id: str
     r"""A string in UUID format"""
     type: Literal["data"]
 
 
 class DataContext(BaseModel):
-    artifact_id: UUID
+    artifact_id: str
     r"""A string in UUID format"""
 
     type: Annotated[

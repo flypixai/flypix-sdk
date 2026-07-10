@@ -4,26 +4,25 @@ from __future__ import annotations
 from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class FolderCreationRequestTypedDict(TypedDict):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
-    parent_id: Nullable[UUID]
+    parent_id: Nullable[str]
     name: str
 
 
 class FolderCreationRequest(BaseModel):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
-    parent_id: Nullable[UUID]
+    parent_id: Nullable[str]
 
     name: str
 

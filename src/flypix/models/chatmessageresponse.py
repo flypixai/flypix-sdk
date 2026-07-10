@@ -7,11 +7,10 @@ from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SEN
 from pydantic import model_serializer
 from typing import List
 from typing_extensions import NotRequired, TypedDict
-from uuid import UUID
 
 
 class ChatMessageResponseTypedDict(TypedDict):
-    session_id: UUID
+    session_id: str
     r"""A string in UUID format"""
     response: str
     created_at: datetime
@@ -19,7 +18,7 @@ class ChatMessageResponseTypedDict(TypedDict):
 
 
 class ChatMessageResponse(BaseModel):
-    session_id: UUID
+    session_id: str
     r"""A string in UUID format"""
 
     response: str

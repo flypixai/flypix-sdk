@@ -4,17 +4,16 @@ from __future__ import annotations
 from .responsestatus import ResponseStatus
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class EntityDeletionResponseTypedDict(TypedDict):
-    id: UUID
+    id: str
     r"""A string in UUID format"""
     status: ResponseStatus
 
 
 class EntityDeletionResponse(BaseModel):
-    id: UUID
+    id: str
     r"""A string in UUID format"""
 
     status: ResponseStatus

@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:4d1c4517b3812151fb24c228f1722f441790e5027de0d39e059e22212ef9ef64
         sourceBlobDigest: sha256:ab3f17d02ab663ec4f421e72abe2ec0d2f0a38d13fdbfebe1285cba1beccf212
         codeSamplesNamespace: flypix-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:65a0188b472cef019cd48a7d4651a1bdd762d6c9b1da0ff316f4879ae6cbad5c
+        codeSamplesRevisionDigest: sha256:060888d189797803eed5072ec50f1babbe15ad3740b817e262bfc2c2acd1602a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -48,7 +48,7 @@ from flypix import FlyPix
 # are supported (third-party logins such as Google / LinkedIn are not).
 USERNAME = os.getenv("USERNAME") or "your username"
 PASSWORD = os.getenv("PASSWORD") or "your password"
-TENANT_ID = UUID(os.getenv("TENANT_ID"))
+TENANT_ID = os.getenv("TENANT_ID") or "your tenant id"
 TIFF_PATH = os.getenv("TIFF_PATH") or "your tiff path"
 
 # Name of the project that will be created.
@@ -60,7 +60,7 @@ PROJECT_NAME = "Quickstart API"
 # the models private to your tenant with
 # `client.models.list_for_tenant(tenant_id=...)`.
 # The default id is the official BUILDING detector model.
-MODEL_ID = UUID(os.getenv("MODEL_ID") or "01736030-4011-4951-b9b7-1fecf5d00f80")
+MODEL_ID = os.getenv("MODEL_ID") or "01736030-4011-4951-b9b7-1fecf5d00f80"
 
 # only relevant for development, you can omit this parameter in normal SDK usage
 BASE_URL = os.getenv("BASE_URL") or "https://api.flypix.ai"
@@ -69,7 +69,7 @@ POLL_TIMEOUT = 900
 # How long to wait between polls (seconds).
 POLL_INTERVAL = 10
 
-def upload_tiff(client: FlyPix, tenant_id: UUID, project_id: UUID) -> UUID:
+def upload_tiff(client: FlyPix, tenant_id: str, project_id: str) -> str:
     """Upload the local TIFF file to the project root and return the file id.
 
     The file body is streamed as a raw binary body (application/octet-stream)
@@ -91,7 +91,7 @@ def upload_tiff(client: FlyPix, tenant_id: UUID, project_id: UUID) -> UUID:
     return result.file_id
 
 
-def wait_until_ready(client: FlyPix, file_id: UUID) -> None:
+def wait_until_ready(client: FlyPix, file_id: str) -> None:
     """Poll until the file is READY and its raster has been PROCESSED.
 
     After an upload the file is processed into a raster asynchronously. Before
@@ -125,7 +125,7 @@ def wait_until_ready(client: FlyPix, file_id: UUID) -> None:
     sys.exit("Timed out waiting for the raster to be PROCESSED.")
 
 
-def wait_for_inference(client: FlyPix, inference_id: UUID) -> None:
+def wait_for_inference(client: FlyPix, inference_id: str) -> None:
     """Poll the inference until it FINISHED or FAILED."""
     print("Waiting for inference to finish...")
     deadline = time.monotonic() + POLL_TIMEOUT
@@ -140,7 +140,7 @@ def wait_for_inference(client: FlyPix, inference_id: UUID) -> None:
     sys.exit("Timed out waiting for the inference to finish.")
 
 
-def fetch_features(client: FlyPix, file_id: UUID) -> None:
+def fetch_features(client: FlyPix, file_id: str) -> None:
     """Fetch and summarise the detected features (vectors) for the file.
 
     Inference produces one or more vector layers on the file. Each layer holds

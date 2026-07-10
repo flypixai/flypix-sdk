@@ -6,7 +6,6 @@ from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import List, Mapping, Optional
-from uuid import UUID
 
 
 class Projects(BaseSDK):
@@ -15,7 +14,7 @@ class Projects(BaseSDK):
     def list_for_tenant(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -103,7 +102,7 @@ class Projects(BaseSDK):
     async def list_for_tenant_async(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -191,7 +190,7 @@ class Projects(BaseSDK):
     def delete(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -281,7 +280,7 @@ class Projects(BaseSDK):
     async def delete_async(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -371,7 +370,7 @@ class Projects(BaseSDK):
     def create(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         name: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -465,7 +464,7 @@ class Projects(BaseSDK):
     async def create_async(
         self,
         *,
-        tenant_id: UUID,
+        tenant_id: str,
         name: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,

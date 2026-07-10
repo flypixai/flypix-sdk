@@ -6,7 +6,6 @@ from flypix._hooks import HookContext
 from flypix.types import Nullable, OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
 from typing import List, Mapping, Optional
-from uuid import UUID
 
 
 class Folders(BaseSDK):
@@ -15,7 +14,7 @@ class Folders(BaseSDK):
     def list_for_folder(
         self,
         *,
-        folder_id: UUID,
+        folder_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -105,7 +104,7 @@ class Folders(BaseSDK):
     async def list_for_folder_async(
         self,
         *,
-        folder_id: UUID,
+        folder_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -195,7 +194,7 @@ class Folders(BaseSDK):
     def list_for_project(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -284,7 +283,7 @@ class Folders(BaseSDK):
     async def list_for_project_async(
         self,
         *,
-        project_id: UUID,
+        project_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -373,7 +372,7 @@ class Folders(BaseSDK):
     def delete(
         self,
         *,
-        folder_id: UUID,
+        folder_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -463,7 +462,7 @@ class Folders(BaseSDK):
     async def delete_async(
         self,
         *,
-        folder_id: UUID,
+        folder_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -553,9 +552,9 @@ class Folders(BaseSDK):
     def create(
         self,
         *,
-        tenant_id: UUID,
-        project_id: UUID,
-        parent_id: Nullable[UUID],
+        tenant_id: str,
+        project_id: str,
+        parent_id: Nullable[str],
         name: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -654,9 +653,9 @@ class Folders(BaseSDK):
     async def create_async(
         self,
         *,
-        tenant_id: UUID,
-        project_id: UUID,
-        parent_id: Nullable[UUID],
+        tenant_id: str,
+        project_id: str,
+        parent_id: Nullable[str],
         name: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,

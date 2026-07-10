@@ -3,14 +3,13 @@
 from __future__ import annotations
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class ApplyModelRequestTypedDict(TypedDict):
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
 
 
 class ApplyModelRequest(BaseModel):
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""

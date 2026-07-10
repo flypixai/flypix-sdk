@@ -4,14 +4,13 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class ProjectsListForTenantRequestTypedDict(TypedDict):
-    tenant_id: UUID
+    tenant_id: str
 
 
 class ProjectsListForTenantRequest(BaseModel):
     tenant_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

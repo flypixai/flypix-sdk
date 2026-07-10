@@ -321,14 +321,13 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 
 ```python
 from flypix import FlyPix
-from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.files.upload_v2(tenant_id=UUID("170b602d-192c-4e40-a031-f5892fa57f45"), project_id=UUID("55299aef-34b1-4aaa-a1aa-cbeca6dd058b"), filename="example.file", body=open("example.file", "rb"))
+    res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
 
     # Handle response
     print(res)

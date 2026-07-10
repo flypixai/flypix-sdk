@@ -6,12 +6,11 @@ from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SEN
 from pydantic import model_serializer
 from typing import Any, Dict
 from typing_extensions import NotRequired, TypedDict
-from uuid import UUID
 
 
 class ApplyModelResponseTypedDict(TypedDict):
     status: InferenceStatus
-    inference_id: UUID
+    inference_id: str
     r"""A string in UUID format"""
     data: NotRequired[Nullable[Dict[str, Any]]]
 
@@ -19,7 +18,7 @@ class ApplyModelResponseTypedDict(TypedDict):
 class ApplyModelResponse(BaseModel):
     status: InferenceStatus
 
-    inference_id: UUID
+    inference_id: str
     r"""A string in UUID format"""
 
     data: OptionalNullable[Dict[str, Any]] = UNSET

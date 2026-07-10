@@ -22,14 +22,13 @@ folder (it is not recursive)
 <!-- UsageSnippet language="python" operationID="folders_list_for_folder" method="get" path="/folders/for-folder/{folder_id}" -->
 ```python
 from flypix import FlyPix
-from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.folders.list_for_folder(folder_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
+    res = fly_pix.folders.list_for_folder(folder_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -40,7 +39,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `folder_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `folder_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -63,14 +62,13 @@ project root (it is not recursive)
 <!-- UsageSnippet language="python" operationID="folders_list_for_project" method="get" path="/folders/for-project/{project_id}" -->
 ```python
 from flypix import FlyPix
-from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.folders.list_for_project(project_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
+    res = fly_pix.folders.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -81,7 +79,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -105,14 +103,13 @@ This operation cannot be undone
 <!-- UsageSnippet language="python" operationID="folders_delete" method="delete" path="/folders/{folder_id}" -->
 ```python
 from flypix import FlyPix
-from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.folders.delete(folder_id=UUID("123e4567-e89b-12d3-a456-426614174000"))
+    res = fly_pix.folders.delete(folder_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -123,7 +120,7 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `folder_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `folder_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -146,14 +143,13 @@ in the project, or skip it to create it in the project root.
 <!-- UsageSnippet language="python" operationID="folders_create" method="post" path="/folders/" -->
 ```python
 from flypix import FlyPix
-from uuid import UUID
 
 
 with FlyPix(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 ) as fly_pix:
 
-    res = fly_pix.folders.create(tenant_id=UUID("123e4567-e89b-12d3-a456-426614174000"), project_id=UUID("123e4567-e89b-12d3-a456-426614174000"), parent_id=UUID("123e4567-e89b-12d3-a456-426614174000"), name="<value>")
+    res = fly_pix.folders.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", project_id="123e4567-e89b-12d3-a456-426614174000", parent_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
 
     # Handle response
     print(res)
@@ -164,9 +160,9 @@ with FlyPix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *UUID*                                                              | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
-| `project_id`                                                        | *UUID*                                                              | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
-| `parent_id`                                                         | *Nullable[UUID]*                                                    | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
+| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
+| `parent_id`                                                         | *Nullable[str]*                                                     | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
 | `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 

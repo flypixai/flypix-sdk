@@ -4,14 +4,13 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class FilesGetVisibleRasterRequestTypedDict(TypedDict):
-    file_id: UUID
+    file_id: str
 
 
 class FilesGetVisibleRasterRequest(BaseModel):
     file_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

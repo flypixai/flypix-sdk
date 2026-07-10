@@ -4,23 +4,22 @@ from __future__ import annotations
 from datetime import datetime
 from flypix.types import BaseModel
 from typing_extensions import TypedDict
-from uuid import UUID
 
 
 class ProjectResponseTypedDict(TypedDict):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
     name: str
     created_at: datetime
 
 
 class ProjectResponse(BaseModel):
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: UUID
+    project_id: str
     r"""A string in UUID format"""
 
     name: str

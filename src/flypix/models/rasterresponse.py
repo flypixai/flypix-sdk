@@ -7,33 +7,32 @@ from datetime import datetime
 from flypix.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
-from uuid import UUID
 
 
 class RasterResponseTypedDict(TypedDict):
-    raster_id: UUID
+    raster_id: str
     r"""A string in UUID format"""
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
-    project_id: Nullable[UUID]
-    file_id: UUID
+    project_id: Nullable[str]
+    file_id: str
     r"""A string in UUID format"""
     status: RasterStatus
     source: RasterSourceTypedDict
     created_at: datetime
-    cog_file_id: NotRequired[Nullable[UUID]]
+    cog_file_id: NotRequired[Nullable[str]]
 
 
 class RasterResponse(BaseModel):
-    raster_id: UUID
+    raster_id: str
     r"""A string in UUID format"""
 
-    tenant_id: UUID
+    tenant_id: str
     r"""A string in UUID format"""
 
-    project_id: Nullable[UUID]
+    project_id: Nullable[str]
 
-    file_id: UUID
+    file_id: str
     r"""A string in UUID format"""
 
     status: RasterStatus
@@ -42,7 +41,7 @@ class RasterResponse(BaseModel):
 
     created_at: datetime
 
-    cog_file_id: OptionalNullable[UUID] = UNSET
+    cog_file_id: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

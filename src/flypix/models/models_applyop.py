@@ -5,17 +5,16 @@ from .applymodelrequest import ApplyModelRequest, ApplyModelRequestTypedDict
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class ModelsApplyRequestTypedDict(TypedDict):
-    model_id: UUID
+    model_id: str
     body: ApplyModelRequestTypedDict
 
 
 class ModelsApplyRequest(BaseModel):
     model_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
 
     body: Annotated[

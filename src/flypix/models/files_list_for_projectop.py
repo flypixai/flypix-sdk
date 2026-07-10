@@ -4,14 +4,13 @@ from __future__ import annotations
 from flypix.types import BaseModel
 from flypix.utils import FieldMetadata, PathParamMetadata
 from typing_extensions import Annotated, TypedDict
-from uuid import UUID
 
 
 class FilesListForProjectRequestTypedDict(TypedDict):
-    project_id: UUID
+    project_id: str
 
 
 class FilesListForProjectRequest(BaseModel):
     project_id: Annotated[
-        UUID, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
