@@ -5,12 +5,12 @@ management:
   docVersion: 0.1.0
   speakeasyVersion: 1.789.2
   generationVersion: 2.916.4
-  releaseVersion: 0.3.2
-  configChecksum: 0d33f855ca5b8da431ce11d0bc1c0ea8
+  releaseVersion: 0.3.4
+  configChecksum: 7e8812c482f48f985dca3fa427488e5e
 persistentEdits:
-  generation_id: 3dbb02c4-3315-4923-a16b-e53d24e388ad
-  pristine_commit_hash: 59c8109b767c385e628b62ce9bbdabac731470ca
-  pristine_tree_hash: 410cf2e47abb6eaabea6f59ef1564051914caf97
+  generation_id: 64a2d7b0-6967-4e0d-8683-be222039a486
+  pristine_commit_hash: cc8dfe40266403af7407181b9c631c86dac11a05
+  pristine_tree_hash: c28e82597e7c7625a0166539604a8fe6b78ebbf7
 features:
   python:
     additionalDependencies: 1.1.0
@@ -533,8 +533,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:a7db496295cb13754cda7ccdfcf2033905153cfe
-    pristine_git_object: 01c8f3206365deb301c7737eec40bce018834474
+    last_write_checksum: sha1:65e529d981824607b74f82466e232fd335833266
+    pristine_git_object: 7963646098d977c2ff848b5e373e9da29e18a978
   scripts/publish.sh:
     id: fe273b08f514
     last_write_checksum: sha1:adc9b741c12ad1591ab4870eabe20f0d0a86cd1a
@@ -557,8 +557,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:9fc1dafd3eee586b2c79c6c0bbf27845bc7efad5
-    pristine_git_object: 92ae465da252598bf6f185f34b2246e1f979cd81
+    last_write_checksum: sha1:153bbe540b41d18660a80e2219a6c7d11bc46d0d
+    pristine_git_object: 67502fcf9e33e30cea23f6ef8e62c8e70b83cdc5
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
