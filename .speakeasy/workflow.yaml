@@ -13,6 +13,9 @@ targets:
     flypix-python:
         target: python
         source: flypix-api
+        publish:
+            pypi:
+                token: $pypi_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/flypix/public-api/flypix-api-python-code-samples
