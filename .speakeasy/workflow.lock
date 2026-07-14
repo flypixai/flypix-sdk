@@ -1,4 +1,4 @@
-speakeasyVersion: 1.789.2
+speakeasyVersion: 1.790.0
 sources:
     flypix-api:
         sourceNamespace: flypix-api
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:4d1c4517b3812151fb24c228f1722f441790e5027de0d39e059e22212ef9ef64
         sourceBlobDigest: sha256:ab3f17d02ab663ec4f421e72abe2ec0d2f0a38d13fdbfebe1285cba1beccf212
         codeSamplesNamespace: flypix-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:234b5c2722e19f2af43a71bf0228755462ccee36e44908bbab27140a1ab49974
+        codeSamplesRevisionDigest: sha256:1618e788377c97072e2d2b6dcca10da47466ff04312f613e53b316c89c55e64a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
