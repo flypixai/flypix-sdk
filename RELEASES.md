@@ -17,3 +17,13 @@ Based on:
 - [python v1.1.4] .
 ### Releases
 - [PyPI v1.1.4] https://pypi.org/project/flypix/1.1.4 - .
+
+## 2026-07-15 00:41:49
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.790.1 (2.918.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v1.1.5] .
+### Releases
+- [PyPI v1.1.5] https://pypi.org/project/flypix/1.1.5 - .
