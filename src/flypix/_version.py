@@ -3,10 +3,10 @@
 import importlib.metadata
 
 __title__: str = "flypix"
-__version__: str = "1.1.4"
+__version__: str = "1.1.5"
 __openapi_doc_version__: str = "0.1.0"
-__gen_version__: str = "2.917.0"
-__user_agent__: str = "speakeasy-sdk/python 1.1.4 2.917.0 0.1.0 flypix"
+__gen_version__: str = "2.918.1"
+__user_agent__: str = "speakeasy-sdk/python 1.1.5 2.918.1 0.1.0 flypix"
 
 try:
     if __package__ is not None:
