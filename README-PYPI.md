@@ -143,16 +143,20 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### Example
+### List tenants for the current user
 
 ```python
 # Synchronous Example
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
-with FlyPix() as fly_pix:
+with FlyPix(
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
+) as fly_pix:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = fly_pix.users.list_tenants()
 
     # Handle response
     print(res)
@@ -165,13 +169,17 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 async def main():
 
-    async with FlyPix() as fly_pix:
+    async with FlyPix(
+        security=models.Security(
+            api_key="<YOUR_API_KEY_HERE>",
+        ),
+    ) as fly_pix:
 
-        res = await fly_pix.auth.login_with_password_async(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+        res = await fly_pix.users.list_tenants_async()
 
         # Handle response
         print(res)
@@ -185,19 +193,22 @@ asyncio.run(main())
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name          | Type | Scheme      |
-| ------------- | ---- | ----------- |
-| `bearer_auth` | http | HTTP Bearer |
+| Name          | Type   | Scheme      |
+| ------------- | ------ | ----------- |
+| `api_key`     | apiKey | API key     |
+| `bearer_auth` | http   | HTTP Bearer |
 
-To authenticate with the API the `bearer_auth` parameter must be set when initializing the SDK client instance. For example:
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
@@ -316,11 +327,13 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 >
 
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
@@ -539,17 +552,25 @@ The `FlyPix` class implements the context manager protocol and registers a final
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 def main():
 
-    with FlyPix() as fly_pix:
+    with FlyPix(
+        security=models.Security(
+            api_key="<YOUR_API_KEY_HERE>",
+        ),
+    ) as fly_pix:
         # Rest of application here...
 
 
 # Or when using async:
 async def amain():
 
-    async with FlyPix() as fly_pix:
+    async with FlyPix(
+        security=models.Security(
+            api_key="<YOUR_API_KEY_HERE>",
+        ),
+    ) as fly_pix:
         # Rest of application here...
 ```
 <!-- End Resource Management [resource-management] -->

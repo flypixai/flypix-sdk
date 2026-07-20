@@ -19,11 +19,13 @@ Create a new empty session in a project ready to receive messages
 
 <!-- UsageSnippet language="python" operationID="geosense_create_session" method="post" path="/geosense/session/{project_id}/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.geosense.create_session(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -59,11 +61,13 @@ Note: Not fully supported right now.
 
 <!-- UsageSnippet language="python" operationID="geosense_create_artifact" method="post" path="/geosense/session/{session_id}/artifact/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.geosense.create_artifact(session_id="123e4567-e89b-12d3-a456-426614174000", artifact_data={
@@ -104,11 +108,13 @@ Get a session artifact
 
 <!-- UsageSnippet language="python" operationID="geosense_get_artifact" method="get" path="/geosense/{session_id}/artifact/{artifact_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.geosense.get_artifact(session_id="123e4567-e89b-12d3-a456-426614174000", artifact_id="123e4567-e89b-12d3-a456-426614174000")
@@ -145,11 +151,13 @@ Check the official docs to understand the GeoSense message specification
 
 <!-- UsageSnippet language="python" operationID="geosense_send_message" method="post" path="/geosense/{session_id}/message/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.geosense.send_message(session_id="123e4567-e89b-12d3-a456-426614174000", user_message="New String", vector_ids=[

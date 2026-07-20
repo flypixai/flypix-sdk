@@ -36,18 +36,17 @@ The interactive API docs (Swagger UI) are always available at:
 import os
 import sys
 import time
-from uuid import UUID
 
-from flypix import FlyPix
+from pylint.checkers.exceptions import ExceptionRaiseLeafVisitor
+
+from flypix import FlyPix, models
 
 # ---------------------------------------------------------------------------
 # CONFIGURATION  --  edit these values
 # ---------------------------------------------------------------------------
 
-# Your FlyPix account credentials. Only accounts created directly in the app
-# are supported (third-party logins such as Google / LinkedIn are not).
-USERNAME = os.getenv("USERNAME") or "your username"
-PASSWORD = os.getenv("PASSWORD") or "your password"
+# Your FlyPix account ApiKey
+API_KEY = os.getenv("API_KEY") or "your api key"
 TENANT_ID = os.getenv("TENANT_ID") or "your tenant id"
 TIFF_PATH = os.getenv("TIFF_PATH") or "your tiff path"
 
@@ -103,6 +102,10 @@ def wait_until_ready(client: FlyPix, file_id: str) -> None:
 
     print("Waiting for the file to be processed...")
     while time.monotonic() < deadline:
+        try:
+            client.files.get(file_id=file_id)
+        except Exception as e:
+            print(e)
         file_status = client.files.get(file_id=file_id).status
         print(f"  file status: {file_status}")
         if file_status == "READY":
@@ -177,15 +180,8 @@ def fetch_features(client: FlyPix, file_id: str) -> None:
 
 
 def main() -> None:
-    with FlyPix(server_url=BASE_URL) as client:
-        print("Logging in...")
-        login = client.auth.login_with_password(
-            username=USERNAME, password=PASSWORD
-        )
 
-        token = login.access_token
-
-    with FlyPix(bearer_auth=token, server_url=BASE_URL) as client:
+    with FlyPix(security=models.security.Security(api_key=API_KEY), server_url=BASE_URL) as client:
         print(f"Creating project '{PROJECT_NAME}'...")
         project = client.projects.create(tenant_id=TENANT_ID, name=PROJECT_NAME)
         print(f"  -> created project {project.project_id}")

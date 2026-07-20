@@ -16,11 +16,13 @@ Get current balance and list of transactions for the specified tenant.
 
 <!-- UsageSnippet language="python" operationID="payments_get_balance" method="get" path="/payments/balance/{tenant_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.payments.get_balance(tenant_id="123e4567-e89b-12d3-a456-426614174000")

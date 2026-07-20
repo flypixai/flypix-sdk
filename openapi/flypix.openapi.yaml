@@ -94,6 +94,15 @@ paths:
                 type: "array"
                 title: "Response Get Tenants For User Users Tenants For User  Get"
       x-speakeasy-name-override: list_tenants
+      # Make this the README's showcase operation. By default Speakeasy uses the
+      # first operation in the spec (auth.login_with_password) for the top-level
+      # Usage/Authentication/Retries/Errors/Server-Selection snippets, which is
+      # nonsensical: those sections init the client with an API key and then call
+      # login_with_password (a no-auth endpoint that *returns* a token). This op
+      # takes no params and requires auth, so it reads correctly with api_key.
+      x-speakeasy-usage-example:
+        title: List tenants for the current user
+        position: 1
   /projects/for-tenant/{tenant_id}:
     get:
       tags:
@@ -2795,8 +2804,11 @@ components:
       scheme: "bearer"
       bearerFormat: "JWT"
       description: "Paste your Bearer token here to use it with every request."
-security:
-  - BearerAuth: []
+    ApiKey:
+      type: "apiKey"
+      in: "header"
+      name: "ApiKey"
+      description: "Paste your API key here to use it with every request."
 servers:
   - url: https://api.flypix.ai
     description: FlyPix production API
@@ -2825,3 +2837,6 @@ tags:
     description: User account details and tenant membership.
   - name: Vectors
     description: Vector data — classes, features, and annotations.
+security:
+  - ApiKey: []
+  - BearerAuth: []

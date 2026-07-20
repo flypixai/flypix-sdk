@@ -18,11 +18,13 @@ List the inferences in the tenant
 
 <!-- UsageSnippet language="python" operationID="inferences_list_for_tenant" method="get" path="/inferences/for-tenant/{tenant_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.inferences.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
@@ -57,11 +59,13 @@ List the inferences in the project
 
 <!-- UsageSnippet language="python" operationID="inferences_list_for_project" method="get" path="/inferences/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.inferences.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -96,11 +100,13 @@ List the inferences for the file
 
 <!-- UsageSnippet language="python" operationID="inferences_list_for_file" method="get" path="/inferences/for-file/{file_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.inferences.list_for_file(file_id="123e4567-e89b-12d3-a456-426614174000")

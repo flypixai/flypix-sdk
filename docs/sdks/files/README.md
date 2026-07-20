@@ -27,11 +27,13 @@ project root (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="files_list_for_project" method="get" path="/files/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -68,11 +70,13 @@ folder (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="files_list_for_folder" method="get" path="/files/for-folder/{folder_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.list_for_folder(folder_id="123e4567-e89b-12d3-a456-426614174000")
@@ -107,11 +111,13 @@ Get file details. To download the file, use the download endpoint
 
 <!-- UsageSnippet language="python" operationID="files_get" method="get" path="/files/{file_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.get(file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -146,11 +152,13 @@ Delete a file. This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="files_delete" method="delete" path="/files/{file_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.delete(file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -188,11 +196,13 @@ Note that a file may not have a visible raster because it hasn't been processed 
 
 <!-- UsageSnippet language="python" operationID="files_get_visible_raster" method="get" path="/files/{file_id}/visible" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.get_visible_raster(file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -227,11 +237,13 @@ Get file download link. The link will be valid for a limited amount of time.
 
 <!-- UsageSnippet language="python" operationID="files_get_download_link" method="get" path="/files/{file_id}/download" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.get_download_link(file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -266,11 +278,13 @@ Get file details for many files
 
 <!-- UsageSnippet language="python" operationID="files_get_by_ids" method="post" path="/files/by-ids" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.get_by_ids(request=[
@@ -308,11 +322,13 @@ project root (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="files_get_storage_usage" method="get" path="/files/usage/{tenant_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.get_storage_usage(tenant_id="123e4567-e89b-12d3-a456-426614174000")
@@ -365,11 +381,13 @@ curl -X 'POST' '(...)/files/upload  \
 
 <!-- UsageSnippet language="python" operationID="files_upload" method="post" path="/files/upload" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.upload(tenant_id="95d06de1-31d8-4dc6-a134-b591889f9c67", project_id="334fb3cb-5f26-4e97-a2b7-e97b6de6064d", filename="example.file", body=open("example.file", "rb"))
@@ -422,11 +440,13 @@ curl -X 'POST' '(...)/v2/files/upload  \
 
 <!-- UsageSnippet language="python" operationID="files_upload_v2" method="post" path="/v2/files/upload" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
@@ -479,11 +499,13 @@ curl -X 'POST' '(...)/v2/files/upload-from-url  \
 
 <!-- UsageSnippet language="python" operationID="files_upload_from_url" method="post" path="/v2/files/upload-from-url" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.files.upload_from_url(file_url="dad272e1-d759-4787-8080-c3c21fce440f", tenant_id="d614acda-2db6-4aed-a3d4-98b2a079ff2c", project_id="fa7c54bc-4f6d-40d6-8993-8da199e7586e", filename="example.file")

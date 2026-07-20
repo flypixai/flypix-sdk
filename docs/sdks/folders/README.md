@@ -21,11 +21,13 @@ folder (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="folders_list_for_folder" method="get" path="/folders/for-folder/{folder_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.folders.list_for_folder(folder_id="123e4567-e89b-12d3-a456-426614174000")
@@ -61,11 +63,13 @@ project root (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="folders_list_for_project" method="get" path="/folders/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.folders.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -102,11 +106,13 @@ This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="folders_delete" method="delete" path="/folders/{folder_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.folders.delete(folder_id="123e4567-e89b-12d3-a456-426614174000")
@@ -142,11 +148,13 @@ in the project, or skip it to create it in the project root.
 
 <!-- UsageSnippet language="python" operationID="folders_create" method="post" path="/folders/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.folders.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", project_id="123e4567-e89b-12d3-a456-426614174000", parent_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
