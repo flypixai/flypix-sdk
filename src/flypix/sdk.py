@@ -11,7 +11,7 @@ from flypix.types import OptionalNullable, UNSET
 import httpx
 import importlib
 import sys
-from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
+from typing import Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
@@ -96,7 +96,9 @@ class FlyPix(BaseSDK):
 
     def __init__(
         self,
-        bearer_auth: Optional[Union[Optional[str], Callable[[], Optional[str]]]] = None,
+        security: Optional[
+            Union[models_.Security, Callable[[], models_.Security]]
+        ] = None,
         server_idx: Optional[int] = None,
         url_params: Optional[Dict[str, str]] = None,
         server_url: Optional[str] = None,
@@ -108,7 +110,7 @@ class FlyPix(BaseSDK):
     ) -> None:
         r"""Instantiates the SDK configuring it with the provided parameters.
 
-        :param bearer_auth: The bearer_auth required for authentication
+        :param security: The security details required for authentication
         :param server_idx: The index of the server to use for all methods
         :param server_url: The server URL to use for all methods
         :param url_params: Parameters to optionally template the server URL with
@@ -137,15 +139,6 @@ class FlyPix(BaseSDK):
         assert issubclass(
             type(async_client), AsyncHttpClient
         ), "The provided async_client must implement the AsyncHttpClient protocol."
-
-        security: Any = None
-        if bearer_auth is None:
-            security = None
-        elif callable(bearer_auth):
-            # pylint: disable=unnecessary-lambda-assignment
-            security = lambda: models_.Security(bearer_auth=bearer_auth())
-        else:
-            security = models_.Security(bearer_auth=bearer_auth)
 
         if server_url is not None:
             if url_params is not None:

@@ -22,11 +22,13 @@ List the models available in the tenant
 
 <!-- UsageSnippet language="python" operationID="models_list_for_tenant" method="get" path="/models/for-tenant/{tenant_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
@@ -61,11 +63,13 @@ List the models available to be applied in any file in the project
 
 <!-- UsageSnippet language="python" operationID="models_list_for_project" method="get" path="/models/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -100,11 +104,13 @@ List official models, available to be applied on any file in any project
 
 <!-- UsageSnippet language="python" operationID="models_list_official" method="get" path="/models/official" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.list_official()
@@ -140,11 +146,13 @@ vector features
 
 <!-- UsageSnippet language="python" operationID="models_apply" method="post" path="/models/{model_id}/apply" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.apply(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -180,11 +188,13 @@ Calculate the cost in credits to apply a model.
 
 <!-- UsageSnippet language="python" operationID="models_estimate_application" method="post" path="/models/{model_id}/apply/estimate" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.estimate_application(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -220,11 +230,13 @@ Get the current status of an inference from applying a model
 
 <!-- UsageSnippet language="python" operationID="models_get_inference_status" method="get" path="/models/inference/{inference_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.get_inference_status(inference_id="123e4567-e89b-12d3-a456-426614174000")
@@ -259,11 +271,13 @@ Delete an already trained model. This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="models_delete" method="delete" path="/models/{model_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.models.delete(model_id="123e4567-e89b-12d3-a456-426614174000")

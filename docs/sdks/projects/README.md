@@ -18,11 +18,13 @@ Get projects in a tenant
 
 <!-- UsageSnippet language="python" operationID="projects_list_for_tenant" method="get" path="/projects/for-tenant/{tenant_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.projects.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
@@ -59,11 +61,13 @@ This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="projects_delete" method="delete" path="/projects/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.projects.delete(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -98,11 +102,13 @@ Create a new empty project
 
 <!-- UsageSnippet language="python" operationID="projects_create" method="post" path="/projects/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.projects.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")

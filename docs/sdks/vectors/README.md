@@ -26,11 +26,13 @@ This won't return the vector features but rather just the names and identifier o
 
 <!-- UsageSnippet language="python" operationID="vectors_list_for_file" method="get" path="/vectors/for-file/{file_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.list_for_file(file_id="123e4567-e89b-12d3-a456-426614174000")
@@ -65,11 +67,13 @@ Get the classes for the specified project
 
 <!-- UsageSnippet language="python" operationID="vectors_list_classes_for_project" method="get" path="/vectors/classes/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.list_classes_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
@@ -104,11 +108,13 @@ Create Class in a project. Classes are shared among all vectors in a project
 
 <!-- UsageSnippet language="python" operationID="vectors_create_class" method="post" path="/vectors/{project_id}/class" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.create_class(project_id="123e4567-e89b-12d3-a456-426614174000", name="New String", color="FF0000")
@@ -145,11 +151,13 @@ Get the vector features (annotations) of a vector
 
 <!-- UsageSnippet language="python" operationID="vectors_get_features" method="get" path="/vectors/{vector_id}/features" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.get_features(vector_id="123e4567-e89b-12d3-a456-426614174000")
@@ -184,11 +192,13 @@ Create a new empty vector layer in a file ready to receive annotations
 
 <!-- UsageSnippet language="python" operationID="vectors_create" method="post" path="/vectors/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.create(file_id="123e4567-e89b-12d3-a456-426614174000", name="New String")
@@ -224,11 +234,13 @@ Delete a vector and its annotations
 
 <!-- UsageSnippet language="python" operationID="vectors_delete" method="delete" path="/vectors/{vector_id}/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.delete(vector_id="123e4567-e89b-12d3-a456-426614174000")
@@ -263,11 +275,13 @@ Create annotations in a vector
 
 <!-- UsageSnippet language="python" operationID="vectors_create_annotations" method="post" path="/vectors/{vector_id}/annotations" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.create_annotations(vector_id="123e4567-e89b-12d3-a456-426614174000", class_id="car-124b", payload=[])
@@ -306,11 +320,13 @@ The geojson MUST have either `class_id` or `class_name` property for every geome
 
 <!-- UsageSnippet language="python" operationID="vectors_upload_geojson" method="post" path="/vectors/{vector_id}/upload-geojson/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.upload_geojson(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
@@ -349,11 +365,13 @@ The GPKG MUST have a `geometry` column
 
 <!-- UsageSnippet language="python" operationID="vectors_upload_gpkg" method="post" path="/vectors/{vector_id}/upload-gpkg/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.upload_gpkg(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
@@ -392,11 +410,13 @@ The SHP MUST have either `class_id` or `class_name` property for every geometry.
 
 <!-- UsageSnippet language="python" operationID="vectors_upload_shapefile" method="post" path="/vectors/{vector_id}/upload-shp/" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.vectors.upload_shapefile(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")

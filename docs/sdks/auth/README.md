@@ -56,11 +56,13 @@ Get a new short lived authentication token using the refresh token
 
 <!-- UsageSnippet language="python" operationID="auth_refresh_token" method="post" path="/auth/refresh" -->
 ```python
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
 with FlyPix(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    security=models.Security(
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    ),
 ) as fly_pix:
 
     res = fly_pix.auth.refresh_token(refresh_token="<value>")
