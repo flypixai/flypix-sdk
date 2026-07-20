@@ -22,16 +22,16 @@ List the models available in the tenant
 
 <!-- UsageSnippet language="python" operationID="models_list_for_tenant" method="get" path="/models/for-tenant/{tenant_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -63,16 +63,16 @@ List the models available to be applied in any file in the project
 
 <!-- UsageSnippet language="python" operationID="models_list_for_project" method="get" path="/models/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -104,16 +104,16 @@ List official models, available to be applied on any file in any project
 
 <!-- UsageSnippet language="python" operationID="models_list_official" method="get" path="/models/official" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.list_official()
+    res = f_client.models.list_official()
 
     # Handle response
     print(res)
@@ -146,16 +146,16 @@ vector features
 
 <!-- UsageSnippet language="python" operationID="models_apply" method="post" path="/models/{model_id}/apply" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.apply(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.apply(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -188,16 +188,16 @@ Calculate the cost in credits to apply a model.
 
 <!-- UsageSnippet language="python" operationID="models_estimate_application" method="post" path="/models/{model_id}/apply/estimate" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.estimate_application(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.estimate_application(model_id="123e4567-e89b-12d3-a456-426614174000", file_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -230,16 +230,16 @@ Get the current status of an inference from applying a model
 
 <!-- UsageSnippet language="python" operationID="models_get_inference_status" method="get" path="/models/inference/{inference_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.get_inference_status(inference_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.get_inference_status(inference_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -271,16 +271,16 @@ Delete an already trained model. This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="models_delete" method="delete" path="/models/{model_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.models.delete(model_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.models.delete(model_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)

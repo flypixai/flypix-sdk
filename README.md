@@ -117,9 +117,9 @@ It's also possible to write a standalone Python script without needing to set up
 # ]
 # ///
 
-from flypix import FlyPix
+from flypix import Flypix
 
-sdk = FlyPix(
+sdk = Flypix(
   # SDK arguments
 )
 
@@ -147,16 +147,16 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.users.list_tenants()
+    res = f_client.users.list_tenants()
 
     # Handle response
     print(res)
@@ -169,17 +169,17 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 async def main():
 
-    async with FlyPix(
+    async with Flypix(
         security=models.Security(
             api_key="<YOUR_API_KEY_HERE>",
         ),
-    ) as fly_pix:
+    ) as f_client:
 
-        res = await fly_pix.users.list_tenants_async()
+        res = await f_client.users.list_tenants_async()
 
         # Handle response
         print(res)
@@ -202,16 +202,16 @@ This SDK supports the following security schemes globally:
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
     # Handle response
     print(res)
@@ -327,16 +327,16 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 >
 
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
+    res = f_client.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
 
     # Handle response
     print(res)
@@ -351,13 +351,13 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 from flypix.utils import BackoffStrategy, RetryConfig
 
 
-with FlyPix() as fly_pix:
+with Flypix() as f_client:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr",
+    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr",
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -367,15 +367,15 @@ with FlyPix() as fly_pix:
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 from flypix.utils import BackoffStrategy, RetryConfig
 
 
-with FlyPix(
+with Flypix(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
     # Handle response
     print(res)
@@ -398,14 +398,14 @@ with FlyPix(
 
 ### Example
 ```python
-from flypix import FlyPix, errors
+from flypix import Flypix, errors
 
 
-with FlyPix() as fly_pix:
+with Flypix() as f_client:
     res = None
     try:
 
-        res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+        res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
         # Handle response
         print(res)
@@ -448,14 +448,14 @@ with FlyPix() as fly_pix:
 
 The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 
 
-with FlyPix(
+with Flypix(
     server_url="https://api.flypix.ai",
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
     # Handle response
     print(res)
@@ -472,16 +472,16 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
-s = FlyPix(client=http_client)
+s = Flypix(client=http_client)
 ```
 
 or you could wrap the client with your own custom logic:
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 from flypix.httpclient import AsyncHttpClient
 import httpx
 
@@ -540,37 +540,37 @@ class CustomClient(AsyncHttpClient):
             extensions=extensions,
         )
 
-s = FlyPix(async_client=CustomClient(httpx.AsyncClient()))
+s = Flypix(async_client=CustomClient(httpx.AsyncClient()))
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->
 ## Resource Management
 
-The `FlyPix` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+The `Flypix` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
 
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 def main():
 
-    with FlyPix(
+    with Flypix(
         security=models.Security(
             api_key="<YOUR_API_KEY_HERE>",
         ),
-    ) as fly_pix:
+    ) as f_client:
         # Rest of application here...
 
 
 # Or when using async:
 async def amain():
 
-    async with FlyPix(
+    async with Flypix(
         security=models.Security(
             api_key="<YOUR_API_KEY_HERE>",
         ),
-    ) as fly_pix:
+    ) as f_client:
         # Rest of application here...
 ```
 <!-- End Resource Management [resource-management] -->
@@ -582,11 +582,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = FlyPix(debug_logger=logging.getLogger("flypix"))
+s = Flypix(debug_logger=logging.getLogger("flypix"))
 ```
 <!-- End Debugging [debug] -->
 

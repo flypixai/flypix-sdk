@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: FlyPix
+  sdkClassName: Flypix
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -32,7 +32,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/flypix-ai/flypix-sdk.git
 python:
-  version: 2.1.0
+  version: 3.0.0
   additionalDependencies:
     dev: {}
     main: {}

@@ -29,7 +29,7 @@ if TYPE_CHECKING:
     from flypix.vectors import Vectors
 
 
-class FlyPix(BaseSDK):
+class Flypix(BaseSDK):
     r"""Public API:
     Public OpenAPI Schema
 

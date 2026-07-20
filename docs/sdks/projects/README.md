@@ -18,16 +18,16 @@ Get projects in a tenant
 
 <!-- UsageSnippet language="python" operationID="projects_list_for_tenant" method="get" path="/projects/for-tenant/{tenant_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.projects.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.projects.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -61,16 +61,16 @@ This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="projects_delete" method="delete" path="/projects/{project_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.projects.delete(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.projects.delete(project_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -102,16 +102,16 @@ Create a new empty project
 
 <!-- UsageSnippet language="python" operationID="projects_create" method="post" path="/projects/" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.projects.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
+    res = f_client.projects.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
 
     # Handle response
     print(res)

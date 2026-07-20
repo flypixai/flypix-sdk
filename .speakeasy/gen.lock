@@ -5,15 +5,15 @@ management:
   docVersion: 0.1.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
-  releaseVersion: 2.1.0
-  configChecksum: 92a27ee41b6d1049c6437c6c53367a53
+  releaseVersion: 3.0.0
+  configChecksum: 6585d1dc85c3f8266f90c17da6afcf8d
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 2a75f2aa-145e-4ec7-b6ee-2daedc7b399e
-  pristine_commit_hash: a5d055e4939ce6e133faf403f027f39b4e54e9fd
-  pristine_tree_hash: 97893ce950679cc82402c4f4b0442b02ecccb593
+  generation_id: fd4b5260-ceae-4f2e-89bc-129fba160f69
+  pristine_commit_hash: 2fd0192ecd8fa9d022c7abb585cd0d179b9aa905
+  pristine_tree_hash: c0cfa58ab5a6448ec71ce21424de6b89db5606dd
 features:
   python:
     additionalDependencies: 1.1.0
@@ -48,8 +48,8 @@ trackedFiles:
     pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:81fd4c7caad7b3840bcfbdc0859e1a41a6333f49
-    pristine_git_object: 51a4d35dca0fe5a80cf4a8caa01bfb1dddd25ddf
+    last_write_checksum: sha1:f27ef7594a4ea52341fd2f1a12e25f4f735b4082
+    pristine_git_object: 1c69d3048fd06ef0150a680aff2ff3a5b30b4e74
   docs/models/annotationgeometrypayload.md:
     id: 49014a5c4003
     last_write_checksum: sha1:e22560affc11ea5db90bf0eaafa0111ccb26b23b
@@ -480,52 +480,52 @@ trackedFiles:
     pristine_git_object: 5a00596b2fadb15911dd81b52564121edb3c35a3
   docs/sdks/auth/README.md:
     id: e9724f17945f
-    last_write_checksum: sha1:fcf5b5df90fe5da3a39f5313fd45394052b016ae
-    pristine_git_object: e27f1cfcf6839e9410e0a83688d7e8971143e3ef
+    last_write_checksum: sha1:741ddf3f612e242d56b63dfe43b294c1f94eb7c8
+    pristine_git_object: a7983be1f747c0aec2b9b8f315ace9088a83436b
   docs/sdks/files/README.md:
     id: e576d7a117f0
-    last_write_checksum: sha1:a4c4ac3cd8d9f01b2b55e2793ec9597f32e6ff5f
-    pristine_git_object: 105c01e83c8270bca6c110b27742475466cd1bf0
+    last_write_checksum: sha1:164f50a519ed71103fffd4ced4b26e1b68e768a4
+    pristine_git_object: d3021791a5c203665781b1ec51206ecc02fc9074
   docs/sdks/folders/README.md:
     id: ffb38e069dec
-    last_write_checksum: sha1:d96a75d23e9283110d37f6e3d5a4a3f1572392d2
-    pristine_git_object: 5e3254e4df1b0b8b24cca1b24945874f01571b48
+    last_write_checksum: sha1:c39f9ec6bb82890197b9e1a0ab4472560f25960e
+    pristine_git_object: 1b59d143af2f47655a076e6f6b7e8e41a8c70485
   docs/sdks/geosense/README.md:
     id: a7a116550e26
-    last_write_checksum: sha1:1defc1c1359ecb6d3092fdaece6ac981c716d58b
-    pristine_git_object: 2fa0e830644343f6d922bbd81bff488b9b7689c1
+    last_write_checksum: sha1:59104ceeca4bfd728f059406f0b967803ff5e7db
+    pristine_git_object: 3ebf744df28fa7ef4df614170f7b7961891c542a
   docs/sdks/inferences/README.md:
     id: 379277ac7398
-    last_write_checksum: sha1:dab2c2f0b97e8a82a69c101ce39eca161f9dc759
-    pristine_git_object: 512afc4ac7370bb8d131999c24efb7970eef3bef
+    last_write_checksum: sha1:1e152f7716b4aa6bed13b3130cad0a26dedcf0d0
+    pristine_git_object: 2c9a6f36c8f6a6c98fe955c8b0b8e33bf2a2a2b1
   docs/sdks/models/README.md:
     id: b35bdf4bc7ed
-    last_write_checksum: sha1:d577ed26f13a4da6ced175c9606ed3bb90d2884c
-    pristine_git_object: 8976a901cd204cd372cb8ecfb295cad25da9e49c
+    last_write_checksum: sha1:d4e6c150b704cfafadc6b9daffbdd4e26ec99ff0
+    pristine_git_object: d00ab62d26ab0e1ffde658bedc4f9994e3149f62
   docs/sdks/payments/README.md:
     id: 0ddb15ec8c20
-    last_write_checksum: sha1:d993f80a5d42b55cf3ebb5ce18e8b3832ff3223e
-    pristine_git_object: df703572be9a78d80840f71f6fad80b885f7d6c9
+    last_write_checksum: sha1:ac1f3e5e8a767ccc989a0a6a52ea8bf1aaac9f8a
+    pristine_git_object: 23bc10c5052d37110277fca23c75fe8397ff1369
   docs/sdks/projects/README.md:
     id: 1c5f71754e17
-    last_write_checksum: sha1:e25cdcb4e8184ac0f609c476e0e8ebdf8a2156d5
-    pristine_git_object: 9986c69e5fa2dea18c456ee4eb8344063c4f5564
+    last_write_checksum: sha1:b22d18d349cbdb5a8bd65fdfddd423f798f0117a
+    pristine_git_object: e2be0d2a61b3f79e6b18627e233acb01baca237b
   docs/sdks/rasters/README.md:
     id: b881b56972f4
-    last_write_checksum: sha1:9591725c4b2e0a3a6956262406a341e8a96dea38
-    pristine_git_object: 411a4f5734db2606fa1f4d579721fa3b7ea53a7b
+    last_write_checksum: sha1:1a9252fb736d6375a859b9c78f5599ccf02159bd
+    pristine_git_object: 302ea89b631f499ffb20d6d0c6fb25ae85705867
   docs/sdks/regions/README.md:
     id: bad944ca9ff1
-    last_write_checksum: sha1:a61f25259b034cefa4ad636d782ce1e653ef3b0c
-    pristine_git_object: 3d3d01156602afc203dfd03790058bd6713c7e38
+    last_write_checksum: sha1:9aa32b73122f9051007d24b038134357132da484
+    pristine_git_object: 30b860f2a08e33d4b4d67ccb576dd6083e061f3c
   docs/sdks/users/README.md:
     id: 5d80027045fe
-    last_write_checksum: sha1:aa7e740d9fd8ac308bc60d78b6212c8e7f876e7e
-    pristine_git_object: 4ee2fbbe6e55c96d9bc11923239d08bec7821ee3
+    last_write_checksum: sha1:46bd6c97331b0c4711e3d6b20dc568edf50938ae
+    pristine_git_object: b71407e4b4a1d69ef0780580818579fa7cd1fb0a
   docs/sdks/vectors/README.md:
     id: 45f7eb916656
-    last_write_checksum: sha1:21c4b6309b884c99a24ba22a6149263ecd435999
-    pristine_git_object: 27419bc1dd3eda083dc71fedf561068191185833
+    last_write_checksum: sha1:319ea999ad9adcecdcbfd457a554292fea331070
+    pristine_git_object: 8be3d368033cfed7ccb1fc899c7b0eb03a1189bc
   py.typed:
     id: 258c3ed47ae4
     last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
@@ -536,8 +536,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:cf6887359a52940914d465399ab4361e7c0840b7
-    pristine_git_object: 2c86ca0ed2ec472718bd9319117efcf35f96cee9
+    last_write_checksum: sha1:5130402e0cc92edc07517c6fb01e3a8a9f674b6c
+    pristine_git_object: 6410cbe849663530dcafb77eae750afa99de9241
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -564,8 +564,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:b3bcf4741736a8e930cac4f865f09b9b4b618c74
-    pristine_git_object: b3fef213b7b32daa6743a0cded291bb3c0117fd9
+    last_write_checksum: sha1:3e07e390be100169a9835c37b85a3e26b214e47a
+    pristine_git_object: 5da554bb5875a8f21029773cd24e652cea536f25
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
@@ -1064,8 +1064,8 @@ trackedFiles:
     pristine_git_object: 25b6c1ed337305f7344d28f18bdfeaca6299bb6c
   src/flypix/sdk.py:
     id: 38af35d27679
-    last_write_checksum: sha1:059b635605616ca314561578068b5109a6b5f3a9
-    pristine_git_object: 2372d796bedc9bc8725b971ec2b0147ce873070b
+    last_write_checksum: sha1:e4a7064ca3e60f60c977adec226a8e5f083c3dff
+    pristine_git_object: 187ebb2e7b97580901f548bc4d7f4c132d5ce3ce
   src/flypix/sdkconfiguration.py:
     id: 53dd81dcbf7d
     last_write_checksum: sha1:457048a19a26388a35507820409752a9f157f2a2
