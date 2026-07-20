@@ -24,7 +24,7 @@ from flypix import FlyPix, models
 
 with FlyPix(
     security=models.Security(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+        api_key="<YOUR_API_KEY_HERE>",
     ),
 ) as fly_pix:
 
@@ -66,7 +66,7 @@ from flypix import FlyPix, models
 
 with FlyPix(
     security=models.Security(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+        api_key="<YOUR_API_KEY_HERE>",
     ),
 ) as fly_pix:
 
@@ -113,7 +113,7 @@ from flypix import FlyPix, models
 
 with FlyPix(
     security=models.Security(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+        api_key="<YOUR_API_KEY_HERE>",
     ),
 ) as fly_pix:
 
@@ -156,7 +156,7 @@ from flypix import FlyPix, models
 
 with FlyPix(
     security=models.Security(
-        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+        api_key="<YOUR_API_KEY_HERE>",
     ),
 ) as fly_pix:
 

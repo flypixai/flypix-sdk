@@ -1,12 +1,18 @@
 <!-- Start SDK Example Usage [usage] -->
+### List tenants for the current user
+
 ```python
 # Synchronous Example
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 
-with FlyPix() as fly_pix:
+with FlyPix(
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
+) as fly_pix:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = fly_pix.users.list_tenants()
 
     # Handle response
     print(res)
@@ -19,13 +25,17 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from flypix import FlyPix
+from flypix import FlyPix, models
 
 async def main():
 
-    async with FlyPix() as fly_pix:
+    async with FlyPix(
+        security=models.Security(
+            api_key="<YOUR_API_KEY_HERE>",
+        ),
+    ) as fly_pix:
 
-        res = await fly_pix.auth.login_with_password_async(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+        res = await fly_pix.users.list_tenants_async()
 
         # Handle response
         print(res)

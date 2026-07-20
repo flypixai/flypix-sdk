@@ -38,6 +38,18 @@ actions:
           description: User account details and tenant membership.
         - name: Vectors
           description: Vector data — classes, features, and annotations.
+  # Prefer API key auth in generated examples, README, and usage snippets.
+  # Speakeasy uses the FIRST entry in the global `security` list to render those
+  # snippets; upstream lists BearerAuth first. Reorder so ApiKey wins. (Overlay
+  # `update` appends to arrays rather than replacing, so remove the list first,
+  # then re-add it in the desired order.)
+  - target: $.security
+    remove: true
+  - target: $
+    update:
+      security:
+        - ApiKey: []
+        - BearerAuth: []
   - target: $.paths["/auth/login/password"].post
     description: login_with_password_auth_login_password_post -> auth.login_with_password
     update:
@@ -254,6 +266,15 @@ actions:
     update:
       operationId: users_list_tenants
       x-speakeasy-name-override: list_tenants
+      # Make this the README's showcase operation. By default Speakeasy uses the
+      # first operation in the spec (auth.login_with_password) for the top-level
+      # Usage/Authentication/Retries/Errors/Server-Selection snippets, which is
+      # nonsensical: those sections init the client with an API key and then call
+      # login_with_password (a no-auth endpoint that *returns* a token). This op
+      # takes no params and requires auth, so it reads correctly with api_key.
+      x-speakeasy-usage-example:
+        title: List tenants for the current user
+        position: 1
   - target: $.paths["/v2/files/upload"].post
     description: upload_file_v2_files_upload_post -> files.upload_v2
     update:
