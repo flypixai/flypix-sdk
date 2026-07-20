@@ -37,9 +37,7 @@ import os
 import sys
 import time
 
-from pylint.checkers.exceptions import ExceptionRaiseLeafVisitor
-
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 # ---------------------------------------------------------------------------
 # CONFIGURATION  --  edit these values
@@ -68,7 +66,8 @@ POLL_TIMEOUT = 900
 # How long to wait between polls (seconds).
 POLL_INTERVAL = 10
 
-def upload_tiff(client: FlyPix, tenant_id: str, project_id: str) -> str:
+
+def upload_tiff(client: Flypix, tenant_id: str, project_id: str) -> str:
     """Upload the local TIFF file to the project root and return the file id.
 
     The file body is streamed as a raw binary body (application/octet-stream)
@@ -90,7 +89,7 @@ def upload_tiff(client: FlyPix, tenant_id: str, project_id: str) -> str:
     return result.file_id
 
 
-def wait_until_ready(client: FlyPix, file_id: str) -> None:
+def wait_until_ready(client: Flypix, file_id: str) -> None:
     """Poll until the file is READY and its raster has been PROCESSED.
 
     After an upload the file is processed into a raster asynchronously. Before
@@ -128,7 +127,7 @@ def wait_until_ready(client: FlyPix, file_id: str) -> None:
     sys.exit("Timed out waiting for the raster to be PROCESSED.")
 
 
-def wait_for_inference(client: FlyPix, inference_id: str) -> None:
+def wait_for_inference(client: Flypix, inference_id: str) -> None:
     """Poll the inference until it FINISHED or FAILED."""
     print("Waiting for inference to finish...")
     deadline = time.monotonic() + POLL_TIMEOUT
@@ -143,7 +142,7 @@ def wait_for_inference(client: FlyPix, inference_id: str) -> None:
     sys.exit("Timed out waiting for the inference to finish.")
 
 
-def fetch_features(client: FlyPix, file_id: str) -> None:
+def fetch_features(client: Flypix, file_id: str) -> None:
     """Fetch and summarise the detected features (vectors) for the file.
 
     Inference produces one or more vector layers on the file. Each layer holds
@@ -180,8 +179,7 @@ def fetch_features(client: FlyPix, file_id: str) -> None:
 
 
 def main() -> None:
-
-    with FlyPix(security=models.security.Security(api_key=API_KEY), server_url=BASE_URL) as client:
+    with Flypix(security=models.security.Security(api_key=API_KEY), server_url=BASE_URL) as client:
         print(f"Creating project '{PROJECT_NAME}'...")
         project = client.projects.create(tenant_id=TENANT_ID, name=PROJECT_NAME)
         print(f"  -> created project {project.project_id}")
