@@ -1,9 +1,15 @@
+<p style="text-align: center">
+  <a href="https://flypix.ai">
+    <img src="https://flypix.ai/wp-content/uploads/2026/06/flypixLogoNew.webp" alt="FlyPix" width="240">
+  </a>
+</p>
+
 # flypix
 
 The official Python SDK for the [FlyPix](https://flypix.ai) API — programmatic
 access to projects, files, models, inferences, vectors, and more.
 
-> **Status:** pre-release. The SDK is generated from the FlyPix OpenAPI spec with
+> **Status:** released. The SDK is generated from the FlyPix OpenAPI spec with
 > [Speakeasy](https://www.speakeasy.com). See [`SETUP.md`](./SETUP.md) for how it
 > is generated and maintained. Installation and usage are documented in the
 > generated sections below.
