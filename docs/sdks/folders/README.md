@@ -21,16 +21,16 @@ folder (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="folders_list_for_folder" method="get" path="/folders/for-folder/{folder_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.folders.list_for_folder(folder_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.folders.list_for_folder(folder_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -63,16 +63,16 @@ project root (it is not recursive)
 
 <!-- UsageSnippet language="python" operationID="folders_list_for_project" method="get" path="/folders/for-project/{project_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.folders.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.folders.list_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -106,16 +106,16 @@ This operation cannot be undone
 
 <!-- UsageSnippet language="python" operationID="folders_delete" method="delete" path="/folders/{folder_id}" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.folders.delete(folder_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.folders.delete(folder_id="123e4567-e89b-12d3-a456-426614174000")
 
     # Handle response
     print(res)
@@ -148,16 +148,16 @@ in the project, or skip it to create it in the project root.
 
 <!-- UsageSnippet language="python" operationID="folders_create" method="post" path="/folders/" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.folders.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", project_id="123e4567-e89b-12d3-a456-426614174000", parent_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
+    res = f_client.folders.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", project_id="123e4567-e89b-12d3-a456-426614174000", parent_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
 
     # Handle response
     print(res)

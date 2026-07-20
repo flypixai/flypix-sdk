@@ -18,12 +18,12 @@ Only accounts created directly in the app are supported, third party accounts (G
 
 <!-- UsageSnippet language="python" operationID="auth_login_with_password" method="post" path="/auth/login/password" -->
 ```python
-from flypix import FlyPix
+from flypix import Flypix
 
 
-with FlyPix() as fly_pix:
+with Flypix() as f_client:
 
-    res = fly_pix.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
 
     # Handle response
     print(res)
@@ -56,16 +56,16 @@ Get a new short lived authentication token using the refresh token
 
 <!-- UsageSnippet language="python" operationID="auth_refresh_token" method="post" path="/auth/refresh" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.auth.refresh_token(refresh_token="<value>")
+    res = f_client.auth.refresh_token(refresh_token="<value>")
 
     # Handle response
     print(res)

@@ -3,16 +3,16 @@
 
 ```python
 # Synchronous Example
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.users.list_tenants()
+    res = f_client.users.list_tenants()
 
     # Handle response
     print(res)
@@ -25,17 +25,17 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 async def main():
 
-    async with FlyPix(
+    async with Flypix(
         security=models.Security(
             api_key="<YOUR_API_KEY_HERE>",
         ),
-    ) as fly_pix:
+    ) as f_client:
 
-        res = await fly_pix.users.list_tenants_async()
+        res = await f_client.users.list_tenants_async()
 
         # Handle response
         print(res)

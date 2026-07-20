@@ -16,16 +16,16 @@ List the tenants available for the user
 
 <!-- UsageSnippet language="python" operationID="users_list_tenants" method="get" path="/users/tenants/for-user/" -->
 ```python
-from flypix import FlyPix, models
+from flypix import Flypix, models
 
 
-with FlyPix(
+with Flypix(
     security=models.Security(
         api_key="<YOUR_API_KEY_HERE>",
     ),
-) as fly_pix:
+) as f_client:
 
-    res = fly_pix.users.list_tenants()
+    res = f_client.users.list_tenants()
 
     # Handle response
     print(res)
