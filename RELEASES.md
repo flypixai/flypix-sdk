@@ -77,3 +77,13 @@ Based on:
 - [python v3.0.1] .
 ### Releases
 - [PyPI v3.0.1] https://pypi.org/project/flypix/3.0.1 - .
+
+## 2026-07-23 00:47:24
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.790.3 (2.918.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v3.0.2] .
+### Releases
+- [PyPI v3.0.2] https://pypi.org/project/flypix/3.0.2 - .
