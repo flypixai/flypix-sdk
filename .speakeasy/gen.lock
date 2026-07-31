@@ -3,17 +3,17 @@ id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
   docChecksum: 6a8ddf204841127923cae2945386e7e1
   docVersion: 0.1.0
-  speakeasyVersion: 1.790.3
-  generationVersion: 2.918.4
-  releaseVersion: 3.0.2
-  configChecksum: f191f4fffbbd5102b3fbf139b135b618
+  speakeasyVersion: 1.791.0
+  generationVersion: 2.924.0
+  releaseVersion: 3.0.3
+  configChecksum: 61825cd76d9214930a9d09e1472276ca
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 765d3223-039f-4781-8464-0f685c1dda84
-  pristine_commit_hash: f966cd46caa2fc71744c401b1e7645e79e368a39
-  pristine_tree_hash: eaf482a835e48ae62fb31d0e713b62f2f303a9a4
+  generation_id: 182958e6-ddf3-4180-94c8-06bbe288baa8
+  pristine_commit_hash: b7ecc405baced6045bada2f6e29b4d5a1eaf064c
+  pristine_tree_hash: a828eb089052b2421da6681a2e1e53a539c5bc9c
 features:
   python:
     additionalDependencies: 1.1.0
@@ -536,8 +536,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:0dd88bf480471f1f7cecde584c3e4a7d78fcc2a4
-    pristine_git_object: 104d59014ae1b65bf5e7f0050eb9a8ecd5bc696e
+    last_write_checksum: sha1:9cdab0ba6098a96bb5286d1ad5944ef6a7596fdd
+    pristine_git_object: 76687c4aa1d21326874c63482ea906394013e460
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -564,8 +564,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:5710b8803e8f076a50b53547a147f08c48388698
-    pristine_git_object: 5071a72e009be25e5183b63f3a849686d3258903
+    last_write_checksum: sha1:55e5ab7e4477f51b6ba25f7ce52ae74d579ba9dd
+    pristine_git_object: 41c656593bed224c9fddac1b0a321d957d7eb6c1
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:cd41fdfb720b40b37ef87cd460189b4a12152c63
