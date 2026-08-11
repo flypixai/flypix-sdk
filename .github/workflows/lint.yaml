@@ -8,7 +8,7 @@ on:
 jobs:
   spec:
     name: Lint OpenAPI spec
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
       - name: Install Speakeasy CLI
@@ -20,7 +20,7 @@ jobs:
 
   code:
     name: Type-check & lint SDK
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
