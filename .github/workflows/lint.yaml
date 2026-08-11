@@ -8,10 +8,14 @@ on:
 jobs:
   spec:
     name: Lint OpenAPI spec
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
       - name: Install Speakeasy CLI
+        # Pinned: v1.793.0 fails every lint with
+        # "generation access state is required; use generation-context/access.WithDirect or WithAuthenticated"
+        env:
+          VERSION: 1.792.0
         run: curl -fsSL https://go.speakeasy.com/cli-install.sh | sh
       - name: Lint spec + overlay
         run: speakeasy lint openapi --schema ./openapi/flypix.openapi.yaml
@@ -20,7 +24,7 @@ jobs:
 
   code:
     name: Type-check & lint SDK
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
