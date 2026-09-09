@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Inferences(BaseSDK):
@@ -84,8 +84,39 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +203,39 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -260,8 +322,40 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -348,8 +442,40 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -436,8 +562,38 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -524,8 +680,38 @@ class Inferences(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.InferenceResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.InferencesListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.InferencesListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.InferencesListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

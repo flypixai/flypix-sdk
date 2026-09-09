@@ -44,6 +44,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.UsersListTenantsBadRequestErrorResponseSchema          | 400                                                           | application/json                                              |
+| errors.UsersListTenantsForbiddenErrorResponseSchema           | 403                                                           | application/json                                              |
+| errors.UsersListTenantsNotFoundErrorResponseSchema            | 404                                                           | application/json                                              |
+| errors.UsersListTenantsInternalServerErrorErrorResponseSchema | 500                                                           | application/json                                              |
+| errors.FlyPixDefaultError                                     | 4XX, 5XX                                                      | \*/\*                                                         |

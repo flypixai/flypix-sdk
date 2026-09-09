@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Mapping, Optional
+from typing import Any, Mapping, Optional
 
 
 class Auth(BaseSDK):
@@ -90,8 +90,38 @@ class Auth(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.LoginResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.AuthLoginWithPasswordInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -184,8 +214,38 @@ class Auth(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.LoginResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthLoginWithPasswordNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthLoginWithPasswordInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.AuthLoginWithPasswordInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -275,8 +335,38 @@ class Auth(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.LoginResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.AuthRefreshTokenInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -366,8 +456,38 @@ class Auth(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.LoginResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.AuthRefreshTokenNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.AuthRefreshTokenInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.AuthRefreshTokenInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

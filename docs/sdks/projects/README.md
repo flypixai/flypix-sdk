@@ -47,9 +47,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.ProjectsListForTenantBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.ProjectsListForTenantForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.ProjectsListForTenantNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.ProjectsListForTenantInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## delete
 
@@ -90,9 +94,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| errors.ProjectsDeleteBadRequestErrorResponseSchema          | 400                                                         | application/json                                            |
+| errors.ProjectsDeleteForbiddenErrorResponseSchema           | 403                                                         | application/json                                            |
+| errors.ProjectsDeleteNotFoundErrorResponseSchema            | 404                                                         | application/json                                            |
+| errors.ProjectsDeleteInternalServerErrorErrorResponseSchema | 500                                                         | application/json                                            |
+| errors.FlyPixDefaultError                                   | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## create
 
@@ -132,6 +140,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| errors.ProjectsCreateBadRequestErrorResponseSchema          | 400                                                         | application/json                                            |
+| errors.ProjectsCreateForbiddenErrorResponseSchema           | 403                                                         | application/json                                            |
+| errors.ProjectsCreateNotFoundErrorResponseSchema            | 404                                                         | application/json                                            |
+| errors.ProjectsCreateInternalServerErrorErrorResponseSchema | 500                                                         | application/json                                            |
+| errors.FlyPixDefaultError                                   | 4XX, 5XX                                                    | \*/\*                                                       |

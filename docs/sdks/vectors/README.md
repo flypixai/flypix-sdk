@@ -55,9 +55,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.VectorsListForFileBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.VectorsListForFileForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.VectorsListForFileNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.VectorsListForFileInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## list_classes_for_project
 
@@ -96,9 +100,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| errors.VectorsListClassesForProjectBadRequestErrorResponseSchema          | 400                                                                       | application/json                                                          |
+| errors.VectorsListClassesForProjectForbiddenErrorResponseSchema           | 403                                                                       | application/json                                                          |
+| errors.VectorsListClassesForProjectNotFoundErrorResponseSchema            | 404                                                                       | application/json                                                          |
+| errors.VectorsListClassesForProjectInternalServerErrorErrorResponseSchema | 500                                                                       | application/json                                                          |
+| errors.FlyPixDefaultError                                                 | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## create_class
 
@@ -139,9 +147,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.VectorsCreateClassBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.VectorsCreateClassForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.VectorsCreateClassNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.VectorsCreateClassInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## get_features
 
@@ -180,9 +192,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.VectorsGetFeaturesBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.VectorsGetFeaturesForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.VectorsGetFeaturesNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.VectorsGetFeaturesInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## create
 
@@ -222,9 +238,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.VectorsCreateBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.VectorsCreateForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.VectorsCreateNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.VectorsCreateInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## delete
 
@@ -263,9 +283,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.VectorsDeleteBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.VectorsDeleteForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.VectorsDeleteNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.VectorsDeleteInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## create_annotations
 
@@ -306,9 +330,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.VectorsCreateAnnotationsBadRequestErrorResponseSchema          | 400                                                                   | application/json                                                      |
+| errors.VectorsCreateAnnotationsForbiddenErrorResponseSchema           | 403                                                                   | application/json                                                      |
+| errors.VectorsCreateAnnotationsNotFoundErrorResponseSchema            | 404                                                                   | application/json                                                      |
+| errors.VectorsCreateAnnotationsInternalServerErrorErrorResponseSchema | 500                                                                   | application/json                                                      |
+| errors.FlyPixDefaultError                                             | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## upload_geojson
 
@@ -329,7 +357,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_geojson(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_geojson(vector_id="123e4567-e89b-12d3-a456-426614174000", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -338,11 +369,11 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           | Example                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `vector_id`                                                                                                                           | *str*                                                                                                                                 | :heavy_check_mark:                                                                                                                    | N/A                                                                                                                                   | 123e4567-e89b-12d3-a456-426614174000                                                                                                  |
+| `file`                                                                                                                                | [models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile](../../models/bodyuploadgeojsonvectorsvectoriduploadgeojsonpostfile.md) | :heavy_check_mark:                                                                                                                    | N/A                                                                                                                                   |                                                                                                                                       |
+| `retries`                                                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                      | :heavy_minus_sign:                                                                                                                    | Configuration to override the default retry behavior of the client.                                                                   |                                                                                                                                       |
 
 ### Response
 
@@ -350,9 +381,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.VectorsUploadGeojsonBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.VectorsUploadGeojsonForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.VectorsUploadGeojsonNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.VectorsUploadGeojsonInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## upload_gpkg
 
@@ -374,7 +409,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_gpkg(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_gpkg(vector_id="123e4567-e89b-12d3-a456-426614174000", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -386,7 +424,7 @@ with Flypix(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
+| `file`                                                              | [models.BodyUploadGeopkgFile](../../models/bodyuploadgeopkgfile.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
@@ -395,9 +433,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| errors.VectorsUploadGpkgBadRequestErrorResponseSchema          | 400                                                            | application/json                                               |
+| errors.VectorsUploadGpkgForbiddenErrorResponseSchema           | 403                                                            | application/json                                               |
+| errors.VectorsUploadGpkgNotFoundErrorResponseSchema            | 404                                                            | application/json                                               |
+| errors.VectorsUploadGpkgInternalServerErrorErrorResponseSchema | 500                                                            | application/json                                               |
+| errors.FlyPixDefaultError                                      | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## upload_shapefile
 
@@ -419,7 +461,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_shapefile(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_shapefile(vector_id="123e4567-e89b-12d3-a456-426614174000", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -428,11 +473,11 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `vector_id`                                                               | *str*                                                                     | :heavy_check_mark:                                                        | N/A                                                                       | 123e4567-e89b-12d3-a456-426614174000                                      |
+| `file`                                                                    | [models.BodyUploadShapefileFile](../../models/bodyuploadshapefilefile.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |                                                                           |
 
 ### Response
 
@@ -440,6 +485,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| errors.VectorsUploadShapefileBadRequestErrorResponseSchema          | 400                                                                 | application/json                                                    |
+| errors.VectorsUploadShapefileForbiddenErrorResponseSchema           | 403                                                                 | application/json                                                    |
+| errors.VectorsUploadShapefileNotFoundErrorResponseSchema            | 404                                                                 | application/json                                                    |
+| errors.VectorsUploadShapefileInternalServerErrorErrorResponseSchema | 500                                                                 | application/json                                                    |
+| errors.FlyPixDefaultError                                           | 4XX, 5XX                                                            | \*/\*                                                               |

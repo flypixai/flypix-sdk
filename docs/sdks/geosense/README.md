@@ -48,9 +48,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.GeosenseCreateSessionBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.GeosenseCreateSessionForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.GeosenseCreateSessionNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.GeosenseCreateSessionInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## create_artifact
 
@@ -96,9 +100,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| errors.GeosenseCreateArtifactBadRequestErrorResponseSchema          | 400                                                                 | application/json                                                    |
+| errors.GeosenseCreateArtifactForbiddenErrorResponseSchema           | 403                                                                 | application/json                                                    |
+| errors.GeosenseCreateArtifactNotFoundErrorResponseSchema            | 404                                                                 | application/json                                                    |
+| errors.GeosenseCreateArtifactInternalServerErrorErrorResponseSchema | 500                                                                 | application/json                                                    |
+| errors.FlyPixDefaultError                                           | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## get_artifact
 
@@ -138,9 +146,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.GeosenseGetArtifactBadRequestErrorResponseSchema          | 400                                                              | application/json                                                 |
+| errors.GeosenseGetArtifactForbiddenErrorResponseSchema           | 403                                                              | application/json                                                 |
+| errors.GeosenseGetArtifactNotFoundErrorResponseSchema            | 404                                                              | application/json                                                 |
+| errors.GeosenseGetArtifactInternalServerErrorErrorResponseSchema | 500                                                              | application/json                                                 |
+| errors.FlyPixDefaultError                                        | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## send_message
 
@@ -176,13 +188,13 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `user_message`                                                      | *str*                                                               | :heavy_check_mark:                                                  | A string based value object                                         | New String                                                          |
-| `vector_ids`                                                        | List[*str*]                                                         | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `context`                                                           | List[[models.AnyMessageContext](../../models/anymessagecontext.md)] | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `session_id`                                                                  | *str*                                                                         | :heavy_check_mark:                                                            | N/A                                                                           | 123e4567-e89b-12d3-a456-426614174000                                          |
+| `user_message`                                                                | *str*                                                                         | :heavy_check_mark:                                                            | A string based value object                                                   | New String                                                                    |
+| `vector_ids`                                                                  | List[*str*]                                                                   | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `context`                                                                     | List[[models.AnyMessageContextInput](../../models/anymessagecontextinput.md)] | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
+| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |                                                                               |
 
 ### Response
 
@@ -190,6 +202,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.GeosenseSendMessageBadRequestErrorResponseSchema          | 400                                                              | application/json                                                 |
+| errors.GeosenseSendMessageForbiddenErrorResponseSchema           | 403                                                              | application/json                                                 |
+| errors.GeosenseSendMessageNotFoundErrorResponseSchema            | 404                                                              | application/json                                                 |
+| errors.GeosenseSendMessageInternalServerErrorErrorResponseSchema | 500                                                              | application/json                                                 |
+| errors.FlyPixDefaultError                                        | 4XX, 5XX                                                         | \*/\*                                                            |

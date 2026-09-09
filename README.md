@@ -247,8 +247,6 @@ with Flypix(
 * [get_by_ids](docs/sdks/files/README.md#get_by_ids) - Get Files By Ids
 * [get_storage_usage](docs/sdks/files/README.md#get_storage_usage) - Get Storage Usage
 * [~~upload~~](docs/sdks/files/README.md#upload) - Upload File :warning: **Deprecated**
-* [upload_v2](docs/sdks/files/README.md#upload_v2) - Upload File
-* [upload_from_url](docs/sdks/files/README.md#upload_from_url) - Upload File From Url
 
 ### [Folders](docs/sdks/folders/README.md)
 
@@ -283,6 +281,7 @@ with Flypix(
 ### [Payments](docs/sdks/payments/README.md)
 
 * [get_balance](docs/sdks/payments/README.md#get_balance) - Get Tenant Balance
+* [get_tenant_transactions_payments_balance_tenant_id_transactions_get](docs/sdks/payments/README.md#get_tenant_transactions_payments_balance_tenant_id_transactions_get) - Get Tenant Transactions
 
 ### [Projects](docs/sdks/projects/README.md)
 
@@ -342,7 +341,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
+    res = f_client.vectors.upload_geojson(vector_id="123e4567-e89b-12d3-a456-426614174000", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -394,13 +396,14 @@ with Flypix(
 
 [`FlyPixError`](./src/flypix/errors/flypixerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-| Property           | Type             | Description                                            |
-| ------------------ | ---------------- | ------------------------------------------------------ |
-| `err.message`      | `str`            | Error message                                          |
-| `err.status_code`  | `int`            | HTTP response status code eg `404`                     |
-| `err.headers`      | `httpx.Headers`  | HTTP response headers                                  |
-| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned. |
-| `err.raw_response` | `httpx.Response` | Raw HTTP response                                      |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
 ```python
@@ -425,13 +428,17 @@ with Flypix() as f_client:
         print(e.headers)
         print(e.raw_response)
 
+        # Depending on the method different errors may be thrown
+        if isinstance(e, errors.AuthLoginWithPasswordBadRequestErrorResponseSchema):
+            print(e.data.error)  # str
+            print(e.data.message)  # str
 ```
 
 ### Error Classes
 **Primary error:**
 * [`FlyPixError`](./src/flypix/errors/flypixerror.py): The base class for HTTP error responses.
 
-<details><summary>Less common errors (5)</summary>
+<details><summary>Less common errors (209)</summary>
 
 <br />
 
@@ -442,9 +449,215 @@ with Flypix() as f_client:
 
 
 **Inherit from [`FlyPixError`](./src/flypix/errors/flypixerror.py)**:
+* [`AuthLoginWithPasswordBadRequestErrorResponseSchema`](./src/flypix/errors/authloginwithpasswordbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`AuthRefreshTokenBadRequestErrorResponseSchema`](./src/flypix/errors/authrefreshtokenbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`PaymentsGetBalanceBadRequestErrorResponseSchema`](./src/flypix/errors/paymentsgetbalancebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetBadRequestErrorResponseSchema`](./src/flypix/errors/gettenanttransactionspaymentsbalancetenantidtransactionsgetbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`UsersListTenantsBadRequestErrorResponseSchema`](./src/flypix/errors/userslisttenantsbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ProjectsListForTenantBadRequestErrorResponseSchema`](./src/flypix/errors/projectslistfortenantbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ProjectsDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/projectsdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ProjectsCreateBadRequestErrorResponseSchema`](./src/flypix/errors/projectscreatebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FoldersListForFolderBadRequestErrorResponseSchema`](./src/flypix/errors/folderslistforfolderbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FoldersListForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/folderslistforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FoldersDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/foldersdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FoldersCreateBadRequestErrorResponseSchema`](./src/flypix/errors/folderscreatebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesListForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/fileslistforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesListForFolderBadRequestErrorResponseSchema`](./src/flypix/errors/fileslistforfolderbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesGetBadRequestErrorResponseSchema`](./src/flypix/errors/filesgetbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/filesdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesGetVisibleRasterBadRequestErrorResponseSchema`](./src/flypix/errors/filesgetvisiblerasterbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesGetDownloadLinkBadRequestErrorResponseSchema`](./src/flypix/errors/filesgetdownloadlinkbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesGetByIdsBadRequestErrorResponseSchema`](./src/flypix/errors/filesgetbyidsbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesGetStorageUsageBadRequestErrorResponseSchema`](./src/flypix/errors/filesgetstorageusagebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`FilesUploadBadRequestErrorResponseSchema`](./src/flypix/errors/filesuploadbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RastersListForTenantBadRequestErrorResponseSchema`](./src/flypix/errors/rasterslistfortenantbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RastersListForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/rasterslistforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RastersListForFileBadRequestErrorResponseSchema`](./src/flypix/errors/rasterslistforfilebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`InferencesListForTenantBadRequestErrorResponseSchema`](./src/flypix/errors/inferenceslistfortenantbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`InferencesListForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/inferenceslistforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`InferencesListForFileBadRequestErrorResponseSchema`](./src/flypix/errors/inferenceslistforfilebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsListForTenantBadRequestErrorResponseSchema`](./src/flypix/errors/modelslistfortenantbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsListForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/modelslistforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsListOfficialBadRequestErrorResponseSchema`](./src/flypix/errors/modelslistofficialbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsApplyBadRequestErrorResponseSchema`](./src/flypix/errors/modelsapplybadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsEstimateApplicationBadRequestErrorResponseSchema`](./src/flypix/errors/modelsestimateapplicationbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsGetInferenceStatusBadRequestErrorResponseSchema`](./src/flypix/errors/modelsgetinferencestatusbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`ModelsDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/modelsdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsListForFileBadRequestErrorResponseSchema`](./src/flypix/errors/vectorslistforfilebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsListClassesForProjectBadRequestErrorResponseSchema`](./src/flypix/errors/vectorslistclassesforprojectbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateClassBadRequestErrorResponseSchema`](./src/flypix/errors/vectorscreateclassbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsGetFeaturesBadRequestErrorResponseSchema`](./src/flypix/errors/vectorsgetfeaturesbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateBadRequestErrorResponseSchema`](./src/flypix/errors/vectorscreatebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/vectorsdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateAnnotationsBadRequestErrorResponseSchema`](./src/flypix/errors/vectorscreateannotationsbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGeojsonBadRequestErrorResponseSchema`](./src/flypix/errors/vectorsuploadgeojsonbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGpkgBadRequestErrorResponseSchema`](./src/flypix/errors/vectorsuploadgpkgbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadShapefileBadRequestErrorResponseSchema`](./src/flypix/errors/vectorsuploadshapefilebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RegionsListForFileBadRequestErrorResponseSchema`](./src/flypix/errors/regionslistforfilebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RegionsCreateBadRequestErrorResponseSchema`](./src/flypix/errors/regionscreatebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`RegionsDeleteBadRequestErrorResponseSchema`](./src/flypix/errors/regionsdeletebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateSessionBadRequestErrorResponseSchema`](./src/flypix/errors/geosensecreatesessionbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateArtifactBadRequestErrorResponseSchema`](./src/flypix/errors/geosensecreateartifactbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`GeosenseGetArtifactBadRequestErrorResponseSchema`](./src/flypix/errors/geosensegetartifactbadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`GeosenseSendMessageBadRequestErrorResponseSchema`](./src/flypix/errors/geosensesendmessagebadrequesterrorresponseschema.py): Forbidden. Status code `400`. Applicable to 1 of 51 methods.*
+* [`AuthLoginWithPasswordForbiddenErrorResponseSchema`](./src/flypix/errors/authloginwithpasswordforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`AuthRefreshTokenForbiddenErrorResponseSchema`](./src/flypix/errors/authrefreshtokenforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`PaymentsGetBalanceForbiddenErrorResponseSchema`](./src/flypix/errors/paymentsgetbalanceforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetForbiddenErrorResponseSchema`](./src/flypix/errors/gettenanttransactionspaymentsbalancetenantidtransactionsgetforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`UsersListTenantsForbiddenErrorResponseSchema`](./src/flypix/errors/userslisttenantsforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ProjectsListForTenantForbiddenErrorResponseSchema`](./src/flypix/errors/projectslistfortenantforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ProjectsDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/projectsdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ProjectsCreateForbiddenErrorResponseSchema`](./src/flypix/errors/projectscreateforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FoldersListForFolderForbiddenErrorResponseSchema`](./src/flypix/errors/folderslistforfolderforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FoldersListForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/folderslistforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FoldersDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/foldersdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FoldersCreateForbiddenErrorResponseSchema`](./src/flypix/errors/folderscreateforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesListForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/fileslistforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesListForFolderForbiddenErrorResponseSchema`](./src/flypix/errors/fileslistforfolderforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesGetForbiddenErrorResponseSchema`](./src/flypix/errors/filesgetforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/filesdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesGetVisibleRasterForbiddenErrorResponseSchema`](./src/flypix/errors/filesgetvisiblerasterforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesGetDownloadLinkForbiddenErrorResponseSchema`](./src/flypix/errors/filesgetdownloadlinkforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesGetByIdsForbiddenErrorResponseSchema`](./src/flypix/errors/filesgetbyidsforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesGetStorageUsageForbiddenErrorResponseSchema`](./src/flypix/errors/filesgetstorageusageforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`FilesUploadForbiddenErrorResponseSchema`](./src/flypix/errors/filesuploadforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RastersListForTenantForbiddenErrorResponseSchema`](./src/flypix/errors/rasterslistfortenantforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RastersListForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/rasterslistforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RastersListForFileForbiddenErrorResponseSchema`](./src/flypix/errors/rasterslistforfileforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`InferencesListForTenantForbiddenErrorResponseSchema`](./src/flypix/errors/inferenceslistfortenantforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`InferencesListForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/inferenceslistforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`InferencesListForFileForbiddenErrorResponseSchema`](./src/flypix/errors/inferenceslistforfileforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsListForTenantForbiddenErrorResponseSchema`](./src/flypix/errors/modelslistfortenantforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsListForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/modelslistforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsListOfficialForbiddenErrorResponseSchema`](./src/flypix/errors/modelslistofficialforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsApplyForbiddenErrorResponseSchema`](./src/flypix/errors/modelsapplyforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsEstimateApplicationForbiddenErrorResponseSchema`](./src/flypix/errors/modelsestimateapplicationforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsGetInferenceStatusForbiddenErrorResponseSchema`](./src/flypix/errors/modelsgetinferencestatusforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`ModelsDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/modelsdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsListForFileForbiddenErrorResponseSchema`](./src/flypix/errors/vectorslistforfileforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsListClassesForProjectForbiddenErrorResponseSchema`](./src/flypix/errors/vectorslistclassesforprojectforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateClassForbiddenErrorResponseSchema`](./src/flypix/errors/vectorscreateclassforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsGetFeaturesForbiddenErrorResponseSchema`](./src/flypix/errors/vectorsgetfeaturesforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateForbiddenErrorResponseSchema`](./src/flypix/errors/vectorscreateforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/vectorsdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateAnnotationsForbiddenErrorResponseSchema`](./src/flypix/errors/vectorscreateannotationsforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGeojsonForbiddenErrorResponseSchema`](./src/flypix/errors/vectorsuploadgeojsonforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGpkgForbiddenErrorResponseSchema`](./src/flypix/errors/vectorsuploadgpkgforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadShapefileForbiddenErrorResponseSchema`](./src/flypix/errors/vectorsuploadshapefileforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RegionsListForFileForbiddenErrorResponseSchema`](./src/flypix/errors/regionslistforfileforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RegionsCreateForbiddenErrorResponseSchema`](./src/flypix/errors/regionscreateforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`RegionsDeleteForbiddenErrorResponseSchema`](./src/flypix/errors/regionsdeleteforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateSessionForbiddenErrorResponseSchema`](./src/flypix/errors/geosensecreatesessionforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateArtifactForbiddenErrorResponseSchema`](./src/flypix/errors/geosensecreateartifactforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`GeosenseGetArtifactForbiddenErrorResponseSchema`](./src/flypix/errors/geosensegetartifactforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`GeosenseSendMessageForbiddenErrorResponseSchema`](./src/flypix/errors/geosensesendmessageforbiddenerrorresponseschema.py): Not Found. Status code `403`. Applicable to 1 of 51 methods.*
+* [`AuthLoginWithPasswordNotFoundErrorResponseSchema`](./src/flypix/errors/authloginwithpasswordnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`AuthRefreshTokenNotFoundErrorResponseSchema`](./src/flypix/errors/authrefreshtokennotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`PaymentsGetBalanceNotFoundErrorResponseSchema`](./src/flypix/errors/paymentsgetbalancenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetNotFoundErrorResponseSchema`](./src/flypix/errors/gettenanttransactionspaymentsbalancetenantidtransactionsgetnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`UsersListTenantsNotFoundErrorResponseSchema`](./src/flypix/errors/userslisttenantsnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ProjectsListForTenantNotFoundErrorResponseSchema`](./src/flypix/errors/projectslistfortenantnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ProjectsDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/projectsdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ProjectsCreateNotFoundErrorResponseSchema`](./src/flypix/errors/projectscreatenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FoldersListForFolderNotFoundErrorResponseSchema`](./src/flypix/errors/folderslistforfoldernotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FoldersListForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/folderslistforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FoldersDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/foldersdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FoldersCreateNotFoundErrorResponseSchema`](./src/flypix/errors/folderscreatenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesListForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/fileslistforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesListForFolderNotFoundErrorResponseSchema`](./src/flypix/errors/fileslistforfoldernotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesGetNotFoundErrorResponseSchema`](./src/flypix/errors/filesgetnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/filesdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesGetVisibleRasterNotFoundErrorResponseSchema`](./src/flypix/errors/filesgetvisiblerasternotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesGetDownloadLinkNotFoundErrorResponseSchema`](./src/flypix/errors/filesgetdownloadlinknotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesGetByIdsNotFoundErrorResponseSchema`](./src/flypix/errors/filesgetbyidsnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesGetStorageUsageNotFoundErrorResponseSchema`](./src/flypix/errors/filesgetstorageusagenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`FilesUploadNotFoundErrorResponseSchema`](./src/flypix/errors/filesuploadnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RastersListForTenantNotFoundErrorResponseSchema`](./src/flypix/errors/rasterslistfortenantnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RastersListForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/rasterslistforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RastersListForFileNotFoundErrorResponseSchema`](./src/flypix/errors/rasterslistforfilenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`InferencesListForTenantNotFoundErrorResponseSchema`](./src/flypix/errors/inferenceslistfortenantnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`InferencesListForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/inferenceslistforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`InferencesListForFileNotFoundErrorResponseSchema`](./src/flypix/errors/inferenceslistforfilenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsListForTenantNotFoundErrorResponseSchema`](./src/flypix/errors/modelslistfortenantnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsListForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/modelslistforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsListOfficialNotFoundErrorResponseSchema`](./src/flypix/errors/modelslistofficialnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsApplyNotFoundErrorResponseSchema`](./src/flypix/errors/modelsapplynotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsEstimateApplicationNotFoundErrorResponseSchema`](./src/flypix/errors/modelsestimateapplicationnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsGetInferenceStatusNotFoundErrorResponseSchema`](./src/flypix/errors/modelsgetinferencestatusnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`ModelsDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/modelsdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsListForFileNotFoundErrorResponseSchema`](./src/flypix/errors/vectorslistforfilenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsListClassesForProjectNotFoundErrorResponseSchema`](./src/flypix/errors/vectorslistclassesforprojectnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateClassNotFoundErrorResponseSchema`](./src/flypix/errors/vectorscreateclassnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsGetFeaturesNotFoundErrorResponseSchema`](./src/flypix/errors/vectorsgetfeaturesnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateNotFoundErrorResponseSchema`](./src/flypix/errors/vectorscreatenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/vectorsdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateAnnotationsNotFoundErrorResponseSchema`](./src/flypix/errors/vectorscreateannotationsnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGeojsonNotFoundErrorResponseSchema`](./src/flypix/errors/vectorsuploadgeojsonnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGpkgNotFoundErrorResponseSchema`](./src/flypix/errors/vectorsuploadgpkgnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadShapefileNotFoundErrorResponseSchema`](./src/flypix/errors/vectorsuploadshapefilenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RegionsListForFileNotFoundErrorResponseSchema`](./src/flypix/errors/regionslistforfilenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RegionsCreateNotFoundErrorResponseSchema`](./src/flypix/errors/regionscreatenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`RegionsDeleteNotFoundErrorResponseSchema`](./src/flypix/errors/regionsdeletenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateSessionNotFoundErrorResponseSchema`](./src/flypix/errors/geosensecreatesessionnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateArtifactNotFoundErrorResponseSchema`](./src/flypix/errors/geosensecreateartifactnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`GeosenseGetArtifactNotFoundErrorResponseSchema`](./src/flypix/errors/geosensegetartifactnotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`GeosenseSendMessageNotFoundErrorResponseSchema`](./src/flypix/errors/geosensesendmessagenotfounderrorresponseschema.py): Bad Request. Status code `404`. Applicable to 1 of 51 methods.*
+* [`AuthLoginWithPasswordInternalServerErrorErrorResponseSchema`](./src/flypix/errors/authloginwithpasswordinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`AuthRefreshTokenInternalServerErrorErrorResponseSchema`](./src/flypix/errors/authrefreshtokeninternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`PaymentsGetBalanceInternalServerErrorErrorResponseSchema`](./src/flypix/errors/paymentsgetbalanceinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetInternalServerErrorErrorResponseSchema`](./src/flypix/errors/gettenanttransactionspaymentsbalancetenantidtransactionsgetinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`UsersListTenantsInternalServerErrorErrorResponseSchema`](./src/flypix/errors/userslisttenantsinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ProjectsListForTenantInternalServerErrorErrorResponseSchema`](./src/flypix/errors/projectslistfortenantinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ProjectsDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/projectsdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ProjectsCreateInternalServerErrorErrorResponseSchema`](./src/flypix/errors/projectscreateinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FoldersListForFolderInternalServerErrorErrorResponseSchema`](./src/flypix/errors/folderslistforfolderinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FoldersListForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/folderslistforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FoldersDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/foldersdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FoldersCreateInternalServerErrorErrorResponseSchema`](./src/flypix/errors/folderscreateinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesListForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/fileslistforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesListForFolderInternalServerErrorErrorResponseSchema`](./src/flypix/errors/fileslistforfolderinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesGetInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesgetinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesGetVisibleRasterInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesgetvisiblerasterinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesGetDownloadLinkInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesgetdownloadlinkinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesGetByIdsInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesgetbyidsinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesGetStorageUsageInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesgetstorageusageinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`FilesUploadInternalServerErrorErrorResponseSchema`](./src/flypix/errors/filesuploadinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RastersListForTenantInternalServerErrorErrorResponseSchema`](./src/flypix/errors/rasterslistfortenantinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RastersListForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/rasterslistforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RastersListForFileInternalServerErrorErrorResponseSchema`](./src/flypix/errors/rasterslistforfileinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`InferencesListForTenantInternalServerErrorErrorResponseSchema`](./src/flypix/errors/inferenceslistfortenantinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`InferencesListForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/inferenceslistforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`InferencesListForFileInternalServerErrorErrorResponseSchema`](./src/flypix/errors/inferenceslistforfileinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsListForTenantInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelslistfortenantinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsListForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelslistforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsListOfficialInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelslistofficialinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsApplyInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelsapplyinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsEstimateApplicationInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelsestimateapplicationinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsGetInferenceStatusInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelsgetinferencestatusinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`ModelsDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/modelsdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsListForFileInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorslistforfileinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsListClassesForProjectInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorslistclassesforprojectinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateClassInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorscreateclassinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsGetFeaturesInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorsgetfeaturesinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorscreateinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorsdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsCreateAnnotationsInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorscreateannotationsinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGeojsonInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorsuploadgeojsoninternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadGpkgInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorsuploadgpkginternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`VectorsUploadShapefileInternalServerErrorErrorResponseSchema`](./src/flypix/errors/vectorsuploadshapefileinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RegionsListForFileInternalServerErrorErrorResponseSchema`](./src/flypix/errors/regionslistforfileinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RegionsCreateInternalServerErrorErrorResponseSchema`](./src/flypix/errors/regionscreateinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`RegionsDeleteInternalServerErrorErrorResponseSchema`](./src/flypix/errors/regionsdeleteinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateSessionInternalServerErrorErrorResponseSchema`](./src/flypix/errors/geosensecreatesessioninternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`GeosenseCreateArtifactInternalServerErrorErrorResponseSchema`](./src/flypix/errors/geosensecreateartifactinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`GeosenseGetArtifactInternalServerErrorErrorResponseSchema`](./src/flypix/errors/geosensegetartifactinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
+* [`GeosenseSendMessageInternalServerErrorErrorResponseSchema`](./src/flypix/errors/geosensesendmessageinternalservererrorerrorresponseschema.py): Internal server error. Status code `500`. Applicable to 1 of 51 methods.*
 * [`ResponseValidationError`](./src/flypix/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -548,6 +761,20 @@ class CustomClient(AsyncHttpClient):
 
 s = Flypix(async_client=CustomClient(httpx.AsyncClient()))
 ```
+### httpx2 (Pydantic's httpx fork)
+
+[httpx2](https://httpx2.pydantic.dev/) is Pydantic's maintained fork of `httpx`. To run this SDK on httpx2, call `alias_httpx()` at your program's entry point, before importing the SDK, so every `import httpx` — including the ones inside the SDK — resolves to `httpx2`:
+```python
+import httpx2
+
+httpx2.alias_httpx()
+
+from flypix import Flypix
+
+s = Flypix()
+```
+
+An SDK can also be generated against httpx2 directly, so it depends on the fork instead of `httpx`, by setting `python.httpClientLibrary: httpx2` in `gen.yaml`.
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->

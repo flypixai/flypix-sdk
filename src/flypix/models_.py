@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Models(BaseSDK):
@@ -84,8 +84,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.PrivateModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +202,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.PrivateModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -260,8 +320,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.PrivateModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -348,8 +438,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.PrivateModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -429,8 +549,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.OfficialModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListOfficialInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -510,8 +660,38 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.OfficialModelResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsListOfficialNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsListOfficialInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsListOfficialInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -608,8 +788,35 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ApplyModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -706,8 +913,35 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ApplyModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsApplyInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsApplyInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -802,8 +1036,41 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EstimateModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationNotFoundErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -898,8 +1165,41 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EstimateModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationNotFoundErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsEstimateApplicationInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsEstimateApplicationInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -986,8 +1286,40 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ApplyModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsGetInferenceStatusNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1074,8 +1406,40 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ApplyModelResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsGetInferenceStatusNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsGetInferenceStatusInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ModelsGetInferenceStatusInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1162,8 +1526,37 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1250,8 +1643,37 @@ class Models(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ModelsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.ModelsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

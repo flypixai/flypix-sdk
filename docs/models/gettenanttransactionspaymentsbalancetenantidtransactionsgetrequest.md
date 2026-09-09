@@ -1,0 +1,10 @@
+# GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequest
+
+
+## Fields
+
+| Field                                | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `tenant_id`                          | *str*                                | :heavy_check_mark:                   | N/A                                  | 123e4567-e89b-12d3-a456-426614174000 |
+| `offset`                             | *Optional[int]*                      | :heavy_minus_sign:                   | N/A                                  |                                      |
+| `limit`                              | *Optional[int]*                      | :heavy_minus_sign:                   | N/A                                  |                                      |

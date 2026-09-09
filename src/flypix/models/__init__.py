@@ -9,10 +9,14 @@ if TYPE_CHECKING:
         AnnotationGeometryPayload,
         AnnotationGeometryPayloadTypedDict,
     )
-    from .anymessagecontext import (
-        AnyMessageContext,
-        AnyMessageContextTypedDict,
-        UnknownAnyMessageContext,
+    from .anymessagecontext_input import (
+        AnyMessageContextInput,
+        AnyMessageContextInputTypedDict,
+    )
+    from .anymessagecontext_output import (
+        AnyMessageContextOutput,
+        AnyMessageContextOutputTypedDict,
+        UnknownAnyMessageContextOutput,
     )
     from .applymodelrequest import ApplyModelRequest, ApplyModelRequestTypedDict
     from .applymodelresponse import ApplyModelResponse, ApplyModelResponseTypedDict
@@ -21,10 +25,22 @@ if TYPE_CHECKING:
     from .balanceresponse import BalanceResponse, BalanceResponseTypedDict
     from .body_upload_geojson_vectors_vector_id_upload_geojson_post import (
         BodyUploadGeojsonVectorsVectorIDUploadGeojsonPost,
+        BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile,
+        BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFileTypedDict,
         BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostTypedDict,
     )
-    from .body_upload_geopkg import BodyUploadGeopkg, BodyUploadGeopkgTypedDict
-    from .body_upload_shapefile import BodyUploadShapefile, BodyUploadShapefileTypedDict
+    from .body_upload_geopkg import (
+        BodyUploadGeopkg,
+        BodyUploadGeopkgFile,
+        BodyUploadGeopkgFileTypedDict,
+        BodyUploadGeopkgTypedDict,
+    )
+    from .body_upload_shapefile import (
+        BodyUploadShapefile,
+        BodyUploadShapefileFile,
+        BodyUploadShapefileFileTypedDict,
+        BodyUploadShapefileTypedDict,
+    )
     from .chatmessageresponse import ChatMessageResponse, ChatMessageResponseTypedDict
     from .classresponse import ClassResponse, ClassResponseTypedDict
     from .cogsource import COGSource, COGSourceTypedDict
@@ -79,12 +95,6 @@ if TYPE_CHECKING:
         FilesListForProjectRequest,
         FilesListForProjectRequestTypedDict,
     )
-    from .files_upload_from_urlop import (
-        FilesUploadFromURLRequest,
-        FilesUploadFromURLRequestTypedDict,
-    )
-    from .files_upload_v2op import FilesUploadV2Request, FilesUploadV2RequestTypedDict
-    from .files_uploadop import FilesUploadRequest, FilesUploadRequestTypedDict
     from .filestatus import FileStatus
     from .filetype import FileType
     from .foldercreationrequest import (
@@ -116,6 +126,10 @@ if TYPE_CHECKING:
     from .geosense_send_messageop import (
         GeosenseSendMessageRequest,
         GeosenseSendMessageRequestTypedDict,
+    )
+    from .get_tenant_transactions_payments_balance_tenant_id_transactions_getop import (
+        GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequest,
+        GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequestTypedDict,
     )
     from .inferenceresponse import InferenceResponse, InferenceResponseTypedDict
     from .inferences_list_for_fileop import (
@@ -204,17 +218,13 @@ if TYPE_CHECKING:
     from .security import Security, SecurityTypedDict
     from .sendmessagerequest import SendMessageRequest, SendMessageRequestTypedDict
     from .tenantresponse import TenantResponse, TenantResponseTypedDict
-    from .transaction import Transaction, TransactionTypedDict
+    from .transactionresponse import TransactionResponse, TransactionResponseTypedDict
     from .transactiontype import TransactionType
     from .uploadannotationsresponse import (
         Errored,
         ErroredTypedDict,
         UploadAnnotationsResponse,
         UploadAnnotationsResponseTypedDict,
-    )
-    from .uploadfileresponsestatus import (
-        UploadFileResponseStatus,
-        UploadFileResponseStatusTypedDict,
     )
     from .uploadsource import UploadSource, UploadSourceTypedDict
     from .usageresponse import UsageResponse, UsageResponseTypedDict
@@ -261,8 +271,10 @@ if TYPE_CHECKING:
 __all__ = [
     "AnnotationGeometryPayload",
     "AnnotationGeometryPayloadTypedDict",
-    "AnyMessageContext",
-    "AnyMessageContextTypedDict",
+    "AnyMessageContextInput",
+    "AnyMessageContextInputTypedDict",
+    "AnyMessageContextOutput",
+    "AnyMessageContextOutputTypedDict",
     "ApplyModelRequest",
     "ApplyModelRequestTypedDict",
     "ApplyModelResponse",
@@ -273,10 +285,16 @@ __all__ = [
     "BalanceResponse",
     "BalanceResponseTypedDict",
     "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPost",
+    "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile",
+    "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFileTypedDict",
     "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostTypedDict",
     "BodyUploadGeopkg",
+    "BodyUploadGeopkgFile",
+    "BodyUploadGeopkgFileTypedDict",
     "BodyUploadGeopkgTypedDict",
     "BodyUploadShapefile",
+    "BodyUploadShapefileFile",
+    "BodyUploadShapefileFileTypedDict",
     "BodyUploadShapefileTypedDict",
     "COGSource",
     "COGSourceTypedDict",
@@ -324,12 +342,6 @@ __all__ = [
     "FilesListForFolderRequestTypedDict",
     "FilesListForProjectRequest",
     "FilesListForProjectRequestTypedDict",
-    "FilesUploadFromURLRequest",
-    "FilesUploadFromURLRequestTypedDict",
-    "FilesUploadRequest",
-    "FilesUploadRequestTypedDict",
-    "FilesUploadV2Request",
-    "FilesUploadV2RequestTypedDict",
     "FolderCreationRequest",
     "FolderCreationRequestTypedDict",
     "FolderResponse",
@@ -348,6 +360,8 @@ __all__ = [
     "GeosenseGetArtifactRequestTypedDict",
     "GeosenseSendMessageRequest",
     "GeosenseSendMessageRequestTypedDict",
+    "GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequest",
+    "GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequestTypedDict",
     "InferenceResponse",
     "InferenceResponseTypedDict",
     "InferenceStatus",
@@ -419,14 +433,12 @@ __all__ = [
     "SendMessageRequestTypedDict",
     "TenantResponse",
     "TenantResponseTypedDict",
-    "Transaction",
+    "TransactionResponse",
+    "TransactionResponseTypedDict",
     "TransactionType",
-    "TransactionTypedDict",
-    "UnknownAnyMessageContext",
+    "UnknownAnyMessageContextOutput",
     "UploadAnnotationsResponse",
     "UploadAnnotationsResponseTypedDict",
-    "UploadFileResponseStatus",
-    "UploadFileResponseStatusTypedDict",
     "UploadSource",
     "UploadSourceTypedDict",
     "UsageResponse",
@@ -465,9 +477,11 @@ __all__ = [
 _dynamic_imports: dict[str, str] = {
     "AnnotationGeometryPayload": ".annotationgeometrypayload",
     "AnnotationGeometryPayloadTypedDict": ".annotationgeometrypayload",
-    "AnyMessageContext": ".anymessagecontext",
-    "AnyMessageContextTypedDict": ".anymessagecontext",
-    "UnknownAnyMessageContext": ".anymessagecontext",
+    "AnyMessageContextInput": ".anymessagecontext_input",
+    "AnyMessageContextInputTypedDict": ".anymessagecontext_input",
+    "AnyMessageContextOutput": ".anymessagecontext_output",
+    "AnyMessageContextOutputTypedDict": ".anymessagecontext_output",
+    "UnknownAnyMessageContextOutput": ".anymessagecontext_output",
     "ApplyModelRequest": ".applymodelrequest",
     "ApplyModelRequestTypedDict": ".applymodelrequest",
     "ApplyModelResponse": ".applymodelresponse",
@@ -478,10 +492,16 @@ _dynamic_imports: dict[str, str] = {
     "BalanceResponse": ".balanceresponse",
     "BalanceResponseTypedDict": ".balanceresponse",
     "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPost": ".body_upload_geojson_vectors_vector_id_upload_geojson_post",
+    "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile": ".body_upload_geojson_vectors_vector_id_upload_geojson_post",
+    "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFileTypedDict": ".body_upload_geojson_vectors_vector_id_upload_geojson_post",
     "BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostTypedDict": ".body_upload_geojson_vectors_vector_id_upload_geojson_post",
     "BodyUploadGeopkg": ".body_upload_geopkg",
+    "BodyUploadGeopkgFile": ".body_upload_geopkg",
+    "BodyUploadGeopkgFileTypedDict": ".body_upload_geopkg",
     "BodyUploadGeopkgTypedDict": ".body_upload_geopkg",
     "BodyUploadShapefile": ".body_upload_shapefile",
+    "BodyUploadShapefileFile": ".body_upload_shapefile",
+    "BodyUploadShapefileFileTypedDict": ".body_upload_shapefile",
     "BodyUploadShapefileTypedDict": ".body_upload_shapefile",
     "ChatMessageResponse": ".chatmessageresponse",
     "ChatMessageResponseTypedDict": ".chatmessageresponse",
@@ -525,12 +545,6 @@ _dynamic_imports: dict[str, str] = {
     "FilesListForFolderRequestTypedDict": ".files_list_for_folderop",
     "FilesListForProjectRequest": ".files_list_for_projectop",
     "FilesListForProjectRequestTypedDict": ".files_list_for_projectop",
-    "FilesUploadFromURLRequest": ".files_upload_from_urlop",
-    "FilesUploadFromURLRequestTypedDict": ".files_upload_from_urlop",
-    "FilesUploadV2Request": ".files_upload_v2op",
-    "FilesUploadV2RequestTypedDict": ".files_upload_v2op",
-    "FilesUploadRequest": ".files_uploadop",
-    "FilesUploadRequestTypedDict": ".files_uploadop",
     "FileStatus": ".filestatus",
     "FileType": ".filetype",
     "FolderCreationRequest": ".foldercreationrequest",
@@ -551,6 +565,8 @@ _dynamic_imports: dict[str, str] = {
     "GeosenseGetArtifactRequestTypedDict": ".geosense_get_artifactop",
     "GeosenseSendMessageRequest": ".geosense_send_messageop",
     "GeosenseSendMessageRequestTypedDict": ".geosense_send_messageop",
+    "GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequest": ".get_tenant_transactions_payments_balance_tenant_id_transactions_getop",
+    "GetTenantTransactionsPaymentsBalanceTenantIDTransactionsGetRequestTypedDict": ".get_tenant_transactions_payments_balance_tenant_id_transactions_getop",
     "InferenceResponse": ".inferenceresponse",
     "InferenceResponseTypedDict": ".inferenceresponse",
     "InferencesListForFileRequest": ".inferences_list_for_fileop",
@@ -622,15 +638,13 @@ _dynamic_imports: dict[str, str] = {
     "SendMessageRequestTypedDict": ".sendmessagerequest",
     "TenantResponse": ".tenantresponse",
     "TenantResponseTypedDict": ".tenantresponse",
-    "Transaction": ".transaction",
-    "TransactionTypedDict": ".transaction",
+    "TransactionResponse": ".transactionresponse",
+    "TransactionResponseTypedDict": ".transactionresponse",
     "TransactionType": ".transactiontype",
     "Errored": ".uploadannotationsresponse",
     "ErroredTypedDict": ".uploadannotationsresponse",
     "UploadAnnotationsResponse": ".uploadannotationsresponse",
     "UploadAnnotationsResponseTypedDict": ".uploadannotationsresponse",
-    "UploadFileResponseStatus": ".uploadfileresponsestatus",
-    "UploadFileResponseStatusTypedDict": ".uploadfileresponsestatus",
     "UploadSource": ".uploadsource",
     "UploadSourceTypedDict": ".uploadsource",
     "UsageResponse": ".usageresponse",

@@ -1,8 +1,8 @@
 openapi: "3.1.0"
 info:
   title: "Public API"
-  version: "0.1.0"
   description: "\nPublic OpenAPI Schema\n\nThis API lets you interact directly with the application with HTTP requests.\n\nYou will need to set a valid authorization header for every request:\n\n`Authorization: Bearer <token>`\n\nExample use case: Find an existing file and its vector features:\n\n```\nPOST /auth/login/password -> Fetch token and use it in subsequent requests\nGET /users/tenant/for-user/ -> Get your tenant id for subsequent requests\nGET /projects/for-tenant/{tenant_id} -> Find your project\nGET /files/for-project/{project_id} -> Find your file\nGET /files/{file_id}/visible -> Get a download link for the visible raster\nGET /vectors/for-file/{file_id} -> Get the vector ids for the file\nGET /vectors/{vector_id}/features -> Get the annotations\n```\n\n\n"
+  version: "2.5.0"
 paths:
   /auth/login/password:
     post:
@@ -24,6 +24,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: login_with_password
       # Login is public: it exchanges credentials for a token, so it must not
       # require a bearer token. The upstream (FastAPI) spec applies the global
@@ -50,13 +130,93 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: refresh_token
   /payments/balance/{tenant_id}:
     get:
       tags:
         - "Payments"
       summary: "Get Tenant Balance"
-      description: "Get current balance and list of transactions for the specified tenant."
+      description: "Get the current numerical credit balance for the specified tenant."
       operationId: "payments_get_balance"
       parameters:
         - name: "tenant_id"
@@ -75,7 +235,208 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BalanceResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_balance
+  /payments/balance/{tenant_id}/transactions:
+    get:
+      tags:
+        - "Payments"
+      summary: "Get Tenant Transactions"
+      description: "Get the paginated list of transactions for the specified tenant."
+      operationId: "get_tenant_transactions_payments_balance__tenant_id__transactions_get"
+      parameters:
+        - name: "tenant_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            description: "A string in UUID format"
+            example: "123e4567-e89b-12d3-a456-426614174000"
+            title: "Tenant Id"
+        - name: "offset"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 0
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 200
+            title: "Limit"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/TransactionResponse"
+                title: "Response Get Tenant Transactions Payments Balance  Tenant Id  Transactions Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
   /users/tenants/for-user/:
     get:
       tags:
@@ -93,6 +454,86 @@ paths:
                   $ref: "#/components/schemas/TenantResponse"
                 type: "array"
                 title: "Response Get Tenants For User Users Tenants For User  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_tenants
       # Make this the README's showcase operation. By default Speakeasy uses the
       # first operation in the spec (auth.login_with_password) for the top-level
@@ -130,6 +571,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/ProjectResponse"
                 title: "Response Get Projects For Tenant Projects For Tenant  Tenant Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_tenant
   /projects/{project_id}:
     delete:
@@ -155,6 +676,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EntityDeletionResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /projects/:
     post:
@@ -176,6 +777,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProjectResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create
   /folders/for-folder/{folder_id}:
     get:
@@ -204,6 +885,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/FolderResponse"
                 title: "Response Get Folders For Folder Folders For Folder  Folder Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_folder
   /folders/for-project/{project_id}:
     get:
@@ -232,6 +993,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/FolderResponse"
                 title: "Response Get Folders In Project Root Folders For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_project
   /folders/{folder_id}:
     delete:
@@ -257,6 +1098,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EntityDeletionResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /folders/:
     post:
@@ -278,6 +1199,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FolderResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create
   /files/for-project/{project_id}:
     get:
@@ -306,6 +1307,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/FileResponse"
                 title: "Response Get Files For Project Root Files For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_project
   /files/for-folder/{folder_id}:
     get:
@@ -334,6 +1415,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/FileResponse"
                 title: "Response Get For Folder Files For Folder  Folder Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_folder
   /files/{file_id}:
     get:
@@ -359,6 +1520,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FileResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get
     delete:
       tags:
@@ -383,6 +1624,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EntityDeletionResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /files/{file_id}/visible:
     get:
@@ -408,6 +1729,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FileLinkResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_visible_raster
   /files/{file_id}/download:
     get:
@@ -433,6 +1834,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FileLinkResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_download_link
   /files/by-ids:
     post:
@@ -463,6 +1944,86 @@ paths:
                   $ref: "#/components/schemas/FileResponse"
                 type: "array"
                 title: "Response Get Files By Ids Files By Ids Post"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_by_ids
   /files/usage/{tenant_id}:
     get:
@@ -488,6 +2049,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UsageResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_storage_usage
   /rasters/for-tenant/{tenant_id}:
     get:
@@ -516,6 +2157,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/RasterResponse"
                 title: "Response Get Rasters For Tenant Rasters For Tenant  Tenant Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_tenant
   /rasters/for-project/{project_id}:
     get:
@@ -544,6 +2265,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/RasterResponse"
                 title: "Response Get Rasters For Project Rasters For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_project
   /rasters/for-file/{file_id}:
     get:
@@ -569,6 +2370,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RasterResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_file
   /inferences/for-tenant/{tenant_id}:
     get:
@@ -597,6 +2478,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/InferenceResponse"
                 title: "Response Get Inferences For Tenant Inferences For Tenant  Tenant Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_tenant
   /inferences/for-project/{project_id}:
     get:
@@ -625,6 +2586,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/InferenceResponse"
                 title: "Response Get Inferences For Project Inferences For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_project
   /inferences/for-file/{file_id}:
     get:
@@ -653,51 +2694,181 @@ paths:
                 items:
                   $ref: "#/components/schemas/InferenceResponse"
                 title: "Response Get Inferences For File Inferences For File  File Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_file
   /files/upload:
     post:
       tags:
         - "Files"
       summary: "Upload File"
-      description: "**DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use\n[v2/files/upload](/#/operations/upload_file_v2) instead.\n\nUpload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
+      description: "**DEPRECATED**: This endpoint is deprecated and has been removed from the V1 API.\nPlease use the V2 API instead."
       operationId: "files_upload"
-      deprecated: true
-      parameters:
-        - name: "tenant_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Tenant Id"
-        - name: "project_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Project Id"
-        - name: "folder_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "uuid"
-              - type: "null"
-            title: "Folder Id"
-        - name: "filename"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            title: "Filename"
       responses:
         "200":
           description: "Successful Response"
           content:
             application/json:
               schema: {}
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
+      deprecated: true
       x-speakeasy-name-override: upload
       # FastAPI reads the raw request stream via the Request object, so it never
       # documents a body. Without this, the generated method sends the query
@@ -737,6 +2908,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/PrivateModelResponse"
                 title: "Response Get Models For Tenant Models For Tenant  Tenant Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_tenant
   /models/for-project/{project_id}:
     get:
@@ -765,6 +3016,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/PrivateModelResponse"
                 title: "Response Get Models For Project Models For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_project
   /models/official:
     get:
@@ -783,6 +3114,86 @@ paths:
                   $ref: "#/components/schemas/OfficialModelResponse"
                 type: "array"
                 title: "Response Get Official Models Models Official Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_official
   /models/{model_id}/apply:
     post:
@@ -814,6 +3225,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApplyModelResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: apply
   /models/{model_id}/apply/estimate:
     post:
@@ -845,6 +3336,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EstimateModelResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: estimate_application
   /models/inference/{inference_id}:
     get:
@@ -870,6 +3441,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApplyModelResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_inference_status
   /models/{model_id}:
     delete:
@@ -895,6 +3546,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EntityDeletionResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /vectors/for-file/{file_id}:
     get:
@@ -923,6 +3654,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/VectorResponse"
                 title: "Response Get Vectors For File Vectors For File  File Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_file
   /vectors/classes/for-project/{project_id}:
     get:
@@ -951,6 +3762,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/ClassResponse"
                 title: "Response Get Project Classes Vectors Classes For Project  Project Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_classes_for_project
   /vectors/{project_id}/class:
     post:
@@ -982,6 +3873,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ClassResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create_class
   /vectors/{vector_id}/features:
     get:
@@ -1007,6 +3978,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VectorFeatures"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_features
   /vectors/:
     post:
@@ -1028,6 +4079,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VectorResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create
   /vectors/{vector_id}/:
     delete:
@@ -1052,6 +4183,86 @@ paths:
           content:
             application/json:
               schema: {}
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /vectors/{vector_id}/annotations:
     post:
@@ -1086,6 +4297,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/AnnotationId"
                 title: "Response Create Annotations In Vector Vectors  Vector Id  Annotations Post"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create_annotations
   /vectors/{vector_id}/upload-geojson/:
     post:
@@ -1117,6 +4408,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UploadAnnotationsResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: upload_geojson
   /vectors/{vector_id}/upload-gpkg/:
     post:
@@ -1148,6 +4519,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UploadAnnotationsResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: upload_gpkg
   /vectors/{vector_id}/upload-shp/:
     post:
@@ -1179,6 +4630,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UploadAnnotationsResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: upload_shapefile
   /regions/for-file/{file_id}:
     get:
@@ -1207,6 +4738,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/RegionResponse"
                 title: "Response Get Regions For File Regions For File  File Id  Get"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: list_for_file
   /regions/{file_id}:
     post:
@@ -1241,6 +4852,86 @@ paths:
                 items:
                   $ref: "#/components/schemas/RegionResponse"
                 title: "Response Create Regions In File Regions  File Id  Post"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create
   /regions/:
     delete:
@@ -1267,6 +4958,86 @@ paths:
           content:
             application/json:
               schema: {}
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: delete
   /geosense/session/{project_id}/:
     post:
@@ -1296,6 +5067,86 @@ paths:
                 description: "A string in UUID format"
                 example: "123e4567-e89b-12d3-a456-426614174000"
                 title: "Response Create Session In Project Geosense Session  Project Id   Post"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create_session
   /geosense/session/{session_id}/artifact/:
     post:
@@ -1327,6 +5178,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ArtifactResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: create_artifact
   /geosense/{session_id}/artifact/{artifact_id}:
     get:
@@ -1361,6 +5292,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ArtifactResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: get_artifact
   /geosense/{session_id}/message/:
     post:
@@ -1392,113 +5403,87 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ChatMessageResponse"
+        "404":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "EntityNotFound"
+                message: "Entity not found in database"
+        "400":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "InvalidAction"
+                message: "Invalid Action"
+        "403":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "AuthorizationDenied"
+                message: "Resource not found"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    title: "Error"
+                    type: "string"
+                  message:
+                    title: "Message"
+                    type: "string"
+                required:
+                  - "error"
+                  - "message"
+                title: "ErrorResponseSchema"
+                type: "object"
+              example:
+                error: "Exception"
+                message: "Exception trace"
       x-speakeasy-name-override: send_message
-  /v2/files/upload:
-    post:
-      tags:
-        - Files
-      summary: "Upload File"
-      description: "NOTE: This endpoint cannot be triggered directly from this UI\nUpload a raster file to the specified folder. If folder_id is not included,\nthe file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/v2/files/upload  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/octet-stream' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=rgba.tiff \\\n    --data-binary @sentinel-2-data-2024-12-16.tiff \n```"
-      operationId: "files_upload_v2"
-      parameters:
-        - name: "tenant_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Tenant Id"
-        - name: "project_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Project Id"
-        - name: "folder_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "uuid"
-              - type: "null"
-            title: "Folder Id"
-        - name: "filename"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            title: "Filename"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UploadFileResponseStatus"
-      x-speakeasy-name-override: upload_v2
-      # See note on /files/upload above: the raw octet-stream body is undocumented
-      # upstream, so declare it here to make the file bytes actually get sent.
-      requestBody:
-        required: true
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
-  /v2/files/upload-from-url:
-    post:
-      tags:
-        - Files
-      summary: "Upload File From Url"
-      description: "NOTE: This endpoint cannot be triggered directly from this UI\nUpload the raster file in the specified url to the specified folder.\nIf folder_id is not included, the file will be uploaded to the project root.\nValid file formats: TIFF.\nExample:\n```bash\ncurl -X 'POST' '(...)/v2/files/upload-from-url  \\\n    -H 'accept: application/json' \\\n    -H 'Content-Type: application/json' \\\n    -H 'Authorization: Bearer eyJ... \\\n    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \\\n    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \\\n    --url-query filename=myfile.tiff \\\n    --url-query file_url=https://(...)/at3_1m4_01.tif \\\n```"
-      operationId: "files_upload_from_url"
-      parameters:
-        - name: "file_url"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "File Url"
-        - name: "tenant_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Tenant Id"
-        - name: "project_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            format: "uuid"
-            title: "Project Id"
-        - name: "folder_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "uuid"
-              - type: "null"
-            title: "Folder Id"
-        - name: "filename"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            title: "Filename"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UploadFileResponseStatus"
-      x-speakeasy-name-override: upload_from_url
 components:
   schemas:
     AnnotationGeometryPayload:
@@ -1517,7 +5502,14 @@ components:
       title: "AnnotationGeometryPayload"
     AnnotationId:
       type: "integer"
-    AnyMessageContext:
+    AnyMessageContext-Input:
+      oneOf:
+        - $ref: "#/components/schemas/DataContext"
+      discriminator:
+        propertyName: "type"
+        mapping:
+          data: "#/components/schemas/DataContext"
+    AnyMessageContext-Output:
       oneOf:
         - $ref: "#/components/schemas/DataContext"
       discriminator:
@@ -1612,23 +5604,21 @@ components:
     BalanceResponse:
       properties:
         credits:
-          type: "integer"
+          type: "number"
           title: "Credits"
-        transactions:
-          items:
-            $ref: "#/components/schemas/Transaction"
-          type: "array"
-          title: "Transactions"
+        withheld:
+          type: "number"
+          title: "Withheld"
       type: "object"
       required:
         - "credits"
-        - "transactions"
+        - "withheld"
       title: "BalanceResponse"
     Body_upload_geojson_vectors__vector_id__upload_geojson__post:
       properties:
         file:
           type: "string"
-          contentMediaType: "application/octet-stream"
+          format: "binary"
           title: "File"
       type: "object"
       required:
@@ -1638,7 +5628,7 @@ components:
       properties:
         file:
           type: "string"
-          contentMediaType: "application/octet-stream"
+          format: "binary"
           title: "File"
       type: "object"
       required:
@@ -1648,7 +5638,7 @@ components:
       properties:
         file:
           type: "string"
-          contentMediaType: "application/octet-stream"
+          format: "binary"
           title: "File"
       type: "object"
       required:
@@ -1686,7 +5676,7 @@ components:
         context:
           anyOf:
             - items:
-                $ref: "#/components/schemas/AnyMessageContext"
+                $ref: "#/components/schemas/AnyMessageContext-Output"
               type: "array"
             - type: "null"
           title: "Context"
@@ -2490,7 +6480,7 @@ components:
         context:
           anyOf:
             - items:
-                $ref: "#/components/schemas/AnyMessageContext"
+                $ref: "#/components/schemas/AnyMessageContext-Input"
               type: "array"
             - type: "null"
           title: "Context"
@@ -2517,7 +6507,7 @@ components:
         - "tenant_id"
         - "name"
       title: "TenantResponse"
-    Transaction:
+    TransactionResponse:
       properties:
         transaction_id:
           type: "string"
@@ -2548,7 +6538,7 @@ components:
             - type: "null"
           title: "Reference Id"
         credits:
-          type: "integer"
+          type: "number"
           title: "Credits"
         reason:
           $ref: "#/components/schemas/Reason"
@@ -2568,7 +6558,7 @@ components:
         - "reason"
         - "type"
         - "created_at"
-      title: "Transaction"
+      title: "TransactionResponse"
     TransactionType:
       type: "string"
       enum:
@@ -2590,21 +6580,6 @@ components:
         - "annotation_ids"
         - "errored"
       title: "UploadAnnotationsResponse"
-    UploadFileResponseStatus:
-      properties:
-        file_id:
-          type: "string"
-          format: "uuid"
-          title: "File Id"
-          description: "A string in UUID format"
-          example: "123e4567-e89b-12d3-a456-426614174000"
-        status:
-          $ref: "#/components/schemas/FileStatus"
-      type: "object"
-      required:
-        - "file_id"
-        - "status"
-      title: "UploadFileResponseStatus"
     UploadSource:
       properties:
         type:
@@ -2668,11 +6643,6 @@ components:
         type:
           type: "string"
           title: "Error Type"
-        input:
-          title: "Input"
-        ctx:
-          type: "object"
-          title: "Context"
       type: "object"
       required:
         - "loc"

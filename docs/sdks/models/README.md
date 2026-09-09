@@ -51,9 +51,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.ModelsListForTenantBadRequestErrorResponseSchema          | 400                                                              | application/json                                                 |
+| errors.ModelsListForTenantForbiddenErrorResponseSchema           | 403                                                              | application/json                                                 |
+| errors.ModelsListForTenantNotFoundErrorResponseSchema            | 404                                                              | application/json                                                 |
+| errors.ModelsListForTenantInternalServerErrorErrorResponseSchema | 500                                                              | application/json                                                 |
+| errors.FlyPixDefaultError                                        | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## list_for_project
 
@@ -92,9 +96,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.ModelsListForProjectBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.ModelsListForProjectForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.ModelsListForProjectNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.ModelsListForProjectInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## list_official
 
@@ -132,9 +140,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.ModelsListOfficialBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.ModelsListOfficialForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.ModelsListOfficialNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.ModelsListOfficialInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## apply
 
@@ -176,9 +188,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| errors.ModelsApplyBadRequestErrorResponseSchema          | 400                                                      | application/json                                         |
+| errors.ModelsApplyForbiddenErrorResponseSchema           | 403                                                      | application/json                                         |
+| errors.ModelsApplyNotFoundErrorResponseSchema            | 404                                                      | application/json                                         |
+| errors.ModelsApplyInternalServerErrorErrorResponseSchema | 500                                                      | application/json                                         |
+| errors.FlyPixDefaultError                                | 4XX, 5XX                                                 | \*/\*                                                    |
 
 ## estimate_application
 
@@ -218,9 +234,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                             | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| errors.ModelsEstimateApplicationBadRequestErrorResponseSchema          | 400                                                                    | application/json                                                       |
+| errors.ModelsEstimateApplicationForbiddenErrorResponseSchema           | 403                                                                    | application/json                                                       |
+| errors.ModelsEstimateApplicationNotFoundErrorResponseSchema            | 404                                                                    | application/json                                                       |
+| errors.ModelsEstimateApplicationInternalServerErrorErrorResponseSchema | 500                                                                    | application/json                                                       |
+| errors.FlyPixDefaultError                                              | 4XX, 5XX                                                               | \*/\*                                                                  |
 
 ## get_inference_status
 
@@ -259,9 +279,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.ModelsGetInferenceStatusBadRequestErrorResponseSchema          | 400                                                                   | application/json                                                      |
+| errors.ModelsGetInferenceStatusForbiddenErrorResponseSchema           | 403                                                                   | application/json                                                      |
+| errors.ModelsGetInferenceStatusNotFoundErrorResponseSchema            | 404                                                                   | application/json                                                      |
+| errors.ModelsGetInferenceStatusInternalServerErrorErrorResponseSchema | 500                                                                   | application/json                                                      |
+| errors.FlyPixDefaultError                                             | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## delete
 
@@ -300,6 +324,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                | Status Code                                               | Content Type                                              |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| errors.ModelsDeleteBadRequestErrorResponseSchema          | 400                                                       | application/json                                          |
+| errors.ModelsDeleteForbiddenErrorResponseSchema           | 403                                                       | application/json                                          |
+| errors.ModelsDeleteNotFoundErrorResponseSchema            | 404                                                       | application/json                                          |
+| errors.ModelsDeleteInternalServerErrorErrorResponseSchema | 500                                                       | application/json                                          |
+| errors.FlyPixDefaultError                                 | 4XX, 5XX                                                  | \*/\*                                                     |

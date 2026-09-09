@@ -47,9 +47,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.RegionsListForFileBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.RegionsListForFileForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.RegionsListForFileNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.RegionsListForFileInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## create
 
@@ -117,9 +121,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.RegionsCreateBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.RegionsCreateForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.RegionsCreateNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.RegionsCreateInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## delete
 
@@ -160,6 +168,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.RegionsDeleteBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.RegionsDeleteForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.RegionsDeleteNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.RegionsDeleteInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |

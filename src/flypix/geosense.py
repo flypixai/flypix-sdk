@@ -84,8 +84,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(str, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseCreateSessionInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +202,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(str, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateSessionNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateSessionInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseCreateSessionInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -272,8 +332,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ArtifactResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseCreateArtifactInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -372,8 +462,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ArtifactResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseCreateArtifactNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseCreateArtifactInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseCreateArtifactInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -463,8 +583,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ArtifactResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseGetArtifactInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -554,8 +704,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ArtifactResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseGetArtifactNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseGetArtifactInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseGetArtifactInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -577,8 +757,8 @@ class Geosense(BaseSDK):
         vector_ids: Iterable[str],
         context: OptionalNullable[
             Union[
-                Iterable[models.AnyMessageContext],
-                Iterable[models.AnyMessageContextTypedDict],
+                Iterable[models.AnyMessageContextInput],
+                Iterable[models.AnyMessageContextInputTypedDict],
             ]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -616,7 +796,7 @@ class Geosense(BaseSDK):
                 user_message=user_message,
                 vector_ids=utils.unmarshal(vector_ids, List[str]),
                 context=utils.get_pydantic_model(
-                    context, OptionalNullable[List[models.AnyMessageContext]]
+                    context, OptionalNullable[List[models.AnyMessageContextInput]]
                 ),
             ),
         )
@@ -664,8 +844,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ChatMessageResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseSendMessageInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -687,8 +897,8 @@ class Geosense(BaseSDK):
         vector_ids: Iterable[str],
         context: OptionalNullable[
             Union[
-                Iterable[models.AnyMessageContext],
-                Iterable[models.AnyMessageContextTypedDict],
+                Iterable[models.AnyMessageContextInput],
+                Iterable[models.AnyMessageContextInputTypedDict],
             ]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -726,7 +936,7 @@ class Geosense(BaseSDK):
                 user_message=user_message,
                 vector_ids=utils.unmarshal(vector_ids, List[str]),
                 context=utils.get_pydantic_model(
-                    context, OptionalNullable[List[models.AnyMessageContext]]
+                    context, OptionalNullable[List[models.AnyMessageContextInput]]
                 ),
             ),
         )
@@ -774,8 +984,38 @@ class Geosense(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ChatMessageResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.GeosenseSendMessageNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.GeosenseSendMessageInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.GeosenseSendMessageInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

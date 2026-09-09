@@ -47,9 +47,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                           | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| errors.InferencesListForTenantBadRequestErrorResponseSchema          | 400                                                                  | application/json                                                     |
+| errors.InferencesListForTenantForbiddenErrorResponseSchema           | 403                                                                  | application/json                                                     |
+| errors.InferencesListForTenantNotFoundErrorResponseSchema            | 404                                                                  | application/json                                                     |
+| errors.InferencesListForTenantInternalServerErrorErrorResponseSchema | 500                                                                  | application/json                                                     |
+| errors.FlyPixDefaultError                                            | 4XX, 5XX                                                             | \*/\*                                                                |
 
 ## list_for_project
 
@@ -88,9 +92,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| errors.InferencesListForProjectBadRequestErrorResponseSchema          | 400                                                                   | application/json                                                      |
+| errors.InferencesListForProjectForbiddenErrorResponseSchema           | 403                                                                   | application/json                                                      |
+| errors.InferencesListForProjectNotFoundErrorResponseSchema            | 404                                                                   | application/json                                                      |
+| errors.InferencesListForProjectInternalServerErrorErrorResponseSchema | 500                                                                   | application/json                                                      |
+| errors.FlyPixDefaultError                                             | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## list_for_file
 
@@ -129,6 +137,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.InferencesListForFileBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.InferencesListForFileForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.InferencesListForFileNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.InferencesListForFileInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |

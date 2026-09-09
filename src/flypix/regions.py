@@ -84,8 +84,38 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RegionResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RegionsListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +202,38 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RegionResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RegionsListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -290,8 +350,37 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RegionResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -408,8 +497,37 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RegionResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -495,8 +613,37 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -582,8 +729,37 @@ class Regions(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RegionsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.RegionsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

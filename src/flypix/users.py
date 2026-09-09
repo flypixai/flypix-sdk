@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Users(BaseSDK):
@@ -77,8 +77,38 @@ class Users(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.TenantResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.UsersListTenantsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -158,8 +188,38 @@ class Users(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.TenantResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.UsersListTenantsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.UsersListTenantsInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.UsersListTenantsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

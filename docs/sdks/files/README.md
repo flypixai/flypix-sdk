@@ -15,8 +15,6 @@ Upload, download, list, and delete files.
 * [get_by_ids](#get_by_ids) - Get Files By Ids
 * [get_storage_usage](#get_storage_usage) - Get Storage Usage
 * [~~upload~~](#upload) - Upload File :warning: **Deprecated**
-* [upload_v2](#upload_v2) - Upload File
-* [upload_from_url](#upload_from_url) - Upload File From Url
 
 ## list_for_project
 
@@ -56,9 +54,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.FilesListForProjectBadRequestErrorResponseSchema          | 400                                                              | application/json                                                 |
+| errors.FilesListForProjectForbiddenErrorResponseSchema           | 403                                                              | application/json                                                 |
+| errors.FilesListForProjectNotFoundErrorResponseSchema            | 404                                                              | application/json                                                 |
+| errors.FilesListForProjectInternalServerErrorErrorResponseSchema | 500                                                              | application/json                                                 |
+| errors.FlyPixDefaultError                                        | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## list_for_folder
 
@@ -99,9 +101,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.FilesListForFolderBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.FilesListForFolderForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.FilesListForFolderNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.FilesListForFolderInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## get
 
@@ -140,9 +146,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.FilesGetBadRequestErrorResponseSchema          | 400                                                   | application/json                                      |
+| errors.FilesGetForbiddenErrorResponseSchema           | 403                                                   | application/json                                      |
+| errors.FilesGetNotFoundErrorResponseSchema            | 404                                                   | application/json                                      |
+| errors.FilesGetInternalServerErrorErrorResponseSchema | 500                                                   | application/json                                      |
+| errors.FlyPixDefaultError                             | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## delete
 
@@ -181,9 +191,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| errors.FilesDeleteBadRequestErrorResponseSchema          | 400                                                      | application/json                                         |
+| errors.FilesDeleteForbiddenErrorResponseSchema           | 403                                                      | application/json                                         |
+| errors.FilesDeleteNotFoundErrorResponseSchema            | 404                                                      | application/json                                         |
+| errors.FilesDeleteInternalServerErrorErrorResponseSchema | 500                                                      | application/json                                         |
+| errors.FlyPixDefaultError                                | 4XX, 5XX                                                 | \*/\*                                                    |
 
 ## get_visible_raster
 
@@ -225,9 +239,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.FilesGetVisibleRasterBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.FilesGetVisibleRasterForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.FilesGetVisibleRasterNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.FilesGetVisibleRasterInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## get_download_link
 
@@ -266,9 +284,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.FilesGetDownloadLinkBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.FilesGetDownloadLinkForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.FilesGetDownloadLinkNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.FilesGetDownloadLinkInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## get_by_ids
 
@@ -309,9 +331,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.FilesGetByIdsBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.FilesGetByIdsForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.FilesGetByIdsNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.FilesGetByIdsInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## get_storage_usage
 
@@ -351,29 +377,18 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.FilesGetStorageUsageBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.FilesGetStorageUsageForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.FilesGetStorageUsageNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.FilesGetStorageUsageInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## ~~upload~~
 
-**DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
-[v2/files/upload](/#/operations/upload_file_v2) instead.
-
-Upload a raster file to the specified folder. If folder_id is not included,
-the file will be uploaded to the project root.
-Valid file formats: TIFF.
-Example:
-```bash
-curl -X 'POST' '(...)/files/upload  \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/octet-stream' \
-    -H 'Authorization: Bearer eyJ... \
-    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \
-    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \
-    --url-query filename=rgba.tiff \
-    --data-binary @sentinel-2-data-2024-12-16.tiff 
-```
+**DEPRECATED**: This endpoint is deprecated and has been removed from the V1 API.
+Please use the V2 API instead.
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -390,7 +405,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.files.upload(tenant_id="95d06de1-31d8-4dc6-a134-b591889f9c67", project_id="334fb3cb-5f26-4e97-a2b7-e97b6de6064d", filename="example.file", body=open("example.file", "rb"))
+    res = f_client.files.upload(request=open("example.file", "rb"))
 
     # Handle response
     print(res)
@@ -401,11 +416,7 @@ with Flypix(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `filename`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `body`                                                              | *Union[bytes, IO[bytes], io.IOBase]*                                | :heavy_check_mark:                                                  | N/A                                                                 |
-| `folder_id`                                                         | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `request`                                                           | [Union[bytes, IO[bytes], io.IOBase]](../../models/.md)              | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -414,124 +425,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
-
-## upload_v2
-
-NOTE: This endpoint cannot be triggered directly from this UI
-Upload a raster file to the specified folder. If folder_id is not included,
-the file will be uploaded to the project root.
-Valid file formats: TIFF.
-Example:
-```bash
-curl -X 'POST' '(...)/v2/files/upload  \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/octet-stream' \
-    -H 'Authorization: Bearer eyJ... \
-    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \
-    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \
-    --url-query filename=rgba.tiff \
-    --data-binary @sentinel-2-data-2024-12-16.tiff 
-```
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="files_upload_v2" method="post" path="/v2/files/upload" -->
-```python
-from flypix import Flypix, models
-
-
-with Flypix(
-    security=models.Security(
-        api_key="<YOUR_API_KEY_HERE>",
-    ),
-) as f_client:
-
-    res = f_client.files.upload_v2(tenant_id="170b602d-192c-4e40-a031-f5892fa57f45", project_id="55299aef-34b1-4aaa-a1aa-cbeca6dd058b", filename="example.file", body=open("example.file", "rb"))
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `filename`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `body`                                                              | *Union[bytes, IO[bytes], io.IOBase]*                                | :heavy_check_mark:                                                  | N/A                                                                 |
-| `folder_id`                                                         | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.UploadFileResponseStatus](../../models/uploadfileresponsestatus.md)**
-
-### Errors
-
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
-
-## upload_from_url
-
-NOTE: This endpoint cannot be triggered directly from this UI
-Upload the raster file in the specified url to the specified folder.
-If folder_id is not included, the file will be uploaded to the project root.
-Valid file formats: TIFF.
-Example:
-```bash
-curl -X 'POST' '(...)/v2/files/upload-from-url  \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer eyJ... \
-    --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \
-    --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \
-    --url-query filename=myfile.tiff \
-    --url-query file_url=https://(...)/at3_1m4_01.tif \
-```
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="files_upload_from_url" method="post" path="/v2/files/upload-from-url" -->
-```python
-from flypix import Flypix, models
-
-
-with Flypix(
-    security=models.Security(
-        api_key="<YOUR_API_KEY_HERE>",
-    ),
-) as f_client:
-
-    res = f_client.files.upload_from_url(file_url="dad272e1-d759-4787-8080-c3c21fce440f", tenant_id="d614acda-2db6-4aed-a3d4-98b2a079ff2c", project_id="fa7c54bc-4f6d-40d6-8993-8da199e7586e", filename="example.file")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `file_url`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `filename`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `folder_id`                                                         | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.UploadFileResponseStatus](../../models/uploadfileresponsestatus.md)**
-
-### Errors
-
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| errors.FilesUploadBadRequestErrorResponseSchema          | 400                                                      | application/json                                         |
+| errors.FilesUploadForbiddenErrorResponseSchema           | 403                                                      | application/json                                         |
+| errors.FilesUploadNotFoundErrorResponseSchema            | 404                                                      | application/json                                         |
+| errors.FilesUploadInternalServerErrorErrorResponseSchema | 500                                                      | application/json                                         |
+| errors.FlyPixDefaultError                                | 4XX, 5XX                                                 | \*/\*                                                    |

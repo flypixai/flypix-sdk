@@ -85,8 +85,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.VectorResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -174,8 +204,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.VectorResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -262,8 +322,41 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.ClassResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectNotFoundErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -350,8 +443,41 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.ClassResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectNotFoundErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsListClassesForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsListClassesForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -449,8 +575,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ClassResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateClassInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -548,8 +704,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ClassResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateClassNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateClassInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateClassInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -636,8 +822,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.VectorFeatures, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsGetFeaturesInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -724,8 +940,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.VectorFeatures, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsGetFeaturesNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsGetFeaturesInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsGetFeaturesInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -818,8 +1064,37 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.VectorResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -912,8 +1187,37 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.VectorResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1000,8 +1304,37 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1088,8 +1421,37 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1192,8 +1554,40 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[int], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateAnnotationsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1296,8 +1690,40 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[int], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsBadRequestErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsForbiddenErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsCreateAnnotationsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsCreateAnnotationsInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsCreateAnnotationsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1315,7 +1741,10 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[
+            models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile,
+            models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFileTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1347,7 +1776,9 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadGeojsonRequest(
             vector_id=vector_id,
             body=models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPost(
-                file=file,
+                file=utils.get_pydantic_model(
+                    file, models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile
+                ),
             ),
         )
 
@@ -1398,8 +1829,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadGeojsonInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1417,7 +1878,10 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[
+            models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile,
+            models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFileTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1449,7 +1913,9 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadGeojsonRequest(
             vector_id=vector_id,
             body=models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPost(
-                file=file,
+                file=utils.get_pydantic_model(
+                    file, models.BodyUploadGeojsonVectorsVectorIDUploadGeojsonPostFile
+                ),
             ),
         )
 
@@ -1500,8 +1966,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGeojsonNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGeojsonInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadGeojsonInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1519,7 +2015,7 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[models.BodyUploadGeopkgFile, models.BodyUploadGeopkgFileTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1552,7 +2048,7 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadGpkgRequest(
             vector_id=vector_id,
             body=models.BodyUploadGeopkg(
-                file=file,
+                file=utils.get_pydantic_model(file, models.BodyUploadGeopkgFile),
             ),
         )
 
@@ -1599,8 +2095,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadGpkgInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1618,7 +2144,7 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[models.BodyUploadGeopkgFile, models.BodyUploadGeopkgFileTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1651,7 +2177,7 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadGpkgRequest(
             vector_id=vector_id,
             body=models.BodyUploadGeopkg(
-                file=file,
+                file=utils.get_pydantic_model(file, models.BodyUploadGeopkgFile),
             ),
         )
 
@@ -1698,8 +2224,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadGpkgNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadGpkgInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadGpkgInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1717,7 +2273,9 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[
+            models.BodyUploadShapefileFile, models.BodyUploadShapefileFileTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1750,7 +2308,7 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadShapefileRequest(
             vector_id=vector_id,
             body=models.BodyUploadShapefile(
-                file=file,
+                file=utils.get_pydantic_model(file, models.BodyUploadShapefileFile),
             ),
         )
 
@@ -1797,8 +2355,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadShapefileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1816,7 +2404,9 @@ class Vectors(BaseSDK):
         self,
         *,
         vector_id: str,
-        file: str,
+        file: Union[
+            models.BodyUploadShapefileFile, models.BodyUploadShapefileFileTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1849,7 +2439,7 @@ class Vectors(BaseSDK):
         request = models.VectorsUploadShapefileRequest(
             vector_id=vector_id,
             body=models.BodyUploadShapefile(
-                file=file,
+                file=utils.get_pydantic_model(file, models.BodyUploadShapefileFile),
             ),
         )
 
@@ -1896,8 +2486,38 @@ class Vectors(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UploadAnnotationsResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.VectorsUploadShapefileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.VectorsUploadShapefileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.VectorsUploadShapefileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

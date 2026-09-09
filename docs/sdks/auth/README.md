@@ -44,9 +44,13 @@ with Flypix() as f_client:
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.AuthLoginWithPasswordBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.AuthLoginWithPasswordForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.AuthLoginWithPasswordNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.AuthLoginWithPasswordInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## refresh_token
 
@@ -85,6 +89,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.AuthRefreshTokenBadRequestErrorResponseSchema          | 400                                                           | application/json                                              |
+| errors.AuthRefreshTokenForbiddenErrorResponseSchema           | 403                                                           | application/json                                              |
+| errors.AuthRefreshTokenNotFoundErrorResponseSchema            | 404                                                           | application/json                                              |
+| errors.AuthRefreshTokenInternalServerErrorErrorResponseSchema | 500                                                           | application/json                                              |
+| errors.FlyPixDefaultError                                     | 4XX, 5XX                                                      | \*/\*                                                         |

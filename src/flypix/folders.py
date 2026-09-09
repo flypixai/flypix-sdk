@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import Nullable, OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Folders(BaseSDK):
@@ -86,8 +86,38 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FolderResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FoldersListForFolderInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -176,8 +206,38 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FolderResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForFolderNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForFolderInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FoldersListForFolderInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -265,8 +325,38 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FolderResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FoldersListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -354,8 +444,38 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FolderResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FoldersListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -444,8 +564,37 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -534,8 +683,37 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -635,8 +813,37 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FolderResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -736,8 +943,37 @@ class Folders(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FolderResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FoldersCreateInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FoldersCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

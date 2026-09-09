@@ -47,9 +47,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.RastersListForTenantBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.RastersListForTenantForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.RastersListForTenantNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.RastersListForTenantInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## list_for_project
 
@@ -88,9 +92,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.RastersListForProjectBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.RastersListForProjectForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.RastersListForProjectNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.RastersListForProjectInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## list_for_file
 
@@ -129,6 +137,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| errors.RastersListForFileBadRequestErrorResponseSchema          | 400                                                             | application/json                                                |
+| errors.RastersListForFileForbiddenErrorResponseSchema           | 403                                                             | application/json                                                |
+| errors.RastersListForFileNotFoundErrorResponseSchema            | 404                                                             | application/json                                                |
+| errors.RastersListForFileInternalServerErrorErrorResponseSchema | 500                                                             | application/json                                                |
+| errors.FlyPixDefaultError                                       | 4XX, 5XX                                                        | \*/\*                                                           |

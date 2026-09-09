@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Projects(BaseSDK):
@@ -84,8 +84,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.ProjectResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +202,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.ProjectResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -262,8 +322,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -352,8 +442,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsDeleteNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsDeleteInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -446,8 +566,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ProjectResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -540,8 +690,38 @@ class Projects(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.ProjectResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.ProjectsCreateNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.ProjectsCreateInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.ProjectsCreateInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

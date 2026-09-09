@@ -87,8 +87,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -176,8 +206,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -266,8 +326,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesListForFolderInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -356,8 +446,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesListForFolderNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesListForFolderInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesListForFolderInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -444,8 +564,31 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetBadRequestErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetForbiddenErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -532,8 +675,31 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetBadRequestErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetForbiddenErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -620,8 +786,35 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -708,8 +901,35 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.EntityDeletionResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesDeleteInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesDeleteInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -799,8 +1019,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileLinkResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetVisibleRasterInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -890,8 +1140,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileLinkResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetVisibleRasterNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetVisibleRasterInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetVisibleRasterInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -978,8 +1258,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileLinkResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetDownloadLinkInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1066,8 +1376,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.FileLinkResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetDownloadLinkNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetDownloadLinkInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetDownloadLinkInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1153,8 +1493,37 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1240,8 +1609,37 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.FileResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetByIdsInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetByIdsInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1329,8 +1727,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UsageResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetStorageUsageInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1418,8 +1846,38 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.UsageResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesGetStorageUsageNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesGetStorageUsageInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.FilesGetStorageUsageInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -1439,11 +1897,7 @@ class Files(BaseSDK):
     def upload(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        request: Union[bytes, IO[bytes], io.IOBase],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1451,29 +1905,10 @@ class Files(BaseSDK):
     ) -> Any:
         r"""Upload File
 
-        **DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
-        [v2/files/upload](/#/operations/upload_file_v2) instead.
+        **DEPRECATED**: This endpoint is deprecated and has been removed from the V1 API.
+        Please use the V2 API instead.
 
-        Upload a raster file to the specified folder. If folder_id is not included,
-        the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/files/upload  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/octet-stream' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=rgba.tiff \ 
-        --data-binary @sentinel-2-data-2024-12-16.tiff
-        ```
-
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param body: 
-        :param folder_id: 
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1489,14 +1924,6 @@ class Files(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.FilesUploadRequest(
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-            body=body,
-        )
-
         req = self._build_request(
             method="POST",
             path="/files/upload",
@@ -1511,7 +1938,7 @@ class Files(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+                request, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1540,8 +1967,35 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesUploadBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesUploadForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesUploadNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadInternalServerErrorErrorResponseSchemaData, http_res
+            )
+            raise errors.FilesUploadInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -1561,11 +2015,7 @@ class Files(BaseSDK):
     async def upload_async(
         self,
         *,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
+        request: Union[bytes, IO[bytes], io.IOBase],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1573,29 +2023,10 @@ class Files(BaseSDK):
     ) -> Any:
         r"""Upload File
 
-        **DEPRECATED**: This endpoint is deprecated and will be removed in a future version, use
-        [v2/files/upload](/#/operations/upload_file_v2) instead.
+        **DEPRECATED**: This endpoint is deprecated and has been removed from the V1 API.
+        Please use the V2 API instead.
 
-        Upload a raster file to the specified folder. If folder_id is not included,
-        the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/files/upload  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/octet-stream' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=rgba.tiff \ 
-        --data-binary @sentinel-2-data-2024-12-16.tiff
-        ```
-
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param body: 
-        :param folder_id: 
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1611,14 +2042,6 @@ class Files(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.FilesUploadRequest(
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-            body=body,
-        )
-
         req = self._build_request_async(
             method="POST",
             path="/files/upload",
@@ -1633,7 +2056,7 @@ class Files(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
+                request, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1662,470 +2085,35 @@ class Files(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(Any, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadBadRequestErrorResponseSchemaData, http_res
             )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+            raise errors.FilesUploadBadRequestErrorResponseSchema(
+                response_data, http_res
             )
-
-        raise errors.FlyPixDefaultError("Unexpected response received", http_res)
-
-    def upload_v2(
-        self,
-        *,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.UploadFileResponseStatus:
-        r"""Upload File
-
-        NOTE: This endpoint cannot be triggered directly from this UI
-        Upload a raster file to the specified folder. If folder_id is not included,
-        the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/v2/files/upload  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/octet-stream' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=rgba.tiff \ 
-        --data-binary @sentinel-2-data-2024-12-16.tiff
-        ```
-
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param body: 
-        :param folder_id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.FilesUploadV2Request(
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-            body=body,
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/v2/files/upload",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="files_upload_v2",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-                tags=["Files"],
-                extensions=None,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.UploadFileResponseStatus, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadForbiddenErrorResponseSchemaData, http_res
             )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+            raise errors.FilesUploadForbiddenErrorResponseSchema(
+                response_data, http_res
             )
-
-        raise errors.FlyPixDefaultError("Unexpected response received", http_res)
-
-    async def upload_v2_async(
-        self,
-        *,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        body: Union[bytes, IO[bytes], io.IOBase],
-        folder_id: OptionalNullable[str] = UNSET,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.UploadFileResponseStatus:
-        r"""Upload File
-
-        NOTE: This endpoint cannot be triggered directly from this UI
-        Upload a raster file to the specified folder. If folder_id is not included,
-        the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/v2/files/upload  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/octet-stream' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=rgba.tiff \ 
-        --data-binary @sentinel-2-data-2024-12-16.tiff
-        ```
-
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param body: 
-        :param folder_id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.FilesUploadV2Request(
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-            body=body,
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/v2/files/upload",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "raw", Union[bytes, IO[bytes], io.IOBase]
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="files_upload_v2",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-                tags=["Files"],
-                extensions=None,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.UploadFileResponseStatus, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadNotFoundErrorResponseSchemaData, http_res
             )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+            raise errors.FilesUploadNotFoundErrorResponseSchema(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.FilesUploadInternalServerErrorErrorResponseSchemaData, http_res
             )
-
-        raise errors.FlyPixDefaultError("Unexpected response received", http_res)
-
-    def upload_from_url(
-        self,
-        *,
-        file_url: str,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        folder_id: OptionalNullable[str] = UNSET,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.UploadFileResponseStatus:
-        r"""Upload File From Url
-
-        NOTE: This endpoint cannot be triggered directly from this UI
-        Upload the raster file in the specified url to the specified folder.
-        If folder_id is not included, the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/v2/files/upload-from-url  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/json' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=myfile.tiff \ 
-        --url-query file_url=https://(...)/at3_1m4_01.tif \ 
-        ```
-
-        :param file_url: 
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param folder_id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.FilesUploadFromURLRequest(
-            file_url=file_url,
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/v2/files/upload-from-url",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="files_upload_from_url",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-                tags=["Files"],
-                extensions=None,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.UploadFileResponseStatus, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
+            raise errors.FilesUploadInternalServerErrorErrorResponseSchema(
+                response_data, http_res
             )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.FlyPixDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise errors.FlyPixDefaultError("Unexpected response received", http_res)
-
-    async def upload_from_url_async(
-        self,
-        *,
-        file_url: str,
-        tenant_id: str,
-        project_id: str,
-        filename: str,
-        folder_id: OptionalNullable[str] = UNSET,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.UploadFileResponseStatus:
-        r"""Upload File From Url
-
-        NOTE: This endpoint cannot be triggered directly from this UI
-        Upload the raster file in the specified url to the specified folder.
-        If folder_id is not included, the file will be uploaded to the project root.
-        Valid file formats: TIFF.
-        Example:
-        ```bash
-        curl -X 'POST' '(...)/v2/files/upload-from-url  \ 
-        -H 'accept: application/json' \ 
-        -H 'Content-Type: application/json' \ 
-        -H 'Authorization: Bearer eyJ... \ 
-        --url-query tenant_id=34f67787-dc22-4894-8fa8-74b450c44f6f \ 
-        --url-query project_id=db7642d5-8b11-4057-b1be-b5a554c227c9 \ 
-        --url-query filename=myfile.tiff \ 
-        --url-query file_url=https://(...)/at3_1m4_01.tif \ 
-        ```
-
-        :param file_url: 
-        :param tenant_id: 
-        :param project_id: 
-        :param filename: 
-        :param folder_id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.FilesUploadFromURLRequest(
-            file_url=file_url,
-            tenant_id=tenant_id,
-            project_id=project_id,
-            folder_id=folder_id,
-            filename=filename,
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/v2/files/upload-from-url",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="files_upload_from_url",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-                tags=["Files"],
-                extensions=None,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.UploadFileResponseStatus, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(

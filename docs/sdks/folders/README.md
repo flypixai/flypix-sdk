@@ -50,9 +50,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| errors.FoldersListForFolderBadRequestErrorResponseSchema          | 400                                                               | application/json                                                  |
+| errors.FoldersListForFolderForbiddenErrorResponseSchema           | 403                                                               | application/json                                                  |
+| errors.FoldersListForFolderNotFoundErrorResponseSchema            | 404                                                               | application/json                                                  |
+| errors.FoldersListForFolderInternalServerErrorErrorResponseSchema | 500                                                               | application/json                                                  |
+| errors.FlyPixDefaultError                                         | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## list_for_project
 
@@ -92,9 +96,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| errors.FoldersListForProjectBadRequestErrorResponseSchema          | 400                                                                | application/json                                                   |
+| errors.FoldersListForProjectForbiddenErrorResponseSchema           | 403                                                                | application/json                                                   |
+| errors.FoldersListForProjectNotFoundErrorResponseSchema            | 404                                                                | application/json                                                   |
+| errors.FoldersListForProjectInternalServerErrorErrorResponseSchema | 500                                                                | application/json                                                   |
+| errors.FlyPixDefaultError                                          | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## delete
 
@@ -135,9 +143,13 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.FoldersDeleteBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.FoldersDeleteForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.FoldersDeleteNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.FoldersDeleteInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## create
 
@@ -180,6 +192,10 @@ with Flypix(
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.FoldersCreateBadRequestErrorResponseSchema          | 400                                                        | application/json                                           |
+| errors.FoldersCreateForbiddenErrorResponseSchema           | 403                                                        | application/json                                           |
+| errors.FoldersCreateNotFoundErrorResponseSchema            | 404                                                        | application/json                                           |
+| errors.FoldersCreateInternalServerErrorErrorResponseSchema | 500                                                        | application/json                                           |
+| errors.FlyPixDefaultError                                  | 4XX, 5XX                                                   | \*/\*                                                      |

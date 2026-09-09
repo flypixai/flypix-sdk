@@ -5,7 +5,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 
 class Rasters(BaseSDK):
@@ -84,8 +84,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RasterResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -172,8 +202,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RasterResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForTenantNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForTenantInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForTenantInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -260,8 +320,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RasterResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -348,8 +438,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(List[models.RasterResponse], http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForProjectNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForProjectInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForProjectInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
@@ -436,8 +556,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.RasterResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.FlyPixDefaultError(
@@ -524,8 +674,38 @@ class Rasters(BaseSDK):
             retry_config=retry_config,
         )
 
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.RasterResponse, http_res)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileBadRequestErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileBadRequestErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileForbiddenErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileForbiddenErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileNotFoundErrorResponseSchemaData, http_res
+            )
+            raise errors.RastersListForFileNotFoundErrorResponseSchema(
+                response_data, http_res
+            )
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.RastersListForFileInternalServerErrorErrorResponseSchemaData,
+                http_res,
+            )
+            raise errors.RastersListForFileInternalServerErrorErrorResponseSchema(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.FlyPixDefaultError(
