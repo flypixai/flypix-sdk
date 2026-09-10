@@ -2,35 +2,57 @@
 
 from __future__ import annotations
 from flypix.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class FolderResponseTypedDict(TypedDict):
     folder_id: str
-    r"""A string in UUID format"""
     name: str
     parent_id: Nullable[str]
+    dollar_schema: NotRequired[str]
+    r"""A URL to the JSON Schema for this object."""
 
 
 class FolderResponse(BaseModel):
     folder_id: str
-    r"""A string in UUID format"""
 
     name: str
 
     parent_id: Nullable[str]
 
+    dollar_schema: Annotated[Optional[str], pydantic.Field(alias="$schema")] = None
+    r"""A URL to the JSON Schema for this object."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
+        optional_fields = set(["$schema"])
+        nullable_fields = set(["parent_id"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
             if val != UNSET_SENTINEL:
-                m[k] = val
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
+
+
+try:
+    FolderResponse.model_rebuild()
+except NameError:
+    pass

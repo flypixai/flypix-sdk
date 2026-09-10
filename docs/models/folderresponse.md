@@ -3,8 +3,9 @@
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          | Example                              |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `folder_id`                          | *str*                                | :heavy_check_mark:                   | A string in UUID format              | 123e4567-e89b-12d3-a456-426614174000 |
-| `name`                               | *str*                                | :heavy_check_mark:                   | N/A                                  |                                      |
-| `parent_id`                          | *Nullable[str]*                      | :heavy_check_mark:                   | N/A                                  | 123e4567-e89b-12d3-a456-426614174000 |
+| Field                                           | Type                                            | Required                                        | Description                                     | Example                                         |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `dollar_schema`                                 | *Optional[str]*                                 | :heavy_minus_sign:                              | A URL to the JSON Schema for this object.       | https://example.com/schemas/FolderResponse.json |
+| `folder_id`                                     | *str*                                           | :heavy_check_mark:                              | N/A                                             |                                                 |
+| `name`                                          | *str*                                           | :heavy_check_mark:                              | N/A                                             |                                                 |
+| `parent_id`                                     | *Nullable[str]*                                 | :heavy_check_mark:                              | N/A                                             |                                                 |

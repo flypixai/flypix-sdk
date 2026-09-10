@@ -2,21 +2,19 @@
 
 ## Overview
 
-Manage projects within a tenant.
-
 ### Available Operations
 
-* [list_for_tenant](#list_for_tenant) - Get Projects For Tenant
-* [delete](#delete) - Delete Project
-* [create](#create) - Create Project
+* [create_project](#create_project) - Create project
+* [get_projects_for_tenant](#get_projects_for_tenant) - List projects for tenant
+* [delete_project](#delete_project) - Delete project
 
-## list_for_tenant
+## create_project
 
-Get projects in a tenant
+Creates a new empty project.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="projects_list_for_tenant" method="get" path="/projects/for-tenant/{tenant_id}" -->
+<!-- UsageSnippet language="python" operationID="create-project" method="post" path="/v2/projects/" -->
 ```python
 from flypix import Flypix, models
 
@@ -27,7 +25,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.projects.list_for_tenant(tenant_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.projects.create_project(name="<value>", tenant_id="<id>")
 
     # Handle response
     print(res)
@@ -36,14 +34,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[List[models.ProjectResponse]](../../models/.md)**
+**[models.CreateProjectResponse](../../models/createprojectresponse.md)**
 
 ### Errors
 
@@ -51,15 +50,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## delete
+## get_projects_for_tenant
 
-Delete the specified project. This will recursively delete any files
-as well as folders contained in the specified project.
-This operation cannot be undone
+Lists a tenant's projects.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="projects_delete" method="delete" path="/projects/{project_id}" -->
+<!-- UsageSnippet language="python" operationID="get-projects-for-tenant" method="get" path="/v2/projects/for-tenant/{tenant_id}" -->
 ```python
 from flypix import Flypix, models
 
@@ -70,7 +67,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.projects.delete(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.projects.get_projects_for_tenant(tenant_id="<id>")
 
     # Handle response
     print(res)
@@ -79,14 +76,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.EntityDeletionResponse](../../models/entitydeletionresponse.md)**
+**[models.GetProjectsForTenantResponse](../../models/getprojectsfortenantresponse.md)**
 
 ### Errors
 
@@ -94,13 +91,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## create
+## delete_project
 
-Create a new empty project
+Deletes a project and everything under it, recursively. This cannot be undone.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="projects_create" method="post" path="/projects/" -->
+<!-- UsageSnippet language="python" operationID="delete-project" method="delete" path="/v2/projects/{project_id}" -->
 ```python
 from flypix import Flypix, models
 
@@ -111,7 +108,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.projects.create(tenant_id="123e4567-e89b-12d3-a456-426614174000", name="<value>")
+    res = f_client.projects.delete_project(project_id="<id>")
 
     # Handle response
     print(res)
@@ -120,15 +117,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
-| `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.ProjectResponse](../../models/projectresponse.md)**
+**[models.DeleteProjectResponse](../../models/deleteprojectresponse.md)**
 
 ### Errors
 

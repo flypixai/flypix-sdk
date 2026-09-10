@@ -2,28 +2,25 @@
 
 ## Overview
 
-Obtain and refresh API access tokens.
-
 ### Available Operations
 
-* [login_with_password](#login_with_password) - Login With Password
-* [refresh_token](#refresh_token) - Refresh Token
+* [login_with_password](#login_with_password) - Login with password
+* [refresh_token](#refresh_token) - Refresh token
 
 ## login_with_password
 
-Retrieve a short lived auth token using your username and password.
-Only accounts created directly in the app are supported, third party accounts (Google, Linkedin) are not supported
+Exchanges a username and password for a token. Not available when the tenant's identity provider is DESP.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="auth_login_with_password" method="post" path="/auth/login/password" -->
+<!-- UsageSnippet language="python" operationID="login-with-password" method="post" path="/v2/auth/login/password" -->
 ```python
 from flypix import Flypix
 
 
 with Flypix() as f_client:
 
-    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.auth.login_with_password(password="N_EG18c_GGYVFM4", username="William_Kulas")
 
     # Handle response
     print(res)
@@ -34,13 +31,13 @@ with Flypix() as f_client:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `username`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `password`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `username`                                                          | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.LoginResponse](../../models/loginresponse.md)**
+**[models.LoginWithPasswordResponse](../../models/loginwithpasswordresponse.md)**
 
 ### Errors
 
@@ -50,20 +47,16 @@ with Flypix() as f_client:
 
 ## refresh_token
 
-Get a new short lived authentication token using the refresh token
+Exchanges a refresh token for a new token. Not available when the tenant's identity provider is DESP.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="auth_refresh_token" method="post" path="/auth/refresh" -->
+<!-- UsageSnippet language="python" operationID="refresh-token" method="post" path="/v2/auth/refresh" -->
 ```python
-from flypix import Flypix, models
+from flypix import Flypix
 
 
-with Flypix(
-    security=models.Security(
-        api_key="<YOUR_API_KEY_HERE>",
-    ),
-) as f_client:
+with Flypix() as f_client:
 
     res = f_client.auth.refresh_token(refresh_token="<value>")
 
@@ -81,7 +74,7 @@ with Flypix(
 
 ### Response
 
-**[models.LoginResponse](../../models/loginresponse.md)**
+**[models.RefreshTokenResponse](../../models/refreshtokenresponse.md)**
 
 ### Errors
 

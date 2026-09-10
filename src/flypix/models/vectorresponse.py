@@ -2,31 +2,55 @@
 
 from __future__ import annotations
 from .vectormetadata import VectorMetadata, VectorMetadataTypedDict
-from flypix.types import BaseModel
-from typing_extensions import TypedDict
+from flypix.types import BaseModel, UNSET_SENTINEL
+import pydantic
+from pydantic import model_serializer
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class VectorResponseTypedDict(TypedDict):
-    tenant_id: str
-    r"""A string in UUID format"""
-    project_id: str
-    r"""A string in UUID format"""
-    vector_id: str
-    r"""A string in UUID format"""
     metadata: VectorMetadataTypedDict
     name: str
+    project_id: str
+    tenant_id: str
+    vector_id: str
+    dollar_schema: NotRequired[str]
+    r"""A URL to the JSON Schema for this object."""
 
 
 class VectorResponse(BaseModel):
-    tenant_id: str
-    r"""A string in UUID format"""
-
-    project_id: str
-    r"""A string in UUID format"""
-
-    vector_id: str
-    r"""A string in UUID format"""
-
     metadata: VectorMetadata
 
     name: str
+
+    project_id: str
+
+    tenant_id: str
+
+    vector_id: str
+
+    dollar_schema: Annotated[Optional[str], pydantic.Field(alias="$schema")] = None
+    r"""A URL to the JSON Schema for this object."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["$schema"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    VectorResponse.model_rebuild()
+except NameError:
+    pass

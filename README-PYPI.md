@@ -36,15 +36,14 @@ You will need to set a valid authorization header for every request:
 
 `Authorization: Bearer <token>`
 
-Example use case: Find an existing file and its vector features:
+Example use case: Find an existing raster and its vector features:
 
 ```
 POST /auth/login/password -> Fetch token and use it in subsequent requests
 GET /users/tenant/for-user/ -> Get your tenant id for subsequent requests
 GET /projects/for-tenant/{tenant_id} -> Find your project
-GET /files/for-project/{project_id} -> Find your file
-GET /files/{file_id}/visible -> Get a download link for the visible raster
-GET /vectors/for-file/{file_id} -> Get the vector ids for the file
+GET /rasters/for-project/{project_id}/tree -> Find your raster
+GET /vectors/for-raster/{raster_id} -> Get the vector ids for the raster
 GET /vectors/{vector_id}/features -> Get the annotations
 ```
 <!-- End Summary [summary] -->
@@ -149,20 +148,16 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### List tenants for the current user
+### Example
 
 ```python
 # Synchronous Example
-from flypix import Flypix, models
+from flypix import Flypix
 
 
-with Flypix(
-    security=models.Security(
-        api_key="<YOUR_API_KEY_HERE>",
-    ),
-) as f_client:
+with Flypix() as f_client:
 
-    res = f_client.users.list_tenants()
+    res = f_client.system.health()
 
     # Handle response
     print(res)
@@ -175,17 +170,13 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from flypix import Flypix, models
+from flypix import Flypix
 
 async def main():
 
-    async with Flypix(
-        security=models.Security(
-            api_key="<YOUR_API_KEY_HERE>",
-        ),
-    ) as f_client:
+    async with Flypix() as f_client:
 
-        res = await f_client.users.list_tenants_async()
+        res = await f_client.system.health_async()
 
         # Handle response
         print(res)
@@ -217,7 +208,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.system.health()
 
     # Handle response
     print(res)
@@ -233,91 +224,98 @@ with Flypix(
 
 ### [Auth](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md)
 
-* [login_with_password](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#login_with_password) - Login With Password
-* [refresh_token](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#refresh_token) - Refresh Token
+* [login_with_password](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#login_with_password) - Login with password
+* [refresh_token](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#refresh_token) - Refresh token
 
 ### [Files](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md)
 
-* [list_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#list_for_project) - Get Files For Project Root
-* [list_for_folder](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#list_for_folder) - Get For Folder
-* [get](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get) - Get File
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#delete) - Delete File
-* [get_visible_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_visible_raster) - Get Visible Raster Of File
-* [get_download_link](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_download_link) - Get File Download Link
-* [get_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_by_ids) - Get Files By Ids
-* [get_storage_usage](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_storage_usage) - Get Storage Usage
-* [~~upload~~](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload) - Upload File :warning: **Deprecated**
-* [upload_v2](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload_v2) - Upload File
-* [upload_from_url](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload_from_url) - Upload File From Url
+* [upload_v2](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload_v2) - Upload a file
+* [upload_from_url](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload_from_url) - Upload a file from a URL
+* [get_storage_usage](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_storage_usage) - Get storage usage
+* [get_file_download_link](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#get_file_download_link) - Get file download link
 
 ### [Folders](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md)
 
-* [list_for_folder](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#list_for_folder) - Get Folders For Folder
-* [list_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#list_for_project) - Get Folders In Project Root
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#delete) - Delete Folder
-* [create](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#create) - Create Folder
+* [create_folder](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#create_folder) - Create folder
+* [get_folders_for_folder](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#get_folders_for_folder) - List subfolders
+* [get_folders_in_project_root](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#get_folders_in_project_root) - List root folders
+* [get_folders_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#get_folders_by_ids) - Get folders by ids
+* [delete_folder](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/folders/README.md#delete_folder) - Delete folder
 
 ### [Geosense](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md)
 
-* [create_session](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#create_session) - Create Session In Project
-* [create_artifact](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#create_artifact) - Create Session Artifact
-* [get_artifact](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#get_artifact) - Get Session Artifact
-* [send_message](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#send_message) - Send Message
+* [create_session_in_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#create_session_in_project) - Start geosense session
+* [create_session_artifact](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#create_session_artifact) - Create session artifact
+* [get_session_artifact](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#get_session_artifact) - Get session artifact
+* [send_message](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/geosense/README.md#send_message) - Send geosense message
 
 ### [Inferences](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md)
 
-* [list_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#list_for_tenant) - Get Inferences For Tenant
-* [list_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#list_for_project) - Get Inferences For Project
-* [list_for_file](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#list_for_file) - Get Inferences For File
+* [get_inferences_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#get_inferences_for_project) - List project inferences
+* [get_inferences_for_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#get_inferences_for_raster) - List raster inferences
+* [get_inferences_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#get_inferences_for_tenant) - List tenant inferences
+* [get_inferences_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/inferences/README.md#get_inferences_by_ids) - Get inferences by ids
 
 ### [Models](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md)
 
-* [list_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#list_for_tenant) - Get Models For Tenant
-* [list_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#list_for_project) - Get Models For Project
-* [list_official](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#list_official) - Get Official Models
-* [apply](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#apply) - Apply Model On File
-* [estimate_application](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#estimate_application) - Estimate Model Application On File
-* [get_inference_status](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_inference_status) - Get Inference Status
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#delete) - Delete Model
+* [apply_change_detection](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#apply_change_detection) - Apply change detection
+* [get_models_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_models_for_project) - List project models
+* [get_models_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_models_for_tenant) - List tenant models
+* [get_models_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_models_by_ids) - Get models by ids
+* [get_inference_status](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_inference_status) - Get inference status
+* [get_official_models](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#get_official_models) - List official models
+* [delete_model](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#delete_model) - Delete model
+* [apply_model_on_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#apply_model_on_raster) - Apply model to raster
+* [estimate_model_application_on_file](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/models/README.md#estimate_model_application_on_file) - Estimate model application cost
 
 ### [Payments](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/payments/README.md)
 
-* [get_balance](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/payments/README.md#get_balance) - Get Tenant Balance
+* [get_tenant_balance](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/payments/README.md#get_tenant_balance) - Get tenant balance
+* [get_tenant_transactions](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/payments/README.md#get_tenant_transactions) - List tenant transactions
 
 ### [Projects](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md)
 
-* [list_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#list_for_tenant) - Get Projects For Tenant
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#delete) - Delete Project
-* [create](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#create) - Create Project
+* [create_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#create_project) - Create project
+* [get_projects_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#get_projects_for_tenant) - List projects for tenant
+* [delete_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/projects/README.md#delete_project) - Delete project
 
 ### [Rasters](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md)
 
-* [list_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#list_for_tenant) - Get Rasters For Tenant
-* [list_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#list_for_project) - Get Rasters For Project
-* [list_for_file](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#list_for_file) - Get Rasters For File
+* [get_rasters_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#get_rasters_for_project) - List project rasters
+* [get_project_raster_tree](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#get_project_raster_tree) - Get project raster tree
+* [get_rasters_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#get_rasters_for_tenant) - List tenant rasters
+* [get_rasters_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#get_rasters_by_ids) - Get rasters by ids
+* [delete_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#delete_raster) - Delete raster
+* [get_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/rasters/README.md#get_raster) - Get raster details
 
 ### [Regions](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md)
 
-* [list_for_file](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#list_for_file) - Get Regions For File
-* [create](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#create) - Create Regions In File
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#delete) - Delete Regions
+* [delete_regions](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#delete_regions) - Delete regions
+* [get_regions_for_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#get_regions_for_raster) - List raster regions
+* [get_regions_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#get_regions_by_ids) - Get regions by ids
+* [create_regions_in_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/regions/README.md#create_regions_in_raster) - Create regions on a raster
+
+### [System](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/system/README.md)
+
+* [health](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/system/README.md#health) - Health check
 
 ### [Users](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/users/README.md)
 
-* [list_tenants](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/users/README.md#list_tenants) - Get Tenants For User
+* [get_tenants_for_user](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/users/README.md#get_tenants_for_user) - List tenants for user
 
 ### [Vectors](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md)
 
-* [list_for_file](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#list_for_file) - Get Vectors For File
-* [list_classes_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#list_classes_for_project) - Get Project Classes
-* [create_class](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create_class) - Create Class In Project
-* [get_features](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#get_features) - Get Vector Features
-* [create](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create) - Create Empty Vector
-* [delete](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#delete) - Delete Vector
-* [create_annotations](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create_annotations) - Create Annotations In Vector
-* [upload_geojson](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_geojson) - Upload Geojson
-* [upload_gpkg](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_gpkg) - Upload Gpkg
-* [upload_shapefile](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_shapefile) - Upload Shp
+* [create_empty_vector](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create_empty_vector) - Create empty vector layer
+* [get_classes_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#get_classes_for_project) - List project classes
+* [get_vectors_for_raster](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#get_vectors_for_raster) - List raster vector layers
+* [get_vectors_by_ids](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#get_vectors_by_ids) - Get vector layers by ids
+* [create_class_in_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create_class_in_project) - Create project class
+* [delete_vector](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#delete_vector) - Delete vector
+* [create_annotations_in_vector](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#create_annotations_in_vector) - Create annotations in a vector
+* [get_vector_features](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#get_vector_features) - List vector annotations
+* [upload_geojson](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_geojson) - Upload GeoJSON annotations
+* [upload_geopkg](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_geopkg) - Upload GeoPackage annotations
+* [upload_shapefile](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/vectors/README.md#upload_shapefile) - Upload Shapefile annotations
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -363,7 +361,7 @@ from flypix.utils import BackoffStrategy, RetryConfig
 
 with Flypix() as f_client:
 
-    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr",
+    res = f_client.system.health(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -381,7 +379,7 @@ with Flypix(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
 ) as f_client:
 
-    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.system.health()
 
     # Handle response
     print(res)
@@ -411,7 +409,7 @@ with Flypix() as f_client:
     res = None
     try:
 
-        res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+        res = f_client.system.health()
 
         # Handle response
         print(res)
@@ -461,7 +459,7 @@ with Flypix(
     server_url="https://api.flypix.ai",
 ) as f_client:
 
-    res = f_client.auth.login_with_password(username="Allie.Hartmann", password="9ne8TpFJLsebftr")
+    res = f_client.system.health()
 
     # Handle response
     print(res)
@@ -548,6 +546,20 @@ class CustomClient(AsyncHttpClient):
 
 s = Flypix(async_client=CustomClient(httpx.AsyncClient()))
 ```
+### httpx2 (Pydantic's httpx fork)
+
+[httpx2](https://httpx2.pydantic.dev/) is Pydantic's maintained fork of `httpx`. To run this SDK on httpx2, call `alias_httpx()` at your program's entry point, before importing the SDK, so every `import httpx` — including the ones inside the SDK — resolves to `httpx2`:
+```python
+import httpx2
+
+httpx2.alias_httpx()
+
+from flypix import Flypix
+
+s = Flypix()
+```
+
+An SDK can also be generated against httpx2 directly, so it depends on the fork instead of `httpx`, by setting `python.httpClientLibrary: httpx2` in `gen.yaml`.
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->
@@ -558,25 +570,17 @@ The `Flypix` class implements the context manager protocol and registers a final
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from flypix import Flypix, models
+from flypix import Flypix
 def main():
 
-    with Flypix(
-        security=models.Security(
-            api_key="<YOUR_API_KEY_HERE>",
-        ),
-    ) as f_client:
+    with Flypix() as f_client:
         # Rest of application here...
 
 
 # Or when using async:
 async def amain():
 
-    async with Flypix(
-        security=models.Security(
-            api_key="<YOUR_API_KEY_HERE>",
-        ),
-    ) as f_client:
+    async with Flypix() as f_client:
         # Rest of application here...
 ```
 <!-- End Resource Management [resource-management] -->
