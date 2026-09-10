@@ -280,8 +280,6 @@ actions:
     update:
       operationId: files_upload_v2
       x-speakeasy-name-override: upload_v2
-      tags:
-        - Files
       # See note on /files/upload above: the raw octet-stream body is undocumented
       # upstream, so declare it here to make the file bytes actually get sent.
       requestBody:
@@ -296,8 +294,6 @@ actions:
     update:
       operationId: files_upload_from_url
       x-speakeasy-name-override: upload_from_url
-      tags:
-        - Files
   - target: $.paths["/vectors/for-file/{file_id}"].get
     description: get_vectors_for_file_vectors_for_file__file_id__get -> vectors.list_for_file
     update:
@@ -348,11 +344,3 @@ actions:
     update:
       operationId: vectors_upload_shapefile
       x-speakeasy-name-override: upload_shapefile
-  # 3) The two /v2/files/* ops were folded into the Files namespace above, but
-  #    overlay `update` APPENDS to the tags array rather than replacing it, so
-  #    they retain their original "V2Docs" tag. Remove it so they generate only
-  #    under client.files (no leftover client.v2docs namespace).
-  - target: $.paths["/v2/files/upload"].post.tags[?(@ == "V2Docs")]
-    remove: true
-  - target: $.paths["/v2/files/upload-from-url"].post.tags[?(@ == "V2Docs")]
-    remove: true
