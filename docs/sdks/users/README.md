@@ -2,19 +2,17 @@
 
 ## Overview
 
-User account details and tenant membership.
-
 ### Available Operations
 
-* [list_tenants](#list_tenants) - Get Tenants For User
+* [get_tenants_for_user](#get_tenants_for_user) - List tenants for user
 
-## list_tenants
+## get_tenants_for_user
 
-List the tenants available for the user
+Lists the tenants the authenticated user has access to.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="users_list_tenants" method="get" path="/users/tenants/for-user/" -->
+<!-- UsageSnippet language="python" operationID="get-tenants-for-user" method="get" path="/v2/users/tenants/for-user/" -->
 ```python
 from flypix import Flypix, models
 
@@ -25,7 +23,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.users.list_tenants()
+    res = f_client.users.get_tenants_for_user()
 
     # Handle response
     print(res)
@@ -40,7 +38,7 @@ with Flypix(
 
 ### Response
 
-**[List[models.TenantResponse]](../../models/.md)**
+**[models.GetTenantsForUserResponse](../../models/gettenantsforuserresponse.md)**
 
 ### Errors
 

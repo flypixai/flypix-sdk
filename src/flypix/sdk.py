@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from flypix.projects import Projects
     from flypix.rasters import Rasters
     from flypix.regions import Regions
+    from flypix.system import System
     from flypix.users import Users
     from flypix.vectors import Vectors
 
@@ -39,59 +40,46 @@ class Flypix(BaseSDK):
 
     `Authorization: Bearer <token>`
 
-    Example use case: Find an existing file and its vector features:
+    Example use case: Find an existing raster and its vector features:
 
     ```
     POST /auth/login/password -> Fetch token and use it in subsequent requests
     GET /users/tenant/for-user/ -> Get your tenant id for subsequent requests
     GET /projects/for-tenant/{tenant_id} -> Find your project
-    GET /files/for-project/{project_id} -> Find your file
-    GET /files/{file_id}/visible -> Get a download link for the visible raster
-    GET /vectors/for-file/{file_id} -> Get the vector ids for the file
+    GET /rasters/for-project/{project_id}/tree -> Find your raster
+    GET /vectors/for-raster/{raster_id} -> Get the vector ids for the raster
     GET /vectors/{vector_id}/features -> Get the annotations
     ```
 
-
-
     """
 
+    system: "System"
     auth: "Auth"
-    r"""Obtain and refresh API access tokens."""
-    payments: "Payments"
-    r"""Billing and tenant balance."""
-    users: "Users"
-    r"""User account details and tenant membership."""
-    projects: "Projects"
-    r"""Manage projects within a tenant."""
-    folders: "Folders"
-    r"""Organize files into folders within a project."""
     files: "Files"
-    r"""Upload, download, list, and delete files."""
-    rasters: "Rasters"
-    r"""Raster imagery associated with files and projects."""
-    inferences: "Inferences"
-    r"""Inference results across tenants, projects, and files."""
-    models: "Models"
-    r"""List, apply, and manage detection models."""
-    vectors: "Vectors"
-    r"""Vector data — classes, features, and annotations."""
-    regions: "Regions"
-    r"""Regions of interest within a file."""
+    folders: "Folders"
     geosense: "Geosense"
-    r"""GeoSense sessions, artifacts, and messages."""
+    inferences: "Inferences"
+    models: "Models"
+    payments: "Payments"
+    projects: "Projects"
+    rasters: "Rasters"
+    regions: "Regions"
+    users: "Users"
+    vectors: "Vectors"
     _sub_sdk_map = {
+        "system": ("flypix.system", "System"),
         "auth": ("flypix.auth", "Auth"),
-        "payments": ("flypix.payments", "Payments"),
-        "users": ("flypix.users", "Users"),
-        "projects": ("flypix.projects", "Projects"),
-        "folders": ("flypix.folders", "Folders"),
         "files": ("flypix.files", "Files"),
-        "rasters": ("flypix.rasters", "Rasters"),
+        "folders": ("flypix.folders", "Folders"),
+        "geosense": ("flypix.geosense", "Geosense"),
         "inferences": ("flypix.inferences", "Inferences"),
         "models": ("flypix.models_", "Models"),
-        "vectors": ("flypix.vectors", "Vectors"),
+        "payments": ("flypix.payments", "Payments"),
+        "projects": ("flypix.projects", "Projects"),
+        "rasters": ("flypix.rasters", "Rasters"),
         "regions": ("flypix.regions", "Regions"),
-        "geosense": ("flypix.geosense", "Geosense"),
+        "users": ("flypix.users", "Users"),
+        "vectors": ("flypix.vectors", "Vectors"),
     }
 
     def __init__(

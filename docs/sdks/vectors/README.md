@@ -2,29 +2,27 @@
 
 ## Overview
 
-Vector data — classes, features, and annotations.
-
 ### Available Operations
 
-* [list_for_file](#list_for_file) - Get Vectors For File
-* [list_classes_for_project](#list_classes_for_project) - Get Project Classes
-* [create_class](#create_class) - Create Class In Project
-* [get_features](#get_features) - Get Vector Features
-* [create](#create) - Create Empty Vector
-* [delete](#delete) - Delete Vector
-* [create_annotations](#create_annotations) - Create Annotations In Vector
-* [upload_geojson](#upload_geojson) - Upload Geojson
-* [upload_gpkg](#upload_gpkg) - Upload Gpkg
-* [upload_shapefile](#upload_shapefile) - Upload Shp
+* [create_empty_vector](#create_empty_vector) - Create empty vector layer
+* [get_classes_for_project](#get_classes_for_project) - List project classes
+* [get_vectors_for_raster](#get_vectors_for_raster) - List raster vector layers
+* [get_vectors_by_ids](#get_vectors_by_ids) - Get vector layers by ids
+* [create_class_in_project](#create_class_in_project) - Create project class
+* [delete_vector](#delete_vector) - Delete vector
+* [create_annotations_in_vector](#create_annotations_in_vector) - Create annotations in a vector
+* [get_vector_features](#get_vector_features) - List vector annotations
+* [upload_geojson](#upload_geojson) - Upload GeoJSON annotations
+* [upload_geopkg](#upload_geopkg) - Upload GeoPackage annotations
+* [upload_shapefile](#upload_shapefile) - Upload Shapefile annotations
 
-## list_for_file
+## create_empty_vector
 
-Get the vector layers for a file.
-This won't return the vector features but rather just the names and identifier of the vector layers
+Creates a new empty vector layer on a raster, ready to receive annotations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_list_for_file" method="get" path="/vectors/for-file/{file_id}" -->
+<!-- UsageSnippet language="python" operationID="create-empty-vector" method="post" path="/v2/vectors/" -->
 ```python
 from flypix import Flypix, models
 
@@ -35,7 +33,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.list_for_file(file_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.vectors.create_empty_vector(raster_id="<id>")
 
     # Handle response
     print(res)
@@ -44,14 +42,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `file_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `raster_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `name`                                                              | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[List[models.VectorResponse]](../../models/.md)**
+**[models.CreateEmptyVectorResponse](../../models/createemptyvectorresponse.md)**
 
 ### Errors
 
@@ -59,13 +58,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## list_classes_for_project
+## get_classes_for_project
 
-Get the classes for the specified project
+Lists the classes for a project.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_list_classes_for_project" method="get" path="/vectors/classes/for-project/{project_id}" -->
+<!-- UsageSnippet language="python" operationID="get-classes-for-project" method="get" path="/v2/vectors/classes/for-project/{project_id}" -->
 ```python
 from flypix import Flypix, models
 
@@ -76,7 +75,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.list_classes_for_project(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.vectors.get_classes_for_project(project_id="<id>")
 
     # Handle response
     print(res)
@@ -85,14 +84,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[List[models.ClassResponse]](../../models/.md)**
+**[models.GetClassesForProjectResponse](../../models/getclassesforprojectresponse.md)**
 
 ### Errors
 
@@ -100,13 +99,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## create_class
+## get_vectors_for_raster
 
-Create Class in a project. Classes are shared among all vectors in a project
+Lists the vector layers for a raster. This won't return the vector features, just the names and identifiers of the vector layers.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_create_class" method="post" path="/vectors/{project_id}/class" -->
+<!-- UsageSnippet language="python" operationID="get-vectors-for-raster" method="get" path="/v2/vectors/for-raster/{raster_id}" -->
 ```python
 from flypix import Flypix, models
 
@@ -117,7 +116,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.create_class(project_id="123e4567-e89b-12d3-a456-426614174000", name="New String", color="FF0000")
+    res = f_client.vectors.get_vectors_for_raster(raster_id="<id>")
 
     # Handle response
     print(res)
@@ -126,16 +125,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | A string based value object                                         | New String                                                          |
-| `color`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | A string based value object                                         | FF0000                                                              |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `raster_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.ClassResponse](../../models/classresponse.md)**
+**[models.GetVectorsForRasterResponse](../../models/getvectorsforrasterresponse.md)**
 
 ### Errors
 
@@ -143,13 +140,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## get_features
+## get_vectors_by_ids
 
-Get the vector features (annotations) of a vector
+Returns the vector layers matching the given ids, in one call.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_get_features" method="get" path="/vectors/{vector_id}/features" -->
+<!-- UsageSnippet language="python" operationID="get-vectors-by-ids" method="post" path="/v2/vectors/get-by-ids" -->
 ```python
 from flypix import Flypix, models
 
@@ -160,7 +157,11 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.get_features(vector_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.vectors.get_vectors_by_ids(request=[
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+    ])
 
     # Handle response
     print(res)
@@ -169,14 +170,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [List[str]](../../models/.md)                                       | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.VectorFeatures](../../models/vectorfeatures.md)**
+**[models.GetVectorsByIdsResponse](../../models/getvectorsbyidsresponse.md)**
 
 ### Errors
 
@@ -184,13 +185,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## create
+## create_class_in_project
 
-Create a new empty vector layer in a file ready to receive annotations
+Creates a class in a project. Classes are shared among all vectors in a project.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_create" method="post" path="/vectors/" -->
+<!-- UsageSnippet language="python" operationID="create-class-in-project" method="post" path="/v2/vectors/{project_id}/class" -->
 ```python
 from flypix import Flypix, models
 
@@ -201,7 +202,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.create(file_id="123e4567-e89b-12d3-a456-426614174000", name="New String")
+    res = f_client.vectors.create_class_in_project(project_id="<id>", name="<value>")
 
     # Handle response
     print(res)
@@ -210,15 +211,16 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `file_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | A string in UUID format                                             | 123e4567-e89b-12d3-a456-426614174000                                |
-| `name`                                                              | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | A string based value object                                         | New String                                                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `color`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.VectorResponse](../../models/vectorresponse.md)**
+**[models.CreateClassInProjectResponse](../../models/createclassinprojectresponse.md)**
 
 ### Errors
 
@@ -226,13 +228,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## delete
+## delete_vector
 
-Delete a vector and its annotations
+Deletes a vector and its annotations. This cannot be undone.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_delete" method="delete" path="/vectors/{vector_id}/" -->
+<!-- UsageSnippet language="python" operationID="delete-vector" method="delete" path="/v2/vectors/{vector_id}/" -->
 ```python
 from flypix import Flypix, models
 
@@ -243,7 +245,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.delete(vector_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.vectors.delete_vector(vector_id="<id>")
 
     # Handle response
     print(res)
@@ -252,14 +254,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[Any](../../models/.md)**
+**[models.DeleteVectorResponse](../../models/deletevectorresponse.md)**
 
 ### Errors
 
@@ -267,13 +269,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## create_annotations
+## create_annotations_in_vector
 
-Create annotations in a vector
+Creates annotations in a vector from raw geometry payloads. Invalid geometry is rejected with a generic 400, not per-item validation errors.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_create_annotations" method="post" path="/vectors/{vector_id}/annotations" -->
+<!-- UsageSnippet language="python" operationID="create-annotations-in-vector" method="post" path="/v2/vectors/{vector_id}/annotations" -->
 ```python
 from flypix import Flypix, models
 
@@ -284,7 +286,12 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.create_annotations(vector_id="123e4567-e89b-12d3-a456-426614174000", class_id="car-124b", payload=[])
+    res = f_client.vectors.create_annotations_in_vector(vector_id="<id>", class_id="<id>", payload=[
+        {
+            "confidence": 5329.66,
+            "polygon": "<value>",
+        },
+    ])
 
     # Handle response
     print(res)
@@ -293,16 +300,57 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `vector_id`                                                                         | *str*                                                                               | :heavy_check_mark:                                                                  | N/A                                                                                 | 123e4567-e89b-12d3-a456-426614174000                                                |
-| `class_id`                                                                          | *str*                                                                               | :heavy_check_mark:                                                                  | Class Id                                                                            | car-124b                                                                            |
-| `payload`                                                                           | List[[models.AnnotationGeometryPayload](../../models/annotationgeometrypayload.md)] | :heavy_check_mark:                                                                  | N/A                                                                                 |                                                                                     |
-| `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |                                                                                     |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `vector_id`                                                                   | *str*                                                                         | :heavy_check_mark:                                                            | N/A                                                                           |
+| `class_id`                                                                    | *str*                                                                         | :heavy_check_mark:                                                            | N/A                                                                           |
+| `payload`                                                                     | List[[models.AnnotationPayloadInput](../../models/annotationpayloadinput.md)] | :heavy_check_mark:                                                            | N/A                                                                           |
+| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
 
 ### Response
 
-**[List[int]](../../models/.md)**
+**[models.CreateAnnotationsInVectorResponse](../../models/createannotationsinvectorresponse.md)**
+
+### Errors
+
+| Error Type                | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+
+## get_vector_features
+
+Returns the vector features (annotations) of a vector.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="get-vector-features" method="get" path="/v2/vectors/{vector_id}/features" -->
+```python
+from flypix import Flypix, models
+
+
+with Flypix(
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
+) as f_client:
+
+    res = f_client.vectors.get_vector_features(vector_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.GetVectorFeaturesResponse](../../models/getvectorfeaturesresponse.md)**
 
 ### Errors
 
@@ -312,13 +360,11 @@ with Flypix(
 
 ## upload_geojson
 
-Create annotations by uploading a GeoJSON file. The file must have a valid `.geojson` extension.
-The only geometries supported are POLYGON. The only EPSG supported is EPSG3857.
-The geojson MUST have either `class_id` or `class_name` property for every geometry.
+Creates annotations by uploading a GeoJSON file. Only Polygon features in EPSG:3857 are accepted; per-feature failures are collected into the response's `errored` list instead of failing the whole upload.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_upload_geojson" method="post" path="/vectors/{vector_id}/upload-geojson/" -->
+<!-- UsageSnippet language="python" operationID="upload-geojson" method="post" path="/v2/vectors/{vector_id}/upload-geojson/" -->
 ```python
 from flypix import Flypix, models
 
@@ -329,7 +375,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_geojson(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_geojson(vector_id="<id>", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -338,15 +387,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `file`                                                              | [models.UploadGeojsonFile](../../models/uploadgeojsonfile.md)       | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.UploadAnnotationsResponse](../../models/uploadannotationsresponse.md)**
+**[models.UploadGeojsonResponse](../../models/uploadgeojsonresponse.md)**
 
 ### Errors
 
@@ -354,16 +403,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## upload_gpkg
+## upload_geopkg
 
-Create annotations by uploading a GeoPackage file. The file must have a valid `.gpkg` extension.
-The only geometries supported are POLYGON. The only EPSG supported is EPSG3857
-The GPKG MUST have either `class_id` or `class_name` column for every geometry.
-The GPKG MUST have a `geometry` column
+Creates annotations by uploading a GeoPackage file. Same partial-failure behavior as the GeoJSON upload.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_upload_gpkg" method="post" path="/vectors/{vector_id}/upload-gpkg/" -->
+<!-- UsageSnippet language="python" operationID="upload_geopkg" method="post" path="/v2/vectors/{vector_id}/upload-gpkg/" -->
 ```python
 from flypix import Flypix, models
 
@@ -374,7 +420,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_gpkg(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_geopkg(vector_id="<id>", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -383,15 +432,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `file`                                                              | [models.UploadGeopkgFile](../../models/uploadgeopkgfile.md)         | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.UploadAnnotationsResponse](../../models/uploadannotationsresponse.md)**
+**[models.UploadGeopkgResponse](../../models/uploadgeopkgresponse.md)**
 
 ### Errors
 
@@ -401,14 +450,11 @@ with Flypix(
 
 ## upload_shapefile
 
-Create annotations by uploading a ZIPPED Shapefile (shp). The file must have a valid `.shp.zip` extension.
-The zipped file must NOT contain any folders inside and only the shapefile
-The only geometries supported are POLYGON. The only EPSG supported is EPSG3857
-The SHP MUST have either `class_id` or `class_name` property for every geometry.
+Creates annotations by uploading a zipped Shapefile. Same partial-failure behavior as the GeoJSON upload.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="vectors_upload_shapefile" method="post" path="/vectors/{vector_id}/upload-shp/" -->
+<!-- UsageSnippet language="python" operationID="upload_shapefile" method="post" path="/v2/vectors/{vector_id}/upload-shp/" -->
 ```python
 from flypix import Flypix, models
 
@@ -419,7 +465,10 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.vectors.upload_shapefile(vector_id="123e4567-e89b-12d3-a456-426614174000", file="<value>")
+    res = f_client.vectors.upload_shapefile(vector_id="<id>", file={
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
+    })
 
     # Handle response
     print(res)
@@ -428,15 +477,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `file`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vector_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `file`                                                              | [models.UploadShapefileFile](../../models/uploadshapefilefile.md)   | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.UploadAnnotationsResponse](../../models/uploadannotationsresponse.md)**
+**[models.UploadShapefileResponse](../../models/uploadshapefileresponse.md)**
 
 ### Errors
 

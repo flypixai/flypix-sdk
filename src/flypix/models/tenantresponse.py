@@ -6,13 +6,11 @@ from typing_extensions import TypedDict
 
 
 class TenantResponseTypedDict(TypedDict):
-    tenant_id: str
-    r"""A string in UUID format"""
     name: str
+    tenant_id: str
 
 
 class TenantResponse(BaseModel):
-    tenant_id: str
-    r"""A string in UUID format"""
-
     name: str
+
+    tenant_id: str

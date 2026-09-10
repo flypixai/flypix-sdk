@@ -2,22 +2,20 @@
 
 ## Overview
 
-GeoSense sessions, artifacts, and messages.
-
 ### Available Operations
 
-* [create_session](#create_session) - Create Session In Project
-* [create_artifact](#create_artifact) - Create Session Artifact
-* [get_artifact](#get_artifact) - Get Session Artifact
-* [send_message](#send_message) - Send Message
+* [create_session_in_project](#create_session_in_project) - Start geosense session
+* [create_session_artifact](#create_session_artifact) - Create session artifact
+* [get_session_artifact](#get_session_artifact) - Get session artifact
+* [send_message](#send_message) - Send geosense message
 
-## create_session
+## create_session_in_project
 
-Create a new empty session in a project ready to receive messages
+Starts a new geosense chat session for a project.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="geosense_create_session" method="post" path="/geosense/session/{project_id}/" -->
+<!-- UsageSnippet language="python" operationID="create-session-in-project" method="post" path="/v2/geosense/session/{project_id}/" -->
 ```python
 from flypix import Flypix, models
 
@@ -28,7 +26,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.geosense.create_session(project_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.geosense.create_session_in_project(project_id="<id>")
 
     # Handle response
     print(res)
@@ -37,14 +35,14 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `project_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[str](../../models/responsecreatesessioninprojectgeosensesessionprojectidpost.md)**
+**[models.CreateSessionInProjectResponse](../../models/createsessioninprojectresponse.md)**
 
 ### Errors
 
@@ -52,14 +50,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## create_artifact
+## create_session_artifact
 
-Create a data artifact to attach to a message.
-Note: Not fully supported right now.
+Creates an artifact in a geosense session.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="geosense_create_artifact" method="post" path="/geosense/session/{session_id}/artifact/" -->
+<!-- UsageSnippet language="python" operationID="create-session-artifact" method="post" path="/v2/geosense/{session_id}/artifact/" -->
 ```python
 from flypix import Flypix, models
 
@@ -70,10 +67,8 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.geosense.create_artifact(session_id="123e4567-e89b-12d3-a456-426614174000", artifact_data={
+    res = f_client.geosense.create_session_artifact(session_id="<id>", artifact_data={
         "key": "<value>",
-        "key1": "<value>",
-        "key2": "<value>",
     }, type_="data")
 
     # Handle response
@@ -83,16 +78,16 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `artifact_data`                                                     | Dict[str, *Any*]                                                    | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `type`                                                              | [models.ArtifactType](../../models/artifacttype.md)                 | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `session_id`                                                                                    | *str*                                                                                           | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `artifact_data`                                                                                 | Dict[str, *Any*]                                                                                | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `type`                                                                                          | [models.CreateSessionArtifactInputBodyType](../../models/createsessionartifactinputbodytype.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |
 
 ### Response
 
-**[models.ArtifactResponse](../../models/artifactresponse.md)**
+**[models.CreateSessionArtifactResponse](../../models/createsessionartifactresponse.md)**
 
 ### Errors
 
@@ -100,13 +95,13 @@ with Flypix(
 | ------------------------- | ------------------------- | ------------------------- |
 | errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## get_artifact
+## get_session_artifact
 
-Get a session artifact
+Returns an artifact from a geosense session.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="geosense_get_artifact" method="get" path="/geosense/{session_id}/artifact/{artifact_id}" -->
+<!-- UsageSnippet language="python" operationID="get-session-artifact" method="get" path="/v2/geosense/{session_id}/artifact/{artifact_id}" -->
 ```python
 from flypix import Flypix, models
 
@@ -117,7 +112,7 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.geosense.get_artifact(session_id="123e4567-e89b-12d3-a456-426614174000", artifact_id="123e4567-e89b-12d3-a456-426614174000")
+    res = f_client.geosense.get_session_artifact(session_id="<id>", artifact_id="<id>")
 
     # Handle response
     print(res)
@@ -126,15 +121,15 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `artifact_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `artifact_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.ArtifactResponse](../../models/artifactresponse.md)**
+**[models.GetSessionArtifactResponse](../../models/getsessionartifactresponse.md)**
 
 ### Errors
 
@@ -144,12 +139,11 @@ with Flypix(
 
 ## send_message
 
-Send a message to the LLM.
-Check the official docs to understand the GeoSense message specification
+Sends a chat message in a geosense session, optionally grounded in prior artifacts via `context`.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="geosense_send_message" method="post" path="/geosense/{session_id}/message/" -->
+<!-- UsageSnippet language="python" operationID="send-message" method="post" path="/v2/geosense/{session_id}/message/" -->
 ```python
 from flypix import Flypix, models
 
@@ -160,13 +154,8 @@ with Flypix(
     ),
 ) as f_client:
 
-    res = f_client.geosense.send_message(session_id="123e4567-e89b-12d3-a456-426614174000", user_message="New String", vector_ids=[
-        "123e4567-e89b-12d3-a456-426614174000",
-    ], context=[
-        {
-            "artifact_id": "123e4567-e89b-12d3-a456-426614174000",
-            "type": "data",
-        },
+    res = f_client.geosense.send_message(session_id="<id>", user_message="<value>", vector_ids=[
+        "<value 1>",
     ])
 
     # Handle response
@@ -176,17 +165,17 @@ with Flypix(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 | 123e4567-e89b-12d3-a456-426614174000                                |
-| `user_message`                                                      | *str*                                                               | :heavy_check_mark:                                                  | A string based value object                                         | New String                                                          |
-| `vector_ids`                                                        | List[*str*]                                                         | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `context`                                                           | List[[models.AnyMessageContext](../../models/anymessagecontext.md)] | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `session_id`                                                            | *str*                                                                   | :heavy_check_mark:                                                      | N/A                                                                     |
+| `user_message`                                                          | *str*                                                                   | :heavy_check_mark:                                                      | N/A                                                                     |
+| `vector_ids`                                                            | List[*str*]                                                             | :heavy_check_mark:                                                      | N/A                                                                     |
+| `context`                                                               | List[[models.MessageContextInput](../../models/messagecontextinput.md)] | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
 
 ### Response
 
-**[models.ChatMessageResponse](../../models/chatmessageresponse.md)**
+**[models.SendMessageResponse](../../models/sendmessageresponse.md)**
 
 ### Errors
 
