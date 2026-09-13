@@ -5,15 +5,15 @@ management:
   docVersion: 2.0.1
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 4.0.0
-  configChecksum: 80a9baf90f6a691be2a82aa13013353a
+  releaseVersion: 4.0.1
+  configChecksum: 62869830e7abf9e282943e1c91090eed
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 31d0e2ab-cb06-46b5-8a1b-a28bb3ed6918
-  pristine_commit_hash: 0093f7442b3841233aa2600ef70147bb84c71229
-  pristine_tree_hash: e002961e6230ae7738730797820d960f82400971
+  generation_id: 3ee5d460-f0f4-4416-961b-afbf834ea235
+  pristine_commit_hash: 2264410b9fe2f9489e472a91f120c33af46a23fb
+  pristine_tree_hash: cc2fa7829320db76d2cf3519f4f6b410499ee4a8
 features:
   python:
     acceptHeaders: 3.0.0
@@ -765,8 +765,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:a0fc8f48df0fbec4f82719c70ef19470660d1f32
-    pristine_git_object: ba266c41c0aec6c03d453d333b024bad6b41330f
+    last_write_checksum: sha1:d4a58a1e763d8ca2b21c4cd9a8096b6d3991e30a
+    pristine_git_object: 0c1d44558602c950dace464947f418ca3945c270
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -793,8 +793,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:144fd97cf113012597a8deefef11a809ca6840c8
-    pristine_git_object: be07fca64e03fc96c462ab9dc34ec03551624f07
+    last_write_checksum: sha1:857f668c56c319e1a1b980b157a48e55b200eba3
+    pristine_git_object: 3ec42a7d30aa341bc89cbd113ec3a9806d17b64e
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -2477,113 +2477,3 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
-releaseNotes: |
-  ## Python SDK Changes:
-  * `flypix.system.health()`: **Added**
-  * `flypix.auth.login_with_password()`: **Added**
-  * `flypix.auth.refresh_token()`: **Added**
-  * `flypix.files.upload_v2()`: **Added**
-  * `flypix.files.upload_from_url()`: **Added**
-  * `flypix.files.get_storage_usage()`: **Added**
-  * `flypix.files.get_file_download_link()`: **Added**
-  * `flypix.folders.create_folder()`: **Added**
-  * `flypix.folders.get_folders_for_folder()`: **Added**
-  * `flypix.folders.get_folders_in_project_root()`: **Added**
-  * `flypix.folders.get_folders_by_ids()`: **Added**
-  * `flypix.folders.delete_folder()`: **Added**
-  * `flypix.geosense.create_session_in_project()`: **Added**
-  * `flypix.geosense.create_session_artifact()`: **Added**
-  * `flypix.geosense.get_session_artifact()`: **Added**
-  * `flypix.geosense.send_message()`: **Added**
-  * `flypix.inferences.get_inferences_for_project()`: **Added**
-  * `flypix.inferences.get_inferences_for_raster()`: **Added**
-  * `flypix.inferences.get_inferences_for_tenant()`: **Added**
-  * `flypix.inferences.get_inferences_by_ids()`: **Added**
-  * `flypix.models.apply_change_detection()`: **Added**
-  * `flypix.models.get_models_for_project()`: **Added**
-  * `flypix.models.get_models_for_tenant()`: **Added**
-  * `flypix.models.get_models_by_ids()`: **Added**
-  * `flypix.models.get_inference_status()`: **Added**
-  * `flypix.models.get_official_models()`: **Added**
-  * `flypix.models.delete_model()`: **Added**
-  * `flypix.models.apply_model_on_raster()`: **Added**
-  * `flypix.models.estimate_model_application_on_file()`: **Added**
-  * `flypix.payments.get_tenant_balance()`: **Added**
-  * `flypix.payments.get_tenant_transactions()`: **Added**
-  * `flypix.projects.create_project()`: **Added**
-  * `flypix.projects.get_projects_for_tenant()`: **Added**
-  * `flypix.projects.delete_project()`: **Added**
-  * `flypix.rasters.get_rasters_for_project()`: **Added**
-  * `flypix.rasters.get_project_raster_tree()`: **Added**
-  * `flypix.rasters.get_rasters_for_tenant()`: **Added**
-  * `flypix.rasters.get_rasters_by_ids()`: **Added**
-  * `flypix.rasters.delete_raster()`: **Added**
-  * `flypix.rasters.get_raster()`: **Added**
-  * `flypix.regions.delete_regions()`: **Added**
-  * `flypix.regions.get_regions_for_raster()`: **Added**
-  * `flypix.regions.get_regions_by_ids()`: **Added**
-  * `flypix.regions.create_regions_in_raster()`: **Added**
-  * `flypix.users.get_tenants_for_user()`: **Added**
-  * `flypix.vectors.create_empty_vector()`: **Added**
-  * `flypix.vectors.get_classes_for_project()`: **Added**
-  * `flypix.vectors.get_vectors_for_raster()`: **Added**
-  * `flypix.vectors.get_vectors_by_ids()`: **Added**
-  * `flypix.vectors.create_class_in_project()`: **Added**
-  * `flypix.vectors.delete_vector()`: **Added**
-  * `flypix.vectors.create_annotations_in_vector()`: **Added**
-  * `flypix.vectors.get_vector_features()`: **Added**
-  * `flypix.vectors.upload_geojson()`: **Added**
-  * `flypix.vectors.upload_geopkg()`: **Added**
-  * `flypix.vectors.upload_shapefile()`: **Added**
-  * `flypix.auth.login_with_password()`: **Removed** (Breaking ⚠️)
-  * `flypix.auth.refresh_token()`: **Removed** (Breaking ⚠️)
-  * `flypix.payments.get_balance()`: **Removed** (Breaking ⚠️)
-  * `flypix.users.list_tenants()`: **Removed** (Breaking ⚠️)
-  * `flypix.projects.list_for_tenant()`: **Removed** (Breaking ⚠️)
-  * `flypix.projects.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.projects.create()`: **Removed** (Breaking ⚠️)
-  * `flypix.folders.list_for_folder()`: **Removed** (Breaking ⚠️)
-  * `flypix.folders.list_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.folders.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.folders.create()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.list_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.list_for_folder()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.get()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.get_visible_raster()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.get_download_link()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.get_by_ids()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.get_storage_usage()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.upload()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.upload_v2()`: **Removed** (Breaking ⚠️)
-  * `flypix.files.upload_from_url()`: **Removed** (Breaking ⚠️)
-  * `flypix.rasters.list_for_tenant()`: **Removed** (Breaking ⚠️)
-  * `flypix.rasters.list_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.rasters.list_for_file()`: **Removed** (Breaking ⚠️)
-  * `flypix.inferences.list_for_tenant()`: **Removed** (Breaking ⚠️)
-  * `flypix.inferences.list_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.inferences.list_for_file()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.list_for_tenant()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.list_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.list_official()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.apply()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.estimate_application()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.get_inference_status()`: **Removed** (Breaking ⚠️)
-  * `flypix.models.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.list_for_file()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.list_classes_for_project()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.create_class()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.get_features()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.create()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.create_annotations()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.upload_geojson()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.upload_gpkg()`: **Removed** (Breaking ⚠️)
-  * `flypix.vectors.upload_shapefile()`: **Removed** (Breaking ⚠️)
-  * `flypix.regions.list_for_file()`: **Removed** (Breaking ⚠️)
-  * `flypix.regions.create()`: **Removed** (Breaking ⚠️)
-  * `flypix.regions.delete()`: **Removed** (Breaking ⚠️)
-  * `flypix.geosense.create_session()`: **Removed** (Breaking ⚠️)
-  * `flypix.geosense.create_artifact()`: **Removed** (Breaking ⚠️)
-  * `flypix.geosense.get_artifact()`: **Removed** (Breaking ⚠️)
-  * `flypix.geosense.send_message()`: **Removed** (Breaking ⚠️)
