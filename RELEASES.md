@@ -107,3 +107,13 @@ Based on:
 - [python v4.0.0] .
 ### Releases
 - [PyPI v4.0.0] https://pypi.org/project/flypix/4.0.0 - .
+
+## 2026-09-13 00:50:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.796.4 (2.935.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v4.0.1] .
+### Releases
+- [PyPI v4.0.1] https://pypi.org/project/flypix/4.0.1 - .
