@@ -1185,7 +1185,7 @@ components:
 info:
   description: "\nPublic OpenAPI Schema\n\nThis API lets you interact directly with the application with HTTP requests.\n\nYou will need to set a valid authorization header for every request:\n\n`Authorization: Bearer <token>`\n\nExample use case: Find an existing raster and its vector features:\n\n```\nPOST /auth/login/password -> Fetch token and use it in subsequent requests\nGET /users/tenant/for-user/ -> Get your tenant id for subsequent requests\nGET /projects/for-tenant/{tenant_id} -> Find your project\nGET /rasters/for-project/{project_id}/tree -> Find your raster\nGET /vectors/for-raster/{raster_id} -> Get the vector ids for the raster\nGET /vectors/{vector_id}/features -> Get the annotations\n```\n"
   title: "Public API"
-  version: "2.0.1"
+  version: "100.1.1"
 openapi: "3.1.0"
 paths:
   /health:
