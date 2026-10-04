@@ -1,20 +1,20 @@
-speakeasyVersion: 1.796.4
+speakeasyVersion: 1.800.1
 sources:
     flypix-api:
         sourceNamespace: flypix-api
-        sourceRevisionDigest: sha256:193a10edd9996e6763c36eeec7ece8dc72b8fb9c6f7db12396f822d122f4ec74
-        sourceBlobDigest: sha256:55926508d3dd35f5b048f87d9b49099e68b1f3f87f7fcfba2b2178df2a82e705
+        sourceRevisionDigest: sha256:ca4e8c304b45365128068ea77f0485599585050c4db476a6575eea006305de9e
+        sourceBlobDigest: sha256:ec48e053fd9d916a2a754175b2ad00596508ed4887f7044c21cb09c9e6db76f9
         tags:
             - latest
-            - 2.0.1
+            - 100.3.0
 targets:
     flypix-python:
         source: flypix-api
         sourceNamespace: flypix-api
-        sourceRevisionDigest: sha256:193a10edd9996e6763c36eeec7ece8dc72b8fb9c6f7db12396f822d122f4ec74
-        sourceBlobDigest: sha256:55926508d3dd35f5b048f87d9b49099e68b1f3f87f7fcfba2b2178df2a82e705
+        sourceRevisionDigest: sha256:ca4e8c304b45365128068ea77f0485599585050c4db476a6575eea006305de9e
+        sourceBlobDigest: sha256:ec48e053fd9d916a2a754175b2ad00596508ed4887f7044c21cb09c9e6db76f9
         codeSamplesNamespace: flypix-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:b7d12a099ca5e9de638db73d6bc10fc509561af7e5c8c062566db1c69719c180
+        codeSamplesRevisionDigest: sha256:aec89ddc8674662b1fbecd3bb467549e7a768414db4378392eca06043793d45a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
