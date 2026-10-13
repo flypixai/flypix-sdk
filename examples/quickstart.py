@@ -111,7 +111,7 @@ def wait_until_ready(client: Flypix, raster_id: str) -> None:
             print(e)
         raster_status = client.rasters.get_raster(raster_id=raster_id).status
         print(f"  file status: {raster_status}")
-        if raster_status == "READY":
+        if raster_status == "PROCESSED":
             break
         if raster_status == "FAILED":
             sys.exit("File processing failed.")
