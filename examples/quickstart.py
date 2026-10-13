@@ -38,6 +38,7 @@ import sys
 import time
 
 from flypix import Flypix, models
+from flypix.models.errormodel import ErrorModel
 
 # ---------------------------------------------------------------------------
 # CONFIGURATION  --  edit these values
@@ -83,13 +84,16 @@ def upload_tiff(client: Flypix, tenant_id: str, project_id: str) -> str:
             filename=filename,
             body=f,
         )
+
+    if isinstance(result, ErrorModel):
+        sys.exit(f"Upload failed: {result.detail}")
     # status here is "UPLOADED" -- the file still needs to be processed
     # asynchronously before it is ready for inference (see wait_until_ready).
-    print(f"  -> uploaded file {result.file_id} (status: {result.status})")
-    return result.file_id
+    print(f"  -> uploaded file {result.raster_id} (status: {result.status})")
+    return result.raster_id
 
 
-def wait_until_ready(client: Flypix, file_id: str) -> None:
+def wait_until_ready(client: Flypix, raster_id: str) -> None:
     """Poll until the file is READY and its raster has been PROCESSED.
 
     After an upload the file is processed into a raster asynchronously. Before
@@ -99,32 +103,21 @@ def wait_until_ready(client: Flypix, file_id: str) -> None:
     """
     deadline = time.monotonic() + POLL_TIMEOUT
 
-    print("Waiting for the file to be processed...")
+    print("Waiting for the raster to be processed...")
     while time.monotonic() < deadline:
         try:
-            client.files.get(file_id=file_id)
+            client.rasters.get_raster(raster_id=raster_id)
         except Exception as e:
             print(e)
-        file_status = client.files.get(file_id=file_id).status
-        print(f"  file status: {file_status}")
-        if file_status == "READY":
+        raster_status = client.rasters.get_raster(raster_id=raster_id).status
+        print(f"  file status: {raster_status}")
+        if raster_status == "READY":
             break
-        if file_status == "FAILED":
+        if raster_status == "FAILED":
             sys.exit("File processing failed.")
         time.sleep(POLL_INTERVAL)
     else:
         sys.exit("Timed out waiting for the file to become READY.")
-
-    print("Waiting for the raster to be processed...")
-    while time.monotonic() < deadline:
-        raster_status = client.rasters.list_for_file(file_id=file_id).status
-        print(f"  raster status: {raster_status}")
-        if raster_status == "PROCESSED":
-            return
-        if raster_status == "FAILED":
-            sys.exit("Raster processing failed.")
-        time.sleep(POLL_INTERVAL)
-    sys.exit("Timed out waiting for the raster to be PROCESSED.")
 
 
 def wait_for_inference(client: Flypix, inference_id: str) -> None:
@@ -142,32 +135,35 @@ def wait_for_inference(client: Flypix, inference_id: str) -> None:
     sys.exit("Timed out waiting for the inference to finish.")
 
 
-def fetch_features(client: Flypix, file_id: str) -> None:
+def fetch_features(client: Flypix, raster_id: str) -> None:
     """Fetch and summarise the detected features (vectors) for the file.
 
     Inference produces one or more vector layers on the file. Each layer holds
     the detected features (polygons) and a map of class ids to class names.
     """
     print("Fetching detected features...")
-    vectors = client.vectors.list_for_file(file_id=file_id)
-    if not vectors:
-        print("  no vector layers found for this file.")
+    vectors = client.vectors.get_vectors_for_raster(raster_id=raster_id)
+    if isinstance(vectors, ErrorModel):
+        print(f"  no vector layers found for this file. Error: {vectors.detail}")
         return
 
     for vector in vectors:
-        print(f"\n  Vector layer '{vector.name}' ({vector.vector_id}):")
+        print(f"\n  Vector layer '{vector.name}' ({raster_id}):")
 
-        features = client.vectors.get_features(vector_id=vector.vector_id)
+        features = client.vectors.get_vector_features(vector_id=vector.vector_id)
+        if isinstance(features, ErrorModel):
+            print(f"    Error fetching features: {features.detail}")
+            continue
         data = features.data
         # `classes` maps a class id (as a string) to its human-readable name.
         classes = features.classes
         # Each list maps by index: the i-th detection is described by
         # ids[i], areas[i], polygons[i] (WKB base64), confidences[i], class_ids[i].
-        print(f"    {len(data.ids)} feature(s) detected")
+        print(f"    {len(data.ids or [])} feature(s) detected")
 
         # Count detections per class for a quick summary.
         per_class: dict[str, int] = {}
-        for class_id in data.class_ids:
+        for class_id in data.class_ids or []:
             name = classes.get(str(class_id), f"class {class_id}")
             per_class[name] = per_class.get(name, 0) + 1
         for name, n in per_class.items():
@@ -181,22 +177,30 @@ def fetch_features(client: Flypix, file_id: str) -> None:
 def main() -> None:
     with Flypix(security=models.security.Security(api_key=API_KEY), server_url=BASE_URL) as client:
         print(f"Creating project '{PROJECT_NAME}'...")
-        project = client.projects.create(tenant_id=TENANT_ID, name=PROJECT_NAME)
+        project = client.projects.create_project(tenant_id=TENANT_ID, name=PROJECT_NAME)
+        if isinstance(project, ErrorModel):
+            print(f"  -> error creating project: {project.detail}")
+            return
+
         print(f"  -> created project {project.project_id}")
 
-        file_id = upload_tiff(client, TENANT_ID, project.project_id)
-        wait_until_ready(client, file_id)
+        raster_id = upload_tiff(client, TENANT_ID, project.project_id)
+        wait_until_ready(client, raster_id)
 
         print(f"Applying model {MODEL_ID}...")
-        inference = client.models.apply(model_id=MODEL_ID, file_id=file_id)
+        inference = client.models.apply_model_on_raster(model_id=MODEL_ID, raster_id=raster_id)
+        if isinstance(inference, ErrorModel):
+            print(f"  -> error applying model: {inference.detail}")
+            return
+
         print(f"  -> started inference {inference.inference_id}")
 
         wait_for_inference(client, inference.inference_id)
-        fetch_features(client, file_id)
+        fetch_features(client, raster_id)
 
         print("\nDone!")
         print(f"  project id:   {project.project_id}")
-        print(f"  file id:      {file_id}")
+        print(f"  file id:      {raster_id}")
         print(f"  inference id: {inference.inference_id}")
 
 
