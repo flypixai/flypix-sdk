@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: 9a07218ffbba5779c263796b453534cf
-  docVersion: 100.5.1
+  docChecksum: 2ff8f27b97503a7b2d956d63116aba38
+  docVersion: 100.6.0
   speakeasyVersion: 1.802.0
   generationVersion: 2.948.4
-  releaseVersion: 5.0.0
-  configChecksum: 0271ee0dc6117118a2a32a3b0a621f74
+  releaseVersion: 5.1.0
+  configChecksum: 5c62f5546f3c9aa2d0cc829c70a6137c
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 5100dc0a-7baa-4324-b692-fd5394cc77fc
-  pristine_commit_hash: 59eaec2d8c4dc63911f00765bcc22ad13e4933b0
-  pristine_tree_hash: 377cdd25c5d755079c51621a630444119f091cd9
+  generation_id: 0e499a6e-da12-4ff2-a518-8a261febdd4a
+  pristine_commit_hash: 60b85932ada5ab215fed679f081ef29eb9345544
+  pristine_tree_hash: ff55ca8fc9713f18ec37825bdb2ac5a2e42d83e4
 features:
   python:
     acceptHeaders: 3.0.0
@@ -765,8 +765,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:763f608aaa250e5a64be71791c3484abc4f77410
-    pristine_git_object: 2338fad71b0bb891f689798cd915a1cdaf422399
+    last_write_checksum: sha1:b6fc7a8e9e6301d4b11a2ca11022a4ff11dfc703
+    pristine_git_object: ea1cd3e3a83a86a480ffbef20e17db0b8cd588ea
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -793,8 +793,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:617f408303f23a3f53ad986899d8ecef1eab94cb
-    pristine_git_object: 477842a73e6d964d1be2d9cef51a4f63e8db31e7
+    last_write_checksum: sha1:6506fef70b6991fa0d8d024201c351547367a2ae
+    pristine_git_object: 50cfdb9616c84b5c87b2817aa32a2f6b14752176
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
