@@ -162,6 +162,14 @@ if TYPE_CHECKING:
         FilesUploadV2ResponseTypedDict,
     )
     from .folderresponse import FolderResponse, FolderResponseTypedDict
+    from .get_annotation_previewop import (
+        GetAnnotationPreviewRequest,
+        GetAnnotationPreviewRequestTypedDict,
+        GetAnnotationPreviewResponse,
+        GetAnnotationPreviewResponseResult,
+        GetAnnotationPreviewResponseResultTypedDict,
+        GetAnnotationPreviewResponseTypedDict,
+    )
     from .get_classes_for_projectop import (
         GetClassesForProjectRequest,
         GetClassesForProjectRequestTypedDict,
@@ -553,6 +561,12 @@ __all__ = [
     "FilesUploadV2ResponseTypedDict",
     "FolderResponse",
     "FolderResponseTypedDict",
+    "GetAnnotationPreviewRequest",
+    "GetAnnotationPreviewRequestTypedDict",
+    "GetAnnotationPreviewResponse",
+    "GetAnnotationPreviewResponseResult",
+    "GetAnnotationPreviewResponseResultTypedDict",
+    "GetAnnotationPreviewResponseTypedDict",
     "GetClassesForProjectRequest",
     "GetClassesForProjectRequestTypedDict",
     "GetClassesForProjectResponse",
@@ -877,6 +891,12 @@ _dynamic_imports: dict[str, str] = {
     "FilesUploadV2ResponseTypedDict": ".files_upload_v2op",
     "FolderResponse": ".folderresponse",
     "FolderResponseTypedDict": ".folderresponse",
+    "GetAnnotationPreviewRequest": ".get_annotation_previewop",
+    "GetAnnotationPreviewRequestTypedDict": ".get_annotation_previewop",
+    "GetAnnotationPreviewResponse": ".get_annotation_previewop",
+    "GetAnnotationPreviewResponseResult": ".get_annotation_previewop",
+    "GetAnnotationPreviewResponseResultTypedDict": ".get_annotation_previewop",
+    "GetAnnotationPreviewResponseTypedDict": ".get_annotation_previewop",
     "GetClassesForProjectRequest": ".get_classes_for_projectop",
     "GetClassesForProjectRequestTypedDict": ".get_classes_for_projectop",
     "GetClassesForProjectResponse": ".get_classes_for_projectop",

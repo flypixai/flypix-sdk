@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: 0f204cc387bdf1da99d7f3cd1e99aad1
-  docVersion: 100.7.0
-  speakeasyVersion: 1.803.0
+  docChecksum: 4cff4105d50fa61fa44f8b914c6af8e9
+  docVersion: 100.7.2
+  speakeasyVersion: 1.803.1
   generationVersion: 2.950.2
-  releaseVersion: 5.1.0
-  configChecksum: e08f3fedb9414b9fec192e40e6a2aba5
+  releaseVersion: 5.2.0
+  configChecksum: 966022698cba329d01dba5e8abdf1165
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 887276f3-d7fb-4f9d-9c03-88cc8754f671
-  pristine_commit_hash: 41586b5da6baf98a743ae388f5544f5cc5a978a2
-  pristine_tree_hash: 6ad181141bc7a909f36620f133e5b109bbe66aa8
+  generation_id: 819f2679-e640-40dd-b2d8-c0b323cbf0aa
+  pristine_commit_hash: 24036a17dc1b0ba682fe09ee63db9b8298023c96
+  pristine_tree_hash: dd34e344f44af4854495eb34492ed9aeeb361ec8
 features:
   python:
     acceptHeaders: 3.0.0
@@ -21,6 +21,7 @@ features:
     constsAndDefaults: 1.0.8
     core: 6.1.4
     defaultEnabledRetries: 0.2.0
+    downloadStreams: 1.0.1
     enumUnions: 0.1.1
     envVarSecurityUsage: 0.3.3
     flatRequests: 1.0.1
@@ -287,6 +288,18 @@ trackedFiles:
     id: aefa703ce5f9
     last_write_checksum: sha1:687775057304145a19f7f6cdcb6e0a1098fdc4ec
     pristine_git_object: 05b745efa338637085fd7d916f51a64fc3272bc5
+  docs/models/getannotationpreviewrequest.md:
+    id: 0a364ac60c7f
+    last_write_checksum: sha1:1bcca499a4f4f0454aa9c0aa47e71e3bb0593e18
+    pristine_git_object: 47d8d86aba47a131a4c9a46edecdbb601bc377fc
+  docs/models/getannotationpreviewresponse.md:
+    id: ead8ae1ef9d2
+    last_write_checksum: sha1:6db824c6be4fa6a5ac53f95e6450b8b97e4fef0c
+    pristine_git_object: dae3e0ade2b24f7d2cbf5f0c320e7aa8b139d8f4
+  docs/models/getannotationpreviewresponseresult.md:
+    id: ca56ce8af1e2
+    last_write_checksum: sha1:58f376cbedc02fc201b2510c4d0d9d9c4695c00a
+    pristine_git_object: a4a867b1fd3a1173b955112e30c79b081f5389fd
   docs/models/getclassesforprojectrequest.md:
     id: de0559e048cd
     last_write_checksum: sha1:021e17ae753876ab0475a57c8d66e83a832760df
@@ -753,8 +766,8 @@ trackedFiles:
     pristine_git_object: 6e5731c8ae5fb6a5b5fdd4bab30cc37bb1ca86fd
   docs/sdks/vectors/README.md:
     id: 45f7eb916656
-    last_write_checksum: sha1:368537129eb6642caec50093e358beba69903a90
-    pristine_git_object: 895178613adf6d80dc4a132c6127d055d62a0af1
+    last_write_checksum: sha1:9f70dc82febf44857b20b3c3f3c664c37a85b092
+    pristine_git_object: f4dc96e503ef61f46f34549943ad937f37669eb9
   py.typed:
     id: 258c3ed47ae4
     last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
@@ -765,8 +778,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:b6fc7a8e9e6301d4b11a2ca11022a4ff11dfc703
-    pristine_git_object: ea1cd3e3a83a86a480ffbef20e17db0b8cd588ea
+    last_write_checksum: sha1:79c6653b43d0ddfd5236cfbaeb8961dae0469987
+    pristine_git_object: b09569a97c73f007ad47d0f24d61297cea241687
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -793,8 +806,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:9b23fb57f8e6b45bd89c171f22c00c517fed1dd7
-    pristine_git_object: 90fbb57e281ff55b7e7c41b4e64ab25530d1a8a8
+    last_write_checksum: sha1:9a35d3128afbb6b03aaed9535914656841ec6a73
+    pristine_git_object: 7d402c459dd95891a3ebfc2741a69b9c0da1e97f
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -845,8 +858,8 @@ trackedFiles:
     pristine_git_object: efd23d8c29750a91b37349f13eac9860c7d65770
   src/flypix/models/__init__.py:
     id: 1dbc43aed4a3
-    last_write_checksum: sha1:ca1ee1041375a4a77dd77537198b5946bda1dfe2
-    pristine_git_object: 95a0002457b58d18f25f44f0542f13ef8d1b6fda
+    last_write_checksum: sha1:525370ae3414cf0ebdd8e2f5dea2589c4dbaf585
+    pristine_git_object: e71911fc37f4bac08b3796c99da0373e8c35913d
   src/flypix/models/annotationpayloadinput.py:
     id: 3e6ca4f0a037
     last_write_checksum: sha1:a7c9e1d048d34e519d1b2e94da0eb7d4ab9f212d
@@ -1023,6 +1036,10 @@ trackedFiles:
     id: 2426eba205f3
     last_write_checksum: sha1:3f6d2e4715d284a8e6bd7b8b8bf9f43886d0eb33
     pristine_git_object: 7049dd0168d5edfda21016c1720c03b1668710bb
+  src/flypix/models/get_annotation_previewop.py:
+    id: a0f0a94dd850
+    last_write_checksum: sha1:a8300822652ad78056c3512d89416c02c32c3135
+    pristine_git_object: 8e716f6fb426470d2cfdee51c5e46dcd1a9ec388
   src/flypix/models/get_classes_for_projectop.py:
     id: 7d8ed1365288
     last_write_checksum: sha1:c5f6cdddcbace1edc315a8e279bea0e0ed70a470
@@ -1421,8 +1438,8 @@ trackedFiles:
     pristine_git_object: 094755b73f7f9382d8df997602080c82a55896fd
   src/flypix/vectors.py:
     id: 5a19663776a6
-    last_write_checksum: sha1:59b25bd73c54c07138ebcd324074c66e1ef42059
-    pristine_git_object: 50966a94da3aaabc6124df8f8a0aa3ae0d8940b4
+    last_write_checksum: sha1:bbca7bd09e4b68620a3d85425f364d74b4d38fa3
+    pristine_git_object: 343a7f189addbe08be4b6d8a698a3ee60f2c9729
 examples:
   auth_login_with_password:
     speakeasy-default-auth-login-with-password:
@@ -2423,6 +2440,16 @@ examples:
           application/json: {"$schema": "https://example.com/schemas/UploadAnnotationsOutputBody.json", "annotation_ids": [692564], "errored": []}
         default:
           application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  get-annotation-preview:
+    speakeasy-default-get-annotation-preview:
+      parameters:
+        path:
+          annotation_id: "<id>"
+      responses:
+        "200":
+          image/png: "x-file: example.file"
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
 examplesVersion: 1.0.2
 generatedTests:
   auth_login_with_password: "2026-07-10T15:04:15+02:00"
@@ -2477,3 +2504,6 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
+releaseNotes: |
+  ## Python SDK Changes:
+  * `flypix.vectors.get_annotation_preview()`: **Added**

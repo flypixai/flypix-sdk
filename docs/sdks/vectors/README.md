@@ -5,6 +5,7 @@
 ### Available Operations
 
 * [create_empty_vector](#create_empty_vector) - Create empty vector layer
+* [get_annotation_preview](#get_annotation_preview) - Get annotation preview
 * [get_classes_for_project](#get_classes_for_project) - List project classes
 * [get_vectors_for_raster](#get_vectors_for_raster) - List raster vector layers
 * [get_vectors_by_ids](#get_vectors_by_ids) - Get vector layers by ids
@@ -51,6 +52,49 @@ with Flypix(
 ### Response
 
 **[models.CreateEmptyVectorResponse](../../models/createemptyvectorresponse.md)**
+
+### Errors
+
+| Error Type                | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| errors.FlyPixDefaultError | 4XX, 5XX                  | \*/\*                     |
+
+## get_annotation_preview
+
+Returns a PNG of an annotation, drawn in its class color over a crop of its raster.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="get-annotation-preview" method="get" path="/v2/vectors/annotations/{annotation_id}/preview" -->
+```python
+from flypix import Flypix, models
+
+
+with Flypix(
+    security=models.Security(
+        api_key="<YOUR_API_KEY_HERE>",
+    ),
+) as f_client:
+
+    res = f_client.vectors.get_annotation_preview(annotation_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `annotation_id`                                                                      | *str*                                                                                | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `annotation_coverage`                                                                | *Optional[float]*                                                                    | :heavy_minus_sign:                                                                   | Share of the preview's area taken by the annotation's bounding box. Defaults to 0.7. |
+| `preview_size_px`                                                                    | *Optional[int]*                                                                      | :heavy_minus_sign:                                                                   | Longest side of the preview, in pixels. Defaults to 512.                             |
+| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+
+### Response
+
+**[models.GetAnnotationPreviewResponse](../../models/getannotationpreviewresponse.md)**
 
 ### Errors
 
