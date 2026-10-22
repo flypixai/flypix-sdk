@@ -306,6 +306,7 @@ with Flypix(
 ### [Vectors](docs/sdks/vectors/README.md)
 
 * [create_empty_vector](docs/sdks/vectors/README.md#create_empty_vector) - Create empty vector layer
+* [get_annotation_preview](docs/sdks/vectors/README.md#get_annotation_preview) - Get annotation preview
 * [get_classes_for_project](docs/sdks/vectors/README.md#get_classes_for_project) - List project classes
 * [get_vectors_for_raster](docs/sdks/vectors/README.md#get_vectors_for_raster) - List raster vector layers
 * [get_vectors_by_ids](docs/sdks/vectors/README.md#get_vectors_by_ids) - Get vector layers by ids
