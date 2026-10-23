@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: 4cff4105d50fa61fa44f8b914c6af8e9
-  docVersion: 100.7.2
+  docChecksum: 4e7251054486c7e11032a76b22589ba3
+  docVersion: 100.7.4
   speakeasyVersion: 1.803.1
   generationVersion: 2.950.2
-  releaseVersion: 5.2.0
-  configChecksum: 966022698cba329d01dba5e8abdf1165
+  releaseVersion: 5.2.1
+  configChecksum: 921dad2683cc7852361ab48792a8538c
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 819f2679-e640-40dd-b2d8-c0b323cbf0aa
-  pristine_commit_hash: 24036a17dc1b0ba682fe09ee63db9b8298023c96
-  pristine_tree_hash: dd34e344f44af4854495eb34492ed9aeeb361ec8
+  generation_id: 1091f54f-2f78-469c-8fe4-72bab35e4008
+  pristine_commit_hash: eb042e0550089bb4c43b97b40d0360e8e63e5608
+  pristine_tree_hash: dc9fb1698cb0dd7b7d42ad90fe1fa0d9fee9fa2e
 features:
   python:
     acceptHeaders: 3.0.0
@@ -188,6 +188,26 @@ trackedFiles:
     id: eecbafe3df23
     last_write_checksum: sha1:66ae2c712f373168370c4f5c2ef28b6e2d65c2d4
     pristine_git_object: 23e02eca60c2ebfcda7ddb584e1e5d405e5d63d2
+  docs/models/customflowrundetailsresponse.md:
+    id: baf6f8b3a95f
+    last_write_checksum: sha1:01c587ada95e57f3e74eda9ffa427fba629420bf
+    pristine_git_object: af92d5c2843c2793e259319d41ae5932134042dc
+  docs/models/customflowruninfo.md:
+    id: 5505a793a45b
+    last_write_checksum: sha1:04db28fc37f73e31ae5e32d9a03249c8457e00db
+    pristine_git_object: 930da83f061c4de906f790f94275f8a123aa6eaf
+  docs/models/customflowrunoutputfile.md:
+    id: 0547037f8a93
+    last_write_checksum: sha1:39e9168ecf72a46412de9fe6334c1b797b1d7967
+    pristine_git_object: 7f13887e4debe81a17319ab8b3ad99399ae7c0a4
+  docs/models/customflowrunoutputsresponse.md:
+    id: ac6328922098
+    last_write_checksum: sha1:ee9197558822aa410dcf064df510c1a6821337a8
+    pristine_git_object: 3bf8bb21bef276943ebeb6b8f670cd5ce0d12f3f
+  docs/models/customflowrunresponse.md:
+    id: 905e9076788e
+    last_write_checksum: sha1:e9413f7619c2104e9cde4b6a307fd3026d2b4485
+    pristine_git_object: bceab4bad4259f087f523dbd387e345f235e71fc
   docs/models/deletefolderrequest.md:
     id: f0476c0fef41
     last_write_checksum: sha1:499901377e611ea136912866392d0d58c61f1084
@@ -308,6 +328,38 @@ trackedFiles:
     id: 102787acb7d4
     last_write_checksum: sha1:e518f9b5d9bd2eef449f59acaaad526ed5c9e424
     pristine_git_object: 3a9af45481cdc8fa6635dc7ef6137af6445cf4d2
+  docs/models/getcustomflowrunoutputsrequest.md:
+    id: ff818f7c3dad
+    last_write_checksum: sha1:459d61a6ae40270e4ad5f7978064e2ceb87d2619
+    pristine_git_object: c8caddfdf8358b87726462184650e012f602bcdc
+  docs/models/getcustomflowrunoutputsresponse.md:
+    id: 9b061ab14c42
+    last_write_checksum: sha1:44f859b72d8ced44ef11f4eea69180e9fbc9ccd0
+    pristine_git_object: b6e97ecfae1c735eb68a8d493370be34bbe8f74b
+  docs/models/getcustomflowrunrequest.md:
+    id: 26ed11066fa4
+    last_write_checksum: sha1:7408855de54402266692548d4ca83c40eb0f1572
+    pristine_git_object: a284e5be42139a0b1d1e006fcfdaedb9fa98faab
+  docs/models/getcustomflowrunresponse.md:
+    id: f33d290ac57e
+    last_write_checksum: sha1:df9c993c25e6312e5e4046a391fb02c1d3c646d2
+    pristine_git_object: 6f8876051abcc2d1756343ec6834b3b1133de2eb
+  docs/models/getcustomflowrunsforprojectrequest.md:
+    id: 9e633e3f20b4
+    last_write_checksum: sha1:2db619190b9dc990740eedfd8aab98b9646d0ce4
+    pristine_git_object: b8c9e442b5cd813a39891c5d2bf4880e57f9e29e
+  docs/models/getcustomflowrunsforprojectresponse.md:
+    id: ffa841eba3b9
+    last_write_checksum: sha1:56b84e590ad66364f614b0b1504813bbb5e8a024
+    pristine_git_object: b3dce3eed49face23c29864071305a29531fe424
+  docs/models/getcustomflowrunsfortenantrequest.md:
+    id: bb60ad3478a1
+    last_write_checksum: sha1:a7e165e55871de7343d0f7f974a325bffff048ec
+    pristine_git_object: 6ee097126e20981f632f9b946dbf65169b63c12c
+  docs/models/getcustomflowrunsfortenantresponse.md:
+    id: 6ef1b1559a5d
+    last_write_checksum: sha1:e335b3d115698e9a4a8f2a4ef763260e028a9ec3
+    pristine_git_object: ff794a0e43aa6e74c200484c34eef3f4d3cc80ff
   docs/models/getfiledownloadlinkrequest.md:
     id: 8648c9f06ea8
     last_write_checksum: sha1:62299038bcc6472be3889b0899acefd2e16bc71b
@@ -600,6 +652,18 @@ trackedFiles:
     id: a2c3386745f6
     last_write_checksum: sha1:6c993e2f6ae262053685643c04cd7adabbbb3dee
     pristine_git_object: faab1f47ee970acd2b9f72cc1b99d7ff84e8b64c
+  docs/models/runcustomflowinputbody.md:
+    id: 5b8813ed341a
+    last_write_checksum: sha1:59f1741696fb1557ee9898944758e2ff6e741250
+    pristine_git_object: efce3593623b4d4de1e665f10cdcbe1d56f7b906
+  docs/models/runcustomflowrequest.md:
+    id: 6e091e486839
+    last_write_checksum: sha1:554a4db9eb8ec05639cb5ec40b1f2e19aa429b15
+    pristine_git_object: f8e0515086a0143f5797acf3bf2e0d113d39ff47
+  docs/models/runcustomflowresponse.md:
+    id: 98e06298e24c
+    last_write_checksum: sha1:1b386639ab3adb16b2833432442f434fc970e7b2
+    pristine_git_object: 22ec7339481ab4e06dd2c880f1e8a274702ecff3
   docs/models/security.md:
     id: 452e4d4eb67a
     last_write_checksum: sha1:eaa3a9a3907874bdc65085e0a767a7829f2145b7
@@ -720,6 +784,10 @@ trackedFiles:
     id: e9724f17945f
     last_write_checksum: sha1:4536fa3f4c9c448a6014d624ad846df59e199932
     pristine_git_object: 49a832d6c8410cbee1a796880dc1568a267c2e46
+  docs/sdks/customflows/README.md:
+    id: 14d8a2fba1fb
+    last_write_checksum: sha1:ef1a380805ca6a121276a2a880b5696e6c5097e2
+    pristine_git_object: 08f9a89d27d94432d75a2a72f5020129ec8ab7b4
   docs/sdks/files/README.md:
     id: e576d7a117f0
     last_write_checksum: sha1:983721b221915375cd74507abd022df72d324aac
@@ -778,8 +846,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:79c6653b43d0ddfd5236cfbaeb8961dae0469987
-    pristine_git_object: b09569a97c73f007ad47d0f24d61297cea241687
+    last_write_checksum: sha1:315a6e726ba2b5db3ee80b18733f2facf7ec6fe2
+    pristine_git_object: 8cb2d78aa7c56e06855d4b1e80b84b4a4fa9ab44
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -806,8 +874,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:9a35d3128afbb6b03aaed9535914656841ec6a73
-    pristine_git_object: 7d402c459dd95891a3ebfc2741a69b9c0da1e97f
+    last_write_checksum: sha1:9b79fe1e72f7a58b41e4083f342e37f20db56157
+    pristine_git_object: 0dfc88c794cb8cbf9481a0a9c637275607a8f173
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -816,6 +884,10 @@ trackedFiles:
     id: 3df709c8af49
     last_write_checksum: sha1:5b890dca913d5ee6d3c080b4481a005f121b1449
     pristine_git_object: 2586a35f4f6010d92c5755279a589ee9242b5dc3
+  src/flypix/custom_flows.py:
+    id: 085d3dcf6b42
+    last_write_checksum: sha1:db2885873adc035768e20b1d60705e5de0c5a386
+    pristine_git_object: 7612edb28518f0cbb48679c215e9765f4fee196b
   src/flypix/errors/__init__.py:
     id: b16af737fce5
     last_write_checksum: sha1:b76f9870f91721388188f87851f3183756279227
@@ -858,8 +930,8 @@ trackedFiles:
     pristine_git_object: efd23d8c29750a91b37349f13eac9860c7d65770
   src/flypix/models/__init__.py:
     id: 1dbc43aed4a3
-    last_write_checksum: sha1:525370ae3414cf0ebdd8e2f5dea2589c4dbaf585
-    pristine_git_object: e71911fc37f4bac08b3796c99da0373e8c35913d
+    last_write_checksum: sha1:df5296a300d8c5e4740fa74fb376c92eb0f9e705
+    pristine_git_object: 286448a2c7f8ca8de3a4cfd724741b7c245f0923
   src/flypix/models/annotationpayloadinput.py:
     id: 3e6ca4f0a037
     last_write_checksum: sha1:a7c9e1d048d34e519d1b2e94da0eb7d4ab9f212d
@@ -968,6 +1040,26 @@ trackedFiles:
     id: 18796a568d5e
     last_write_checksum: sha1:6a3834ef7348a6b29c4a3d380f77b4706af7649c
     pristine_git_object: ce9563fd26f9e4d771402cceb20689a2adb7f837
+  src/flypix/models/customflowrundetailsresponse.py:
+    id: c9a6d37e6441
+    last_write_checksum: sha1:7d0b6a59dd30282d8466b34389dbc9e3e64f51cf
+    pristine_git_object: f68d4245c59623ae33ff68dbf70195679874f421
+  src/flypix/models/customflowruninfo.py:
+    id: 006ee51cd214
+    last_write_checksum: sha1:b9c9ba6202697d029d5a7bee179e41cb7e212a36
+    pristine_git_object: fd78c296c16a2f9fe9d378555a982f507427c707
+  src/flypix/models/customflowrunoutputfile.py:
+    id: cb01c3809e6e
+    last_write_checksum: sha1:04576bdeca17153c60c2b95c99768be7cbe24e17
+    pristine_git_object: b812f29be5b96863a1b8a5cb4da5687dd36d670f
+  src/flypix/models/customflowrunoutputsresponse.py:
+    id: ddc34c57326d
+    last_write_checksum: sha1:5c053850cba072e9d362d784d066d88032bb8ce3
+    pristine_git_object: 5b4caab771bb37e084502f4823dc7895a3c4f1ae
+  src/flypix/models/customflowrunresponse.py:
+    id: eaaf62fd0de1
+    last_write_checksum: sha1:e255cb7aaff440f9226030b44c99ccea822f6559
+    pristine_git_object: ba77073538582cb0f275254b89145d38be44152a
   src/flypix/models/delete_folderop.py:
     id: 45654becdc43
     last_write_checksum: sha1:0cdd3a8e42774802c025389eda93b71f09fa97c5
@@ -1044,6 +1136,22 @@ trackedFiles:
     id: 7d8ed1365288
     last_write_checksum: sha1:c5f6cdddcbace1edc315a8e279bea0e0ed70a470
     pristine_git_object: 60604f6ea6b3356e1b6bafdd76c078f0f00c63e6
+  src/flypix/models/get_custom_flow_run_outputsop.py:
+    id: 7e136d06591e
+    last_write_checksum: sha1:6d36a18203997e67805383298982d4243f6b1fdc
+    pristine_git_object: b0c0d75cff6c65e99356b9eedba5333c411bfd52
+  src/flypix/models/get_custom_flow_runop.py:
+    id: e799e08179ad
+    last_write_checksum: sha1:5b0014d4cca0e17c64f9dca941e81540ee48e1af
+    pristine_git_object: a485d01c598901081ba8972a6eec06e7e720f665
+  src/flypix/models/get_custom_flow_runs_for_projectop.py:
+    id: a1eb266aa188
+    last_write_checksum: sha1:2654d771638d71ffe82f59a67f81e078a2bf0dbf
+    pristine_git_object: 67c6d4cb222e8dd83a8776fd50ddb380b976a4e5
+  src/flypix/models/get_custom_flow_runs_for_tenantop.py:
+    id: 0bacca46dbb2
+    last_write_checksum: sha1:9ee1fedd763c33eb1c2214d401f16c4e1d380d30
+    pristine_git_object: bd17420b21a7ef54c825b87ddb70712006149d17
   src/flypix/models/get_file_download_linkop.py:
     id: a2afa3a2273b
     last_write_checksum: sha1:5452e8ac3f1d8fb588557b6ad8981b515cd0589f
@@ -1244,6 +1352,14 @@ trackedFiles:
     id: 04ba98a7b9d3
     last_write_checksum: sha1:636e4c290bcb6d4664d05f533cf4e3fea0cc236e
     pristine_git_object: e3af13bd92932590bb45d61c62c1bf73044e2be7
+  src/flypix/models/run_custom_flowop.py:
+    id: 4ec173213a03
+    last_write_checksum: sha1:8eb129e34f1c0dcdcf4cc30fac7065d6fd8aed4b
+    pristine_git_object: e2e53b02f5aed2cc5ecefcc3057f730fce315f79
+  src/flypix/models/runcustomflowinputbody.py:
+    id: 2366defe8fb3
+    last_write_checksum: sha1:bd2ea9175332aa7768ab7af2394ee70057bb89cb
+    pristine_git_object: 8eae911fcc3d769b2d01cfe4283589ad23e5cd3b
   src/flypix/models/security.py:
     id: d89242bfbd62
     last_write_checksum: sha1:f57907d5cf7b260f6b8cae68015827afd2ca5515
@@ -1334,8 +1450,8 @@ trackedFiles:
     pristine_git_object: c365b073a83fdd1522d57a969ef962fee91142d9
   src/flypix/sdk.py:
     id: 38af35d27679
-    last_write_checksum: sha1:c9eca2c2c9ae2b174eb40d95b565153a392a6958
-    pristine_git_object: aa154b9884d7e1a0b22decedb27fb6821a5fb127
+    last_write_checksum: sha1:719f34ca2edea78c17497542b8fb9d51d3aa8718
+    pristine_git_object: 98660a07f1b8c2ed7782a8aeeb930246e6a202de
   src/flypix/sdkconfiguration.py:
     id: 53dd81dcbf7d
     last_write_checksum: sha1:457048a19a26388a35507820409752a9f157f2a2
@@ -2450,6 +2566,64 @@ examples:
           image/png: "x-file: example.file"
         default:
           application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  get-custom-flow-runs-for-project:
+    speakeasy-default-get-custom-flow-runs-for-project:
+      parameters:
+        path:
+          project_id: "<id>"
+        query:
+          offset: 0
+          limit: 200
+      responses:
+        "200":
+          application/json: [{"$schema": "https://example.com/schemas/CustomFlowRunDetailsResponse.json", "info": {"elapsed_seconds": 8011.81, "end_time": "2024-02-10T00:41:13.021Z", "start_time": "2025-09-14T05:47:29.652Z", "state": "Tennessee", "state_message": "<value>", "state_name": "<value>"}, "run": {"created_at": "2026-06-08T20:14:06.584Z", "custom_flow_run_id": "<id>", "flow_name": "<value>", "input": {}, "project_id": "<id>", "tenant_id": "<id>"}}]
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  get-custom-flow-runs-for-tenant:
+    speakeasy-default-get-custom-flow-runs-for-tenant:
+      parameters:
+        path:
+          tenant_id: "<id>"
+        query:
+          offset: 0
+          limit: 200
+      responses:
+        "200":
+          application/json: [{"$schema": "https://example.com/schemas/CustomFlowRunDetailsResponse.json", "info": {"elapsed_seconds": 2617.6, "end_time": "2025-09-27T20:24:25.144Z", "start_time": null, "state": "New Mexico", "state_message": "<value>", "state_name": "<value>"}, "run": {"created_at": "2024-08-01T21:50:27.363Z", "custom_flow_run_id": "<id>", "flow_name": "<value>", "input": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "project_id": "<id>", "tenant_id": "<id>"}}]
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  get-custom-flow-run:
+    speakeasy-default-get-custom-flow-run:
+      parameters:
+        path:
+          custom_flow_run_id: "<id>"
+      responses:
+        "200":
+          application/json: {"$schema": "https://example.com/schemas/CustomFlowRunDetailsResponse.json", "info": {"elapsed_seconds": 1015.49, "end_time": "2026-03-21T04:11:58.836Z", "start_time": "2025-12-19T14:10:51.761Z", "state": "Pennsylvania", "state_message": "<value>", "state_name": "<value>"}, "run": {"created_at": "2024-08-26T18:45:00.521Z", "custom_flow_run_id": "<id>", "flow_name": "<value>", "input": {"key": "<value>", "key1": "<value>"}, "project_id": "<id>", "tenant_id": "<id>"}}
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  get-custom-flow-run-outputs:
+    speakeasy-default-get-custom-flow-run-outputs:
+      parameters:
+        path:
+          custom_flow_run_id: "<id>"
+      responses:
+        "200":
+          application/json: {"$schema": "https://example.com/schemas/CustomFlowRunOutputsResponse.json", "custom_flow_run_id": "<id>", "files": null, "info": {"elapsed_seconds": 2095.5, "end_time": "2026-05-09T20:42:58.955Z", "start_time": "2024-01-17T02:31:38.293Z", "state": "Massachusetts", "state_message": "<value>", "state_name": null}}
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  run-custom-flow:
+    speakeasy-default-run-custom-flow:
+      parameters:
+        path:
+          flow_name: "<value>"
+      requestBody:
+        application/json: {"project_id": "<id>"}
+      responses:
+        "200":
+          application/json: {"$schema": "https://example.com/schemas/CustomFlowRunDetailsResponse.json", "info": {"elapsed_seconds": 7701.96, "end_time": "2025-06-11T00:01:30.147Z", "start_time": "2026-06-26T07:43:43.101Z", "state": "Maryland", "state_message": "<value>", "state_name": "<value>"}, "run": {"created_at": "2026-06-27T11:38:19.214Z", "custom_flow_run_id": "<id>", "flow_name": "<value>", "input": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "project_id": "<id>", "tenant_id": "<id>"}}
+        default:
+          application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
 examplesVersion: 1.0.2
 generatedTests:
   auth_login_with_password: "2026-07-10T15:04:15+02:00"
@@ -2506,4 +2680,8 @@ generatedTests:
   geosense_send_message: "2026-07-10T15:04:15+02:00"
 releaseNotes: |
   ## Python SDK Changes:
-  * `flypix.vectors.get_annotation_preview()`: **Added**
+  * `flypix.custom_flows.get_custom_flow_runs_for_project()`: **Added**
+  * `flypix.custom_flows.get_custom_flow_runs_for_tenant()`: **Added**
+  * `flypix.custom_flows.get_custom_flow_run()`: **Added**
+  * `flypix.custom_flows.get_custom_flow_run_outputs()`: **Added**
+  * `flypix.custom_flows.run_custom_flow()`: **Added**

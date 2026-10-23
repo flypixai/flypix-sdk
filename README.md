@@ -227,6 +227,14 @@ with Flypix(
 * [login_with_password](docs/sdks/auth/README.md#login_with_password) - Login with password
 * [refresh_token](docs/sdks/auth/README.md#refresh_token) - Refresh token
 
+### [CustomFlows](docs/sdks/customflows/README.md)
+
+* [get_custom_flow_runs_for_project](docs/sdks/customflows/README.md#get_custom_flow_runs_for_project) - List project custom flow runs
+* [get_custom_flow_runs_for_tenant](docs/sdks/customflows/README.md#get_custom_flow_runs_for_tenant) - List tenant custom flow runs
+* [get_custom_flow_run](docs/sdks/customflows/README.md#get_custom_flow_run) - Get a custom flow run
+* [get_custom_flow_run_outputs](docs/sdks/customflows/README.md#get_custom_flow_run_outputs) - Get a custom flow run's outputs
+* [run_custom_flow](docs/sdks/customflows/README.md#run_custom_flow) - Run a custom flow
+
 ### [Files](docs/sdks/files/README.md)
 
 * [upload_v2](docs/sdks/files/README.md#upload_v2) - Upload a file
