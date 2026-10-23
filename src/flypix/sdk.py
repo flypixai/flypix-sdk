@@ -16,6 +16,7 @@ import weakref
 
 if TYPE_CHECKING:
     from flypix.auth import Auth
+    from flypix.custom_flows import CustomFlows
     from flypix.files import Files
     from flypix.folders import Folders
     from flypix.geosense import Geosense
@@ -55,6 +56,7 @@ class Flypix(BaseSDK):
 
     system: "System"
     auth: "Auth"
+    custom_flows: "CustomFlows"
     files: "Files"
     folders: "Folders"
     geosense: "Geosense"
@@ -69,6 +71,7 @@ class Flypix(BaseSDK):
     _sub_sdk_map = {
         "system": ("flypix.system", "System"),
         "auth": ("flypix.auth", "Auth"),
+        "custom_flows": ("flypix.custom_flows", "CustomFlows"),
         "files": ("flypix.files", "Files"),
         "folders": ("flypix.folders", "Folders"),
         "geosense": ("flypix.geosense", "Geosense"),

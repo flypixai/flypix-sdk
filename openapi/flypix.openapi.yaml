@@ -350,6 +350,123 @@ components:
         - "artifact_data"
         - "type"
       type: "object"
+    CustomFlowRunDetailsResponse:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: "A URL to the JSON Schema for this object."
+          examples:
+            - "https://example.com/schemas/CustomFlowRunDetailsResponse.json"
+          format: "uri"
+          readOnly: true
+          type: "string"
+        info:
+          $ref: "#/components/schemas/CustomFlowRunInfo"
+        run:
+          $ref: "#/components/schemas/CustomFlowRunResponse"
+      required:
+        - "run"
+        - "info"
+      type: "object"
+    CustomFlowRunInfo:
+      additionalProperties: false
+      properties:
+        elapsed_seconds:
+          format: "double"
+          type:
+            - "number"
+            - "null"
+        end_time:
+          format: "date-time"
+          type:
+            - "string"
+            - "null"
+        start_time:
+          format: "date-time"
+          type:
+            - "string"
+            - "null"
+        state:
+          type:
+            - "string"
+            - "null"
+        state_message:
+          type:
+            - "string"
+            - "null"
+        state_name:
+          type:
+            - "string"
+            - "null"
+      required:
+        - "state"
+        - "state_name"
+        - "state_message"
+        - "start_time"
+        - "end_time"
+        - "elapsed_seconds"
+      type: "object"
+    CustomFlowRunOutputFile:
+      additionalProperties: false
+      properties:
+        name:
+          type: "string"
+        url:
+          type: "string"
+      required:
+        - "name"
+        - "url"
+      type: "object"
+    CustomFlowRunOutputsResponse:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: "A URL to the JSON Schema for this object."
+          examples:
+            - "https://example.com/schemas/CustomFlowRunOutputsResponse.json"
+          format: "uri"
+          readOnly: true
+          type: "string"
+        custom_flow_run_id:
+          type: "string"
+        files:
+          items:
+            $ref: "#/components/schemas/CustomFlowRunOutputFile"
+          type:
+            - "array"
+            - "null"
+        info:
+          $ref: "#/components/schemas/CustomFlowRunInfo"
+      required:
+        - "custom_flow_run_id"
+        - "files"
+        - "info"
+      type: "object"
+    CustomFlowRunResponse:
+      additionalProperties: false
+      properties:
+        created_at:
+          format: "date-time"
+          type: "string"
+        custom_flow_run_id:
+          type: "string"
+        flow_name:
+          type: "string"
+        input:
+          additionalProperties: {}
+          type: "object"
+        project_id:
+          type: "string"
+        tenant_id:
+          type: "string"
+      required:
+        - "custom_flow_run_id"
+        - "tenant_id"
+        - "project_id"
+        - "flow_name"
+        - "input"
+        - "created_at"
+      type: "object"
     EntityDeletionResponse:
       additionalProperties: false
       properties:
@@ -916,6 +1033,25 @@ components:
         - "training_behavior"
         - "inference_behavior"
       type: "object"
+    RunCustomFlowInputBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: "A URL to the JSON Schema for this object."
+          examples:
+            - "https://example.com/schemas/RunCustomFlowInputBody.json"
+          format: "uri"
+          readOnly: true
+          type: "string"
+        input:
+          additionalProperties: {}
+          description: "Parameters of the flow, passed to it as-is. Each flow defines its own."
+          type: "object"
+        project_id:
+          type: "string"
+      required:
+        - "project_id"
+      type: "object"
     SendMessageInputBody:
       additionalProperties: false
       properties:
@@ -1185,7 +1321,7 @@ components:
 info:
   description: "\nPublic OpenAPI Schema\n\nThis API lets you interact directly with the application with HTTP requests.\n\nYou will need to set a valid authorization header for every request:\n\n`Authorization: Bearer <token>`\n\nExample use case: Find an existing raster and its vector features:\n\n```\nPOST /auth/login/password -> Fetch token and use it in subsequent requests\nGET /users/tenant/for-user/ -> Get your tenant id for subsequent requests\nGET /projects/for-tenant/{tenant_id} -> Find your project\nGET /rasters/for-project/{project_id}/tree -> Find your raster\nGET /vectors/for-raster/{raster_id} -> Get the vector ids for the raster\nGET /vectors/{vector_id}/features -> Get the annotations\n```\n"
   title: "Public API"
-  version: "100.7.2"
+  version: "100.7.4"
 openapi: "3.1.0"
 paths:
   /health:
@@ -1263,6 +1399,209 @@ paths:
       summary: "Refresh token"
       tags:
         - "auth"
+  /v2/custom-flows/runs/for-project/{project_id}:
+    get:
+      description: "Lists the custom flow runs of a project with their live state."
+      operationId: "get-custom-flow-runs-for-project"
+      parameters:
+        - in: "path"
+          name: "project_id"
+          required: true
+          schema:
+            type: "string"
+        - description: "Comma-separated field:operator:value clauses, e.g. flow_name:eq:custom_sennebogen"
+          explode: false
+          in: "query"
+          name: "filter"
+          schema:
+            description: "Comma-separated field:operator:value clauses, e.g. flow_name:eq:custom_sennebogen"
+            type: "string"
+        - description: "Comma-separated field:asc|desc clauses, e.g. created_at:desc"
+          explode: false
+          in: "query"
+          name: "sort"
+          schema:
+            description: "Comma-separated field:asc|desc clauses, e.g. created_at:desc"
+            type: "string"
+        - explode: false
+          in: "query"
+          name: "offset"
+          schema:
+            default: 0
+            format: "int64"
+            type: "integer"
+        - explode: false
+          in: "query"
+          name: "limit"
+          schema:
+            default: 200
+            format: "int64"
+            type: "integer"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CustomFlowRunDetailsResponse"
+                type:
+                  - "array"
+                  - "null"
+          description: "OK"
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: "Error"
+      summary: "List project custom flow runs"
+      tags:
+        - "custom-flows"
+  /v2/custom-flows/runs/for-tenant/{tenant_id}:
+    get:
+      description: "Lists the custom flow runs of a tenant with their live state. Filter on flow_name to narrow down to a single flow."
+      operationId: "get-custom-flow-runs-for-tenant"
+      parameters:
+        - in: "path"
+          name: "tenant_id"
+          required: true
+          schema:
+            type: "string"
+        - description: "Comma-separated field:operator:value clauses, e.g. flow_name:eq:custom_sennebogen"
+          explode: false
+          in: "query"
+          name: "filter"
+          schema:
+            description: "Comma-separated field:operator:value clauses, e.g. flow_name:eq:custom_sennebogen"
+            type: "string"
+        - description: "Comma-separated field:asc|desc clauses, e.g. created_at:desc"
+          explode: false
+          in: "query"
+          name: "sort"
+          schema:
+            description: "Comma-separated field:asc|desc clauses, e.g. created_at:desc"
+            type: "string"
+        - explode: false
+          in: "query"
+          name: "offset"
+          schema:
+            default: 0
+            format: "int64"
+            type: "integer"
+        - explode: false
+          in: "query"
+          name: "limit"
+          schema:
+            default: 200
+            format: "int64"
+            type: "integer"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CustomFlowRunDetailsResponse"
+                type:
+                  - "array"
+                  - "null"
+          description: "OK"
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: "Error"
+      summary: "List tenant custom flow runs"
+      tags:
+        - "custom-flows"
+  /v2/custom-flows/runs/{custom_flow_run_id}:
+    get:
+      description: "Returns a custom flow run with its live state: state, timings and elapsed seconds."
+      operationId: "get-custom-flow-run"
+      parameters:
+        - in: "path"
+          name: "custom_flow_run_id"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomFlowRunDetailsResponse"
+          description: "OK"
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: "Error"
+      summary: "Get a custom flow run"
+      tags:
+        - "custom-flows"
+  /v2/custom-flows/runs/{custom_flow_run_id}/outputs:
+    get:
+      description: "Returns the files a custom flow run wrote, as time-limited download links, with its live state."
+      operationId: "get-custom-flow-run-outputs"
+      parameters:
+        - in: "path"
+          name: "custom_flow_run_id"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomFlowRunOutputsResponse"
+          description: "OK"
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: "Error"
+      summary: "Get a custom flow run's outputs"
+      tags:
+        - "custom-flows"
+  /v2/custom-flows/{flow_name}/runs:
+    post:
+      description: "Triggers a custom flow by name in a project of your tenant. The run is asynchronous: check its state with get-custom-flow-run, then fetch its files with get-custom-flow-run-outputs. Unknown flows 404."
+      operationId: "run-custom-flow"
+      parameters:
+        - description: "Name of the custom flow. Custom flows are named custom_*, e.g. custom_sennebogen"
+          in: "path"
+          name: "flow_name"
+          required: true
+          schema:
+            description: "Name of the custom flow. Custom flows are named custom_*, e.g. custom_sennebogen"
+            pattern: "^custom_[a-z0-9_]{1,121}$"
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunCustomFlowInputBody"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomFlowRunDetailsResponse"
+          description: "OK"
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: "Error"
+      summary: "Run a custom flow"
+      tags:
+        - "custom-flows"
   /v2/files/upload:
     post:
       description: "Uploads a file directly, streamed from the request body. Rejected if it would push the tenant over its subscription's storage quota."

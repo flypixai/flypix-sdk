@@ -227,6 +227,14 @@ with Flypix(
 * [login_with_password](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#login_with_password) - Login with password
 * [refresh_token](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/auth/README.md#refresh_token) - Refresh token
 
+### [CustomFlows](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md)
+
+* [get_custom_flow_runs_for_project](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md#get_custom_flow_runs_for_project) - List project custom flow runs
+* [get_custom_flow_runs_for_tenant](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md#get_custom_flow_runs_for_tenant) - List tenant custom flow runs
+* [get_custom_flow_run](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md#get_custom_flow_run) - Get a custom flow run
+* [get_custom_flow_run_outputs](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md#get_custom_flow_run_outputs) - Get a custom flow run's outputs
+* [run_custom_flow](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/customflows/README.md#run_custom_flow) - Run a custom flow
+
 ### [Files](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md)
 
 * [upload_v2](https://github.com/flypix-ai/flypix-sdk/blob/master/docs/sdks/files/README.md#upload_v2) - Upload a file
