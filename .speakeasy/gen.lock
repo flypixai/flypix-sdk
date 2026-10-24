@@ -3,23 +3,23 @@ id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
   docChecksum: 4e7251054486c7e11032a76b22589ba3
   docVersion: 100.7.4
-  speakeasyVersion: 1.803.1
-  generationVersion: 2.950.2
-  releaseVersion: 5.2.1
-  configChecksum: 921dad2683cc7852361ab48792a8538c
+  speakeasyVersion: 1.803.2
+  generationVersion: 2.950.13
+  releaseVersion: 5.2.2
+  configChecksum: 7eb3c20f5de6b01d448849d121877574
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 1091f54f-2f78-469c-8fe4-72bab35e4008
-  pristine_commit_hash: eb042e0550089bb4c43b97b40d0360e8e63e5608
-  pristine_tree_hash: dc9fb1698cb0dd7b7d42ad90fe1fa0d9fee9fa2e
+  generation_id: f1d1f252-d5ec-4466-8c63-5cc3b30c26b4
+  pristine_commit_hash: 739651b13d7af60869e0d55f35199e6ad5890155
+  pristine_tree_hash: e895dee67e2dd12c42135d776cae83eb809c6c1f
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.8
-    core: 6.1.4
+    core: 6.1.5
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -38,7 +38,7 @@ features:
     retries: 3.1.2
     sdkHooks: 1.3.0
     unions: 3.1.12
-    uploadStreams: 1.0.3
+    uploadStreams: 1.0.4
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -846,8 +846,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:315a6e726ba2b5db3ee80b18733f2facf7ec6fe2
-    pristine_git_object: 8cb2d78aa7c56e06855d4b1e80b84b4a4fa9ab44
+    last_write_checksum: sha1:5b1efd4894a7d1a47ee46ba7b75c3d8f5bcf2eb9
+    pristine_git_object: f28f16b600cb341be93d80d2f81583ae22b83522
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -874,8 +874,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:9b79fe1e72f7a58b41e4083f342e37f20db56157
-    pristine_git_object: 0dfc88c794cb8cbf9481a0a9c637275607a8f173
+    last_write_checksum: sha1:bd339bf817c226f92cfffde71c095c34a2be5c91
+    pristine_git_object: e7dae508f247d91bfd7f4ada9e9acee0e85190a1
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -2678,10 +2678,3 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
-releaseNotes: |
-  ## Python SDK Changes:
-  * `flypix.custom_flows.get_custom_flow_runs_for_project()`: **Added**
-  * `flypix.custom_flows.get_custom_flow_runs_for_tenant()`: **Added**
-  * `flypix.custom_flows.get_custom_flow_run()`: **Added**
-  * `flypix.custom_flows.get_custom_flow_run_outputs()`: **Added**
-  * `flypix.custom_flows.run_custom_flow()`: **Added**
