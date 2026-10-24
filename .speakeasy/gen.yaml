@@ -33,7 +33,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/flypix-ai/flypix-sdk.git
 python:
-  version: 5.2.1
+  version: 5.2.2
   additionalDependencies:
     dev: {}
     main: {}
