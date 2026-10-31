@@ -236,7 +236,7 @@ class Geosense(BaseSDK):
 
         :param session_id:
         :param artifact_data:
-        :param type:
+        :param type_:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -345,7 +345,7 @@ class Geosense(BaseSDK):
 
         :param session_id:
         :param artifact_data:
-        :param type:
+        :param type_:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds

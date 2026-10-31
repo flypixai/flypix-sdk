@@ -584,6 +584,7 @@ def main():
 
     with Flypix() as f_client:
         # Rest of application here...
+        pass
 
 
 # Or when using async:
@@ -591,6 +592,7 @@ async def amain():
 
     async with Flypix() as f_client:
         # Rest of application here...
+        pass
 ```
 <!-- End Resource Management [resource-management] -->
 
