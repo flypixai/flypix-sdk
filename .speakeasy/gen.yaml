@@ -33,7 +33,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/flypix-ai/flypix-sdk.git
 python:
-  version: 5.2.1
+  version: 5.3.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -84,6 +84,7 @@ python:
   methodArguments: infer-optional-args
   methodTimeoutArgument: timeout-ms
   methodTimeoutUnits: milliseconds
+  modelSerializationMethods: false
   moduleName: ""
   multipartArrayFormat: standard
   optionalDependencies: {}
@@ -91,6 +92,7 @@ python:
   packageManager: uv
   packageName: flypix
   preApplyUnionDiscriminators: true
+  preserveUnknownFields: false
   pytestFilterWarnings: []
   pytestTimeout: 0
   rawResponseHelpers: false
