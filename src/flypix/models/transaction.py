@@ -17,6 +17,7 @@ from typing_extensions import TypedDict
 class TransactionTypedDict(TypedDict):
     created_at: datetime
     credits: float
+    multiplier: int
     project_id: Nullable[str]
     reason: str
     reference_id: Nullable[str]
@@ -29,6 +30,8 @@ class Transaction(BaseModel):
     created_at: datetime
 
     credits: float
+
+    multiplier: int
 
     project_id: Nullable[str]
 

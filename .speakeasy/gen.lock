@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: d53acee3721605e419e9a56cc79b3e2c
-  docVersion: 100.11.0
-  speakeasyVersion: 1.808.0
-  generationVersion: 2.960.7
-  releaseVersion: 5.3.0
-  configChecksum: e7cd02564c0ac074da202227a3cfa98e
+  docChecksum: e181397d5ed47909075f7437cc6467a6
+  docVersion: 100.11.2
+  speakeasyVersion: 1.809.0
+  generationVersion: 2.961.1
+  releaseVersion: 5.3.1
+  configChecksum: a66241f3f2c5491fd9462d431522cba7
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: b8611536-8034-4755-8c96-aef738ec8f22
-  pristine_commit_hash: 91ba5801edde4b232e232aa850c6f7644e5a232e
-  pristine_tree_hash: 4773718629e0d8825cc49b77fe46ba03e9a619b1
+  generation_id: 3b28b5d3-fa14-4faf-bd2a-5175bac7e8a3
+  pristine_commit_hash: d3fc52cc03cc51848b5359da3e523a9c7a457b75
+  pristine_tree_hash: a046844c9fbc86550b1f89410a0444e1cf32f5d8
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.8
-    core: 6.1.14
+    core: 6.1.15
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -694,8 +694,8 @@ trackedFiles:
     pristine_git_object: 2721a92c1e2f3cdf59e504138b581ef92610c2a9
   docs/models/transaction.md:
     id: 24ab0958a449
-    last_write_checksum: sha1:44b58cb1e67b521ceed4c836a16822fdc02586ed
-    pristine_git_object: 757ac83e3145d3094b5ec00fbee6efe118025df8
+    last_write_checksum: sha1:1affca2fc3eebd3da35371748e78cb2004c53d67
+    pristine_git_object: 8a240f77568bf9b71282db82f539485b79ec2b80
   docs/models/uploadannotationsoutputbody.md:
     id: 0320afae2a9d
     last_write_checksum: sha1:bdc465bb127f987b67719169d1fecb52178705ca
@@ -846,8 +846,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:e4e44d944ee5cd0fa0026826a072e58de63190d6
-    pristine_git_object: dcfe9c05f7334e1476f2ca0660d3e6b1e667a923
+    last_write_checksum: sha1:4df9b580e1945627974c7923f95a6478a9813006
+    pristine_git_object: c268a94c0a688bf8626ac3115f55b41a73826964
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -874,8 +874,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:44fc893964668eff63c9beefbb6afedfe83cb1f2
-    pristine_git_object: b3bb22143190d687f9f67cc8fb97733b8654dc16
+    last_write_checksum: sha1:8d5615f265127aa429f5d17ae9179cbe1b8f511b
+    pristine_git_object: 16ada6842d677bfa9c69381f2da028672e7e1e5b
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -1378,8 +1378,8 @@ trackedFiles:
     pristine_git_object: 247f150406471feebcf78cad4183138370c330a9
   src/flypix/models/transaction.py:
     id: fc79fe925caa
-    last_write_checksum: sha1:08a5512a80380da875d6b0d505895e2aabc9dbd1
-    pristine_git_object: c8c33919535592c1919c390506da59db9fb151a8
+    last_write_checksum: sha1:de81f1e2f18f4f2dcf247ef9498294ec36cf9b8e
+    pristine_git_object: c89448a5d75fcb33185915a5c9842fc095d86ce2
   src/flypix/models/upload_geojsonop.py:
     id: d901d884c80a
     last_write_checksum: sha1:30fbd372246c15e602ad98c339137854615d8fbc
@@ -1466,8 +1466,8 @@ trackedFiles:
     pristine_git_object: 3a43a78ab719ec504ec95c050c984c843407d366
   src/flypix/types/base64fileinput.py:
     id: 706966be409f
-    last_write_checksum: sha1:1522687ae3398374c35710cad993a6e82b5ab99d
-    pristine_git_object: 862566fe2b1db830276b390e136e65090e5963d2
+    last_write_checksum: sha1:94a99b9b1b7ab6d3fd8fb2e52385a50b4a2ff333
+    pristine_git_object: de42346d429a62ce8d39b04be6ee568c9d37e619
   src/flypix/types/basemodel.py:
     id: 8be662e9c3e7
     last_write_checksum: sha1:99c644208e340c4974b94bbe6d52019c80fedb97
@@ -2300,7 +2300,7 @@ examples:
           limit: 200
       responses:
         "200":
-          application/json: [{"created_at": "2025-08-12T13:15:07.839Z", "credits": 6017.43, "project_id": null, "reason": "<value>", "reference_id": "<id>", "tenant_id": "<id>", "transaction_id": "<id>", "type": "<value>"}]
+          application/json: [{"created_at": "2025-08-12T13:15:07.839Z", "credits": 6017.43, "multiplier": 256376, "project_id": null, "reason": "<value>", "reference_id": "<id>", "tenant_id": "<id>", "transaction_id": "<id>", "type": "<value>"}]
         default:
           application/problem+json: {"$schema": "https://example.com/schemas/ErrorModel.json", "detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   create-project:
@@ -2678,3 +2678,6 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
+releaseNotes: |
+  ## Python SDK Changes:
+  * `flypix.payments.get_tenant_transactions()`:  `response.[].multiplier` **Added**
