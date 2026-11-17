@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: e181397d5ed47909075f7437cc6467a6
-  docVersion: 100.11.2
+  docChecksum: 90863157d998c0b508589a720f94b430
+  docVersion: 100.12.0
   speakeasyVersion: 1.809.0
   generationVersion: 2.961.1
-  releaseVersion: 5.3.1
-  configChecksum: a66241f3f2c5491fd9462d431522cba7
+  releaseVersion: 5.4.0
+  configChecksum: 879040d826fb56bc88081dac48f4a1ea
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 30d7eadc-db0d-4a8a-998a-e05b8a3fbc12
-  pristine_commit_hash: 5e1ba6bc81313d23b923364150309c1e2ee57564
-  pristine_tree_hash: a046844c9fbc86550b1f89410a0444e1cf32f5d8
+  generation_id: baf219e0-0eae-4f03-8432-be6fb5aba409
+  pristine_commit_hash: 27cfad87aa771922f158d89cb4f3f0e5ea2f6092
+  pristine_tree_hash: 84db94196df23475efc6eb96815fb985639a47be
 features:
   python:
     acceptHeaders: 3.0.0
@@ -846,8 +846,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:4df9b580e1945627974c7923f95a6478a9813006
-    pristine_git_object: c268a94c0a688bf8626ac3115f55b41a73826964
+    last_write_checksum: sha1:dc163fc5a0f025358be352728985152053936d23
+    pristine_git_object: 91400da5c088d75e1642d6ed6fbbf8b2da279437
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -874,8 +874,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:8d5615f265127aa429f5d17ae9179cbe1b8f511b
-    pristine_git_object: 16ada6842d677bfa9c69381f2da028672e7e1e5b
+    last_write_checksum: sha1:79e6d6a0e67967c4bde0462d031e22be57ad5b0f
+    pristine_git_object: 1d38e9ee077f0e09b126644c777494315d5f229d
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -2678,6 +2678,3 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
-releaseNotes: |
-  ## Python SDK Changes:
-  * `flypix.payments.get_tenant_transactions()`:  `response.[].multiplier` **Added**
