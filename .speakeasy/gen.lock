@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: 90863157d998c0b508589a720f94b430
-  docVersion: 100.12.0
-  speakeasyVersion: 1.809.0
+  docChecksum: ff08d6af466ce70b9e9f336b68b6513f
+  docVersion: 100.13.0
+  speakeasyVersion: 1.810.0
   generationVersion: 2.961.1
-  releaseVersion: 5.4.0
-  configChecksum: 879040d826fb56bc88081dac48f4a1ea
+  releaseVersion: 5.5.0
+  configChecksum: 25b3f711208c6c6fde7f303abac81a27
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: baf219e0-0eae-4f03-8432-be6fb5aba409
-  pristine_commit_hash: 27cfad87aa771922f158d89cb4f3f0e5ea2f6092
-  pristine_tree_hash: 84db94196df23475efc6eb96815fb985639a47be
+  generation_id: df5e3a18-4a10-44fc-89c7-a5613d883eb9
+  pristine_commit_hash: f35c1c82d2af697b2e9799423b6c7bf129fad5d4
+  pristine_tree_hash: a763c35c203c3fcb9299f4b55ed816b41ee71ff0
 features:
   python:
     acceptHeaders: 3.0.0
@@ -58,8 +58,8 @@ trackedFiles:
     pristine_git_object: bda15fb775f265f43233f89507d6d2239e7d06e8
   docs/models/applychangedetectioninputbody.md:
     id: fee218c3f7ae
-    last_write_checksum: sha1:57e107921ea0f08f782186fcbac4b3d7de1475a5
-    pristine_git_object: 49f949288de2368d03aa27eb583309de10bffae7
+    last_write_checksum: sha1:0706d02e879ae7cfafe6cbb7f64c0cb6a432157a
+    pristine_git_object: 0b2db1777e01d5c3ccc95921630653f05b74dd81
   docs/models/applychangedetectionresponse.md:
     id: e66f8e8bdd6d
     last_write_checksum: sha1:c052f659594158468ec3d62e2599a6aaf765a5a0
@@ -88,6 +88,10 @@ trackedFiles:
     id: 9de59403580f
     last_write_checksum: sha1:85df11b0c01a6fd7b0100a09edbd06cc26acefda
     pristine_git_object: 2c0cdc4a69fcce49a58bea0c931ad2a6c5bbb173
+  docs/models/bandnormalization.md:
+    id: 89260f802834
+    last_write_checksum: sha1:993341cc756f3adce276dcad61137c477518a618
+    pristine_git_object: 15d46d14245d6b14a32c305887bc9f1c68194af2
   docs/models/bounds3857.md:
     id: c35a87c65d1a
     last_write_checksum: sha1:85eebc3162d5fbc82981d618fead449c5e7e53da
@@ -806,8 +810,8 @@ trackedFiles:
     pristine_git_object: 83f9d7bb62ddd879addb7ede8735cc12e3a677a4
   docs/sdks/models/README.md:
     id: b35bdf4bc7ed
-    last_write_checksum: sha1:6d306a686584b5f9f63acc274ef2098a6d177b97
-    pristine_git_object: fdbdabc02d5b88629092b250abc78c673c9b79e0
+    last_write_checksum: sha1:5bb1ab234f5135f72cc3628be8e4ce5be291733d
+    pristine_git_object: 11ff9048702086998fe865fb19e7ddd28f87ada4
   docs/sdks/payments/README.md:
     id: 0ddb15ec8c20
     last_write_checksum: sha1:9a952fc75b3266c9296613f24ba4fab98272dc7f
@@ -846,8 +850,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:dc163fc5a0f025358be352728985152053936d23
-    pristine_git_object: 91400da5c088d75e1642d6ed6fbbf8b2da279437
+    last_write_checksum: sha1:99352311664dc38b6475dc6e2840ad308e421dab
+    pristine_git_object: 7cbe2633e499480a0686d7d824075901f3b2cf70
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -874,8 +878,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:79e6d6a0e67967c4bde0462d031e22be57ad5b0f
-    pristine_git_object: 1d38e9ee077f0e09b126644c777494315d5f229d
+    last_write_checksum: sha1:5ec4cadd24651c5a41d8756e3aaf742131bfec47
+    pristine_git_object: 4e89ea993f910d8d825ffbcaf027ff5a05012e2f
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -930,8 +934,8 @@ trackedFiles:
     pristine_git_object: efd23d8c29750a91b37349f13eac9860c7d65770
   src/flypix/models/__init__.py:
     id: 1dbc43aed4a3
-    last_write_checksum: sha1:df5296a300d8c5e4740fa74fb376c92eb0f9e705
-    pristine_git_object: 286448a2c7f8ca8de3a4cfd724741b7c245f0923
+    last_write_checksum: sha1:8c40195a63747a55ca7ef57745050d0dee60e4f7
+    pristine_git_object: a17201caeee44d192e296787f2412aabb4bb2a47
   src/flypix/models/annotationpayloadinput.py:
     id: 3e6ca4f0a037
     last_write_checksum: sha1:a7c9e1d048d34e519d1b2e94da0eb7d4ab9f212d
@@ -946,8 +950,8 @@ trackedFiles:
     pristine_git_object: 2c64f18cd4ba20db4739820fa034555c8ef505cf
   src/flypix/models/applychangedetectioninputbody.py:
     id: fa313c6eca17
-    last_write_checksum: sha1:84cb6fe0edf1e518995d6d50cd7622407a4c4419
-    pristine_git_object: 4b93bb72e6f813d6e86f374e57f1a46bc76df731
+    last_write_checksum: sha1:1a3a17b0f05836b6f9d971d0931407b2df1ad121
+    pristine_git_object: 40dee5f8b3c12bcd9963d26ce80ef1390d80dc13
   src/flypix/models/applymodelinputbody.py:
     id: 845aa610b007
     last_write_checksum: sha1:7b438aa2f6b0c2782f2bf96ab0964f61fc2d901a
@@ -964,6 +968,10 @@ trackedFiles:
     id: 95e267a967da
     last_write_checksum: sha1:0981e2c19003569cc43ed2c3a2128274a1c51c11
     pristine_git_object: 57447f417d36a62c2748f5354f108eb9d8558790
+  src/flypix/models/bandnormalization.py:
+    id: 8155b7abc218
+    last_write_checksum: sha1:66e2e55bf9301d5f5ce1d9593d346a5dfe1fedea
+    pristine_git_object: 906d7b0e175b10e26bd90b53cfee7a380a39f902
   src/flypix/models/bounds3857.py:
     id: c39e39bad1ec
     last_write_checksum: sha1:abb28d2c173487b2b850118e70e5a54469c0cd9c
@@ -1426,8 +1434,8 @@ trackedFiles:
     pristine_git_object: c07dea9b72001dfdafb5ba42a7a9b91a87767aff
   src/flypix/models_.py:
     id: a76b54991cbc
-    last_write_checksum: sha1:b877238b89ad8285d1b6592deb613204a51f8963
-    pristine_git_object: 57ce1a09feba28be1e3a92cf17243ff580a301c5
+    last_write_checksum: sha1:c441f382f9947e32bb81dc259afc4ebac0b71122
+    pristine_git_object: 891f76d4857e863b412ec8181aaaa7ae2e69f1ce
   src/flypix/payments.py:
     id: 65ab143640d5
     last_write_checksum: sha1:f7438931c721c56f536e70ecd30af997895263cb
@@ -2678,3 +2686,6 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
+releaseNotes: |
+  ## Python SDK Changes:
+  * `flypix.models.apply_change_detection()`:  `request.normalization` **Added**
