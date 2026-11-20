@@ -177,3 +177,13 @@ Based on:
 - [python v5.4.0] .
 ### Releases
 - [PyPI v5.4.0] https://pypi.org/project/flypix/5.4.0 - .
+
+## 2026-11-20 00:28:04
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.810.0 (2.961.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v5.5.0] .
+### Releases
+- [PyPI v5.5.0] https://pypi.org/project/flypix/5.5.0 - .

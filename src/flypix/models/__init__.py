@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from .applymodelresponse import ApplyModelResponse, ApplyModelResponseTypedDict
     from .artifactresponse import ArtifactResponse, ArtifactResponseTypedDict
     from .balance import Balance, BalanceTypedDict
+    from .bandnormalization import BandNormalization, BandNormalizationTypedDict
     from .bounds3857 import Bounds3857, Bounds3857TypedDict
     from .chatmessageresponse import ChatMessageResponse, ChatMessageResponseTypedDict
     from .classresponse import ClassResponse, ClassResponseTypedDict
@@ -513,6 +514,8 @@ __all__ = [
     "ArtifactResponseTypedDict",
     "Balance",
     "BalanceTypedDict",
+    "BandNormalization",
+    "BandNormalizationTypedDict",
     "Bounds3857",
     "Bounds3857TypedDict",
     "COGRasterSource",
@@ -875,6 +878,8 @@ _dynamic_imports: dict[str, str] = {
     "ArtifactResponseTypedDict": ".artifactresponse",
     "Balance": ".balance",
     "BalanceTypedDict": ".balance",
+    "BandNormalization": ".bandnormalization",
+    "BandNormalizationTypedDict": ".bandnormalization",
     "Bounds3857": ".bounds3857",
     "Bounds3857TypedDict": ".bounds3857",
     "ChatMessageResponse": ".chatmessageresponse",

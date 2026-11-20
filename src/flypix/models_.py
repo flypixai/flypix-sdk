@@ -6,7 +6,7 @@ from flypix import errors, models, utils
 from flypix._hooks import HookContext
 from flypix.types import Nullable, OptionalNullable, UNSET
 from flypix.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Iterable, List, Mapping, Optional
+from typing import Iterable, List, Mapping, Optional, Union
 
 
 class ApplyChangeDetectionAcceptEnum(str, Enum):
@@ -60,6 +60,12 @@ class Models(BaseSDK):
         *,
         raster_id_a: str,
         raster_id_b: str,
+        normalization: OptionalNullable[
+            Union[
+                Iterable[models.BandNormalization],
+                Iterable[models.BandNormalizationTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         accept_header_override: Optional[ApplyChangeDetectionAcceptEnum] = None,
@@ -72,6 +78,7 @@ class Models(BaseSDK):
 
         :param raster_id_a:
         :param raster_id_b:
+        :param normalization: Per-band value range stretched to 8 bits, applied to both rasters. When omitted, non-8-bit rasters are stretched over their measured 2nd-98th percentiles
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -89,6 +96,9 @@ class Models(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.ApplyChangeDetectionInputBody(
+            normalization=utils.get_pydantic_model(
+                normalization, OptionalNullable[List[models.BandNormalization]]
+            ),
             raster_id_a=raster_id_a,
             raster_id_b=raster_id_b,
         )
@@ -160,6 +170,12 @@ class Models(BaseSDK):
         *,
         raster_id_a: str,
         raster_id_b: str,
+        normalization: OptionalNullable[
+            Union[
+                Iterable[models.BandNormalization],
+                Iterable[models.BandNormalizationTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         accept_header_override: Optional[ApplyChangeDetectionAcceptEnum] = None,
@@ -172,6 +188,7 @@ class Models(BaseSDK):
 
         :param raster_id_a:
         :param raster_id_b:
+        :param normalization: Per-band value range stretched to 8 bits, applied to both rasters. When omitted, non-8-bit rasters are stretched over their measured 2nd-98th percentiles
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -189,6 +206,9 @@ class Models(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.ApplyChangeDetectionInputBody(
+            normalization=utils.get_pydantic_model(
+                normalization, OptionalNullable[List[models.BandNormalization]]
+            ),
             raster_id_a=raster_id_a,
             raster_id_b=raster_id_b,
         )
