@@ -3,17 +3,17 @@ id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
   docChecksum: ff08d6af466ce70b9e9f336b68b6513f
   docVersion: 100.13.0
-  speakeasyVersion: 1.810.0
-  generationVersion: 2.961.1
-  releaseVersion: 5.5.0
-  configChecksum: 25b3f711208c6c6fde7f303abac81a27
+  speakeasyVersion: 1.811.0
+  generationVersion: 2.968.1
+  releaseVersion: 5.5.1
+  configChecksum: d4523c4b9b2a09d1f57111a2c984d849
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: df5e3a18-4a10-44fc-89c7-a5613d883eb9
-  pristine_commit_hash: f35c1c82d2af697b2e9799423b6c7bf129fad5d4
-  pristine_tree_hash: a763c35c203c3fcb9299f4b55ed816b41ee71ff0
+  generation_id: 8eb4e151-b2b4-4a36-850a-cebd47699dce
+  pristine_commit_hash: b8445c1c0a240026bf9cc6d723873b771258675e
+  pristine_tree_hash: 0ba77fcd2bfca8d5f9c28bd54a0d9a64126a6e4e
 features:
   python:
     acceptHeaders: 3.0.0
@@ -850,8 +850,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:99352311664dc38b6475dc6e2840ad308e421dab
-    pristine_git_object: 7cbe2633e499480a0686d7d824075901f3b2cf70
+    last_write_checksum: sha1:a365af44d770c2d4c5e93a92bb3399a571d4a0ed
+    pristine_git_object: fd874a4429185c9b7c7ad4d5ef22a88d77212f04
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -878,8 +878,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:5ec4cadd24651c5a41d8756e3aaf742131bfec47
-    pristine_git_object: 4e89ea993f910d8d825ffbcaf027ff5a05012e2f
+    last_write_checksum: sha1:a806203cd1eb3c0e757b519c27e567ae43f9539b
+    pristine_git_object: 49c762b8f8ba06bc431f57f4d893509aebf93e5a
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
@@ -2686,6 +2686,3 @@ generatedTests:
   geosense_create_artifact: "2026-07-10T15:04:15+02:00"
   geosense_get_artifact: "2026-07-10T15:04:15+02:00"
   geosense_send_message: "2026-07-10T15:04:15+02:00"
-releaseNotes: |
-  ## Python SDK Changes:
-  * `flypix.models.apply_change_detection()`:  `request.normalization` **Added**
