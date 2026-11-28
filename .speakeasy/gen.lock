@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f0de2ab8-362d-4b96-9ed5-a0455f21f20b
 management:
-  docChecksum: ff08d6af466ce70b9e9f336b68b6513f
-  docVersion: 100.13.0
-  speakeasyVersion: 1.811.0
-  generationVersion: 2.968.1
-  releaseVersion: 5.5.1
-  configChecksum: d4523c4b9b2a09d1f57111a2c984d849
+  docChecksum: 8088744dd750ddbe6c92c405bed0513d
+  docVersion: 100.16.0
+  speakeasyVersion: 1.813.0
+  generationVersion: 2.969.4
+  releaseVersion: 5.6.0
+  configChecksum: b679a13e846ec6f83c2d8801578981b2
   repoURL: https://github.com/flypix-ai/flypix-sdk.git
   installationURL: https://github.com/flypix-ai/flypix-sdk.git
   published: true
 persistentEdits:
-  generation_id: 8eb4e151-b2b4-4a36-850a-cebd47699dce
-  pristine_commit_hash: b8445c1c0a240026bf9cc6d723873b771258675e
-  pristine_tree_hash: 0ba77fcd2bfca8d5f9c28bd54a0d9a64126a6e4e
+  generation_id: 625e9421-1c6f-4eb9-9020-292062ef1ed5
+  pristine_commit_hash: cadc91b6c843da2b42574c4ce59eb2629658b314
+  pristine_tree_hash: 738fda47673edb2d307877f07a428df29b948806
 features:
   python:
     acceptHeaders: 3.0.0
@@ -850,8 +850,8 @@ trackedFiles:
     pristine_git_object: c00200cfd072e9febac5d6be783da1925d11dac0
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:a365af44d770c2d4c5e93a92bb3399a571d4a0ed
-    pristine_git_object: fd874a4429185c9b7c7ad4d5ef22a88d77212f04
+    last_write_checksum: sha1:30ab7902907f2eca9d8217614afa80cba85a8b0e
+    pristine_git_object: 121d4ca5abf11c936a87a246d30dbb1e62f0cbb5
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:3e99a9b024e1c623ed0ed84301f52588583b4e1d
@@ -878,8 +878,8 @@ trackedFiles:
     pristine_git_object: 3d627212c3889f5a9a6c4ad3cbde86fa248d64e0
   src/flypix/_version.py:
     id: 24e71c221e38
-    last_write_checksum: sha1:a806203cd1eb3c0e757b519c27e567ae43f9539b
-    pristine_git_object: 49c762b8f8ba06bc431f57f4d893509aebf93e5a
+    last_write_checksum: sha1:fbb60f79087f8ab800c9a6e5f9727d7625fe0af3
+    pristine_git_object: f69b3d81d45455fe0ff9a43e9d11d6a6596e09e6
   src/flypix/auth.py:
     id: 0bae9ac76e8a
     last_write_checksum: sha1:f41b1e61e293a0f19d3e782d2feff8235ef25d7a
